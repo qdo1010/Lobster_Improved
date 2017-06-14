@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
+		970E766C1EF17CED002EE43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766B1EF17CED002EE43D /* main.m */; };
+		970E766F1EF17CED002EE43D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766E1EF17CED002EE43D /* ViewController.m */; };
+		970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 970E76701EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld */; };
+		970E76741EF17CED002EE43D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 970E76731EF17CED002EE43D /* Assets.xcassets */; };
+		970E76771EF17CED002EE43D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970E76751EF17CED002EE43D /* Main.storyboard */; };
+		970E76821EF17CED002EE43D /* RoboLobsterSimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76811EF17CED002EE43D /* RoboLobsterSimuTests.m */; };
+		970E768D1EF17CED002EE43D /* RoboLobsterSimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E768C1EF17CED002EE43D /* RoboLobsterSimuUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		970E767E1EF17CED002EE43D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 970E765C1EF17CED002EE43D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 970E76631EF17CED002EE43D;
+			remoteInfo = RoboLobsterSimu;
+		};
+		970E76891EF17CED002EE43D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 970E765C1EF17CED002EE43D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 970E76631EF17CED002EE43D;
+			remoteInfo = RoboLobsterSimu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		970E76641EF17CED002EE43D /* RoboLobsterSimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboLobsterSimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		970E76671EF17CED002EE43D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		970E76681EF17CED002EE43D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		970E766B1EF17CED002EE43D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		970E766D1EF17CED002EE43D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		970E766E1EF17CED002EE43D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		970E76711EF17CED002EE43D /* RoboLobsterSimu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoboLobsterSimu.xcdatamodel; sourceTree = "<group>"; };
+		970E76731EF17CED002EE43D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		970E76761EF17CED002EE43D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		970E76781EF17CED002EE43D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		970E767D1EF17CED002EE43D /* RoboLobsterSimuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoboLobsterSimuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		970E76811EF17CED002EE43D /* RoboLobsterSimuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoboLobsterSimuTests.m; sourceTree = "<group>"; };
+		970E76831EF17CED002EE43D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		970E76881EF17CED002EE43D /* RoboLobsterSimuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoboLobsterSimuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		970E768C1EF17CED002EE43D /* RoboLobsterSimuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoboLobsterSimuUITests.m; sourceTree = "<group>"; };
+		970E768E1EF17CED002EE43D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		970E76611EF17CED002EE43D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E767A1EF17CED002EE43D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E76851EF17CED002EE43D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		970E765B1EF17CED002EE43D = {
+			isa = PBXGroup;
+			children = (
+				970E76661EF17CED002EE43D /* RoboLobsterSimu */,
+				970E76801EF17CED002EE43D /* RoboLobsterSimuTests */,
+				970E768B1EF17CED002EE43D /* RoboLobsterSimuUITests */,
+				970E76651EF17CED002EE43D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		970E76651EF17CED002EE43D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				970E76641EF17CED002EE43D /* RoboLobsterSimu.app */,
+				970E767D1EF17CED002EE43D /* RoboLobsterSimuTests.xctest */,
+				970E76881EF17CED002EE43D /* RoboLobsterSimuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		970E76661EF17CED002EE43D /* RoboLobsterSimu */ = {
+			isa = PBXGroup;
+			children = (
+				970E76671EF17CED002EE43D /* AppDelegate.h */,
+				970E76681EF17CED002EE43D /* AppDelegate.m */,
+				970E766D1EF17CED002EE43D /* ViewController.h */,
+				970E766E1EF17CED002EE43D /* ViewController.m */,
+				970E76731EF17CED002EE43D /* Assets.xcassets */,
+				970E76751EF17CED002EE43D /* Main.storyboard */,
+				970E76781EF17CED002EE43D /* Info.plist */,
+				970E76701EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld */,
+				970E766A1EF17CED002EE43D /* Supporting Files */,
+			);
+			path = RoboLobsterSimu;
+			sourceTree = "<group>";
+		};
+		970E766A1EF17CED002EE43D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				970E766B1EF17CED002EE43D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		970E76801EF17CED002EE43D /* RoboLobsterSimuTests */ = {
+			isa = PBXGroup;
+			children = (
+				970E76811EF17CED002EE43D /* RoboLobsterSimuTests.m */,
+				970E76831EF17CED002EE43D /* Info.plist */,
+			);
+			path = RoboLobsterSimuTests;
+			sourceTree = "<group>";
+		};
+		970E768B1EF17CED002EE43D /* RoboLobsterSimuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				970E768C1EF17CED002EE43D /* RoboLobsterSimuUITests.m */,
+				970E768E1EF17CED002EE43D /* Info.plist */,
+			);
+			path = RoboLobsterSimuUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		970E76631EF17CED002EE43D /* RoboLobsterSimu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 970E76911EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimu" */;
+			buildPhases = (
+				970E76601EF17CED002EE43D /* Sources */,
+				970E76611EF17CED002EE43D /* Frameworks */,
+				970E76621EF17CED002EE43D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoboLobsterSimu;
+			productName = RoboLobsterSimu;
+			productReference = 970E76641EF17CED002EE43D /* RoboLobsterSimu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		970E767C1EF17CED002EE43D /* RoboLobsterSimuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 970E76941EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuTests" */;
+			buildPhases = (
+				970E76791EF17CED002EE43D /* Sources */,
+				970E767A1EF17CED002EE43D /* Frameworks */,
+				970E767B1EF17CED002EE43D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				970E767F1EF17CED002EE43D /* PBXTargetDependency */,
+			);
+			name = RoboLobsterSimuTests;
+			productName = RoboLobsterSimuTests;
+			productReference = 970E767D1EF17CED002EE43D /* RoboLobsterSimuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		970E76871EF17CED002EE43D /* RoboLobsterSimuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 970E76971EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuUITests" */;
+			buildPhases = (
+				970E76841EF17CED002EE43D /* Sources */,
+				970E76851EF17CED002EE43D /* Frameworks */,
+				970E76861EF17CED002EE43D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				970E768A1EF17CED002EE43D /* PBXTargetDependency */,
+			);
+			name = RoboLobsterSimuUITests;
+			productName = RoboLobsterSimuUITests;
+			productReference = 970E76881EF17CED002EE43D /* RoboLobsterSimuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		970E765C1EF17CED002EE43D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "HongQuan Do";
+				TargetAttributes = {
+					970E76631EF17CED002EE43D = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					970E767C1EF17CED002EE43D = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 970E76631EF17CED002EE43D;
+					};
+					970E76871EF17CED002EE43D = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 970E76631EF17CED002EE43D;
+					};
+				};
+			};
+			buildConfigurationList = 970E765F1EF17CED002EE43D /* Build configuration list for PBXProject "RoboLobsterSimu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 970E765B1EF17CED002EE43D;
+			productRefGroup = 970E76651EF17CED002EE43D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				970E76631EF17CED002EE43D /* RoboLobsterSimu */,
+				970E767C1EF17CED002EE43D /* RoboLobsterSimuTests */,
+				970E76871EF17CED002EE43D /* RoboLobsterSimuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		970E76621EF17CED002EE43D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				970E76741EF17CED002EE43D /* Assets.xcassets in Resources */,
+				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E767B1EF17CED002EE43D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E76861EF17CED002EE43D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		970E76601EF17CED002EE43D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				970E766F1EF17CED002EE43D /* ViewController.m in Sources */,
+				970E766C1EF17CED002EE43D /* main.m in Sources */,
+				970E76691EF17CED002EE43D /* AppDelegate.m in Sources */,
+				970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E76791EF17CED002EE43D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				970E76821EF17CED002EE43D /* RoboLobsterSimuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970E76841EF17CED002EE43D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				970E768D1EF17CED002EE43D /* RoboLobsterSimuUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		970E767F1EF17CED002EE43D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 970E76631EF17CED002EE43D /* RoboLobsterSimu */;
+			targetProxy = 970E767E1EF17CED002EE43D /* PBXContainerItemProxy */;
+		};
+		970E768A1EF17CED002EE43D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 970E76631EF17CED002EE43D /* RoboLobsterSimu */;
+			targetProxy = 970E76891EF17CED002EE43D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		970E76751EF17CED002EE43D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				970E76761EF17CED002EE43D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		970E768F1EF17CED002EE43D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		970E76901EF17CED002EE43D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		970E76921EF17CED002EE43D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		970E76931EF17CED002EE43D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		970E76951EF17CED002EE43D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoboLobsterSimu.app/Contents/MacOS/RoboLobsterSimu";
+			};
+			name = Debug;
+		};
+		970E76961EF17CED002EE43D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoboLobsterSimu.app/Contents/MacOS/RoboLobsterSimu";
+			};
+			name = Release;
+		};
+		970E76981EF17CED002EE43D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RoboLobsterSimu;
+			};
+			name = Debug;
+		};
+		970E76991EF17CED002EE43D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RoboLobsterSimuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Me.RoboLobsterSimuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RoboLobsterSimu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		970E765F1EF17CED002EE43D /* Build configuration list for PBXProject "RoboLobsterSimu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				970E768F1EF17CED002EE43D /* Debug */,
+				970E76901EF17CED002EE43D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		970E76911EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				970E76921EF17CED002EE43D /* Debug */,
+				970E76931EF17CED002EE43D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		970E76941EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				970E76951EF17CED002EE43D /* Debug */,
+				970E76961EF17CED002EE43D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		970E76971EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				970E76981EF17CED002EE43D /* Debug */,
+				970E76991EF17CED002EE43D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		970E76701EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				970E76711EF17CED002EE43D /* RoboLobsterSimu.xcdatamodel */,
+			);
+			currentVersion = 970E76711EF17CED002EE43D /* RoboLobsterSimu.xcdatamodel */;
+			path = RoboLobsterSimu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 970E765C1EF17CED002EE43D /* Project object */;
+}
