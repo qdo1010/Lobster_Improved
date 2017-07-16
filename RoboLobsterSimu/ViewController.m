@@ -7,15 +7,22 @@
 //
 
 #import "ViewController.h"
-
+#import "Waveforms.h"
+#import "AppDelegate.h"
 @implementation ViewController
+
+//void xmain();
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    NSLog(@"View did load");
+    
 }
-
+- (void) viewDidAppear{
+    //[(AppDelegate *)[[NSApplication sharedApplication] delegate] awakeFromNib];
+  //  AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+ //   [[appDelegate analysisWindowController] setOscilloscopeView:self];
+}
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
@@ -24,4 +31,11 @@
 }
 
 
+- (IBAction)printData:(id)sender {
+    //id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    //[propertyValue sendToBuffer:cellDepressorL2 :100];
+    //NSLog(@"%@",[propertyValue ipbuf]);
+
+    
+}
 @end

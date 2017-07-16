@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13A598" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="FilesOwner" customClass="OscilloscopeController">
+            <connections>
+                <outlet property="oscilloscopeView" destination="192" id="ics-nv-ME0"/>
+                <outlet property="view" destination="192" id="196"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <view id="192" userLabel="oscilloscopeView" customClass="OscilloscopeView">
+            <rect key="frame" x="0.0" y="0.0" width="774" height="527"/>
+            <autoresizingMask key="autoresizingMask"/>
+        </view>
+        <userDefaultsController representsSharedInstance="YES" id="143"/>
+    </objects>
+</document>

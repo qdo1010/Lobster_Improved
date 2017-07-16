@@ -1,0 +1,103 @@
+//
+//  LobsterSynapseList.txt
+//  RoboLobsterII
+//
+//  Created by Joseph Ayers on 9/25/16.
+//  Copyright © 2016 Joseph Ayers. All rights reserved.
+//
+
+/*
+LobsterSynapseList
+pInhSegEleDep       // Inhibition from an elevator to each depressor interneurons
+pInhSegEleStance    // Inhibition from an elevator to each stance interneuron
+pInhSegStanceSwing  // Inhibition from a stance interneuron to each swing interneuron
+
+pExcSegStanceProt   // Excitation from a stance interneuron to a protractor interneuron
+pExcSegStanceRet    // Excitation from a stance interneuron to a retractor interneuron
+pExcSegStanceExt    // Excitation from a stance interneuron to a extensor interneuron
+pExcSegStanceFlx    // Excitation from a stance interneuron to a flexor interneuron
+
+pExcSegSwingProt    // Excitation from a Swing interneuron to a protractor interneuron
+pExcSegSwingRet     // Excitation from a Swing interneuron to a retractor interneuron
+pExcSegSwingExt     // Excitation from a Swing interneuron to a extensor interneuron
+pExcSegSwingFlx     // Excitation from a Swing interneuron to a flexor interneuron
+
+pInhIntFSwing       // Inhibition from a Forward Command interneuron to a swing interneuron
+pInhIntFStance      // Inhibition from a Forward Command interneuron to a stance interneuron
+pInhIntBSwing       // Inhibition from a Backward Command interneuron to a swing interneuron
+pInhIntBStance      // Inhibition from a Backward Command interneuron to a stance interneuron
+pInhIntLLSwing       // Inhibition from a Leading Command interneuron to a swing interneuron
+pInhIntLLStance      // Inhibition from a Leading Command interneuron to a stance interneuron
+pInhIntLTSwing       // Inhibition from a Trailing Command interneuron to a swing interneuron
+pInhIntLTStance      // Inhibition from a Trailing Command interneuron to a stance interneuron
+
+pExcModComEle    	// Excitation from a Modulator command interneuron to a elevator CPG interneuron
+pExcModComDep    	// Excitation from a Modulator command interneuron to a depressor CPG interneuron
+pExcModComSwing    	// Excitation from a Modulator command interneuron to a swing CPG nterneuron
+pExcModComStance    // Excitation from a Modulator command interneuron to a stance CPG interneuron
+
+pInhSegCoordEle     // Segmental Inhibition from an Coordinating Neuron to an Elevator
+pExcSegContEleCoord // Intersegmental Exitation from and elevator to a contralatersl coordinating neuron
+pExcIntRosEleCoord  // Intersegmental Exitation from and elevator to a rostral ipsilateral coordinating neuron
+pExcIntCaudEleCoord // Intersegmental Exitation from and elevator to a caudal ipsilateral coordinating neuron
+
+pExcPcnDorsal
+pExcPcnVentral,
+pExcHLYL
+pExcHLRL
+pExcYLFR
+pExcRLFR,
+pExcHRYR
+pExcHRRR
+pExcYRFL
+pExcRRFL,
+pExcRSLeft
+pExcRSRight
+pExcC
+pInhF
+pExcB;
+*/
+//  parameter set example: pInhSegCinCin = {-2.2,0.995};
+// ----- Define synaptic currents: These are the arrays of synapse structs for each segment
+/*  These are now defined in computeMAPs
+
+double inhSegEleDep[mmSide][mmSeg];         // elevator to each depressor interneurons
+double inhSegEleStance[mmSide][mmSeg];      //  elevator to each stance interneuron
+double inhSegStanceSwing[mmSide][mmSeg];    //  stance interneuron to each swing interneuron
+
+double excSegStanceProt[mmSide][mmSeg];     // Excitatory synaptic current within a segment from a stance interneuron to a protractor interneuron
+double excSegStanceRet[mmSide][mmSeg];      // Excitatory synaptic current within a segment from a stance interneuron to a retractor interneuron
+double excSegStanceExt[mmSide][mmSeg];      // Excitatory synaptic current within a segment from a stance interneuron to a extensor interneuron
+double excSegStanceFlx[mmSide][mmSeg];      // Excitatory synaptic current within a segment from a stance interneuron to a flexor interneuron
+
+double excSegSwingProt[mmSide][mmSeg];      // Excitatory synaptic current within a segment from a Swing interneuron to a protractor interneuron
+double excSegSwingRet[mmSide][mmSeg];       // Excitatory synaptic current within a segment from a Swing interneuron to a retractor interneuron
+double excSegSwingExt[mmSide][mmSeg];       // Excitatory synaptic current within a segment from a Swing interneuron to a extensor interneuron
+double excSegSwingFlx[mmSide][mmSeg];       // Excitatory synaptic current within a segment from a Swing interneuron to a flexor interneuron
+
+double excModComEle[mmSide][mmSeg];    		// Excitation from a Modulator command interneuron to a elevator CPG interneuron
+double excModComDep[mmSide][mmSeg];    		// Excitation from a Modulator command interneuron to a depressor CPG interneuron
+double excModComSwing[mmSide][mmSeg];    	// Excitation from a Modulator command interneuron to a swing CPG nterneuron
+double excModComStance[mmSide][mmSeg];    	// Excitation from a Modulator command interneuron to a stance CPG interneuron
+
+double excForRet[mmSide][mmSeg];    		// Excitation from a Modulator command interneuron to a elevator CPG interneuron
+double excBackPro[mmSide][mmSeg];    		// Excitation from a Modulator command interneuron to a depressor CPG interneuron
+double excLLFlx[mmSide][mmSeg];             // Excitation from a Modulator command interneuron to a swing CPG nterneuron
+double excLTExt[mmSide][mmSeg];             // Excitation from a Modulator command interneuron to a stance CPG interneuron
+double inhSegCoordEle[mmSide][mmSeg],       // Segmental Inhibition from an Coordinating Neuron to an Elevator
+*/
+/*
+inhSegEleDep[mmSide][mmSeg]
+inhSegEleStance[mmSide][mmSeg]
+inhSegStanceSwing[mmSide][mmSeg]
+
+excSegStanceProt[mmSide][mmSeg]
+excSegStanceRet[mmSide][mmSeg]
+excSegStanceExt[mmSide][mmSeg]
+excSegStanceFlx[mmSide][mmSeg]
+
+excSegSwingProt[mmSide][mmSeg]
+excSegSwingRet[mmSide][mmSeg]
+excSegSwingExt[mmSide][mmSeg]
+excSegSwingFlx[mmSide][mmSeg]
+*/

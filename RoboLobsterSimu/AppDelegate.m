@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "OscilloscopeController.h"
+#import "analysisWindowController.h"
+#import "Waveforms.h"
 @interface AppDelegate ()
 
 - (IBAction)saveAction:(id)sender;
@@ -16,8 +18,78 @@
 
 @implementation AppDelegate
 
+#pragma mark Properties
+@synthesize numTraces;
+@synthesize selectedTrace;
+@synthesize selectedTraceName;
+@synthesize currentWorkingTime;
+@synthesize plotType;
+@synthesize drawUnclustered;
+@synthesize drawChart;
+@synthesize Cluster;
+@synthesize StaticCalibration;
+@synthesize calibrationType;
+@synthesize traceSelector;
+@synthesize plottingArray;
+@synthesize traceWaveforms;
+@synthesize persistentContainer = _persistentContainer;
+@synthesize SampleSize;
+@synthesize durationArray;
+@synthesize offsetArray;
+@synthesize traceOffsetArray;
+@synthesize traceGainArray;
+@synthesize switchColor;
+@synthesize invertSign;
+@synthesize oneitertosec;
+#pragma mark - App Lifetime
+
+
+- (void) awakeFromNib {
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(appDidLaunch:)
+               name:NSApplicationDidFinishLaunchingNotification
+             object:nil];
+    
+ //   AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
+  //  [self setAnalysisWindowController:newAnalysisWindowController];
+ //   [appDelegate showAnalysisWindow:self];
+    // [[appDelegate analysisWindowController]  viewScope:self];
+
+    traceSelector = [[TraceSelector alloc] init];
+    [self setTraceSelector:traceSelector];
+    [appDelegate showTraceSelectorWindow:self];
+
+   
+    NSLog(@"AppDelegate Nib Loaded");
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    NSLog(@"AppDelegate Did Finish Loading");
+     SampleSize = [NSNumber numberWithInteger:5000];
+    int samplesize = [SampleSize intValue];
+    indicateSampleSize(samplesize);   //call the C function to tell it what samplesize I want
+    
+    int IterNum = 100000;
+    indicateNumberOfIteration(IterNum);
+
+    traceWaveforms = [[Waveforms alloc] init];
+    durationArray = [[NSMutableArray alloc] init];
+    offsetArray = [[NSMutableArray alloc] init];
+    traceGainArray = [[NSMutableArray alloc] init];
+    traceOffsetArray = [[NSMutableArray alloc] init];
+    invertSign = 0;
+    switchColor = 0;
+    
+    [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+    
+  //  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.5                                                  target: self
+    //                                            selector:@selector(sendWaveform)
+      //                                          userInfo: nil repeats:YES];
+    
 }
 
 
@@ -26,9 +98,159 @@
 }
 
 
+- (void)appDidLaunch:(NSNotification*)notification
+{
+    NSLog(@"Application Just Launched");
+   // NSLog(@"%@",[traceWaveforms ipbuf]);
+}
+
+#pragma mark - Menu Items
+-(void) createWaveForm{
+    xmain(); //run pc2dsp and write to temp files, automatically run in background async
+   // NSLog(@"total elapse time for 1 iter = %f s", elapsedTime);
+}
+
+//-(void) readWaveForm{
+  //  [traceWaveforms runCalculation];
+//}
+-(void) sendWaveform{
+    int size = [SampleSize intValue];
+    NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
+
+    //[traceWaveforms readMultipleArrays:arr :size];
+    
+}
+-(void) displaySampledWaveforms : (NSMutableArray*)cellName : (NSMutableArray*)offset : (NSMutableArray*)duration{
+ //  NSLog(@"sending!!!!!!!!");
+    
+    [traceWaveforms readMultipleArrays:cellName :offset :duration];
+    printf("1 loop iter elapsed = %ld ms\n", elapsed);
+
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+    BOOL enabled = YES;//Should be no
+    SEL action = [menuItem action];
+    if (action == @selector(drawOscilloscope:))
+    {
+        enabled = YES;
+    }
+    else if (action == @selector(drawChart:))
+    {
+        enabled = YES;
+    }
+    return enabled;
+}
+
+//••••••••••••
+#pragma mark --- NIB Loaders ---
+//••••••••••••
+
+
+
+//••••••••••••
+#pragma mark ---Window Controllers ---
+//••••••••••••
+
+
+- (AnalysisWindowController *)analysisWindowController
+{
+    if (_analysisWindowController == nil)
+    {
+        AnalysisWindowController *newAnalsysisWindowController = [[AnalysisWindowController alloc] initWithDefaultWindowNib];
+        [self setAnalysisWindowController:newAnalsysisWindowController];
+    }
+    return _analysisWindowController;
+}
+
+
+- (IBAction) showAnalysisWindow: (id) sender
+{
+    [[self analysisWindowController].window orderFront:self];
+    
+} // showAnalysisWindow
+
+
+- (IBAction) showTraceSelectorWindow: (id) sender
+{
+    [[self traceSelector].window orderFront:self];
+    
+} // showAnalysisWindow
+
+/*- (void)setupPlottingArrays: (id) sender
+{
+    int i;
+    plottingArray = [[NSMutableArray alloc] init];
+    for ( i = 1; i <= 8; i++)
+    {
+        ipbuf = [[NSMutableArray alloc] init];
+        [plottingArray addObject:ipbuf];
+        //         [ipbuf release];
+    }
+}*/
+
+//- (IBAction)saveAction:(id)sender {
+    
+//}
+
+//- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+//    return NSTerminateNow;
+//}
+#pragma mark --- Getters and Setters ---
+
+
+#pragma mark ••••• Window Controllers •••••
+
+#pragma mark --- View Menu Commands
+
+#pragma mark --- AcquisitionMenu
+
+#pragma mark --- Start Analyses
+
+
+
+- (IBAction) drawOscilloscope:(id) sender //This is a virtual oscilloscope{
+{
+       AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Executing drawOscilloscope");
+
+       AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
+      [self setAnalysisWindowController:newAnalysisWindowController];
+
+       [appDelegate showAnalysisWindow:self];
+     [[appDelegate analysisWindowController]  viewScope:self];
+     [appDelegate setDrawChart: NO];
+    
+    //    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+        //   AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
+        //   [self setAnalysisWindowController:newAnalysisWindowController];
+        //    [appDelegate showAnalysisWindow:self];
+    
+  //  if ([appDelegate analysisWindowController] == nil){
+  //      [appDelegate setAnalysisWindowController:[[AnalysisWindowController alloc]init]];
+  //      [appDelegate showAnalysisWindow:self];
+    //}
+   // [appDelegate setDrawChart: NO];
+    //[[appDelegate analysisWindowController]  viewScope:self];
+}
+
+/*- (IBAction) drawChart:(id) sender //This is a virtual chart recorder
+{
+    //AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    //if ([appDelegate analysisWindowController] == nil){
+     //   [appDelegate setAnalysisWindowController:[[AnalysisWindowController alloc]init]];
+     //   [appDelegate showAnalysisWindow:self];}
+    
+  //  [appDelegate setDrawChart: YES];
+   // [[appDelegate analysisWindowController]  viewScope:self];
+}
+*/
+
+
 #pragma mark - Core Data stack
 
-@synthesize persistentContainer = _persistentContainer;
 
 - (NSPersistentContainer *)persistentContainer {
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.

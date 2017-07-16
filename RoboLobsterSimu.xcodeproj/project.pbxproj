@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
 		970E766C1EF17CED002EE43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766B1EF17CED002EE43D /* main.m */; };
-		970E766F1EF17CED002EE43D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766E1EF17CED002EE43D /* ViewController.m */; };
 		970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 970E76701EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld */; };
 		970E76741EF17CED002EE43D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 970E76731EF17CED002EE43D /* Assets.xcassets */; };
 		970E76771EF17CED002EE43D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970E76751EF17CED002EE43D /* Main.storyboard */; };
 		970E76821EF17CED002EE43D /* RoboLobsterSimuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76811EF17CED002EE43D /* RoboLobsterSimuTests.m */; };
 		970E768D1EF17CED002EE43D /* RoboLobsterSimuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E768C1EF17CED002EE43D /* RoboLobsterSimuUITests.m */; };
+		970E769C1EF17D15002EE43D /* pc2dspLobster.c in Sources */ = {isa = PBXBuildFile; fileRef = 970E769B1EF17D15002EE43D /* pc2dspLobster.c */; };
+		970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 970E769D1EF19FBF002EE43D /* LobsterSynapseList.txt */; };
+		970E76A11EF19FDB002EE43D /* Waveforms.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76A01EF19FDB002EE43D /* Waveforms.m */; };
+		970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E76A21EF1A0A6002EE43D /* MainMenu.xib */; };
+		970E76A61EF1A0A6002EE43D /* AnalysisWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */; };
+		970E76A71EF1A0A6002EE43D /* OscolloscopeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */; };
+		970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76A91EF1A125002EE43D /* OscilloscopeController.m */; };
+		970E76AE1EF1A140002EE43D /* OscilloscopeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76AD1EF1A140002EE43D /* OscilloscopeView.m */; };
+		970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76AF1EF1A158002EE43D /* analysisWindowController.m */; };
+		D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B346C51EF2E63B007ACFD1 /* traceSelector.m */; };
+		D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EF67A51EF1B7D00083426F /* TraceSelector.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +49,6 @@
 		970E76671EF17CED002EE43D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		970E76681EF17CED002EE43D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		970E766B1EF17CED002EE43D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		970E766D1EF17CED002EE43D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		970E766E1EF17CED002EE43D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		970E76711EF17CED002EE43D /* RoboLobsterSimu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoboLobsterSimu.xcdatamodel; sourceTree = "<group>"; };
 		970E76731EF17CED002EE43D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		970E76761EF17CED002EE43D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +59,23 @@
 		970E76881EF17CED002EE43D /* RoboLobsterSimuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoboLobsterSimuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		970E768C1EF17CED002EE43D /* RoboLobsterSimuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoboLobsterSimuUITests.m; sourceTree = "<group>"; };
 		970E768E1EF17CED002EE43D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		970E769A1EF17D15002EE43D /* pc2dsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pc2dsp.h; sourceTree = "<group>"; };
+		970E769B1EF17D15002EE43D /* pc2dspLobster.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pc2dspLobster.c; sourceTree = "<group>"; };
+		970E769D1EF19FBF002EE43D /* LobsterSynapseList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LobsterSynapseList.txt; sourceTree = "<group>"; };
+		970E769F1EF19FDB002EE43D /* Waveforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waveforms.h; sourceTree = "<group>"; };
+		970E76A01EF19FDB002EE43D /* Waveforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waveforms.m; sourceTree = "<group>"; };
+		970E76A21EF1A0A6002EE43D /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalysisWindowController.xib; sourceTree = "<group>"; };
+		970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OscolloscopeController.xib; sourceTree = "<group>"; };
+		970E76A81EF1A125002EE43D /* OscilloscopeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscilloscopeController.h; sourceTree = "<group>"; };
+		970E76A91EF1A125002EE43D /* OscilloscopeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscilloscopeController.m; sourceTree = "<group>"; };
+		970E76AB1EF1A140002EE43D /* OscilloscopeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscilloscopeView.h; sourceTree = "<group>"; };
+		970E76AC1EF1A140002EE43D /* analysisWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analysisWindowController.h; sourceTree = "<group>"; };
+		970E76AD1EF1A140002EE43D /* OscilloscopeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscilloscopeView.m; sourceTree = "<group>"; };
+		970E76AF1EF1A158002EE43D /* analysisWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analysisWindowController.m; sourceTree = "<group>"; };
+		D2B346C51EF2E63B007ACFD1 /* traceSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = traceSelector.m; sourceTree = "<group>"; };
+		D2B346C71EF2E661007ACFD1 /* traceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = traceSelector.h; sourceTree = "<group>"; };
+		D2EF67A51EF1B7D00083426F /* TraceSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraceSelector.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +126,22 @@
 		970E76661EF17CED002EE43D /* RoboLobsterSimu */ = {
 			isa = PBXGroup;
 			children = (
+				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
+				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
+				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
+				970E769A1EF17D15002EE43D /* pc2dsp.h */,
+				970E769B1EF17D15002EE43D /* pc2dspLobster.c */,
+				970E769F1EF19FDB002EE43D /* Waveforms.h */,
+				970E76A01EF19FDB002EE43D /* Waveforms.m */,
 				970E76671EF17CED002EE43D /* AppDelegate.h */,
 				970E76681EF17CED002EE43D /* AppDelegate.m */,
-				970E766D1EF17CED002EE43D /* ViewController.h */,
-				970E766E1EF17CED002EE43D /* ViewController.m */,
+				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
+				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
+				970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */,
+				970E76AC1EF1A140002EE43D /* analysisWindowController.h */,
+				970E76AF1EF1A158002EE43D /* analysisWindowController.m */,
+				970E76AB1EF1A140002EE43D /* OscilloscopeView.h */,
+				970E76AD1EF1A140002EE43D /* OscilloscopeView.m */,
 				970E76731EF17CED002EE43D /* Assets.xcassets */,
 				970E76751EF17CED002EE43D /* Main.storyboard */,
 				970E76781EF17CED002EE43D /* Info.plist */,
@@ -117,6 +154,9 @@
 		970E766A1EF17CED002EE43D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				970E76A21EF1A0A6002EE43D /* MainMenu.xib */,
+				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
+				970E769D1EF19FBF002EE43D /* LobsterSynapseList.txt */,
 				970E766B1EF17CED002EE43D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -247,7 +287,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				970E76741EF17CED002EE43D /* Assets.xcassets in Resources */,
+				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
+				970E76A71EF1A0A6002EE43D /* OscolloscopeController.xib in Resources */,
+				D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */,
+				970E76A61EF1A0A6002EE43D /* AnalysisWindowController.xib in Resources */,
 				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
+				970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +317,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				970E766F1EF17CED002EE43D /* ViewController.m in Sources */,
+				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
+				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
+				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
 				970E766C1EF17CED002EE43D /* main.m in Sources */,
+				970E76A11EF19FDB002EE43D /* Waveforms.m in Sources */,
 				970E76691EF17CED002EE43D /* AppDelegate.m in Sources */,
+				970E769C1EF17D15002EE43D /* pc2dspLobster.c in Sources */,
 				970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */,
+				970E76AE1EF1A140002EE43D /* OscilloscopeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +554,7 @@
 				970E76931EF17CED002EE43D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		970E76941EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +563,7 @@
 				970E76961EF17CED002EE43D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		970E76971EF17CED002EE43D /* Build configuration list for PBXNativeTarget "RoboLobsterSimuUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +572,7 @@
 				970E76991EF17CED002EE43D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

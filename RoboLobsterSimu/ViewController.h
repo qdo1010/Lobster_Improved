@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "traceSelector.h"
 
 @interface ViewController : NSViewController
-
+- (IBAction)printData:(id)sender;
 
 @end
 
