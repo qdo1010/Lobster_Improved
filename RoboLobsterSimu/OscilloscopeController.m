@@ -1,5 +1,5 @@
 
-#import "OscilloscopeController.h"
+#import "OscilloscopeController.h"//Hi Quan, this is my first edit. It's practice to see if I can create a branch an then open a pull request for you.
 #import "AppDelegate.h"
 #import "analysisWindowController.h"
 //#import "GraphViewController.h"
