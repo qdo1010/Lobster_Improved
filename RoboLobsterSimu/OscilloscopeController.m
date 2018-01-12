@@ -91,7 +91,7 @@ typedef id MovieAudioExtractionRef;
     [displayTraceID removeAllItems];
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
         [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
-        [[appDelegate durationArray] addObject:[NSString stringWithFormat:@"%d", 1000]];
+        [[appDelegate durationArray] addObject:[NSString stringWithFormat:@"%d", 5000]];
         [[appDelegate offsetArray] addObject:[NSString stringWithFormat:@"%d", 0]];
         [[appDelegate traceGainArray] addObject:[NSString stringWithFormat:@"%d", 1]];
         [[appDelegate traceOffsetArray] addObject:[NSString stringWithFormat:@"%d", 0]];
