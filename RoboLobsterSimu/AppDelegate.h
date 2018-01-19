@@ -61,15 +61,21 @@ extern long elapsed;
 @property (readwrite, assign) NSNumber*                                    SampleSize; //sample size of traces
 
 
-@property (readwrite,retain) NSMutableArray                         *durationArray;    //This  an array of sweep offset
+//@property (readwrite,retain) NSMutableArray                         *durationArray;    //This  an array of sweep offset
 
-@property (readwrite,retain) NSMutableArray                         *offsetArray;    //This is an array of sweep offset
+//@property (readwrite,retain) NSMutableArray                         *offsetArray;    //This is an array of sweep offset
+
+@property (readwrite) double sweepDuration;
+@property (readwrite) double sweepOffset;
+
 @property (readwrite,retain) NSMutableArray                         *traceGainArray;    //This  an array of traces gain
 
 @property (readwrite,retain) NSMutableArray                         *traceOffsetArray;    //This is an array of traces offset
 
 @property (readwrite) int                         switchColor;    //This is an array of traces offset
 @property (readwrite) int                         invertSign;    //This is an array of traces offset
+
+@property (readwrite) int IDofCellChosen; //id of cell
 
 @property (readwrite) double                         oneitertosec;    //This is an array of traces offset
 
@@ -82,7 +88,7 @@ extern long elapsed;
 #pragma mark --- Signal Processing Menu Selections
 - (void) setupPlottingArrays: (id) sender;
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
--(void) displaySampledWaveforms : (NSMutableArray*)cellName : (NSMutableArray*)offset : (NSMutableArray*)duration;
+-(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration;
 
 //- (IBAction) drawChart:                (id) sender; //This is a blackon white graph of the analog traceWaveforms
 

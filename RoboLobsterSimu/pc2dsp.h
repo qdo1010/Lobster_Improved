@@ -155,6 +155,7 @@ double** xArrayProt;
 double** xArrayRet;
 double** xArrayExt;
 double** xArrayFlex;
+double** xArrayCoord;
 
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;

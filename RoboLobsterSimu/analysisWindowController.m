@@ -8,32 +8,17 @@
 
 #import "analysisWindowController.h"
 #import "AppDelegate.h"
-    //#import "tableController.h"
-    //#import "signalProcessing.h"
 #import "Waveforms.h"
-//#import "DSPSources.h"
-    //#import "MovieController.h"
 #import "OscilloscopeController.h"
-    //#import "GraphViewController.h"
-    //#import "DSPViewController.h"
 #import "OscilloscopeView.h"
-    //#import "GraphicsView.h"
 
-/*@interface AnalysisWindowController()<MeasurementViewControllerDelegate, VideoPlaybackControllerDelegate, CommandStateViewControllerDelegate>
-
-@property (nonatomic, strong) NSViewController<MovieControllerAnalysis> *currentVisualization;
-
-@end
- */
 
 @implementation AnalysisWindowController
 
 @synthesize oscilloscopeController = _oscilloscopeController;
 @synthesize oscilloscopeView       = _oscilloscopeView;
-    //@synthesize signalProcessing;
 @synthesize myCurrentView          = _myCurrentView;
 @synthesize myCurrentViewController=_myCurrentViewController;
-//@synthesize delegate = _delegate;
 @synthesize progress               = _progress;
 @synthesize clusterTime            = _clusterTime;
 @synthesize analysisWindow         = _analysisWindow;//This is the Graphics Window

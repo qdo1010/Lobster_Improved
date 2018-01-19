@@ -16,17 +16,20 @@
 @synthesize cellTable;
 @synthesize delegate;
 @synthesize numberOfTracesSelector;
+
 @synthesize traceArray;
 @synthesize traceNumberArray;
+
 @synthesize traceSelector;
 @synthesize cellSelector;
+
 @synthesize traceNameController;
 @synthesize traceNumberController;
+
 @synthesize traceColView;
 @synthesize cellColView;
+
 @synthesize traceArraytobeSent;
-    //@synthesize verticalController;
-    //@synthesize horizontalController;
 
 const char * traceLabels[] = {
     "cellElevatorL1",
@@ -134,23 +137,6 @@ const char * traceLabels[] = {
 
     self.traceArray = [[NSMutableArray alloc] init];
     self.traceNumberArray = [[NSMutableArray alloc] init];
-    
-   // [traceNumberController bind:@"contentArray" toObject:self withKeyPath:@"traceMajorArray" options:nil];
-
-   // [traceNameController bind:@"contentArray" toObject:self withKeyPath:@"traceArray" options:nil];
-
-    //bind num
-   // NSString *akey = @"trace";
-   // NSString *keypath = [NSString stringWithFormat:@"arrangedObjects.%@",akey];
-   // [traceColView bind:NSValueBinding toObject:traceNumberController withKeyPath:keypath options:nil];
-    
-    
-    //bind name
-  //  NSString *akey2 = @"cell";
-  //  NSString *keypath2 = [NSString stringWithFormat:@"arrangedObjects.%@",akey2];
-    //[cellColView bind:NSValueBinding toObject:traceNameController withKeyPath:keypath2 options:nil];
-    
-    
     NSLog(@"Hello trace selector");
     if (!ts)
     {
@@ -186,8 +172,6 @@ const char * traceLabels[] = {
     [self.traceNumberArray addObject:title];
     [self.traceNumberController rearrangeObjects];
 
-
-    
 }
 
 - (IBAction)selectCells:(id)sender {
@@ -196,9 +180,6 @@ const char * traceLabels[] = {
     NSLog(@"Selected cell is %@", title);
     [self.traceArray addObject:title];
     [self.traceNameController rearrangeObjects];
-    
-
-   // [self tableView:traceTable viewForTableColumn:cellColView row:[self numberOfRowsInTableView:traceTable]];
 
 }
 
@@ -214,44 +195,6 @@ const char * traceLabels[] = {
         //    [self setItemsEnabled:YES];
 }
 
-
-/*-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    
-    return [traceArray objectAtIndex:row];
-}
-
-- (NSView *)tableView:(NSTableView *)tableView
-   viewForTableColumn:(NSTableColumn *)tableColumn
-                  row:(NSInteger)row {
-    NSLog(@"?");
-        // Get an existing cell with the MyView identifier if it exists
-    NSTextField *result = [tableView makeViewWithIdentifier:@"Trace Selector" owner:self];
-        // There is no existing cell to reuse so create a new one
-    if (result == nil) {
-        result = [[NSTextField alloc] init];
-            // Create the new NSTextField with a frame of the {0,0} with the width of the table.
-            // Note that the height of the frame is not really relevant, because the row height will modify the height.
-            //        result = [[NSTextField alloc] initWithFrame:...];
-        
-            // The identifier of the NSTextField instance is set to MyView.
-            // This allows the cell to be reused.
-        result.identifier = @"Trace Selector";
-
-    }
-    
-        // result is now guaranteed to be valid, either as a reused cell
-        // or as a new cell, so set the stringValue of the cell to the
-        // nameArray value at row
-   result.stringValue = [self.traceArray objectAtIndex:row -1];
-    
-        // Return the result
-    return result;
-}
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    NSLog(@"hello, i am cal");
-    return traceArray.count;
-}*/
 - (void)loadView
 {
     traceTable = [[NSTableView alloc] init];
@@ -263,7 +206,6 @@ const char * traceLabels[] = {
     cellTable.dataSource = self;
     [cellTable reloadData];
     
-        //    self.view = traceTable;
     }
 
 - (void)windowDidLoad
@@ -365,36 +307,87 @@ const char * traceLabels[] = {
     [cellSelector addItemWithTitle:@"cellModComR"];
     [cellSelector addItemWithTitle:@"cellHL"];
     [cellSelector addItemWithTitle:@"cellHR"];
-        //    [self loadView];
- // NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.1
-     //                                             target: self
-     //                                           selector:@selector(updateRect)
-      //                                          userInfo: nil repeats:YES];
-    
-    // [[self oscilloscopeView] setNeedsDisplay:YES];
-    
-    // [self viewScope:self];
-    
 }
 
 - (IBAction)addCellTrace:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     traceArraytobeSent = [[NSMutableArray alloc] init];
+    
     NSLog(@"Executing AddCellTrace");
     for (int i = 0; i < [traceArray count]; i ++){
         [traceArraytobeSent addObject:[traceArray objectAtIndex:i]];
         
     }
     [appDelegate drawOscilloscope:appDelegate];
- //   traceMajorArray=[traceNumberArray arrayByAddingObjectsFromArray:traceArray];
 
-   // [traceMajorArray addObject:traceNumberArray];
-   // [traceMajorArray addObject:traceArray];
-    
-  //  NSLog(@"Add a new property");
-    
-   // PCSDescriptionProperty *property = [PCSDescriptionProperty insertInManagedObjectContext: self.storage.managedObjectContext];
-  //  property.name = @"New property";
-  //  property.info = @"New property info";
 }
 @end
+
+
+////////////////OLD CODE//////////////////////////////
+
+
+// [traceNumberController bind:@"contentArray" toObject:self withKeyPath:@"traceMajorArray" options:nil];
+
+// [traceNameController bind:@"contentArray" toObject:self withKeyPath:@"traceArray" options:nil];
+
+//bind num
+// NSString *akey = @"trace";
+// NSString *keypath = [NSString stringWithFormat:@"arrangedObjects.%@",akey];
+// [traceColView bind:NSValueBinding toObject:traceNumberController withKeyPath:keypath options:nil];
+
+
+//bind name
+//  NSString *akey2 = @"cell";
+//  NSString *keypath2 = [NSString stringWithFormat:@"arrangedObjects.%@",akey2];
+//[cellColView bind:NSValueBinding toObject:traceNameController withKeyPath:keypath2 options:nil];
+
+/*-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+ 
+ return [traceArray objectAtIndex:row];
+ }
+ 
+ - (NSView *)tableView:(NSTableView *)tableView
+ viewForTableColumn:(NSTableColumn *)tableColumn
+ row:(NSInteger)row {
+ NSLog(@"?");
+ // Get an existing cell with the MyView identifier if it exists
+ NSTextField *result = [tableView makeViewWithIdentifier:@"Trace Selector" owner:self];
+ // There is no existing cell to reuse so create a new one
+ if (result == nil) {
+ result = [[NSTextField alloc] init];
+ // Create the new NSTextField with a frame of the {0,0} with the width of the table.
+ // Note that the height of the frame is not really relevant, because the row height will modify the height.
+ //        result = [[NSTextField alloc] initWithFrame:...];
+ 
+ // The identifier of the NSTextField instance is set to MyView.
+ // This allows the cell to be reused.
+ result.identifier = @"Trace Selector";
+ 
+ }
+ 
+ // result is now guaranteed to be valid, either as a reused cell
+ // or as a new cell, so set the stringValue of the cell to the
+ // nameArray value at row
+ result.stringValue = [self.traceArray objectAtIndex:row -1];
+ 
+ // Return the result
+ return result;
+ }
+ 
+ - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+ NSLog(@"hello, i am cal");
+ return traceArray.count;
+ }*/
+
+
+//   traceMajorArray=[traceNumberArray arrayByAddingObjectsFromArray:traceArray];
+
+// [traceMajorArray addObject:traceNumberArray];
+// [traceMajorArray addObject:traceArray];
+
+//  NSLog(@"Add a new property");
+
+// PCSDescriptionProperty *property = [PCSDescriptionProperty insertInManagedObjectContext: self.storage.managedObjectContext];
+//  property.name = @"New property";
+//  property.info = @"New property info";

@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSMutableArray                *traceNumberArray;
 @property (nonatomic, strong) NSMutableArray                *traceArraytobeSent;
 
+
     //@property (nonatomic, strong) IBOutlet NSScroller     *verticalController;
     //@property (nonatomic, strong) IBOutlet NSScroller     *horizontalController;
 - (IBAction)chooseTraceNums:(id)sender;

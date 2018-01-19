@@ -61,9 +61,10 @@
 void spikingNeuronInit(struct structSpiking *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-//    ptr->sigma = 0.26;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->alpha = 5.5;
+   // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
+    ptr->sigma = -0.26;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+//   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
     ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
@@ -879,6 +880,11 @@ void xmain()
                 xArrayFlex  = (double **)malloc(sizeof(double *) * IterNumChosen);
                 for (i=0; i<IterNumChosen; i++)
                     xArrayFlex[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                
+                xArrayCoord  = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++)
+                    xArrayCoord[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                
                 //xArrayFlex[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             }
             int indy = 0;
@@ -920,7 +926,15 @@ void xmain()
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
+                    
+                  //  printf("wtf");
+                  //printf(" %f", xArrayFlex[ind][iSeg].x);
+
+
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
+                    
+                    xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
+
                     
                     indy++;
                 }
@@ -938,6 +952,7 @@ void xmain()
             free(xArraySwing);
             free(xArrayElev);
             free(xArrayRet);
+            free(xArrayCoord);
 
             }
             
@@ -1294,7 +1309,9 @@ void computeMAPs(double mainLoopIndex)
             calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg],  0);
             calcSpikingNeuron(   &cellExtensor[iSide][iSeg],    iExcSegStanceExt[iSide][iSeg] + iExcSegSwingExt[iSide][iSeg],  0);
             calcSpikingNeuron(   &cellFlexor[iSide][iSeg],      iExcSegStanceFlex[iSide][iSeg]+ iExcSegSwingFlex[iSide][iSeg], 0);
+            
             if (iSeg == 1){     //This section calculates the Coordinating neurons                                                                                  ••••••••••••••≤≤≤==This needs to be fixed
+                
                 calcSpikingNeuron(   &cellCoord[iSide][iSeg],      iExcSegStanceFlex[iSide][iSeg]+ iExcSegSwingFlex[iSide][iSeg], 0);
             }
             else if ((iSeg ==2)||(iSeg == 3))  {

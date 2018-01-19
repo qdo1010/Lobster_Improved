@@ -34,71 +34,66 @@
 @property (readwrite)  double sweepMaximum;       //Duration of file in Sec
 
 
-
-@property (weak) IBOutlet NSButton *startButton;
-
-
-@property (weak) IBOutlet NSSlider *sweepDurationSlider;
-@property (weak) IBOutlet NSTextField *sweepDurationTextBox;
-@property (weak) IBOutlet NSSlider *sweepOffsetSlider;
-@property (weak) IBOutlet NSTextField *sweepOffsetTextBox;
-
-- (IBAction)changeSweepDuration:(id)sender;
-- (IBAction)changeSweepOffset:(id)sender;
-//- (IBAction)displaytextString:(id)sender;
-
-- (IBAction)changeTraceGain:(id)sender;
-
-- (IBAction)changeTraceOffset:(id)sender;
-@property (weak) IBOutlet NSTextField *traceGainTextBox;
-@property (weak) IBOutlet NSTextField *traceOffsetTextBox;
-@property (weak) IBOutlet NSSlider *traceOffsetSlider;
-@property (weak) IBOutlet NSSlider *traceGainSlider;
-- (IBAction)changeView:(id)sender;
-
-
-- (void)beginSendingStuffToBeDraw;
-
 extern long elapsed;
 @property (readwrite) double index;
-@property (readwrite)  int traceIDchosen;       //Duration of file in Sec
-
+@property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
 @property (readwrite,retain) NSMutableArray* AllTracesInfo;    //This is an array of traces
 @property (readwrite,retain) NSMutableArray* IndividualTraceInfo;    //This is an array of traces
 
 
-
 //@property (readwrite, getter=isDoInitAndScale)      BOOL doInitAndScale;
 @property (readwrite)          BOOL assetInited;
 @property (nonatomic, readwrite)          BOOL doInitAndScale;
-@property (readwrite)          BOOL drawSpikes;
-@property (readwrite)          BOOL drawClusteredSpikes;
-@property (readwrite)          BOOL drawNoiseLevel;
-@property (readwrite)          BOOL drawCluster;
 
-@property (readwrite) double maxIp;
-@property (readwrite) double minIp;
-@property (readwrite) double timeScale;
+@property (weak) IBOutlet NSSlider *sweepDurationSlider;
+
+@property (weak) IBOutlet NSTextField *sweepDurationTextBox;
+
+@property (weak) IBOutlet NSSlider *sweepOffsetSlider;
+
+@property (weak) IBOutlet NSTextField *sweepOffsetTextBox;
+
+@property (weak) IBOutlet NSTextField *traceGainTextBox;
+
+@property (weak) IBOutlet NSTextField *traceOffsetTextBox;
+
+
+
+@property (weak) IBOutlet NSSlider *traceOffsetSlider;
+
+@property (weak) IBOutlet NSSlider *traceGainSlider;
+
+@property (weak) IBOutlet NSTextField *cellNameTextBox; //cell Name
+@property (weak) IBOutlet NSTextField *alphaTextBox;
+@property (weak) IBOutlet NSTextField *sigmaTextBox;
+
+@property (weak) IBOutlet NSPopUpButton *displayTraceID;
+
+- (IBAction)changeSweepDuration:(id)sender;
+
+- (IBAction)changeSweepOffset:(id)sender;
+
+- (IBAction)changeTraceGain:(id)sender;
+
+- (IBAction)changeTraceOffset:(id)sender;
+
+- (IBAction)changeView:(id)sender;
+
+- (void)beginSendingStuffToBeDraw;
+
 //GraphicsViewParameters
+- (void) updateSweepValue;
 
-
-- (void) importAudioFromFile:(id)sender;
 - (void) initScopeSweep;
+
 - (void) scaleScopeSweep;
     //- (void) drawScopeSweep;//: (NSRect)rect;
 - (BOOL) doInitAndScale;
     //- (void) setOscilloscopeView:(OscilloscopeView *)view;
 - (void) setDoInitAndScale:(BOOL)flag;
 
-@property (weak) IBOutlet NSPopUpButton *displayTraceID;
 - (IBAction)chooseTraceID:(id)sender;
-- (IBAction)changeGainStep:(id)sender;
-@property (weak) IBOutlet NSStepper *gainStepView;
 
-- (IBAction) resetSweepDuration: (id) sender;
-- (IBAction) resetSweepOffset: (id) sender;
-- (IBAction) resetGainProx: (id) sender;
-- (IBAction) resetOffsetProx: (id) sender;
 - (IBAction) invertProxGraph: (id)sender;
 @end

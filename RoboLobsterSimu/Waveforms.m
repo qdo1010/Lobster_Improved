@@ -29,15 +29,15 @@
     return self;
 }
 
--(void)readMultipleArrays :(NSMutableArray *)cellArray :(NSMutableArray*) offset :(NSMutableArray*)duration {
+-(void)readMultipleArrays :(NSMutableArray *)cellArray :(double) offset :(double)duration {
     [_ipbuf removeAllObjects];
   //  NSLog(@"global counter = %d", globalCounter);
     for (int i = 0; i < [cellArray count]; i ++){
         NSString* cellName = [cellArray objectAtIndex:i]; //get cellName from array of cellName
        // NSLog(@"%@",cellName);
         cellPointer cell = [self convertCellNameToCellPointer:cellName]; //convert to enum type
-        int samplesize = [[duration objectAtIndex:i] integerValue];
-        int starttime = [[offset objectAtIndex:i] integerValue];
+        int samplesize = duration;
+        int starttime = offset;
         [self readArray:cell:starttime:samplesize];
     }
   //  if (globalCounter < (int)(100000/samplesize-1)){ //100,000 is the max the array go to before it resets
@@ -141,7 +141,7 @@
             }
             break;
         case 7:
-            //   NSLog( @"%f\n", xArrayFlex[cell]);
+            //NSLog( @"%f\n", xArrayFlex[0][cell]);
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                 [temp addObject: [NSNumber numberWithDouble: xArrayFlex[starttime][cell]]];
@@ -151,7 +151,18 @@
                 starttime++;
             }
             break;
-            
+        case 8:
+              //NSLog( @"%f\n", xArrayCoord[cell]);
+
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayCoord[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayCoord[starttime][cell]]];
+                
+                starttime++;
+            }
+            break;
         default:
             break;
     }
@@ -159,62 +170,7 @@
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
 }
-//}
 
-/*
- -(void) ReadFromFile{
- //xmain();
- FILE *fid[8];
- char space[1024];
- _ibuf = [[NSMutableArray alloc] init];  //ibuf will contains 8 ipbufs, since there are 8 diff groups,
- //Elev
- //Dep
- //Swing
- //Stance
- //Protractor
- //Retractor
- //Extensor
- //Flexor
- fid[0] = fopen ( "timeElev" , "r" ); //read from temp files
- fid[1] = fopen ( "timeDep" , "r" ); //read from temp files
- fid[2] = fopen ( "timeSwing" , "r" ); //read from temp files
- fid[3] = fopen ( "timeStance" , "r" ); //read from temp files
- fid[4] = fopen ( "timeProtractor" , "r" ); //read from temp files
- fid[5] = fopen ( "timeRetractor" , "r" ); //read from temp files
- fid[6] = fopen ( "timeExtensor" , "r" ); //read from temp files
- fid[7] = fopen ( "timeFlexor" , "r" ); //read from temp files
- 
- for (int i = 0; i < 8; i ++){
- if (fid[i] == NULL)
- printf("Error opening the file");
- else{
- NSMutableArray* tempArray = [[NSMutableArray alloc] init]; //ipbuf is a 2d matrix [5000][8]
- while (fgets(space, 1024, fid[i]) != NULL)
- {
- 
- // NSLog(@"%s", space);
- NSString*data =[[NSString stringWithFormat:@"%s", space] stringByTrimmingCharactersInSet: [NSCharacterSet newlineCharacterSet]];
- 
- //NSLog(@"%@", data);
- NSArray *words = [data componentsSeparatedByString: @" "];
- NSMutableArray* temp = [NSMutableArray arrayWithCapacity:[words count]];
- [temp addObjectsFromArray:words];
- [temp removeObject:@""];
- [tempArray addObject: temp];
- //[_ipbuf addObject: [[[NSString stringWithFormat:@"%s", space] stringByTrimmingCharactersInSet: [NSCharacterSet newlineCharacterSet]] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
- // [_ibuf addObject: _ipbuf];
- }
- [_ibuf addObject:tempArray];
- fclose(fid[i]);
- }
- }
- //NSLog(@"run");
- // NSLog(@"%@", _ibuf[2][0]);
- // NSLog(@"%@", _ipbuf[0][0]);
- //  return _ibuf;
- }
- 
- */
 
 -(NSMutableArray*) selectCell:(cellPointer)cellName{
     //  NSLog(@"Select cell %d", cellName);
@@ -240,9 +196,9 @@
         _cellTypeIndex = 3;
     }
     else if (cellName < 40){
-        NSLog(@"select Coord but not yet supported, choose a different type");
-        _cellIndex = -1;
-        _cellTypeIndex = -1;
+        //NSLog(@"select Coord but not yet supported, choose a different type");
+        _cellIndex = (int)cellName - 32;
+        _cellTypeIndex = 8;
         
     }
     else if (cellName < 48){
@@ -385,7 +341,63 @@
 }
 
 
- 
-
 @end
 
+
+////////////////////OLD CODE/////////////////////
+//}
+
+/*
+ -(void) ReadFromFile{
+ //xmain();
+ FILE *fid[8];
+ char space[1024];
+ _ibuf = [[NSMutableArray alloc] init];  //ibuf will contains 8 ipbufs, since there are 8 diff groups,
+ //Elev
+ //Dep
+ //Swing
+ //Stance
+ //Protractor
+ //Retractor
+ //Extensor
+ //Flexor
+ fid[0] = fopen ( "timeElev" , "r" ); //read from temp files
+ fid[1] = fopen ( "timeDep" , "r" ); //read from temp files
+ fid[2] = fopen ( "timeSwing" , "r" ); //read from temp files
+ fid[3] = fopen ( "timeStance" , "r" ); //read from temp files
+ fid[4] = fopen ( "timeProtractor" , "r" ); //read from temp files
+ fid[5] = fopen ( "timeRetractor" , "r" ); //read from temp files
+ fid[6] = fopen ( "timeExtensor" , "r" ); //read from temp files
+ fid[7] = fopen ( "timeFlexor" , "r" ); //read from temp files
+ 
+ for (int i = 0; i < 8; i ++){
+ if (fid[i] == NULL)
+ printf("Error opening the file");
+ else{
+ NSMutableArray* tempArray = [[NSMutableArray alloc] init]; //ipbuf is a 2d matrix [5000][8]
+ while (fgets(space, 1024, fid[i]) != NULL)
+ {
+ 
+ // NSLog(@"%s", space);
+ NSString*data =[[NSString stringWithFormat:@"%s", space] stringByTrimmingCharactersInSet: [NSCharacterSet newlineCharacterSet]];
+ 
+ //NSLog(@"%@", data);
+ NSArray *words = [data componentsSeparatedByString: @" "];
+ NSMutableArray* temp = [NSMutableArray arrayWithCapacity:[words count]];
+ [temp addObjectsFromArray:words];
+ [temp removeObject:@""];
+ [tempArray addObject: temp];
+ //[_ipbuf addObject: [[[NSString stringWithFormat:@"%s", space] stringByTrimmingCharactersInSet: [NSCharacterSet newlineCharacterSet]] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+ // [_ibuf addObject: _ipbuf];
+ }
+ [_ibuf addObject:tempArray];
+ fclose(fid[i]);
+ }
+ }
+ //NSLog(@"run");
+ // NSLog(@"%@", _ibuf[2][0]);
+ // NSLog(@"%@", _ipbuf[0][0]);
+ //  return _ibuf;
+ }
+ 
+ */

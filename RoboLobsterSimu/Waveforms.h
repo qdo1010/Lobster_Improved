@@ -147,6 +147,7 @@ extern double** xArrayProt;
 extern double** xArrayRet;
 extern double** xArrayExt;
 extern double** xArrayFlex;
+extern double** xArrayCoord;
 
 typedef void (^CaseBlock)();
 
@@ -159,7 +160,7 @@ typedef void (^CaseBlock)();
 
 
 
--(void) readMultipleArrays : (NSMutableArray*) cellArray : (NSMutableArray*)offset : (NSMutableArray*)duration;
+-(void) readMultipleArrays : (NSMutableArray*) cellArray : (double)offset : (double)duration;
 -(cellPointer) convertCellNameToCellPointer: (NSString*)cellName;
 
 

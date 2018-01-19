@@ -34,13 +34,19 @@
 @synthesize traceWaveforms;
 @synthesize persistentContainer = _persistentContainer;
 @synthesize SampleSize;
-@synthesize durationArray;
-@synthesize offsetArray;
+//@synthesize durationArray;
+//@synthesize offsetArray;
+
+@synthesize sweepOffset;
+@synthesize sweepDuration;
+
 @synthesize traceOffsetArray;
 @synthesize traceGainArray;
 @synthesize switchColor;
 @synthesize invertSign;
 @synthesize oneitertosec;
+@synthesize IDofCellChosen;
+
 #pragma mark - App Lifetime
 
 
@@ -75,10 +81,11 @@
     
     int IterNum = 100000;
     indicateNumberOfIteration(IterNum);
-
     traceWaveforms = [[Waveforms alloc] init];
-    durationArray = [[NSMutableArray alloc] init];
-    offsetArray = [[NSMutableArray alloc] init];
+    //durationArray = [[NSMutableArray alloc] init];
+    sweepDuration = 5000;
+    sweepOffset = 0;
+    //offsetArray = [[NSMutableArray alloc] init];
     traceGainArray = [[NSMutableArray alloc] init];
     traceOffsetArray = [[NSMutableArray alloc] init];
     invertSign = 0;
@@ -89,7 +96,6 @@
   //  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.5                                                  target: self
     //                                            selector:@selector(sendWaveform)
       //                                          userInfo: nil repeats:YES];
-    
 }
 
 
@@ -120,11 +126,11 @@
     //[traceWaveforms readMultipleArrays:arr :size];
     
 }
--(void) displaySampledWaveforms : (NSMutableArray*)cellName : (NSMutableArray*)offset : (NSMutableArray*)duration{
+-(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration{
  //  NSLog(@"sending!!!!!!!!");
     
     [traceWaveforms readMultipleArrays:cellName :offset :duration];
-    printf("1 loop iter elapsed = %ld ms\n", elapsed);
+   // printf("1 loop iter elapsed = %ld ms\n", elapsed);
 
 }
 
