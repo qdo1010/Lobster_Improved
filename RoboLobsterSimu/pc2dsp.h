@@ -130,6 +130,7 @@ enum {
     cellLLL, //Lateral Leading Command
     cellLLR,
     cellLTL, //Lateral Trailing Command
+    cellLTR, 
     cellPcnLlow,	// There is one on each side for pLow, rosDown, pLevel, rosUp, pHigh The pitchState sets the synaptic strength in each segment/side
     cellPcnLrosDown,
     cellPcnLlevel,

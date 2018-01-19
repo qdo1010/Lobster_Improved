@@ -111,6 +111,7 @@ const char * traceLabels[] = {
     "cellLLL",
     "cellLLR",
     "cellLTL",
+    "cellLTR",
     "cellPcnLlow",
     "cellPcnLrosDown",
     "cellPcnLlevel",
@@ -129,7 +130,7 @@ const char * traceLabels[] = {
 
 - (id)init
 {
-    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+//    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
     TraceSelector *ts;
     ts = [super initWithWindowNibName:@"TraceSelector"];
     traceNameController = [[NSArrayController alloc]init];
@@ -153,7 +154,7 @@ const char * traceLabels[] = {
 
 - (IBAction)chooseTraceNums:(id)sender
 {
-    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+//    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
     NSString *title;
     title = [numberOfTracesSelector titleOfSelectedItem];
        NSLog(@"Number of Traces changed to %@", title);
@@ -163,7 +164,7 @@ const char * traceLabels[] = {
 }
 
 - (IBAction)selectTraces:(id)sender {
-    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+//    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
     NSString *title;
     title = [traceSelector titleOfSelectedItem];
     NSLog(@"Selected Trace is %@", title);

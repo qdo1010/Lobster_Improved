@@ -120,8 +120,8 @@
   //  [traceWaveforms runCalculation];
 //}
 -(void) sendWaveform{
-    int size = [SampleSize intValue];
-    NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
+//    int size = [SampleSize intValue];
+ //   NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
 
     //[traceWaveforms readMultipleArrays:arr :size];
     

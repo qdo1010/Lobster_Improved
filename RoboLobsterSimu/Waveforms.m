@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Waveforms.h"
 #import <QuartzCore/QuartzCore.h>
-#import "appDelegate.h"
+#import "AppDelegate.h"
 
 
 @implementation Waveforms
@@ -313,6 +313,7 @@
                       @"cellLLL",
                       @"cellLLR",
                       @"cellLTL",
+                      @"cellLTRa",
                       @"cellPcnLlow",
                       @"cellPcnLrosDown",
                       @"cellPcnLlevel",
