@@ -89,7 +89,7 @@
     traceGainArray = [[NSMutableArray alloc] init];
     traceOffsetArray = [[NSMutableArray alloc] init];
     invertSign = 0;
-    switchColor = 0;
+    switchColor = 1;
     
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
     
