@@ -203,10 +203,13 @@ int samplesizechosen = 500; //init w 500 as the default for now
 int IterNumChosen = 100000;
 void indicateSampleSize(int s);
 void indicateNumberOfIteration(int i);
+
 double sigma, alpha, sigmaE, sigmaI, betaE, betaI, Idc; //params
 int cellChosen;
+int beginEditingParams = 0;//we have not edit the params
 //function to set params
-void setNeuronParams(int cellId, double s, double a, double sE, double sI, double bE, double bI, double I);
+void setNeuronParams(double s, double a, double sE, double sI, double bE, double bI, double I);
+void chooseCell(int cellID);
 long elapsed;
 #endif // _pc2dsp_h_
 

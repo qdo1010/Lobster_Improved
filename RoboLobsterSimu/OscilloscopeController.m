@@ -73,11 +73,25 @@ typedef id MovieAudioExtractionRef;
         
         //init the scope values
         [appDelegate setSweepDuration:5000];
+        [sweepDurationTextBox setStringValue:[NSString stringWithFormat:@"%f",0.001*elapsed*5000]];
+        [sweepOffsetSlider setFloatValue:5000];
+    
         [appDelegate setSweepOffset:0];
-   
+        [sweepOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.001*elapsed*5000]];
+        [sweepOffsetSlider setFloatValue:0.];
+
+        
         [[appDelegate traceGainArray] addObject:[NSString stringWithFormat:@"%d", 1]];
+        [traceGainTextBox setStringValue:[NSString stringWithFormat:@"%f",1.0]];
+        [traceGainSlider setFloatValue:1];
+        
         [[appDelegate traceOffsetArray] addObject:[NSString stringWithFormat:@"%d", 0]];
+        [traceOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.]];
+        [traceOffsetSlider setFloatValue:0];
+        
+
     }
+    
     
     //set trace name first//
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
@@ -199,8 +213,8 @@ typedef id MovieAudioExtractionRef;
 
 - (IBAction)changeTraceGain:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    [traceGainSlider setMinValue:1];
-    [traceGainSlider setMaxValue:10];
+    [traceGainSlider setMinValue:0.1];
+    [traceGainSlider setMaxValue:5];
     // NSLog(@"%d", [sweepDurationSlider intValue]);
     [traceGainTextBox setStringValue:[NSString stringWithFormat:@"%f",[traceGainSlider floatValue]]];
 

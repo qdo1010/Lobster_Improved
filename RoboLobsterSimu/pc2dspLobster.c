@@ -120,8 +120,8 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
 
 
 //////////edit params//////////////
-void spikingNeuronEdit(struct structSpiking *ptr, double mu, double alpha, double sigma, double sigmaE, double sigmaI, double sigmaDc, double betaE, double betaI, double betaDc, double Idc) {
-    ptr->mu = mu;
+void spikingNeuronEdit(struct structSpiking *ptr) {
+    ptr->mu = 0.0005;
     ptr->spike = 0;
     ptr->alpha = alpha;
     // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
@@ -129,10 +129,10 @@ void spikingNeuronEdit(struct structSpiking *ptr, double mu, double alpha, doubl
     //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
-    ptr->sigmaDc = sigmaDc;    //sets the sensitivity to injected dc current
-    ptr->betaE = betaE;    //sets the transient responce to excitatory synaptic current
-    ptr->betaI = betaI;    //sets the transient responce to inhibitory synaptic current
-    ptr->betaDc = betaDc;   //sets the transient responce to injected dc pulse
+    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
     ptr->Idc = Idc;
     
     //--set initial state of neuron at the fixed point---
@@ -142,18 +142,18 @@ void spikingNeuronEdit(struct structSpiking *ptr, double mu, double alpha, doubl
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
 }  // end of Elevator structure
 
-void burstingNeuronEdit(struct structBursting *ptr,double mu, double alpha, double sigma, double sigmaE, double sigmaI, double sigmaDc, double betaE, double betaI, double betaDc, double Idc) {
-    ptr->mu = mu;
+void burstingNeuronEdit(struct structBursting *ptr) {
+    ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = alpha;
+    ptr->alpha = alpha;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
     ptr->sigma = sigma;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
-    ptr->sigmaDc = sigmaDc;    //sets the sensitivity to injected dc current
-    ptr->betaE = betaE;    //sets the transient responce to excitatory synaptic current
-    ptr->betaI = betaI;    //sets the transient responce to inhibitory synaptic current
-    ptr->betaDc = betaDc;   //sets the transient responce to injected dc pulse
-    ptr->Idc = Idc;
+    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
+    ptr->Idc = 0;
     
     //--set initial state of neuron at the fixed point---
     ptr->xpp = -1 + ptr->sigma;
@@ -162,9 +162,9 @@ void burstingNeuronEdit(struct structBursting *ptr,double mu, double alpha, doub
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
 }  // end of Elevator structure
 
-void pacemakerNeuronEdit(struct structEndogenousPacemaker *ptr, double mu, double alpha) {
+void pacemakerNeuronEdit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
-    ptr->alpha = 5.0;
+    ptr->alpha = alpha;
     //    ptr->alpha = 4.60108;
     ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
   
@@ -453,6 +453,8 @@ void xmain()
     {
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)
         {
+            
+            if (beginEditingParams == 0){
             pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
             pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
             
@@ -464,8 +466,24 @@ void xmain()
             spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
             spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
             spikingNeuronInit(   &cellCoord[iSide][iSeg] );
+            }
+            else {
+                pacemakerNeuronEdit( &cellElevator[iSide][iSeg] );
+                pacemakerNeuronEdit( &cellSwing[iSide][iSeg] );
+                
+                burstingNeuronEdit(  &cellDepressor[iSide][iSeg] );
+                burstingNeuronEdit(  &cellStance[iSide][iSeg] );
+                
+                spikingNeuronEdit(   &cellProtractor[iSide][iSeg] );
+                spikingNeuronEdit(   &cellRetractor[iSide][iSeg] );
+                spikingNeuronEdit(   &cellExtensor[iSide][iSeg] );
+                spikingNeuronEdit(   &cellFlexor[iSide][iSeg] );
+                spikingNeuronEdit(   &cellCoord[iSide][iSeg] );
+                
+            }
+            
         } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
-        
+        if (beginEditingParams == 0){
         spikingNeuronInit(&cellPcn[iSide][pLevel]);
         spikingNeuronInit(&cellModCom[iSide]);
         spikingNeuronInit(&cellH[iSide]);
@@ -473,6 +491,16 @@ void xmain()
         spikingNeuronInit(&cellB[iSide]);
         spikingNeuronInit(&cellLL[iSide]);
         spikingNeuronInit(&cellLT[iSide]);
+        }
+        else{
+            spikingNeuronEdit(&cellPcn[iSide][pLevel]);
+            spikingNeuronEdit(&cellModCom[iSide]);
+            spikingNeuronEdit(&cellH[iSide]);
+            spikingNeuronEdit(&cellF[iSide]);
+            spikingNeuronEdit(&cellB[iSide]);
+            spikingNeuronEdit(&cellLL[iSide]);
+            spikingNeuronEdit(&cellLT[iSide]);
+        }
     }
     
     //----Initialize comInitArray[ ]  = 0 --------
@@ -1119,7 +1147,11 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void setNeuronParams(int cellID,double s, double a, double sE, double sI, double bE, double bI, double I){
+void chooseCell(int cellId){
+    cellChosen = cellId;
+}
+
+void setNeuronParams(double s, double a, double sE, double sI, double bE, double bI, double I){
     sigma = s;
     alpha = a;
     sigmaE = sE;
@@ -1127,8 +1159,7 @@ void setNeuronParams(int cellID,double s, double a, double sE, double sI, double
     betaE = bE;
     betaI = bI;
     Idc = I;
-    cellChosen = cellID;
-
+    beginEditingParams = 1;
 }
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
