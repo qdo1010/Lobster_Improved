@@ -211,7 +211,7 @@ int minorLineWidth	 = 1;
     
     [sinePath setLineWidth:1.0];
     //        [sinePath setFlatness:3.0];
-    [sinePath moveToPoint:NSMakePoint(0*cWidth,  height/2 - [[points objectAtIndex:0] floatValue]*cHeight*gain + height*idy + offset)];
+    [sinePath moveToPoint:NSMakePoint(0*cWidth,  height/2-[[points objectAtIndex:0] floatValue]*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset)];
     
     
     for (int i=0; i < numberOfPoints; i++)
@@ -237,7 +237,7 @@ int minorLineWidth	 = 1;
 
         
         if (i < (numberOfPoints - 1)){
-            [sinePath lineToPoint:NSMakePoint(i*cWidth,  height/2 - [[points objectAtIndex:i+1] floatValue]*cHeight*gain + height*idy + offset )];
+            [sinePath lineToPoint:NSMakePoint(i*cWidth, height/2 - [[points objectAtIndex:i+1] floatValue]*cHeight*gain  + height*([[propertyValue ipbuf] count] - idy -1) + offset )];
            // [sinePath setLineWidth:i];
         }
         //NSLog(@"%@",[points objectAtIndex:i+1]);

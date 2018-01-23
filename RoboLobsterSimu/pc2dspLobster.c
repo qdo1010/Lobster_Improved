@@ -119,6 +119,70 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
 }
 
 
+//////////edit params//////////////
+void spikingNeuronEdit(struct structSpiking *ptr, double mu, double alpha, double sigma, double sigmaE, double sigmaI, double sigmaDc, double betaE, double betaI, double betaDc, double Idc) {
+    ptr->mu = mu;
+    ptr->spike = 0;
+    ptr->alpha = alpha;
+    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
+    ptr->sigma = sigma;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
+    ptr->sigmaDc = sigmaDc;    //sets the sensitivity to injected dc current
+    ptr->betaE = betaE;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = betaI;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = betaDc;   //sets the transient responce to injected dc pulse
+    ptr->Idc = Idc;
+    
+    //--set initial state of neuron at the fixed point---
+    ptr->xpp = -1 + ptr->sigma;
+    ptr->xp = -1 + ptr->sigma;
+    ptr->x = -1 + ptr->sigma;
+    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
+}  // end of Elevator structure
+
+void burstingNeuronEdit(struct structBursting *ptr,double mu, double alpha, double sigma, double sigmaE, double sigmaI, double sigmaDc, double betaE, double betaI, double betaDc, double Idc) {
+    ptr->mu = mu;
+    ptr->spike = 0;
+    ptr->alpha = alpha;
+    ptr->sigma = sigma;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
+    ptr->sigmaDc = sigmaDc;    //sets the sensitivity to injected dc current
+    ptr->betaE = betaE;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = betaI;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = betaDc;   //sets the transient responce to injected dc pulse
+    ptr->Idc = Idc;
+    
+    //--set initial state of neuron at the fixed point---
+    ptr->xpp = -1 + ptr->sigma;
+    ptr->xp = -1 + ptr->sigma;
+    ptr->x = -1 + ptr->sigma;
+    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
+}  // end of Elevator structure
+
+void pacemakerNeuronEdit(struct structEndogenousPacemaker *ptr, double mu, double alpha) {
+    ptr->mu = .0001;
+    ptr->alpha = 5.0;
+    //    ptr->alpha = 4.60108;
+    ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
+  
+    ptr->yr = -1*(2+ptr->alpha)/2;
+    ptr->xr = 1-sqrt(ptr->alpha);
+    ptr->alphaInit = sqrt(ptr->alpha);
+    ptr->xp = -1+ptr->sigma+.01;
+    ptr->xpp = -1+ptr->sigma+.01;
+    if (ptr->sigma<0)
+    {
+        ptr->x2 = (-1+ptr->sigma)- ptr->alpha / (1-(-1+ptr->sigma));
+    }
+    else
+        ptr->x2 = 1-2*ptr->alphaInit;
+   
+}
+
+
 void calcSpikingNeuron(struct structSpiking *ptr,double cIe,double cIi) {
     ptr->betaIn = ptr->betaE * cIe + ptr->betaI * cIi + ptr->betaDc * ptr->Idc;
     ptr->sigmaIn = ptr->sigmaE * cIe + ptr->sigmaI * cIi + ptr->sigmaDc * ptr->Idc;
@@ -1053,6 +1117,18 @@ void indicateSampleSize(int s){
 void indicateNumberOfIteration(int i){
     IterNumChosen = i;
     printf("iteration = %d\n", IterNumChosen);
+}
+
+void setNeuronParams(int cellID,double s, double a, double sE, double sI, double bE, double bI, double I){
+    sigma = s;
+    alpha = a;
+    sigmaE = sE;
+    sigmaI = sI;
+    betaE = bE;
+    betaI = bI;
+    Idc = I;
+    cellChosen = cellID;
+
 }
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
