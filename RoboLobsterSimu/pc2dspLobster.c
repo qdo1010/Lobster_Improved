@@ -63,7 +63,7 @@ void spikingNeuronInit(struct structSpiking *ptr) {
     ptr->spike = 0;
     ptr->alpha = 5.5;
    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = -0.26;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigma = 1.3;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
 //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
@@ -123,17 +123,17 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
 void spikingNeuronEdit(struct structSpiking *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = alpha;
+    ptr->alpha = alphaS;
     // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = sigma;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigma = sigmaS;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
-    ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
+    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
     ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
     ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
     ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
     ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
-    ptr->Idc = Idc;
+    ptr->Idc = 0;
     
     //--set initial state of neuron at the fixed point---
     ptr->xpp = -1 + ptr->sigma;
@@ -145,10 +145,10 @@ void spikingNeuronEdit(struct structSpiking *ptr) {
 void burstingNeuronEdit(struct structBursting *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = alpha;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = sigma;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigmaE = sigmaE;     //sets the sensitivity to excitatory synaptic current
-    ptr->sigmaI = sigmaI;     //sets the sensitivity to inhibitory synaptic current
+    ptr->alpha = alphaB;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
+    ptr->sigma = sigmaB;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
     ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
     ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
     ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
@@ -164,7 +164,7 @@ void burstingNeuronEdit(struct structBursting *ptr) {
 
 void pacemakerNeuronEdit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
-    ptr->alpha = alpha;
+    ptr->alpha = 5.0; //alphaP
     //    ptr->alpha = 4.60108;
     ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
   
@@ -1151,14 +1151,18 @@ void chooseCell(int cellId){
     cellChosen = cellId;
 }
 
-void setNeuronParams(double s, double a, double sE, double sI, double bE, double bI, double I){
-    sigma = s;
-    alpha = a;
-    sigmaE = sE;
-    sigmaI = sI;
-    betaE = bE;
-    betaI = bI;
-    Idc = I;
+void setNeuronParams(double s, double a){
+    if (cellChosen == 0){ //spiking
+    sigmaS = s;
+    alphaS = a;
+    }
+    else{
+            sigmaB = s;
+            alphaB = a;
+        }
+   // betaE = bE;
+    //betaI = bI;
+   // Idc = I;
     beginEditingParams = 1;
 }
 
