@@ -77,8 +77,8 @@ typedef id MovieAudioExtractionRef;
         [sweepOffsetSlider setFloatValue:5000];
     
         [appDelegate setSweepOffset:0];
-        [sweepOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.001*elapsed*5000]];
-        [sweepOffsetSlider setFloatValue:0.];
+        [sweepOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.]];
+        [sweepOffsetSlider setFloatValue: 0];
 
         
         [[appDelegate traceGainArray] addObject:[NSString stringWithFormat:@"%d", 1]];
