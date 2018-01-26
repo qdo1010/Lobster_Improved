@@ -14,4 +14,18 @@ Function takes in those following input(Bursting or Spiking or Endogenous?, Whic
 Function then call Init on the cell
 
 To solve:
-1) you have the cell Name, which u can get from the display cell Name, cause it's being displayed'
+1) you have the cell Name, which u can get from the display cell Name, cause it's being displayed in
+[cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
+
+2) Take this traceID, and look up whether it's endogenous or bursting or spiking? Is there a lookup table??
+How to look this up?? Should I write a lookup table in resources?
+
+3) After looking it up, we should know what parameter should be set
+For instance, yes alpha and sigma for Spiking and Bursting, but not for Endogenous, for endogenous, user can also alter Alpha
+
+4) Now that u receive alpha and sigma, you need to insert the changes into the C file --> basically call the Edit function instead of the Init function
+
+    But what to send to C file???
+how to make this changes?
+
+
