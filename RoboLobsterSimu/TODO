@@ -28,4 +28,9 @@ For instance, yes alpha and sigma for Spiking and Bursting, but not for Endogeno
     But what to send to C file???
 how to make this changes?
 
+5) Send the CELL NAME + alpha + sigma to a function, this function will take in the Cell Name, and decide what Struct to use, and then just change the alpha and sigma value according
+Call this function CellParamsEdit(cellName, alpha, sigma)
+this function will determine what struct to work with --> 
 
+
+6)

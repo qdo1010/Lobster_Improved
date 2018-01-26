@@ -1019,8 +1019,6 @@ void xmain()
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
                     
-                  //  printf("wtf");
-                  //printf(" %f", xArrayFlex[ind][iSeg].x);
 
 
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
