@@ -36,4 +36,5 @@ how would it map a string to a struct name?
 Basically create a tuple in a struct format, then map that!!
 https://stackoverflow.com/questions/4384359/quick-way-to-implement-dictionary-in-c
 
-6)
+6) Now that we get the struct, we can set the parameters accordingly?
+
