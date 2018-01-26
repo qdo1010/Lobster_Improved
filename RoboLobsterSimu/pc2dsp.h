@@ -198,6 +198,15 @@ struct structEndogenousPacemaker {
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
 
+
+//this is where the dictionary to map string to struct is defined
+typedef struct{char*str; struct structSpiking** spike;} stringToSpike;
+typedef struct{char*str; struct structBursting** burst;} stringToBurst;
+typedef struct{char*str; struct structEndogenousPacemaker** pace} stringToPace;
+
+
+
+//end of dictionary
 void xmain();
 int samplesizechosen = 500; //init w 500 as the default for now
 int IterNumChosen = 100000;
@@ -211,5 +220,8 @@ int beginEditingParams = 0;//we have not edit the params
 void setNeuronParams(double s, double a); // change alpha and sigma
 void chooseCell(int cellID);
 long elapsed;
+
+
+
 #endif // _pc2dsp_h_
 

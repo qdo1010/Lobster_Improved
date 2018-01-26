@@ -89,7 +89,6 @@ typedef id MovieAudioExtractionRef;
         [traceOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.]];
         [traceOffsetSlider setFloatValue:0];
         
-
     }
     
     
