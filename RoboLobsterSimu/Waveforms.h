@@ -150,7 +150,7 @@ extern double** xArrayExt;
 extern double** xArrayFlex;
 extern double** xArrayCoord;
 
-typedef void (^CaseBlock)();
+typedef void (^CaseBlock)(void);
 
 //-(void) runCalculation;
 -(NSMutableArray*) selectCell: (cellPointer)cellName;
