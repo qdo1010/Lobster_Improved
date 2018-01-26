@@ -1,8 +1,17 @@
 1) Display the sigma and alpha and Name of the Chosen Cells
 2) Want to change alpha and sigma!
-3) WHY COORD neurons doesn't show?
-4) check Mod command and add
 5) Synapse Function, Membrane Voltage
 
 
 How to edit single alpha and sigma?
+need a box to choose cell Type
+have to identify cell type first, like, is this bursting or spiking
+
+Assume you tell the function this ?
+
+Function takes in those following input(Bursting or Spiking or Endogenous?, Which cell is this?, what is alpha, what is sigma)
+
+Function then call Init on the cell
+
+To solve:
+1) you have the cell Name, which u can get from the display cell Name, cause it's being displayed'

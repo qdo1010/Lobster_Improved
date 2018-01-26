@@ -61,9 +61,9 @@
 void spikingNeuronInit(struct structSpiking *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = 5.5;
+    ptr->alpha = 4;
    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = 1.3;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigma = 1.;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
 //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
