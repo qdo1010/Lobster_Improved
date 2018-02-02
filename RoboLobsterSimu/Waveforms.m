@@ -76,6 +76,7 @@
                 starttime++;
             }
             break;
+            
         case 1:
             //   NSLog( @"%f\n", xArrayDep[cell]);
             for (i = 0; i < samplesize; i ++){

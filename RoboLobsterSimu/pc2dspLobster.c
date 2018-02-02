@@ -119,68 +119,7 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
 }
 
 
-//////////edit params//////////////
-void spikingNeuronEdit(struct structSpiking *ptr) {
-    ptr->mu = 0.0005;
-    ptr->spike = 0;
-    ptr->alpha = alphaS;
-    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = sigmaS;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
-    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
-    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
-    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
-    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
-    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
-    ptr->Idc = 0;
-    
-    //--set initial state of neuron at the fixed point---
-    ptr->xpp = -1 + ptr->sigma;
-    ptr->xp = -1 + ptr->sigma;
-    ptr->x = -1 + ptr->sigma;
-    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
-}  // end of Elevator structure
 
-void burstingNeuronEdit(struct structBursting *ptr) {
-    ptr->mu = 0.0005;
-    ptr->spike = 0;
-    ptr->alpha = alphaB;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    ptr->sigma = sigmaB;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
-    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
-    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
-    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
-    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
-    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
-    ptr->Idc = 0;
-    
-    //--set initial state of neuron at the fixed point---
-    ptr->xpp = -1 + ptr->sigma;
-    ptr->xp = -1 + ptr->sigma;
-    ptr->x = -1 + ptr->sigma;
-    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
-}  // end of Elevator structure
-
-void pacemakerNeuronEdit(struct structEndogenousPacemaker *ptr) {
-    ptr->mu = .0001;
-    ptr->alpha = 5.0; //alphaP
-    //    ptr->alpha = 4.60108;
-    ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
-  
-    ptr->yr = -1*(2+ptr->alpha)/2;
-    ptr->xr = 1-sqrt(ptr->alpha);
-    ptr->alphaInit = sqrt(ptr->alpha);
-    ptr->xp = -1+ptr->sigma+.01;
-    ptr->xpp = -1+ptr->sigma+.01;
-    if (ptr->sigma<0)
-    {
-        ptr->x2 = (-1+ptr->sigma)- ptr->alpha / (1-(-1+ptr->sigma));
-    }
-    else
-        ptr->x2 = 1-2*ptr->alphaInit;
-   
-}
 
 
 void calcSpikingNeuron(struct structSpiking *ptr,double cIe,double cIi) {
@@ -445,16 +384,14 @@ void xmain()
     }
 #endif // TEST_OUTPUTS
 #endif // runONdsp
-    tmax = 399999; // maximum nuber of iteretions to compute
+    tmax = 100000; // maximum nuber of iteretions to compute
     //    showMap(1);
     //----- Initialize cells --------
-    
+
     for(iSide = 0;iSide < mmSide; ++iSide)
     {
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)
         {
-            
-            if (beginEditingParams == 0){
             pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
             pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
             
@@ -466,24 +403,10 @@ void xmain()
             spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
             spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
             spikingNeuronInit(   &cellCoord[iSide][iSeg] );
-            }
-            else {
-                pacemakerNeuronEdit( &cellElevator[iSide][iSeg] );
-                pacemakerNeuronEdit( &cellSwing[iSide][iSeg] );
-                
-                burstingNeuronEdit(  &cellDepressor[iSide][iSeg] );
-                burstingNeuronEdit(  &cellStance[iSide][iSeg] );
-                
-                spikingNeuronEdit(   &cellProtractor[iSide][iSeg] );
-                spikingNeuronEdit(   &cellRetractor[iSide][iSeg] );
-                spikingNeuronEdit(   &cellExtensor[iSide][iSeg] );
-                spikingNeuronEdit(   &cellFlexor[iSide][iSeg] );
-                spikingNeuronEdit(   &cellCoord[iSide][iSeg] );
-                
-            }
+            
+            
             
         } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
-        if (beginEditingParams == 0){
         spikingNeuronInit(&cellPcn[iSide][pLevel]);
         spikingNeuronInit(&cellModCom[iSide]);
         spikingNeuronInit(&cellH[iSide]);
@@ -491,18 +414,12 @@ void xmain()
         spikingNeuronInit(&cellB[iSide]);
         spikingNeuronInit(&cellLL[iSide]);
         spikingNeuronInit(&cellLT[iSide]);
-        }
-        else{
-            spikingNeuronEdit(&cellPcn[iSide][pLevel]);
-            spikingNeuronEdit(&cellModCom[iSide]);
-            spikingNeuronEdit(&cellH[iSide]);
-            spikingNeuronEdit(&cellF[iSide]);
-            spikingNeuronEdit(&cellB[iSide]);
-            spikingNeuronEdit(&cellLL[iSide]);
-            spikingNeuronEdit(&cellLT[iSide]);
-        }
+       
     }
-    
+    if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
+        setNeuronParams(globalCellName, globalSigma, globalAlpha);
+        //printf("why am i not called");
+    }
     //----Initialize comInitArray[ ]  = 0 --------
     
     for(ii = 0;ii < mmSeg + 2; ++ii)
@@ -740,9 +657,14 @@ void xmain()
 
     
     int ind = 0; //index to start loop of array of x
-
+    //while(1){
     while((int)mainLoopIndex < (int)tmax) {
         //change to mainLoopIndex <= tmax to stop forever loop
+        
+        //printf("%d",beginEditingParams);
+        
+        globalLoopIndex = (int)mainLoopIndex; //this is to return for Obj C to see
+        
         if ((int)mainLoopIndex == 999999999){//put a limit to rotate back.
             mainLoopIndex = 0; //reset
         }
@@ -980,6 +902,10 @@ void xmain()
                 //xArrayFlex[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             }
             int indy = 0;
+           // if(beginEditingParams == 1){
+           //     printf("why???");
+            //setNeuronParams(globalCellName, globalSigma, globalAlpha);
+           // }
             //printf("%f", mainLoopIndex);
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
@@ -1099,6 +1025,7 @@ void xmain()
          */
 #endif
     }
+
     //END OF WHILE
     //--------------------END CALCULATION-------------------------------
     sL2dsp = 0;
@@ -1133,10 +1060,48 @@ void xmain()
     //return 0;
 }
 
+struct structSpiking** getSpike(char* str){
+    stringToSpike* pCase;
+    struct structSpiking**selected = NULL;
+    if (str!= NULL){
+        for (pCase = SpikeCases; pCase != SpikeCases + sizeof(SpikeCases) / sizeof(SpikeCases[0]); pCase ++) {
+            if (strcmp(pCase->str, str)){
+            selected = pCase->spike;
+            printf("%s", pCase ->str);
+            }
+        }
+    }
+    return selected;
+}
+    
+struct structBursting ** getBurst(char* str){
+    stringToBurst*pCase;
+    struct structBursting** selected = NULL;
+    if (str!= NULL){
+        for (pCase = BurstCases; pCase != BurstCases + sizeof(BurstCases) / sizeof(BurstCases[0]); pCase ++) {
+            if (!strcmp(pCase->str, str))
+                selected = pCase->burst;
+        }
+    }
+    return selected;
+}
+struct structEndogenousPacemaker** getPace(char* str){
+    
+    stringToPace*pCase;
+    struct structEndogenousPacemaker*selected = NULL;
+    if (str!= NULL){
+        for (pCase = PaceCases; pCase != PaceCases + sizeof(PaceCases) / sizeof(PaceCases[0]); pCase ++) {
+            if (!strcmp(pCase->str, str))
+                selected = pCase->pace;
+        }
+    }
+    return selected;
+}
+
+
 void indicateSampleSize(int s){
     samplesizechosen = s;//get the sample size values chosen by Waveforms.m and put it in the global var, so C code knows how long to wait;
     printf("sample size = %d\n", samplesizechosen);
-    
 };
 
 
@@ -1145,28 +1110,100 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void chooseCell(int cellId){
-    cellChosen = cellId;
+void editParam(int neuronName, double s, double a){
+    //printf("%s\n",neuronName);
+    printf("begin editing\n");
+    beginEditingParams = 1; //set flag for begin editing
+    globalAlpha = a;
+    globalSigma = s;
+    globalCellName = neuronName;
+   // xmain();
+   // setNeuronParams(neuronName, s, a);
 }
 
-void setNeuronParams(double s, double a){
-    if (cellChosen == 0){ //spiking
-    sigmaS = s;
-    alphaS = a;
-    }
-    else{
-            sigmaB = s;
-            alphaB = a;
-        }
-   // betaE = bE;
-    //betaI = bI;
-   // Idc = I;
-    beginEditingParams = 1;
+int checkMainLoopIndex(){
+    int i =globalLoopIndex;
+    return i;
 }
+
+//this will determine what cell are chosen
+int whatTypeofCell(char* neuronName){
+    return 0; //let's assume always Spiking for now
+    ///PLZZ EDIT
+}
+
+void setNeuronParams(int id, double s, double a){
+    //identify which type it is?
+   // if (id == 8){//Spiking
+        printf("Spiking edit\n");
+        //struct structSpiking** cell = getSpike(neuronName);
+       // struct structSpiking** cell;
+       // cell = cellFlexor;
+        //printf("%f\n",a);
+        int iSide, iSeg;
+        for(iSide = 0;iSide < mmSide; ++iSide)
+        {
+            //Now loop down the segments
+            for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+            {
+                if(id == 0){
+                    cellElevator[iSide][iSeg].alpha = a;
+                }
+                else if(id == 1){
+                    cellSwing[iSide][iSeg].alpha = a;
+                }
+                else if(id == 2){
+                    cellDepressor[iSide][iSeg].alpha = a;
+                    cellDepressor[iSide][iSeg].sigma = s;
+                }
+                else if(id == 3){
+                    cellStance[iSide][iSeg].alpha = a;
+                    cellStance[iSide][iSeg].sigma = s;
+                }
+                else if(id == 4){
+                    cellCoord[iSide][iSeg].alpha = a;
+                    cellCoord[iSide][iSeg].sigma = s;
+                }
+                else if(id == 5){
+                    cellProtractor[iSide][iSeg].alpha = a;
+                    cellProtractor[iSide][iSeg].sigma = s;
+                }
+                else if(id == 7){
+                    cellRetractor[iSide][iSeg].alpha = a;
+                    cellRetractor[iSide][iSeg].sigma = s;
+                }
+                else if(id == 8){
+                    cellFlexor[iSide][iSeg].alpha = a;
+                    cellFlexor[iSide][iSeg].sigma = s;
+                }
+                //--set initial state of neuron at the fixed point---
+      //  cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;
+      //  cellFlexor[iSide][iSeg].xp = -1 + cellFlexor[iSide][iSeg].sigma;
+      //  cellFlexor[iSide][iSeg].x = -1 + cellFlexor[iSide][iSeg].sigma;
+      //  cellFlexor[iSide][iSeg].y = cellFlexor[iSide][iSeg].x - cellFlexor[iSide][iSeg].alpha/(1-cellFlexor[iSide][iSeg].x);
+            }
+        }
+      //  printf("So what\n");
+  //  }
+    //else if (id == 1){//Bursting
+       // struct structBursting**cell = getBurst(neuronName);
+     //   cell->alpha =a;
+      //  cell->sigma =s;
+   // }
+   // else if (id == 2){//PaceMaker
+        //struct structEndogenousPacemaker**cell = getPace(neuronName);
+     //   cell->alpha = a;
+   // }
+    beginEditingParams = 0; //stop editing by turning the edit flag off
+    
+
+}// change alpha and sigma
+
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)
 {
+    //printf("%d", beginEditingParams);
     clock_t t1, t2;
     t1 = clock();
     //        int ii,jj,ii1,iii;
