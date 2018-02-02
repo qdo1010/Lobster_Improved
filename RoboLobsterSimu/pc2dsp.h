@@ -148,6 +148,7 @@ enum {
     
 } cellPointer;
 int numCells = 92;
+//x array
 double** xArrayElev;
 double** xArrayDep;
 double** xArraySwing;
@@ -157,6 +158,28 @@ double** xArrayRet;
 double** xArrayExt;
 double** xArrayFlex;
 double** xArrayCoord;
+
+//alpha array
+double** alphaArrayElev;
+double** alphaArrayDep;
+double** alphaArraySwing;
+double** alphaArrayStance;
+double** alphaArrayProt;
+double** alphaArrayRet;
+double** alphaArrayExt;
+double** alphaArrayFlex;
+double** alphaArrayCoord;
+
+//sigma arr
+double** sigmaArrayElev;
+double** sigmaArrayDep;
+double** sigmaArraySwing;
+double** sigmaArrayStance;
+double** sigmaArrayProt;
+double** sigmaArrayRet;
+double** sigmaArrayExt;
+double** sigmaArrayFlex;
+double** sigmaArrayCoord;
 
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
@@ -198,18 +221,53 @@ struct structEndogenousPacemaker {
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
 
+
+//////////this is where the dictionary to map string to struct is defined
+typedef struct{char*str; struct structSpiking** spike;} stringToSpike;
+typedef struct{char*str; struct structBursting** burst;} stringToBurst;
+typedef struct{char*str; struct structEndogenousPacemaker** pace} stringToPace;
+
+stringToSpike SpikeCases[] = {
+    {"cellFlexor", cellFlexor},
+    {"cellProtractor", cellProtractor},
+};
+
+stringToBurst BurstCases[] = {
+    {"cellDepressor", cellDepressor},
+};
+
+stringToPace PaceCases[] = {
+};
+
+//this is func to return the struct
+struct structSpiking** getSpike(char* str);
+struct structBursting** getBurst(char* str);
+struct structEndogenousPacemaker** getPace(char* str);
+
+//////////end of dictionary
 void xmain();
 int samplesizechosen = 500; //init w 500 as the default for now
 int IterNumChosen = 100000;
+int checkMainLoopIndex();
 void indicateSampleSize(int s);
 void indicateNumberOfIteration(int i);
 
-double sigmaS = 0, alphaS=5.5, sigmaB = 5.5, alphaB = -0.26, alphaP; //params alpha beta for bursting and spiking neuron
+
+int globalLoopIndex;
+
+double globalSigma = 1.2;
+double globalAlpha = 6; //params alpha beta for bursting and spiking neuron
+int globalCellName = 0;
 int cellChosen;
 int beginEditingParams = 0;//we have not edit the params
 //function to set params
-void setNeuronParams(double s, double a); // change alpha and sigma
+void setNeuronParams(int id, double s, double a); // change alpha and sigma
 void chooseCell(int cellID);
+void editParam(int neuronName, double s, double a);
+int whatTypeofCell(char* neuronName);
 long elapsed;
+
+
+
 #endif // _pc2dsp_h_
 

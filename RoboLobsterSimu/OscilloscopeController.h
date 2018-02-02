@@ -34,6 +34,9 @@
 @property (readwrite)  double sweepMaximum;       //Duration of file in Sec
 
 
+@property (readwrite)  int firstTimeChangeParams;       //is this first change
+
+
 extern long elapsed;
 @property (readwrite) double index;
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
@@ -79,6 +82,8 @@ extern long elapsed;
 - (IBAction)changeTraceOffset:(id)sender;
 
 - (IBAction)changeView:(id)sender;
+- (IBAction)setParams:(id)sender;
+
 
 - (void)beginSendingStuffToBeDraw;
 

@@ -39,7 +39,7 @@ typedef id MovieAudioExtractionRef;
 @synthesize IndividualTraceInfo;
 @synthesize displayTraceID;
 
-
+@synthesize firstTimeChangeParams;
 -(id) init
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -89,9 +89,14 @@ typedef id MovieAudioExtractionRef;
         [traceOffsetTextBox setStringValue:[NSString stringWithFormat:@"%f",0.]];
         [traceOffsetSlider setFloatValue:0];
         
-
+    
     }
     
+    //hardcoded this for now
+    [alphaTextBox setStringValue:[NSString stringWithFormat:@"%f",5.5]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",1.2]];
+    
+    //make it bidirectional later
     
     //set trace name first//
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
@@ -101,6 +106,11 @@ typedef id MovieAudioExtractionRef;
     [sweepOffsetTextBox setDelegate:self];
     [traceOffsetTextBox setDelegate:self];
     
+    
+    [alphaTextBox setDelegate:self];
+    [sigmaTextBox setDelegate:self];
+    
+    [self setFirstTimeChangeParams:1]; //never change params
      NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 1                                                  target: self
                                                 selector:@selector(beginSendingStuffToBeDrawn)
                                               userInfo: nil repeats:YES];
@@ -114,7 +124,13 @@ typedef id MovieAudioExtractionRef;
     
     //set trace ID in appDelegate
     [appDelegate setIDofCellChosen:traceIDchosen];
-    
+    if (traceIDchosen == 0 || traceIDchosen == 1){
+        [sigmaTextBox setEditable:(false)];
+    }
+    else{
+        [sigmaTextBox setEditable:(true)];
+
+    }
     NSLog(@" choose this trace %d", traceIDchosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
 
@@ -203,9 +219,34 @@ typedef id MovieAudioExtractionRef;
         [traceOffsetSlider setFloatValue:[traceOffsetTextBox floatValue]];
         //send the change
         [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
-        
     }
+   /* else if ([notification object] == alphaTextBox){
+            NSLog(@"%f",[alphaTextBox floatValue]);
+            double a = [alphaTextBox doubleValue];
+            double s = 1.2;
+            char*c = "Flexor";
+            editParam(c,s,a);
+        if (firstTimeChangeParams == 1){
+            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+            [self setFirstTimeChangeParams:0]; //now it's set
+        }else{
+            int currentIndex = 0;
+            while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                currentIndex = checkMainLoopIndex();
+            } //xmain should end by now
+            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+
+        }
+        
+    }*/
+    
 }
+
+-(void) createWaveForm{
+    xmain(); //run pc2dsp and write to temp files, automatically run in background async
+    // NSLog(@"total elapse time for 1 iter = %f s", elapsedTime);
+}
+
 
 - (IBAction)displayString:(id)sender {
     
@@ -263,6 +304,61 @@ typedef id MovieAudioExtractionRef;
     else{
         [appDelegate setSwitchColor:0];
     }
+}
+
+- (IBAction)setParams:(id)sender {
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+//    NSLog(@"%f",[alphaTextBox floatValue]);
+    double a = [alphaTextBox doubleValue];
+    double s = [sigmaTextBox doubleValue];
+    NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
+  //  NSLog(@"choose this %@",name);
+    int c = 0;
+    if ([name containsString:@"Elevator"]){
+        c = 0;
+    }
+    else if ([name containsString:@"Swing"]){
+        c = 1;
+    }
+    else if ([name containsString:@"Depressor"]){
+        c = 2;
+    }
+    else if ([name containsString:@"Stance"]){
+        c = 3;
+    }
+    else if ([name containsString:@"Coord"]){
+        c = 4;
+    }
+    else if ([name containsString:@"Protractor"]){
+        c = 5;
+    }
+    else if ([name containsString:@"Retractor"]){
+        c = 6;
+    }
+    else if ([name containsString:@"Extensor"]){
+        c = 7;
+    }
+    else if ([name containsString:@"Flexor"]){
+        c = 8;
+    }
+    else{
+    c = 0;
+    }
+    editParam(c,s,a);
+    if (firstTimeChangeParams == 1){
+        [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+        [self setFirstTimeChangeParams:0]; //now it's set
+    }else{
+        int currentIndex = 0;
+        while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+            currentIndex = checkMainLoopIndex();
+        } //xmain should end by now
+        [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+        
+    }
+    
+    
 }
 @end
 
