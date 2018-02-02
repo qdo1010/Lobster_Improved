@@ -387,38 +387,43 @@ void xmain()
     tmax = 100000; // maximum nuber of iteretions to compute
     //    showMap(1);
     //----- Initialize cells --------
+    
 
-    for(iSide = 0;iSide < mmSide; ++iSide)
-    {
-        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
-        {
-            pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
-            pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
-            
-            burstingNeuronInit(  &cellDepressor[iSide][iSeg] );
-            burstingNeuronInit(  &cellStance[iSide][iSeg] );
-            
-            spikingNeuronInit(   &cellProtractor[iSide][iSeg] );
-            spikingNeuronInit(   &cellRetractor[iSide][iSeg] );
-            spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
-            spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
-            spikingNeuronInit(   &cellCoord[iSide][iSeg] );
-            
-            
-            
-        } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
-        spikingNeuronInit(&cellPcn[iSide][pLevel]);
-        spikingNeuronInit(&cellModCom[iSide]);
-        spikingNeuronInit(&cellH[iSide]);
-        spikingNeuronInit(&cellF[iSide]);
-        spikingNeuronInit(&cellB[iSide]);
-        spikingNeuronInit(&cellLL[iSide]);
-        spikingNeuronInit(&cellLT[iSide]);
-       
-    }
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         setNeuronParams(globalCellName, globalSigma, globalAlpha);
         //printf("why am i not called");
+    }
+    else{
+        for(iSide = 0;iSide < mmSide; ++iSide)
+        {
+            for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+            {
+                pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
+                pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
+                
+                burstingNeuronInit(  &cellDepressor[iSide][iSeg] );
+                burstingNeuronInit(  &cellStance[iSide][iSeg] );
+                
+                spikingNeuronInit(   &cellProtractor[iSide][iSeg] );
+                spikingNeuronInit(   &cellRetractor[iSide][iSeg] );
+                spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
+                spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
+                spikingNeuronInit(   &cellCoord[iSide][iSeg] );
+                
+                
+                
+            } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
+            spikingNeuronInit(&cellPcn[iSide][pLevel]);
+            spikingNeuronInit(&cellModCom[iSide]);
+            spikingNeuronInit(&cellH[iSide]);
+            spikingNeuronInit(&cellF[iSide]);
+            spikingNeuronInit(&cellB[iSide]);
+            spikingNeuronInit(&cellLL[iSide]);
+            spikingNeuronInit(&cellLT[iSide]);
+            
+        }
+        
+        
     }
     //----Initialize comInitArray[ ]  = 0 --------
     
@@ -928,49 +933,9 @@ void xmain()
            // }
             //alpha array
             
-            alphaArrayElev = (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayDep= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArraySwing= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayStance= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayProt= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayRet= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayExt= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayFlex= (double **)malloc(sizeof(double *) * mmSide);
-            alphaArrayCoord= (double **)malloc(sizeof(double *) * mmSide);
+
             
-            //sigma arr
-            sigmaArrayElev = (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayDep= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArraySwing= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayStance= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayProt= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayRet= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayExt= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayFlex= (double **)malloc(sizeof(double *) * mmSide);
-            sigmaArrayCoord= (double **)malloc(sizeof(double *) * mmSide);
 
-            for(iSide = 0;iSide < mmSide; ++iSide)
-            {
-                alphaArrayElev[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArraySwing[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayStance[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayDep[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayProt[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayRet[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayCoord[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayExt[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                alphaArrayFlex[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayElev[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArraySwing[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayStance[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayDep[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayProt[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayRet[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayCoord[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayExt[iSide] =(double *)malloc(mmSeg * sizeof(double));
-                sigmaArrayFlex[iSide] =(double *)malloc(mmSeg * sizeof(double));
-
-            }
             //printf("%f", mainLoopIndex);
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
@@ -980,67 +945,67 @@ void xmain()
                     fprintf(f10," %lf", cellElevator[iSide][iSeg].x);
                     fprintf(f10," ");
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
-                    alphaArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].alpha;
-                    sigmaArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].sigma;
+                    alphaArrayElev= cellElevator[iSide][iSeg].alpha;
+                    sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
                     fprintf(f11,"") ;
                     xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].x; //test
-                    alphaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].alpha;
-                    sigmaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].sigma;
+                    alphaArrayDep = cellDepressor[iSide][iSeg].alpha;
+                    sigmaArrayDep = cellDepressor[iSide][iSeg].sigma;
                     
                     
                     fprintf(f12," %lf", cellSwing[iSide][iSeg].x);
                     fprintf(f12," ");
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
-                    alphaArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].alpha;
-                    sigmaArraySwing[iSide][iSeg] = cellDepressor[iSide][iSeg].sigma;
+                    alphaArraySwing = cellSwing[iSide][iSeg].alpha;
+                    sigmaArraySwing = cellDepressor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
                     xArrayStance[ind][indy] = cellStance[iSide][iSeg].x; //test
-                    alphaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].alpha;
-                    sigmaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].sigma;
+                    alphaArrayStance = cellStance[iSide][iSeg].alpha;
+                    sigmaArrayStance = cellStance[iSide][iSeg].sigma;
                     
                     
                     
                     fprintf(f14," %lf", cellProtractor[iSide][iSeg].x);
                     fprintf(f14," ");
                     xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].x; //test
-                    alphaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].alpha;
-                    sigmaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].sigma;
+                    alphaArrayProt = cellProtractor[iSide][iSeg].alpha;
+                    sigmaArrayProt = cellProtractor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f15," %lf", cellRetractor[iSide][iSeg].x);
                     fprintf(f15," ");
                     xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].x; //test
-                    alphaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].alpha;
-                    sigmaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].sigma;
+                    alphaArrayRet = cellRetractor[iSide][iSeg].alpha;
+                    sigmaArrayRet = cellRetractor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f16," %lf", cellExtensor[iSide][iSeg].x);
                     fprintf(f16," ");
                     xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].x; //test
-                    alphaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].alpha;
-                    sigmaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].sigma;
+                    alphaArrayExt = cellExtensor[iSide][iSeg].alpha;
+                    sigmaArrayExt = cellExtensor[iSide][iSeg].sigma;
 
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
-                    alphaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].alpha;
-                    sigmaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].sigma;
+                    alphaArrayFlex = cellFlexor[iSide][iSeg].alpha;
+                    sigmaArrayFlex = cellFlexor[iSide][iSeg].sigma;
 
                     
                     xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
-                    alphaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].alpha;
-                    sigmaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].sigma;
+                    alphaArrayCoord = cellCoord[iSide][iSeg].alpha;
+                    sigmaArrayCoord = cellCoord[iSide][iSeg].sigma;
 
                     indy++;
                 }

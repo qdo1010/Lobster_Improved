@@ -39,6 +39,7 @@ typedef id MovieAudioExtractionRef;
 @synthesize IndividualTraceInfo;
 @synthesize displayTraceID;
 
+@synthesize setParamsButton;
 @synthesize firstTimeChangeParams;
 -(id) init
 {
@@ -132,9 +133,7 @@ typedef id MovieAudioExtractionRef;
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
   
-  
-    
-    
+
     //set trace ID in appDelegate
     [appDelegate setIDofCellChosen:traceIDchosen];
     
@@ -331,6 +330,17 @@ typedef id MovieAudioExtractionRef;
 //    NSLog(@"%f",[alphaTextBox floatValue]);
     double a = [alphaTextBox doubleValue];
     double s = [sigmaTextBox doubleValue];
+    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //set trace ID in appDelegate
+    //this is the param id that contains sigma and alpha
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:a]];
+    [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:s]];
+
+    
     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
   //  NSLog(@"choose this %@",name);
     int c = 0;
@@ -369,11 +379,13 @@ typedef id MovieAudioExtractionRef;
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         [self setFirstTimeChangeParams:0]; //now it's set
     }else{
+        setParamsButton.enabled = false;
         int currentIndex = 0;
         while (currentIndex != 99999){ //should be tmax, not hardcoded btw
             currentIndex = checkMainLoopIndex();
         } //xmain should end by now
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+        setParamsButton.enabled = true;
         
     }
     

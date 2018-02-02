@@ -160,26 +160,26 @@ double** xArrayFlex;
 double** xArrayCoord;
 
 //alpha array
-double** alphaArrayElev;
-double** alphaArrayDep;
-double** alphaArraySwing;
-double** alphaArrayStance;
-double** alphaArrayProt;
-double** alphaArrayRet;
-double** alphaArrayExt;
-double** alphaArrayFlex;
-double** alphaArrayCoord;
+double alphaArrayElev;
+double alphaArrayDep;
+double alphaArraySwing;
+double alphaArrayStance;
+double alphaArrayProt;
+double alphaArrayRet;
+double alphaArrayExt;
+double alphaArrayFlex;
+double alphaArrayCoord;
 
 //sigma arr
-double** sigmaArrayElev;
-double** sigmaArrayDep;
-double** sigmaArraySwing;
-double** sigmaArrayStance;
-double** sigmaArrayProt;
-double** sigmaArrayRet;
-double** sigmaArrayExt;
-double** sigmaArrayFlex;
-double** sigmaArrayCoord;
+double sigmaArrayElev;
+double sigmaArrayDep;
+double sigmaArraySwing;
+double sigmaArrayStance;
+double sigmaArrayProt;
+double sigmaArrayRet;
+double sigmaArrayExt;
+double sigmaArrayFlex;
+double sigmaArrayCoord;
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;

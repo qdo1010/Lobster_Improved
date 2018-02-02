@@ -152,26 +152,26 @@ extern double** xArrayCoord;
 
 
 //alpha array
-extern double** alphaArrayElev;
-extern double** alphaArrayDep;
-extern double** alphaArraySwing;
-extern double** alphaArrayStance;
-extern double** alphaArrayProt;
-extern double** alphaArrayRet;
-extern double** alphaArrayExt;
-extern double** alphaArrayFlex;
-extern double** alphaArrayCoord;
+extern double alphaArrayElev;
+extern double alphaArrayDep;
+extern double alphaArraySwing;
+extern double alphaArrayStance;
+extern double alphaArrayProt;
+extern double alphaArrayRet;
+extern double alphaArrayExt;
+extern double alphaArrayFlex;
+extern double alphaArrayCoord;
 
 //sigma arr
-extern double** sigmaArrayElev;
-extern double** sigmaArrayDep;
-extern double** sigmaArraySwing;
-extern double** sigmaArrayStance;
-extern double** sigmaArrayProt;
-extern double** sigmaArrayRet;
-extern double** sigmaArrayExt;
-extern double** sigmaArrayFlex;
-extern double** sigmaArrayCoord;
+extern double sigmaArrayElev;
+extern double sigmaArrayDep;
+extern double sigmaArraySwing;
+extern double sigmaArrayStance;
+extern double sigmaArrayProt;
+extern double sigmaArrayRet;
+extern double sigmaArrayExt;
+extern double sigmaArrayFlex;
+extern double sigmaArrayCoord;
 typedef void (^CaseBlock)(void);
 
 //-(void) runCalculation;
