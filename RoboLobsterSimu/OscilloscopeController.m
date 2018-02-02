@@ -39,6 +39,7 @@ typedef id MovieAudioExtractionRef;
 @synthesize IndividualTraceInfo;
 @synthesize displayTraceID;
 
+@synthesize setParamsButton;
 @synthesize firstTimeChangeParams;
 -(id) init
 {
@@ -92,9 +93,17 @@ typedef id MovieAudioExtractionRef;
     
     }
     
-    //hardcoded this for now
-    [alphaTextBox setStringValue:[NSString stringWithFormat:@"%f",5.5]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",1.2]];
+    //Set sigma and alpha to what they really are
+    
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //this is the param id that contains sigma and alpha
+  //  NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+  //  [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+    
+  //  [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+  //  [alphaTextBox setStringValue:[NSString stringWithFormat:@"%f",5.5]];
+  //  [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",1.2]];
     
     //make it bidirectional later
     
@@ -122,15 +131,24 @@ typedef id MovieAudioExtractionRef;
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     traceIDchosen = [[[self displayTraceID] title] integerValue];
     
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+  
+
     //set trace ID in appDelegate
     [appDelegate setIDofCellChosen:traceIDchosen];
-    if (traceIDchosen == 0 || traceIDchosen == 1){
-        [sigmaTextBox setEditable:(false)];
-    }
-    else{
-        [sigmaTextBox setEditable:(true)];
+    
+    //this is the param id that contains sigma and alpha
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
 
-    }
+    [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+    
+   // if (traceIDchosen == 0 || traceIDchosen == 1){
+   //     [sigmaTextBox setEditable:(false)];
+   // }
+   // else{
+   //     [sigmaTextBox setEditable:(true)];
+   // }
     NSLog(@" choose this trace %d", traceIDchosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
 
@@ -312,6 +330,17 @@ typedef id MovieAudioExtractionRef;
 //    NSLog(@"%f",[alphaTextBox floatValue]);
     double a = [alphaTextBox doubleValue];
     double s = [sigmaTextBox doubleValue];
+    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //set trace ID in appDelegate
+    //this is the param id that contains sigma and alpha
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:a]];
+    [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:s]];
+
+    
     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
   //  NSLog(@"choose this %@",name);
     int c = 0;
@@ -350,11 +379,13 @@ typedef id MovieAudioExtractionRef;
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         [self setFirstTimeChangeParams:0]; //now it's set
     }else{
+        setParamsButton.enabled = false;
         int currentIndex = 0;
         while (currentIndex != 99999){ //should be tmax, not hardcoded btw
             currentIndex = checkMainLoopIndex();
         } //xmain should end by now
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+        setParamsButton.enabled = true;
         
     }
     

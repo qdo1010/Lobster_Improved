@@ -387,38 +387,43 @@ void xmain()
     tmax = 100000; // maximum nuber of iteretions to compute
     //    showMap(1);
     //----- Initialize cells --------
+    
 
-    for(iSide = 0;iSide < mmSide; ++iSide)
-    {
-        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
-        {
-            pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
-            pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
-            
-            burstingNeuronInit(  &cellDepressor[iSide][iSeg] );
-            burstingNeuronInit(  &cellStance[iSide][iSeg] );
-            
-            spikingNeuronInit(   &cellProtractor[iSide][iSeg] );
-            spikingNeuronInit(   &cellRetractor[iSide][iSeg] );
-            spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
-            spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
-            spikingNeuronInit(   &cellCoord[iSide][iSeg] );
-            
-            
-            
-        } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
-        spikingNeuronInit(&cellPcn[iSide][pLevel]);
-        spikingNeuronInit(&cellModCom[iSide]);
-        spikingNeuronInit(&cellH[iSide]);
-        spikingNeuronInit(&cellF[iSide]);
-        spikingNeuronInit(&cellB[iSide]);
-        spikingNeuronInit(&cellLL[iSide]);
-        spikingNeuronInit(&cellLT[iSide]);
-       
-    }
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         setNeuronParams(globalCellName, globalSigma, globalAlpha);
         //printf("why am i not called");
+    }
+    else{
+        for(iSide = 0;iSide < mmSide; ++iSide)
+        {
+            for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+            {
+                pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
+                pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
+                
+                burstingNeuronInit(  &cellDepressor[iSide][iSeg] );
+                burstingNeuronInit(  &cellStance[iSide][iSeg] );
+                
+                spikingNeuronInit(   &cellProtractor[iSide][iSeg] );
+                spikingNeuronInit(   &cellRetractor[iSide][iSeg] );
+                spikingNeuronInit(   &cellExtensor[iSide][iSeg] );
+                spikingNeuronInit(   &cellFlexor[iSide][iSeg] );
+                spikingNeuronInit(   &cellCoord[iSide][iSeg] );
+                
+                
+                
+            } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
+            spikingNeuronInit(&cellPcn[iSide][pLevel]);
+            spikingNeuronInit(&cellModCom[iSide]);
+            spikingNeuronInit(&cellH[iSide]);
+            spikingNeuronInit(&cellF[iSide]);
+            spikingNeuronInit(&cellB[iSide]);
+            spikingNeuronInit(&cellLL[iSide]);
+            spikingNeuronInit(&cellLT[iSide]);
+            
+        }
+        
+        
     }
     //----Initialize comInitArray[ ]  = 0 --------
     
@@ -926,6 +931,11 @@ void xmain()
            //     printf("why???");
             //setNeuronParams(globalCellName, globalSigma, globalAlpha);
            // }
+            //alpha array
+            
+
+            
+
             //printf("%f", mainLoopIndex);
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
@@ -935,67 +945,67 @@ void xmain()
                     fprintf(f10," %lf", cellElevator[iSide][iSeg].x);
                     fprintf(f10," ");
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
-                    //alphaArrayElev[ind][indy] = cellElevator[iSide][iSeg].alpha;
-                    //sigmaArrayElev[ind][indy] = cellElevator[iSide][iSeg].sigma;
+                    alphaArrayElev= cellElevator[iSide][iSeg].alpha;
+                    sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
                     fprintf(f11,"") ;
                     xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].x; //test
-                    //alphaArrayDep[ind][indy] = cellDepressor[iSide][iSeg].alpha;
-                    //sigmaArrayDep[ind][indy] = cellDepressor[iSide][iSeg].sigma;
+                    alphaArrayDep = cellDepressor[iSide][iSeg].alpha;
+                    sigmaArrayDep = cellDepressor[iSide][iSeg].sigma;
                     
                     
                     fprintf(f12," %lf", cellSwing[iSide][iSeg].x);
                     fprintf(f12," ");
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
-                    //alphaArraySwing[ind][indy] = cellSwing[iSide][iSeg].alpha;
-                    //sigmaArraySwing[ind][indy] = cellDepressor[iSide][iSeg].sigma;
+                    alphaArraySwing = cellSwing[iSide][iSeg].alpha;
+                    sigmaArraySwing = cellDepressor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
                     xArrayStance[ind][indy] = cellStance[iSide][iSeg].x; //test
-                    //alphaArrayStance[ind][indy] = cellStance[iSide][iSeg].alpha;
-                    //sigmaArrayStance[ind][indy] = cellStance[iSide][iSeg].sigma;
+                    alphaArrayStance = cellStance[iSide][iSeg].alpha;
+                    sigmaArrayStance = cellStance[iSide][iSeg].sigma;
                     
                     
                     
                     fprintf(f14," %lf", cellProtractor[iSide][iSeg].x);
                     fprintf(f14," ");
                     xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].x; //test
-                   // alphaArrayProt[ind][indy] = cellProtractor[iSide][iSeg].alpha;
-                   // sigmaArrayProt[ind][indy] = cellProtractor[iSide][iSeg].sigma;
+                    alphaArrayProt = cellProtractor[iSide][iSeg].alpha;
+                    sigmaArrayProt = cellProtractor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f15," %lf", cellRetractor[iSide][iSeg].x);
                     fprintf(f15," ");
                     xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].x; //test
-                  //  alphaArrayRet[ind][indy] = cellRetractor[iSide][iSeg].alpha;
-                   // sigmaArrayRet[ind][indy] = cellRetractor[iSide][iSeg].sigma;
+                    alphaArrayRet = cellRetractor[iSide][iSeg].alpha;
+                    sigmaArrayRet = cellRetractor[iSide][iSeg].sigma;
 
                     
                     
                     fprintf(f16," %lf", cellExtensor[iSide][iSeg].x);
                     fprintf(f16," ");
                     xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].x; //test
-                  //  alphaArrayExt[ind][indy] = cellExtensor[iSide][iSeg].alpha;
-                  //  sigmaArrayExt[ind][indy] = cellExtensor[iSide][iSeg].sigma;
+                    alphaArrayExt = cellExtensor[iSide][iSeg].alpha;
+                    sigmaArrayExt = cellExtensor[iSide][iSeg].sigma;
 
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
-                   // alphaArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].alpha;
-                   // sigmaArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].sigma;
+                    alphaArrayFlex = cellFlexor[iSide][iSeg].alpha;
+                    sigmaArrayFlex = cellFlexor[iSide][iSeg].sigma;
 
                     
                     xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
-                   // alphaArrayCoord[ind][indy] = cellCoord[iSide][iSeg].alpha;
-                   // sigmaArrayCoord[ind][indy] = cellCoord[iSide][iSeg].sigma;
+                    alphaArrayCoord = cellCoord[iSide][iSeg].alpha;
+                    sigmaArrayCoord = cellCoord[iSide][iSeg].sigma;
 
                     indy++;
                 }
@@ -1105,43 +1115,7 @@ void xmain()
     //return 0;
 }
 
-struct structSpiking** getSpike(char* str){
-    stringToSpike* pCase;
-    struct structSpiking**selected = NULL;
-    if (str!= NULL){
-        for (pCase = SpikeCases; pCase != SpikeCases + sizeof(SpikeCases) / sizeof(SpikeCases[0]); pCase ++) {
-            if (strcmp(pCase->str, str)){
-            selected = pCase->spike;
-            printf("%s", pCase ->str);
-            }
-        }
-    }
-    return selected;
-}
-    
-struct structBursting ** getBurst(char* str){
-    stringToBurst*pCase;
-    struct structBursting** selected = NULL;
-    if (str!= NULL){
-        for (pCase = BurstCases; pCase != BurstCases + sizeof(BurstCases) / sizeof(BurstCases[0]); pCase ++) {
-            if (!strcmp(pCase->str, str))
-                selected = pCase->burst;
-        }
-    }
-    return selected;
-}
-struct structEndogenousPacemaker** getPace(char* str){
-    
-    stringToPace*pCase;
-    struct structEndogenousPacemaker*selected = NULL;
-    if (str!= NULL){
-        for (pCase = PaceCases; pCase != PaceCases + sizeof(PaceCases) / sizeof(PaceCases[0]); pCase ++) {
-            if (!strcmp(pCase->str, str))
-                selected = pCase->pace;
-        }
-    }
-    return selected;
-}
+
 
 
 void indicateSampleSize(int s){

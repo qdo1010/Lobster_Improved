@@ -160,27 +160,26 @@ double** xArrayFlex;
 double** xArrayCoord;
 
 //alpha array
-double** alphaArrayElev;
-double** alphaArrayDep;
-double** alphaArraySwing;
-double** alphaArrayStance;
-double** alphaArrayProt;
-double** alphaArrayRet;
-double** alphaArrayExt;
-double** alphaArrayFlex;
-double** alphaArrayCoord;
+double alphaArrayElev;
+double alphaArrayDep;
+double alphaArraySwing;
+double alphaArrayStance;
+double alphaArrayProt;
+double alphaArrayRet;
+double alphaArrayExt;
+double alphaArrayFlex;
+double alphaArrayCoord;
 
 //sigma arr
-double** sigmaArrayElev;
-double** sigmaArrayDep;
-double** sigmaArraySwing;
-double** sigmaArrayStance;
-double** sigmaArrayProt;
-double** sigmaArrayRet;
-double** sigmaArrayExt;
-double** sigmaArrayFlex;
-double** sigmaArrayCoord;
-
+double sigmaArrayElev;
+double sigmaArrayDep;
+double sigmaArraySwing;
+double sigmaArrayStance;
+double sigmaArrayProt;
+double sigmaArrayRet;
+double sigmaArrayExt;
+double sigmaArrayFlex;
+double sigmaArrayCoord;
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
@@ -221,28 +220,6 @@ struct structEndogenousPacemaker {
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
 
-
-//////////this is where the dictionary to map string to struct is defined
-typedef struct{char*str; struct structSpiking** spike;} stringToSpike;
-typedef struct{char*str; struct structBursting** burst;} stringToBurst;
-typedef struct{char*str; struct structEndogenousPacemaker** pace} stringToPace;
-
-stringToSpike SpikeCases[] = {
-    {"cellFlexor", cellFlexor},
-    {"cellProtractor", cellProtractor},
-};
-
-stringToBurst BurstCases[] = {
-    {"cellDepressor", cellDepressor},
-};
-
-stringToPace PaceCases[] = {
-};
-
-//this is func to return the struct
-struct structSpiking** getSpike(char* str);
-struct structBursting** getBurst(char* str);
-struct structEndogenousPacemaker** getPace(char* str);
 
 //////////end of dictionary
 void xmain();

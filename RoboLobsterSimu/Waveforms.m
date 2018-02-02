@@ -14,6 +14,7 @@
 
 @implementation Waveforms
 @synthesize ipbuf = _ipbuf;
+@synthesize parambuf = _parambuf;
 @synthesize result = _result;
 @synthesize globalCounter;
 
@@ -21,6 +22,7 @@
     self = [super init];
     if(self) {
         self.ipbuf = [[NSMutableArray alloc] init];
+        self.parambuf = [[NSMutableArray alloc]init]; //array that stores alpha and sigma
         self->sTime = CACurrentMediaTime();
 
         globalCounter = 0;
@@ -31,6 +33,7 @@
 
 -(void)readMultipleArrays :(NSMutableArray *)cellArray :(double) offset :(double)duration {
     [_ipbuf removeAllObjects];
+    [_parambuf removeAllObjects];
   //  NSLog(@"global counter = %d", globalCounter);
     for (int i = 0; i < [cellArray count]; i ++){
         NSString* cellName = [cellArray objectAtIndex:i]; //get cellName from array of cellName
@@ -53,6 +56,9 @@
 
 -(void) readArray :(cellPointer)cellName : (int) starttime :(int) samplesize{
     NSMutableArray*temp = [[NSMutableArray alloc] init];
+    
+    NSMutableArray*Params = [[NSMutableArray alloc] init];//array to store a,s
+
     NSMutableArray*indies = [self selectCell:cellName];
     int cellType = [[indies objectAtIndex:0] integerValue];
     int cell = [[indies objectAtIndex:1] integerValue];
@@ -66,6 +72,12 @@
     switch (cellType) {
         case 0:
             //  NSLog( @"%f\n", xArrayElev[cell]);
+            
+            //keep this as an array for now in case in the future we want indiv params
+            
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayElev]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayElev]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayElev[starttime][cell]]]; //put neg sign to invert trace
@@ -78,6 +90,10 @@
             break;
             
         case 1:
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayDep]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayDep]];
+
+            
             //   NSLog( @"%f\n", xArrayDep[cell]);
             for (i = 0; i < samplesize; i ++){
                 if (invert)
@@ -89,6 +105,9 @@
             break;
         case 2:
             //   NSLog( @"%f\n", xArraySwing[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArraySwing]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArraySwing]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArraySwing[starttime][cell]]];
@@ -100,6 +119,9 @@
             break;
         case 3:
             //   NSLog( @"%f\n", xArrayStance[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayStance]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayStance]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayStance[starttime][cell]]];
@@ -111,7 +133,11 @@
             break;
         case 4:
             //   NSLog( @"%f\n", xArrayProt[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayProt]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayProt]];
+
             for (i = 0; i < samplesize; i ++){
+                
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayProt[starttime][cell]]];
                 else
@@ -122,6 +148,9 @@
             break;
         case 5:
             //   NSLog( @"%f\n", xArrayRet[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayRet]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayRet]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayRet[starttime][cell]]];
@@ -132,6 +161,9 @@
             break;
         case 6:
             //   NSLog( @"%f\n", xArrayExt[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayExt]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayExt]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                 [temp addObject: [NSNumber numberWithDouble: xArrayExt[starttime][cell]]];
@@ -143,6 +175,9 @@
             break;
         case 7:
             //NSLog( @"%f\n", xArrayFlex[0][cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayFlex]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayFlex]];
+
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                 [temp addObject: [NSNumber numberWithDouble: xArrayFlex[starttime][cell]]];
@@ -154,6 +189,8 @@
             break;
         case 8:
               //NSLog( @"%f\n", xArrayCoord[cell]);
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayCoord]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayCoord]];
 
             for (i = 0; i < samplesize; i ++){
                 if (invert)
@@ -168,6 +205,7 @@
             break;
     }
     [_ipbuf addObject: temp];
+    [_parambuf addObject:Params];
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
 }
@@ -197,7 +235,7 @@
         _cellTypeIndex = 3;
     }
     else if (cellName < 40){
-        //NSLog(@"select Coord but not yet supported, choose a different type");
+        //NSLog(@"select Coord");
         _cellIndex = (int)cellName - 32;
         _cellTypeIndex = 8;
         

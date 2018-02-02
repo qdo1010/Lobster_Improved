@@ -48,6 +48,7 @@ extern long elapsed;
 //@property (readwrite, getter=isDoInitAndScale)      BOOL doInitAndScale;
 @property (readwrite)          BOOL assetInited;
 @property (nonatomic, readwrite)          BOOL doInitAndScale;
+@property (weak) IBOutlet NSButton *setParamsButton;
 
 @property (weak) IBOutlet NSSlider *sweepDurationSlider;
 

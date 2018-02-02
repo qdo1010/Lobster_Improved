@@ -353,6 +353,7 @@
                 <outlet property="cellNameTextBox" destination="2147" id="2td-rG-OZd"/>
                 <outlet property="displayTraceID" destination="R4Z-OG-Ue4" id="2dT-qs-QvK"/>
                 <outlet property="setParams" destination="HwI-NN-j8O" id="zzE-jc-Ta0"/>
+                <outlet property="setParamsButton" destination="HwI-NN-j8O" id="UW2-RE-19K"/>
                 <outlet property="sigmaTextBox" destination="mCm-KL-Cbi" id="pqr-X6-iPj"/>
                 <outlet property="sweepDurationSlider" destination="2070" id="eDg-6p-Ba1"/>
                 <outlet property="sweepDurationTextBox" destination="2130" id="B5H-9d-24D"/>
