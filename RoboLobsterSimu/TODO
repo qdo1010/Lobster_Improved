@@ -1,7 +1,9 @@
 1) Sometimes program crash? Why? add reset button?
 Also, why is it not consistent???????
 Like, when I keep the same alpha, i saw different thing????
-Is xArray getting load correctly???
+Is xArray getting loaded correctly???
+maybe cause of beta and different x init?
+change xinit? would that change anything?
 
 2) Add support to more Cells!!!!!!! those that are spiking only!!
 3) Add max duration, and display max duration?
