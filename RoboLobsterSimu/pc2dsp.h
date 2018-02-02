@@ -207,10 +207,12 @@ struct structBursting {
     int spike;
 }
 cellDepressor[mmSide][mmSeg],
-cellStance[mmSide][mmSeg];
+cellStance[mmSide][mmSeg],
+cellSwing[mmSide][mmSeg],
+cellElevator[mmSide][mmSeg];
 
 
-struct structEndogenousPacemaker {
+/*struct structEndogenousPacemaker {
     double alpha, sigma, mu;
     double yr, xr, x2, y2;
     double x, xp, xpp;
@@ -219,7 +221,7 @@ struct structEndogenousPacemaker {
 }
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
-
+*/
 
 //////////end of dictionary
 void xmain();
