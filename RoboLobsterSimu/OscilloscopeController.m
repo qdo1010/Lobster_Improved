@@ -92,9 +92,17 @@ typedef id MovieAudioExtractionRef;
     
     }
     
-    //hardcoded this for now
-    [alphaTextBox setStringValue:[NSString stringWithFormat:@"%f",5.5]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",1.2]];
+    //Set sigma and alpha to what they really are
+    
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //this is the param id that contains sigma and alpha
+  //  NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+  //  [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+    
+  //  [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+  //  [alphaTextBox setStringValue:[NSString stringWithFormat:@"%f",5.5]];
+  //  [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",1.2]];
     
     //make it bidirectional later
     
@@ -122,14 +130,25 @@ typedef id MovieAudioExtractionRef;
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     traceIDchosen = [[[self displayTraceID] title] integerValue];
     
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+  
+  
+    
+    
     //set trace ID in appDelegate
     [appDelegate setIDofCellChosen:traceIDchosen];
+    
+    //this is the param id that contains sigma and alpha
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+
+    [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+    
     if (traceIDchosen == 0 || traceIDchosen == 1){
         [sigmaTextBox setEditable:(false)];
     }
     else{
         [sigmaTextBox setEditable:(true)];
-
     }
     NSLog(@" choose this trace %d", traceIDchosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
