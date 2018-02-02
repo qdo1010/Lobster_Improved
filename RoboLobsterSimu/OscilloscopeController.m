@@ -144,12 +144,12 @@ typedef id MovieAudioExtractionRef;
 
     [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
     
-    if (traceIDchosen == 0 || traceIDchosen == 1){
-        [sigmaTextBox setEditable:(false)];
-    }
-    else{
-        [sigmaTextBox setEditable:(true)];
-    }
+   // if (traceIDchosen == 0 || traceIDchosen == 1){
+   //     [sigmaTextBox setEditable:(false)];
+   // }
+   // else{
+   //     [sigmaTextBox setEditable:(true)];
+   // }
     NSLog(@" choose this trace %d", traceIDchosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
 
