@@ -312,7 +312,8 @@ typedef id MovieAudioExtractionRef;
 //    NSLog(@"%f",[alphaTextBox floatValue]);
     double a = [alphaTextBox doubleValue];
     double s = [sigmaTextBox doubleValue];
-    NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0];
+    NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
+  //  NSLog(@"choose this %@",name);
     int c = 0;
     if ([name containsString:@"Elevator"]){
         c = 0;

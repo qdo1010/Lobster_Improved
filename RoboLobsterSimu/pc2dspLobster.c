@@ -842,7 +842,7 @@ void xmain()
         if(mainLoopIndex>10)
         {
             
-            //should put this in its own ifdef so as not to confuse w write to file .... will do it soon
+         //should put this in its own ifdef so as not to confuse w write to file .... will do it soon
          //   xArrayElev = malloc(mmSeg*mmSide*sizeof(double));
          //   xArrayDep = malloc(mmSeg*mmSide*sizeof(double));
          //   xArraySwing = malloc(mmSeg*mmSide*sizeof(double));
@@ -855,50 +855,70 @@ void xmain()
             //previ = i;
                 int i;
                 xArrayElev  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArrayElev[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
-                
+                }
             
            // xArrayElev[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg* 1000);
             
                 xArrayDep  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                
+                for (i=0; i<IterNumChosen; i++){
                     xArrayDep[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+
+                }
            // xArrayDep[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArraySwing  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArraySwing[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
-           // xArraySwing[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
+                }
+                // xArraySwing[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayStance  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArrayStance[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                }
                 //xArrayStance[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayProt  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+                
+                for (i=0; i<IterNumChosen; i++){
                     xArrayProt[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                }
+                
                 //xArrayProt[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayRet  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArrayRet[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                }
+                
                 //xArrayRet[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayExt  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArrayExt[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                }
                 //xArrayExt[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayFlex  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+                for (i=0; i<IterNumChosen; i++){
                     xArrayFlex[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
+                }
                 
                 xArrayCoord  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                for (i=0; i<IterNumChosen; i++)
+
+                for (i=0; i<IterNumChosen; i++){
                     xArrayCoord[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
-                
+
+                }
                 //xArrayFlex[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             }
             int indy = 0;
@@ -915,43 +935,68 @@ void xmain()
                     fprintf(f10," %lf", cellElevator[iSide][iSeg].x);
                     fprintf(f10," ");
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
+                    //alphaArrayElev[ind][indy] = cellElevator[iSide][iSeg].alpha;
+                    //sigmaArrayElev[ind][indy] = cellElevator[iSide][iSeg].sigma;
+
+                    
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
                     fprintf(f11,"") ;
                     xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].x; //test
+                    //alphaArrayDep[ind][indy] = cellDepressor[iSide][iSeg].alpha;
+                    //sigmaArrayDep[ind][indy] = cellDepressor[iSide][iSeg].sigma;
+                    
                     
                     fprintf(f12," %lf", cellSwing[iSide][iSeg].x);
                     fprintf(f12," ");
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
+                    //alphaArraySwing[ind][indy] = cellSwing[iSide][iSeg].alpha;
+                    //sigmaArraySwing[ind][indy] = cellDepressor[iSide][iSeg].sigma;
+
+                    
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
                     xArrayStance[ind][indy] = cellStance[iSide][iSeg].x; //test
+                    //alphaArrayStance[ind][indy] = cellStance[iSide][iSeg].alpha;
+                    //sigmaArrayStance[ind][indy] = cellStance[iSide][iSeg].sigma;
+                    
+                    
                     
                     fprintf(f14," %lf", cellProtractor[iSide][iSeg].x);
                     fprintf(f14," ");
                     xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].x; //test
+                   // alphaArrayProt[ind][indy] = cellProtractor[iSide][iSeg].alpha;
+                   // sigmaArrayProt[ind][indy] = cellProtractor[iSide][iSeg].sigma;
+
+                    
                     
                     fprintf(f15," %lf", cellRetractor[iSide][iSeg].x);
                     fprintf(f15," ");
                     xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].x; //test
+                  //  alphaArrayRet[ind][indy] = cellRetractor[iSide][iSeg].alpha;
+                   // sigmaArrayRet[ind][indy] = cellRetractor[iSide][iSeg].sigma;
+
                     
                     
                     fprintf(f16," %lf", cellExtensor[iSide][iSeg].x);
                     fprintf(f16," ");
                     xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].x; //test
-                    
+                  //  alphaArrayExt[ind][indy] = cellExtensor[iSide][iSeg].alpha;
+                  //  sigmaArrayExt[ind][indy] = cellExtensor[iSide][iSeg].sigma;
+
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
-                    
-
-
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
+                   // alphaArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].alpha;
+                   // sigmaArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].sigma;
+
                     
                     xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
+                   // alphaArrayCoord[ind][indy] = cellCoord[iSide][iSeg].alpha;
+                   // sigmaArrayCoord[ind][indy] = cellCoord[iSide][iSeg].sigma;
 
-                    
                     indy++;
                 }
             }
