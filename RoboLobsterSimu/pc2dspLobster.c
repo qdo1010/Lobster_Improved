@@ -102,7 +102,7 @@ void burstingNeuronInit(struct structBursting *ptr) {
 
 void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
-    ptr->alpha = 5.0;
+    ptr->alpha = 5.2;
 //    ptr->alpha = 4.60108;
     ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
     
