@@ -159,7 +159,7 @@ double** xArrayExt;
 double** xArrayFlex;
 double** xArrayCoord;
 
-//alpha array
+//alpha values
 double alphaArrayElev;
 double alphaArrayDep;
 double alphaArraySwing;
@@ -170,7 +170,7 @@ double alphaArrayExt;
 double alphaArrayFlex;
 double alphaArrayCoord;
 
-//sigma arr
+//sigma values
 double sigmaArrayElev;
 double sigmaArrayDep;
 double sigmaArraySwing;
@@ -180,6 +180,61 @@ double sigmaArrayRet;
 double sigmaArrayExt;
 double sigmaArrayFlex;
 double sigmaArrayCoord;
+
+//sE
+double sigmaEArrayElev;
+double sigmaEArrayDep;
+double sigmaEArraySwing;
+double sigmaEArrayStance;
+double sigmaEArrayProt;
+double sigmaEArrayRet;
+double sigmaEArrayExt;
+double sigmaEArrayFlex;
+double sigmaEArrayCoord;
+
+//sI
+double sigmaIArrayElev;
+double sigmaIArrayDep;
+double sigmaIArraySwing;
+double sigmaIArrayStance;
+double sigmaIArrayProt;
+double sigmaIArrayRet;
+double sigmaIArrayExt;
+double sigmaIArrayFlex;
+double sigmaIArrayCoord;
+
+//bE
+double betaEArrayElev;
+double betaEArrayDep;
+double betaEArraySwing;
+double betaEArrayStance;
+double betaEArrayProt;
+double betaEArrayRet;
+double betaEArrayExt;
+double betaEArrayFlex;
+double betaEArrayCoord;
+
+
+double betaIArrayElev;
+double betaIArrayDep;
+double betaIArraySwing;
+double betaIArrayStance;
+double betaIArrayProt;
+double betaIArrayRet;
+double betaIArrayExt;
+double betaIArrayFlex;
+double betaIArrayCoord;
+
+double IdcArrayElev;
+double IdcArrayDep;
+double IdcArraySwing;
+double IdcArrayStance;
+double IdcArrayProt;
+double IdcArrayRet;
+double IdcArrayExt;
+double IdcArrayFlex;
+double IdcArrayCoord;
+
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
@@ -234,15 +289,21 @@ void indicateNumberOfIteration(int i);
 
 int globalLoopIndex;
 
-double globalSigma = 1.2;
-double globalAlpha = 6; //params alpha beta for bursting and spiking neuron
+double globalSigma;
+double globalAlpha; //params alpha beta for bursting and spiking neuron
+double globalSigmaE;
+double globalSigmaI;
+double globalBetaE;
+double globalBetaI;
+double globalIdc;
+
 int globalCellName = 0;
 int cellChosen;
 int beginEditingParams = 0;//we have not edit the params
 //function to set params
-void setNeuronParams(int id, double s, double a); // change alpha and sigma
+void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 void chooseCell(int cellID);
-void editParam(int neuronName, double s, double a);
+void editParam(int neuronName, double a, double s, double sE, double sI, double bE, double bI, double Idc);
 int whatTypeofCell(char* neuronName);
 long elapsed;
 

@@ -71,6 +71,11 @@ extern long elapsed;
 @property (weak) IBOutlet NSTextField *cellNameTextBox; //cell Name
 @property (weak) IBOutlet NSTextField *alphaTextBox;
 @property (weak) IBOutlet NSTextField *sigmaTextBox;
+@property (weak) IBOutlet NSTextField *sigmaETextBox;
+@property (weak) IBOutlet NSTextField *sigmaITextBox;
+@property (weak) IBOutlet NSTextField *betaETextBox;
+@property (weak) IBOutlet NSTextField *betaITextBox;
+@property (weak) IBOutlet NSTextField *IdcTextBox;
 
 @property (weak) IBOutlet NSPopUpButton *displayTraceID;
 
