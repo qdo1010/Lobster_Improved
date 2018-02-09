@@ -79,7 +79,7 @@
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayElev]];
             [Params addObject:[NSNumber numberWithDouble:0]];
             [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayElev]];
             [Params addObject:[NSNumber numberWithDouble:0]];
             [Params addObject:[NSNumber numberWithDouble:0]];
 
@@ -121,7 +121,7 @@
             [Params addObject:[NSNumber numberWithDouble:sigmaArraySwing]];
             [Params addObject:[NSNumber numberWithDouble:0]];
             [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArraySwing]];
             [Params addObject:[NSNumber numberWithDouble:0]];
             [Params addObject:[NSNumber numberWithDouble:0]];
             

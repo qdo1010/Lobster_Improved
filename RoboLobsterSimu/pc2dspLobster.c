@@ -105,6 +105,15 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->alpha = 5.0;
 //    ptr->alpha = 4.60108;
     ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
+    
+    //ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    //ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
+    //ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    ptr->betaE = 1.33;    //sets the transient responce to excitatory synaptic current
+    //ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+   // ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
+   // ptr->Idc = 0;
+    
     ptr->yr = -1*(2+ptr->alpha)/2;
     ptr->xr = 1-sqrt(ptr->alpha);
     ptr->alphaInit = sqrt(ptr->alpha);
@@ -170,6 +179,7 @@ void calcBurstingNeuron(struct structBursting *ptr,double cIe,double cIi) {
 void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double e) {
     //ptr->sigma = 0.17;
     ptr->x2= ptr->x2;
+    double b = ptr->betaE; //add BetaE
     if(ptr->xp <= 0.0) {
         ptr->x= ptr->alpha / (1.0 - ptr->xp) + ptr->x2 + c;
         ptr->spike= 0;
@@ -186,15 +196,15 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
     }
     if (ptr->xp<-1)
     {
-        ptr->y2 = ptr->x2 - ptr->mu * (1+ ptr->xp) + ptr->mu * ptr->sigma + ptr->mu * e;
+        ptr->y2 = ptr->x2 - b* ptr->mu * (1+ ptr->xp) + b*ptr->mu * ptr->sigma + b* ptr->mu * e;
     }
     else{
         if (ptr->x2 >= ptr->yr-0.001 && ptr->sigma<0.02)
         {
-            ptr->y2 = ptr->x2 - ptr->mu*(0.4) + ptr->mu * e;
+            ptr->y2 = ptr->x2 - b*ptr->mu*(0.4) + b*ptr->mu * e;
         }
         else
-            ptr->y2 = ptr->x2 - ptr->mu*(1+ptr->xp) + ptr->mu * ptr->sigma + ptr->mu * e;
+            ptr->y2 = ptr->x2 - b*ptr->mu*(1+ptr->xp) + b*ptr->mu * ptr->sigma + b*ptr->mu * e;
     }
     ptr->xpp= ptr->xp;
     ptr->xp= ptr->x;
@@ -947,7 +957,8 @@ void xmain()
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
                     alphaArrayElev= cellElevator[iSide][iSeg].alpha;
                     sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
-                    
+                    betaEArrayElev = cellElevator[iSide][iSeg].betaE;
+
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
@@ -966,7 +977,8 @@ void xmain()
                     fprintf(f12," ");
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
                     alphaArraySwing = cellSwing[iSide][iSeg].alpha;
-                    sigmaArraySwing = cellDepressor[iSide][iSeg].sigma;
+                    sigmaArraySwing = cellSwing[iSide][iSeg].sigma;
+                    betaEArraySwing = cellSwing[iSide][iSeg].betaE;
 
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
@@ -1201,11 +1213,14 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
             {
                 if(id == 0){
                     cellElevator[iSide][iSeg].alpha = a;
+                    cellElevator[iSide][iSeg].betaE = bE;
+
 
                 }
                 else if(id == 1){
                     cellSwing[iSide][iSeg].alpha = a;
-                    
+                    cellSwing[iSide][iSeg].betaE = bE;
+
                 }
                 else if(id == 2){
                     cellDepressor[iSide][iSeg].alpha = a;

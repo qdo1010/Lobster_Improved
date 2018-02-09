@@ -269,13 +269,24 @@ struct structEndogenousPacemaker {
     double alpha, sigma, mu;
     double yr, xr, x2, y2;
     double x, xp, xpp;
+    double sigmaE, sigmaI, betaE, betaI, Idc; //added
+    double sigmaDc, betaDc; //added
     double alphaInit;
     int spike;
 }
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
 
-
+/*
+struct structEndogenousPacemaker {
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, alpha, sigma, sigmaE, sigmaI, betaE, betaI, Idc;
+    int spike;
+}
+cellSwing[mmSide][mmSeg],
+cellElevator[mmSide][mmSeg];
+*/
 //////////end of dictionary
 void xmain();
 int samplesizechosen = 500; //init w 500 as the default for now
