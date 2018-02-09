@@ -413,6 +413,97 @@ typedef id MovieAudioExtractionRef;
     
     
 }
+
+- (IBAction)saveParams:(id)sender {
+
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //set trace ID in appDelegate
+    //this is the param id that contains sigma and alpha
+    for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
+        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+        
+            //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:params];
+            // write the data to the end of the file
+           // NSString* param = [params objectAtIndex:j];
+            NSLog(@"%@",params);
+            // NSData *textData = [param dataUsingEncoding:NSUTF8StringEncoding];
+            //[fileHandle writeData:textData];
+
+    }
+
+ /*   NSString *str = [NSString stringWithFormat:@"%@\n",[alphaTextBox stringValue]]; //get text from textField
+    
+    
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    //file name to write the data to using the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@/NeuronParams.txt",
+                          documentsDirectory];
+    
+    // check for file exist
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:fileName]) {
+        
+        // the file doesn't exist,we can write out the text using the  NSString convenience method
+        
+        NSError *error = noErr;
+        BOOL success = [str writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:fileName];
+        
+        // move to the end of the file
+        [fileHandle seekToEndOfFile];
+        
+        // convert the string to an NSData object
+        //    NSData *textData = [str dataUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        if (!success) {
+            // handle the error
+            NSLog(@"%@", error);
+        }
+        
+    } else {
+        
+        // the file already exists, append the text to the end
+        
+        // get a handle
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:fileName];
+        
+        // move to the end of the file
+        [fileHandle seekToEndOfFile];
+        
+        // convert the string to an NSData object
+    //    NSData *textData = [str dataUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+        
+        //set trace ID in appDelegate
+        //this is the param id that contains sigma and alpha
+        for (int i = 0; i < [[propertyValue parambuf] count]; i ++){
+        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+            for (int j = 0; j < [params count]; j++){
+        //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:params];
+        // write the data to the end of the file
+                NSString* param = [params objectAtIndex:j];
+                NSData *textData = [param dataUsingEncoding:NSUTF8StringEncoding];
+                [fileHandle writeData:textData];
+            }
+        }
+        // clean up
+        [fileHandle closeFile];
+    }
+  
+  */
+}
 @end
 
 
