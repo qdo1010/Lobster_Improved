@@ -1039,9 +1039,9 @@ void xmain()
                 }
             }
             ind++;
-            if (ind == IterNumChosen){
+            if (ind == IterNumChosen-1){
                 ind = 0;
-                sleep(0.5*samplesizechosen); //0.5 is the refresh rate of
+                //sleep(0.5*samplesizechosen); //0.5 is the refresh rate of
 
             free(xArrayDep);
             free(xArrayExt);
