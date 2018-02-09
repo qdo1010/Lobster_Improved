@@ -33,6 +33,11 @@ typedef id MovieAudioExtractionRef;
 @synthesize cellNameTextBox;
 @synthesize alphaTextBox;
 @synthesize sigmaTextBox;
+@synthesize sigmaETextBox;
+@synthesize sigmaITextBox;
+@synthesize betaETextBox;
+@synthesize betaITextBox;
+@synthesize IdcTextBox;
 
 @synthesize traceIDchosen;
 @synthesize AllTracesInfo;
@@ -139,9 +144,16 @@ typedef id MovieAudioExtractionRef;
     
     //this is the param id that contains sigma and alpha
     NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    
+    //init all params
     [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
-
     [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+    [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
+    [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
+    [betaETextBox setStringValue:[[params objectAtIndex:4] stringValue]];
+    [betaITextBox setStringValue:[[params objectAtIndex:5] stringValue]];
+    [IdcTextBox setStringValue:[[params objectAtIndex:6] stringValue]];
+
     
    // if (traceIDchosen == 0 || traceIDchosen == 1){
    //     [sigmaTextBox setEditable:(false)];
@@ -330,6 +342,11 @@ typedef id MovieAudioExtractionRef;
 //    NSLog(@"%f",[alphaTextBox floatValue]);
     double a = [alphaTextBox doubleValue];
     double s = [sigmaTextBox doubleValue];
+    double sE = [sigmaETextBox doubleValue];
+    double sI = [sigmaITextBox doubleValue];
+    double bE = [betaETextBox doubleValue];
+    double bI = [betaITextBox doubleValue];
+    double Idc = [IdcTextBox doubleValue];
     traceIDchosen = [[[self displayTraceID] title] integerValue];
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -339,6 +356,11 @@ typedef id MovieAudioExtractionRef;
     NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
     [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:a]];
     [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:s]];
+    [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sE]];
+    [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sI]];
+    [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:bE]];
+    [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:bI]];
+    [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc]];
 
     
     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
@@ -374,7 +396,7 @@ typedef id MovieAudioExtractionRef;
     else{
     c = 0;
     }
-    editParam(c,s,a);
+    editParam(c,a,s,sE, sI, bE, bI,Idc);
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         [self setFirstTimeChangeParams:0]; //now it's set

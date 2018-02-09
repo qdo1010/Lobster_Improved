@@ -172,6 +172,59 @@ extern double sigmaArrayRet;
 extern double sigmaArrayExt;
 extern double sigmaArrayFlex;
 extern double sigmaArrayCoord;
+
+extern double sigmaEArrayElev;
+extern double sigmaEArrayDep;
+extern double sigmaEArraySwing;
+extern double sigmaEArrayStance;
+extern double sigmaEArrayProt;
+extern double sigmaEArrayRet;
+extern double sigmaEArrayExt;
+extern double sigmaEArrayFlex;
+extern double sigmaEArrayCoord;
+
+//sI
+extern double sigmaIArrayElev;
+extern double sigmaIArrayDep;
+extern double sigmaIArraySwing;
+extern double sigmaIArrayStance;
+extern double sigmaIArrayProt;
+extern double sigmaIArrayRet;
+extern double sigmaIArrayExt;
+extern double sigmaIArrayFlex;
+extern double sigmaIArrayCoord;
+
+//bE
+extern double betaEArrayElev;
+extern double betaEArrayDep;
+extern double betaEArraySwing;
+extern double betaEArrayStance;
+extern double betaEArrayProt;
+extern double betaEArrayRet;
+extern double betaEArrayExt;
+extern double betaEArrayFlex;
+extern double betaEArrayCoord;
+
+
+extern double betaIArrayElev;
+extern double betaIArrayDep;
+extern double betaIArraySwing;
+extern double betaIArrayStance;
+extern double betaIArrayProt;
+extern double betaIArrayRet;
+extern double betaIArrayExt;
+extern double betaIArrayFlex;
+extern double betaIArrayCoord;
+
+extern double IdcArrayElev;
+extern double IdcArrayDep;
+extern double IdcArraySwing;
+extern double IdcArrayStance;
+extern double IdcArrayProt;
+extern double IdcArrayRet;
+extern double IdcArrayExt;
+extern double IdcArrayFlex;
+extern double IdcArrayCoord;
 typedef void (^CaseBlock)(void);
 
 //-(void) runCalculation;

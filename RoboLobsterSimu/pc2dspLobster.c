@@ -390,7 +390,7 @@ void xmain()
     
 
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
-        setNeuronParams(globalCellName, globalSigma, globalAlpha);
+        setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
         //printf("why am i not called");
     }
     else{
@@ -947,7 +947,7 @@ void xmain()
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
                     alphaArrayElev= cellElevator[iSide][iSeg].alpha;
                     sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
-
+                    
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
@@ -955,7 +955,12 @@ void xmain()
                     xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].x; //test
                     alphaArrayDep = cellDepressor[iSide][iSeg].alpha;
                     sigmaArrayDep = cellDepressor[iSide][iSeg].sigma;
-                    
+                    sigmaIArrayDep = cellDepressor[iSide][iSeg].sigmaI;
+                    sigmaEArrayDep = cellDepressor[iSide][iSeg].sigmaE;
+                    betaEArrayDep = cellDepressor[iSide][iSeg].betaE;
+                    betaIArrayDep = cellDepressor[iSide][iSeg].betaI;
+                    IdcArrayDep = cellDepressor[iSide][iSeg].Idc;
+
                     
                     fprintf(f12," %lf", cellSwing[iSide][iSeg].x);
                     fprintf(f12," ");
@@ -964,13 +969,16 @@ void xmain()
                     sigmaArraySwing = cellDepressor[iSide][iSeg].sigma;
 
                     
-                    
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
                     xArrayStance[ind][indy] = cellStance[iSide][iSeg].x; //test
                     alphaArrayStance = cellStance[iSide][iSeg].alpha;
                     sigmaArrayStance = cellStance[iSide][iSeg].sigma;
-                    
+                    sigmaIArrayStance = cellStance[iSide][iSeg].sigmaI;
+                    sigmaEArrayStance = cellStance[iSide][iSeg].sigmaE;
+                    betaEArrayStance = cellStance[iSide][iSeg].betaE;
+                    betaIArrayStance = cellStance[iSide][iSeg].betaI;
+                    IdcArrayStance = cellStance[iSide][iSeg].Idc;
                     
                     
                     fprintf(f14," %lf", cellProtractor[iSide][iSeg].x);
@@ -978,7 +986,11 @@ void xmain()
                     xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].x; //test
                     alphaArrayProt = cellProtractor[iSide][iSeg].alpha;
                     sigmaArrayProt = cellProtractor[iSide][iSeg].sigma;
-
+                    sigmaIArrayProt = cellProtractor[iSide][iSeg].sigmaI;
+                    sigmaEArrayProt = cellProtractor[iSide][iSeg].sigmaE;
+                    betaEArrayProt = cellProtractor[iSide][iSeg].betaE;
+                    betaIArrayProt = cellProtractor[iSide][iSeg].betaI;
+                    IdcArrayProt = cellProtractor[iSide][iSeg].Idc;
                     
                     
                     fprintf(f15," %lf", cellRetractor[iSide][iSeg].x);
@@ -986,7 +998,11 @@ void xmain()
                     xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].x; //test
                     alphaArrayRet = cellRetractor[iSide][iSeg].alpha;
                     sigmaArrayRet = cellRetractor[iSide][iSeg].sigma;
-
+                    sigmaIArrayRet = cellRetractor[iSide][iSeg].sigmaI;
+                    sigmaEArrayRet = cellRetractor[iSide][iSeg].sigmaE;
+                    betaEArrayRet = cellRetractor[iSide][iSeg].betaE;
+                    betaIArrayRet = cellRetractor[iSide][iSeg].betaI;
+                    IdcArrayRet = cellRetractor[iSide][iSeg].Idc;
                     
                     
                     fprintf(f16," %lf", cellExtensor[iSide][iSeg].x);
@@ -994,19 +1010,31 @@ void xmain()
                     xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].x; //test
                     alphaArrayExt = cellExtensor[iSide][iSeg].alpha;
                     sigmaArrayExt = cellExtensor[iSide][iSeg].sigma;
-
+                    sigmaIArrayExt = cellExtensor[iSide][iSeg].sigmaI;
+                    sigmaEArrayExt = cellExtensor[iSide][iSeg].sigmaE;
+                    betaEArrayExt = cellExtensor[iSide][iSeg].betaE;
+                    betaIArrayExt = cellExtensor[iSide][iSeg].betaI;
+                    IdcArrayExt = cellExtensor[iSide][iSeg].Idc;
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
                     alphaArrayFlex = cellFlexor[iSide][iSeg].alpha;
                     sigmaArrayFlex = cellFlexor[iSide][iSeg].sigma;
-
+                    sigmaIArrayFlex = cellFlexor[iSide][iSeg].sigmaI;
+                    sigmaEArrayFlex = cellFlexor[iSide][iSeg].sigmaE;
+                    betaEArrayFlex = cellFlexor[iSide][iSeg].betaE;
+                    betaIArrayFlex = cellFlexor[iSide][iSeg].betaI;
+                    IdcArrayFlex = cellFlexor[iSide][iSeg].Idc;
                     
                     xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
                     alphaArrayCoord = cellCoord[iSide][iSeg].alpha;
                     sigmaArrayCoord = cellCoord[iSide][iSeg].sigma;
-
+                    sigmaIArrayCoord = cellCoord[iSide][iSeg].sigmaI;
+                    sigmaEArrayCoord = cellCoord[iSide][iSeg].sigmaE;
+                    betaEArrayCoord = cellCoord[iSide][iSeg].betaE;
+                    betaIArrayCoord = cellCoord[iSide][iSeg].betaI;
+                    IdcArrayCoord = cellCoord[iSide][iSeg].Idc;
                     indy++;
                 }
             }
@@ -1129,12 +1157,18 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void editParam(int neuronName, double s, double a){
+void editParam(int neuronName, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //printf("%s\n",neuronName);
     printf("begin editing\n");
     beginEditingParams = 1; //set flag for begin editing
     globalAlpha = a;
     globalSigma = s;
+    globalSigmaE = sE;
+    globalSigmaI = sI;
+    globalBetaE = bE;
+    globalBetaI = bI;
+    globalIdc = Idc;
+    
     globalCellName = neuronName;
    // xmain();
    // setNeuronParams(neuronName, s, a);
@@ -1151,7 +1185,7 @@ int whatTypeofCell(char* neuronName){
     ///PLZZ EDIT
 }
 
-void setNeuronParams(int id, double s, double a){
+void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //identify which type it is?
    // if (id == 8){//Spiking
         printf("Spiking edit\n");
@@ -1167,39 +1201,73 @@ void setNeuronParams(int id, double s, double a){
             {
                 if(id == 0){
                     cellElevator[iSide][iSeg].alpha = a;
+
                 }
                 else if(id == 1){
                     cellSwing[iSide][iSeg].alpha = a;
+                    
                 }
                 else if(id == 2){
                     cellDepressor[iSide][iSeg].alpha = a;
                     cellDepressor[iSide][iSeg].sigma = s;
+                    cellDepressor[iSide][iSeg].sigmaE = sE;
+                    cellDepressor[iSide][iSeg].sigmaI = sI;
+                    cellDepressor[iSide][iSeg].betaE = bE;
+                    cellDepressor[iSide][iSeg].betaI = bI;
+                    cellDepressor[iSide][iSeg].Idc = Idc;
+
                 }
                 else if(id == 3){
                     cellStance[iSide][iSeg].alpha = a;
                     cellStance[iSide][iSeg].sigma = s;
+                    cellStance[iSide][iSeg].sigmaE = sE;
+                    cellStance[iSide][iSeg].sigmaI = sI;
+                    cellStance[iSide][iSeg].betaE = bE;
+                    cellStance[iSide][iSeg].betaI = bI;
+                    cellStance[iSide][iSeg].Idc = Idc;
+                    
                 }
                 else if(id == 4){
                     cellCoord[iSide][iSeg].alpha = a;
                     cellCoord[iSide][iSeg].sigma = s;
+                    cellCoord[iSide][iSeg].sigmaE = sE;
+                    cellCoord[iSide][iSeg].sigmaI = sI;
+                    cellCoord[iSide][iSeg].betaE = bE;
+                    cellCoord[iSide][iSeg].betaI = bI;
+                    cellCoord[iSide][iSeg].Idc = Idc;
                 }
                 else if(id == 5){
                     cellProtractor[iSide][iSeg].alpha = a;
                     cellProtractor[iSide][iSeg].sigma = s;
+                    cellProtractor[iSide][iSeg].sigmaE = sE;
+                    cellProtractor[iSide][iSeg].sigmaI = sI;
+                    cellProtractor[iSide][iSeg].betaE = bE;
+                    cellProtractor[iSide][iSeg].betaI = bI;
+                    cellProtractor[iSide][iSeg].Idc = Idc;
                 }
                 else if(id == 7){
                     cellRetractor[iSide][iSeg].alpha = a;
                     cellRetractor[iSide][iSeg].sigma = s;
+                    cellRetractor[iSide][iSeg].sigmaE = sE;
+                    cellRetractor[iSide][iSeg].sigmaI = sI;
+                    cellRetractor[iSide][iSeg].betaE = bE;
+                    cellRetractor[iSide][iSeg].betaI = bI;
+                    cellRetractor[iSide][iSeg].Idc = Idc;
                 }
                 else if(id == 8){
                     cellFlexor[iSide][iSeg].alpha = a;
                     cellFlexor[iSide][iSeg].sigma = s;
+                    cellFlexor[iSide][iSeg].sigmaE = sE;
+                    cellFlexor[iSide][iSeg].sigmaI = sI;
+                    cellFlexor[iSide][iSeg].betaE = bE;
+                    cellFlexor[iSide][iSeg].betaI = bI;
+                    cellFlexor[iSide][iSeg].Idc = Idc;
                 }
                 //--set initial state of neuron at the fixed point---
-      //  cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;
-      //  cellFlexor[iSide][iSeg].xp = -1 + cellFlexor[iSide][iSeg].sigma;
-      //  cellFlexor[iSide][iSeg].x = -1 + cellFlexor[iSide][iSeg].sigma;
-      //  cellFlexor[iSide][iSeg].y = cellFlexor[iSide][iSeg].x - cellFlexor[iSide][iSeg].alpha/(1-cellFlexor[iSide][iSeg].x);
+        //cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;
+       // cellFlexor[iSide][iSeg].xp = -1 + cellFlexor[iSide][iSeg].sigma;
+       // cellFlexor[iSide][iSeg].x = -1 + cellFlexor[iSide][iSeg].sigma;
+       // cellFlexor[iSide][iSeg].y = cellFlexor[iSide][iSeg].x - cellFlexor[iSide][iSeg].alpha/(1-cellFlexor[iSide][iSeg].x);
             }
         }
       //  printf("So what\n");
