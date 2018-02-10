@@ -392,14 +392,14 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" misplaced="YES" id="b9u-RU-QNB">
-                                <rect key="frame" x="51" y="342" width="118" height="32"/>
+                                <rect key="frame" x="51" y="342" width="119" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Save Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CuU-cJ-Fda">
+                                <buttonCell key="cell" type="push" title="Load Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CuU-cJ-Fda">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="saveParams:" target="2057" id="JjW-2e-uqD"/>
+                                    <action selector="loadParams:" target="2057" id="lIQ-Q1-XV8"/>
                                 </connections>
                             </button>
                         </subviews>
