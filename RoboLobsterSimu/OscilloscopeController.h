@@ -90,7 +90,7 @@ extern long elapsed;
 - (IBAction)changeView:(id)sender;
 - (IBAction)setParams:(id)sender;
 - (IBAction)loadParams:(id)sender;
-
+- (IBAction)saveParams:(id)sender;
 
 - (void)beginSendingStuffToBeDraw;
 
