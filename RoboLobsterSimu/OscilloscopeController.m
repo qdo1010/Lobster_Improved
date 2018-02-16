@@ -404,17 +404,43 @@ typedef id MovieAudioExtractionRef;
         setParamsButton.enabled = false;
         int currentIndex = 0;
         while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+            currentIndex = 0;
             currentIndex = checkMainLoopIndex();
         } //xmain should end by now
-        [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+        //sleep(0.1);
+        [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+        //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         setParamsButton.enabled = true;
         
     }
-    
-    
 }
 
-- (IBAction)saveParams:(id)sender {
+//load params load in a txt file and set the params
+//not yet implemented
+- (IBAction)loadParams:(id)sender {
+ /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
+    
+    [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
+    
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setCanChooseDirectories:YES];
+    
+    if ( [openDlg runModal] == NSModalResponseOK )  // See #1
+    {
+        for( NSURL* URL in [openDlg URLs] )  // See #2, #4
+        {
+            NSLog( @"%@", [URL path] );
+            //NOW READ IN THE FILE and LOAD the PARAMS
+            
+          //  [self decompresss2z:[URL path]]; // See #5
+        }
+    }
+
+}
+
+/*- (IBAction)saveParams:(id)sender {
 
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
@@ -502,8 +528,9 @@ typedef id MovieAudioExtractionRef;
         [fileHandle closeFile];
     }
   
-  */
+ 
 }
+*/
 @end
 
 
