@@ -1,6 +1,5 @@
 1) load file
-
-
+y = 1/(1+e^-x)
 2) Add support to more Cells!!!!!!! those that are spiking only!!
 3) Add max duration, and display max duration?
 

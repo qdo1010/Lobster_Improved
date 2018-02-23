@@ -450,7 +450,7 @@ typedef id MovieAudioExtractionRef;
                      NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
                     int c = 0;
                     if ([name containsString:columns[0]]){ //if the column name is in text file...
-                        
+                        NSLog(@"this is %@",columns[0]);
                         //so what name is it?
                         if ([name containsString:@"Elevator"]){
                             c = 0;
@@ -479,11 +479,11 @@ typedef id MovieAudioExtractionRef;
                         else if ([name containsString:@"Flexor"]){
                             c = 8;
                         }
-                        else{
-                            c = 0;
-                        }
-                        editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                        if (firstTimeChangeParams == 1){
+
+                        
+                       // editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                        NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                      /*  if (firstTimeChangeParams == 1){
                             [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
                             [self setFirstTimeChangeParams:0]; //now it's set
                         }else{
@@ -497,10 +497,9 @@ typedef id MovieAudioExtractionRef;
                             
                             ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
                             
-                            [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
-
-                            
-                        }
+                         //   [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+*/
+                     //   }
                     }
                 }
 

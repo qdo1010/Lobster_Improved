@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
 		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
 		970E766C1EF17CED002EE43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766B1EF17CED002EE43D /* main.m */; };
 		970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 970E76701EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld */; };
@@ -23,6 +24,7 @@
 		970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76A91EF1A125002EE43D /* OscilloscopeController.m */; };
 		970E76AE1EF1A140002EE43D /* OscilloscopeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76AD1EF1A140002EE43D /* OscilloscopeView.m */; };
 		970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76AF1EF1A158002EE43D /* analysisWindowController.m */; };
+		979A879620376C630085639E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 979A879520376C630085639E /* Base */; };
 		97D4662B203527B90042B141 /* Slow in Resources */ = {isa = PBXBuildFile; fileRef = 97D4662A203527B90042B141 /* Slow */; };
 		97D4662D203527C60042B141 /* Fast in Resources */ = {isa = PBXBuildFile; fileRef = 97D4662C203527C60042B141 /* Fast */; };
 		97D6A7AE200AC28700BF3C15 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 97D6A7AD200AC28700BF3C15 /* TODO */; };
@@ -48,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-02-23 at 3.31.24 PM.png"; sourceTree = "<group>"; };
 		970E76641EF17CED002EE43D /* RoboLobsterSimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboLobsterSimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		970E76671EF17CED002EE43D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		970E76681EF17CED002EE43D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		970E76AC1EF1A140002EE43D /* analysisWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analysisWindowController.h; sourceTree = "<group>"; };
 		970E76AD1EF1A140002EE43D /* OscilloscopeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscilloscopeView.m; sourceTree = "<group>"; };
 		970E76AF1EF1A158002EE43D /* analysisWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analysisWindowController.m; sourceTree = "<group>"; };
+		979A879520376C630085639E /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Base; sourceTree = "<group>"; };
 		97D4662A203527B90042B141 /* Slow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Slow; sourceTree = "<group>"; };
 		97D4662C203527C60042B141 /* Fast */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fast; sourceTree = "<group>"; };
 		97D6A7AD200AC28700BF3C15 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -161,9 +165,11 @@
 		970E766A1EF17CED002EE43D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */,
 				970E76A21EF1A0A6002EE43D /* MainMenu.xib */,
 				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
 				970E769D1EF19FBF002EE43D /* LobsterSynapseList.txt */,
+				979A879520376C630085639E /* Base */,
 				970E766B1EF17CED002EE43D /* main.m */,
 				97D4662A203527B90042B141 /* Slow */,
 				97D4662C203527C60042B141 /* Fast */,
@@ -299,9 +305,11 @@
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
+				979A879620376C630085639E /* Base in Resources */,
 				970E76A71EF1A0A6002EE43D /* OscolloscopeController.xib in Resources */,
 				D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */,
 				970E76A61EF1A0A6002EE43D /* AnalysisWindowController.xib in Resources */,
+				97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */,
 				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
 				97D4662D203527C60042B141 /* Fast in Resources */,
 				970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */,

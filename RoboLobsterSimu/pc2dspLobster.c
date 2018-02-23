@@ -269,7 +269,20 @@ int xyz;
 void calcSynapticCurrents(double *I,
                           struct structSynapses *params,
                           double xPost,double spikes) {
-    *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
+  //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
+    
+    
+    //add chemotonic? maybe?
+   ///this on not really
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*tanh(xPost-params->xRp);
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(-xPost)));
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) + params->gStrength*tanh(xPost - params->xRp);
+
+  //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(xPost - params->xRp)));
+
+       *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
+
+
 } // end of the Synaptic structure
 
 void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
@@ -479,6 +492,7 @@ void xmain()
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.05;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 0.1;*/
     
+    ///you changed it here
     pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.2;
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 0.2;
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.999;    pSlowExc.gStrength = 0.2;
@@ -1180,7 +1194,6 @@ void editParam(int neuronName, double a, double s, double sE, double sI, double 
     globalBetaE = bE;
     globalBetaI = bI;
     globalIdc = Idc;
-    
     globalCellName = neuronName;
    // xmain();
    // setNeuronParams(neuronName, s, a);
@@ -1260,7 +1273,7 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellProtractor[iSide][iSeg].betaI = bI;
                     cellProtractor[iSide][iSeg].Idc = Idc;
                 }
-                else if(id == 7){
+                else if(id == 6){
                     cellRetractor[iSide][iSeg].alpha = a;
                     cellRetractor[iSide][iSeg].sigma = s;
                     cellRetractor[iSide][iSeg].sigmaE = sE;
@@ -1269,7 +1282,7 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellRetractor[iSide][iSeg].betaI = bI;
                     cellRetractor[iSide][iSeg].Idc = Idc;
                 }
-                else if(id == 8){
+                else if(id == 7){
                     cellFlexor[iSide][iSeg].alpha = a;
                     cellFlexor[iSide][iSeg].sigma = s;
                     cellFlexor[iSide][iSeg].sigmaE = sE;
