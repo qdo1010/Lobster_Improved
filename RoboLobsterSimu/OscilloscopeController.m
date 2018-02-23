@@ -408,6 +408,9 @@ typedef id MovieAudioExtractionRef;
             currentIndex = checkMainLoopIndex();
         } //xmain should end by now
         //sleep(0.1);
+        
+        ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+        
         [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
         //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         setParamsButton.enabled = true;
@@ -422,6 +425,94 @@ typedef id MovieAudioExtractionRef;
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
     
     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setCanChooseDirectories:YES];
+    
+    if ( [openDlg runModal] == NSModalResponseOK )  // See #1
+    {
+        for( NSURL* URL in [openDlg URLs] )  // See #2, #4
+        {
+            NSLog( @"%@", [URL path] );
+            //NOW READ IN THE FILE and LOAD the PARAMS
+            NSString *content = [NSString stringWithContentsOfFile:[URL path]
+                                                          encoding:NSUTF8StringEncoding
+                                                             error:NULL];
+           // NSLog(@"%@",content);
+  
+            NSArray* rows = [content componentsSeparatedByString:@"\n"];
+            for (NSString *row in rows){
+               NSArray* columns = [row componentsSeparatedByString:@","];
+                
+                for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
+                     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+                    int c = 0;
+                    if ([name containsString:columns[0]]){ //if the column name is in text file...
+                        
+                        //so what name is it?
+                        if ([name containsString:@"Elevator"]){
+                            c = 0;
+                        }
+                        else if ([name containsString:@"Swing"]){
+                            c = 1;
+                        }
+                        else if ([name containsString:@"Depressor"]){
+                            c = 2;
+                        }
+                        else if ([name containsString:@"Stance"]){
+                            c = 3;
+                        }
+                        else if ([name containsString:@"Coord"]){
+                            c = 4;
+                        }
+                        else if ([name containsString:@"Protractor"]){
+                            c = 5;
+                        }
+                        else if ([name containsString:@"Retractor"]){
+                            c = 6;
+                        }
+                        else if ([name containsString:@"Extensor"]){
+                            c = 7;
+                        }
+                        else if ([name containsString:@"Flexor"]){
+                            c = 8;
+                        }
+                        else{
+                            c = 0;
+                        }
+                        editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                        if (firstTimeChangeParams == 1){
+                            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                            [self setFirstTimeChangeParams:0]; //now it's set
+                        }else{
+                            //setParamsButton.enabled = false;
+                            int currentIndex = 0;
+                            while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                                currentIndex = 0;
+                                currentIndex = checkMainLoopIndex();
+                            } //xmain should end by now
+
+                            
+                            ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                            
+                            [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+
+                            
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+}
+
+- (IBAction)saveParams:(id)sender {
+    
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
@@ -433,8 +524,63 @@ typedef id MovieAudioExtractionRef;
         {
             NSLog( @"%@", [URL path] );
             //NOW READ IN THE FILE and LOAD the PARAMS
+            NSMutableString *writeString = [NSMutableString stringWithCapacity:0]; //don't worry about the capacity, it will expand as necessary
             
-          //  [self decompresss2z:[URL path]]; // See #5
+            for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
+                
+                NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+                NSString* c;
+                    //so what name is it?
+                    if ([name containsString:@"Elevator"]){
+                        c = @"Elevator";
+                    }
+                    else if ([name containsString:@"Swing"]){
+                        c = @"Swing";
+                    }
+                    else if ([name containsString:@"Depressor"]){
+                        c = @"Depressor";
+                    }
+                    else if ([name containsString:@"Stance"]){
+                        c = @"Stance";
+                    }
+                    else if ([name containsString:@"Coord"]){
+                        c = @"Coord";
+                    }
+                    else if ([name containsString:@"Protractor"]){
+                        c = @"Protractor";
+                    }
+                    else if ([name containsString:@"Retractor"]){
+                        c = @"Retractor";
+                    }
+                    else if ([name containsString:@"Extensor"]){
+                        c = @"Extensor";
+                    }
+                    else if ([name containsString:@"Flexor"]){
+                        c = @"Flexor";
+                    }
+                id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+
+                NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+                NSString*a = [[params objectAtIndex:0] stringValue];
+                NSString*s = [[params objectAtIndex:1] stringValue];
+                NSString*sE = [[params objectAtIndex:2] stringValue];
+                NSString*sI = [[params objectAtIndex:3] stringValue];
+                NSString*bE = [[params objectAtIndex:4] stringValue];
+                NSString*bI = [[params objectAtIndex:5] stringValue];
+                NSString*Idc = [[params objectAtIndex:6] stringValue];
+         
+                [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@\n",c,a,s,sE,sI,bE,bI,Idc]]; //the \n will put a newline in
+            }
+        //Moved this stuff out of the loop so that you write the complete string once and only
+
+            NSLog(@"writeString :%@",writeString);
+            
+            NSFileHandle *handle;
+            handle = [NSFileHandle fileHandleForWritingAtPath: [URL path] ];
+            //say to handle where's the file fo write
+            [handle truncateFileAtOffset:[handle seekToEndOfFile]];
+            //position handle cursor to the end of file
+            [handle writeData:[writeString dataUsingEncoding:NSUTF8StringEncoding]];
         }
     }
 
