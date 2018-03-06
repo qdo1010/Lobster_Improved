@@ -298,22 +298,29 @@ void indicateNumberOfIteration(int i);
 
 int globalLoopIndex;
 
-double globalSigma;
-double globalAlpha; //params alpha beta for bursting and spiking neuron
-double globalSigmaE;
-double globalSigmaI;
-double globalBetaE;
-double globalBetaI;
-double globalIdc;
+double *globalSigma;
+double *globalAlpha; //params alpha beta for bursting and spiking neuron
+double *globalSigmaE;
+double *globalSigmaI;
+double *globalBetaE;
+double *globalBetaI;
+double *globalIdc;
 
-int globalCellName = 0;
+int *globalCellName;
 int cellChosen;
 int beginEditingParams = 0;//we have not edit the params
 //function to set params
 void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
+
+//function to set multiple neuron params
+void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr); // change params
+
+
 void chooseCell(int cellID);
-void editParam(int neuronName, double a, double s, double sE, double sI, double bE, double bI, double Idc);
-int whatTypeofCell(char* neuronName);
+
+//function where Objective C can call
+void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc);
+//int whatTypeofCell(char* neuronName);
 long elapsed;
 
 
