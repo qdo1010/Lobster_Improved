@@ -6,6 +6,15 @@ Everytime the user change the value in the param text box, basically just change
 
 Then, when set param is called, just convert Obj C array into C array, and pass the params!
 
+DONE!
+
+
+
+NOW FIX THE LOAD FUNCTION
+READ IN TXT FILE AND LOAD IN PARAMS
+
+.......
+
 
 
 

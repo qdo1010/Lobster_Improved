@@ -538,13 +538,15 @@ typedef id MovieAudioExtractionRef;
 }
 
 //load params load in a txt file and set the params
-//not yet implemented
 - (IBAction)loadParams:(id)sender {
  /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
     
     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+    //the trace waveform
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
 
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
@@ -560,69 +562,66 @@ typedef id MovieAudioExtractionRef;
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
            // NSLog(@"%@",content);
-  
             NSArray* rows = [content componentsSeparatedByString:@"\n"];
-            for (NSString *row in rows){
-               NSArray* columns = [row componentsSeparatedByString:@","];
+
+            //loop thru all the trace and find them in the text files
+            for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
+                NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+                int c = 0;
                 
-                for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
-                     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-                    int c = 0;
-                    if ([name containsString:columns[0]]){ //if the column name is in text file...
-                        NSLog(@"this is %@",columns[0]);
+                for (NSString *row in rows){
+                        NSArray* columns = [row componentsSeparatedByString:@","];
+                        if ([name containsString:columns[0]]){ //if the column name is in text file...
+                            NSLog(@"this is %@",columns[0]);
                         //so what name is it?
-                        if ([name containsString:@"Elevator"]){
-                            c = 0;
-                        }
-                        else if ([name containsString:@"Swing"]){
-                            c = 1;
-                        }
-                        else if ([name containsString:@"Depressor"]){
-                            c = 2;
-                        }
-                        else if ([name containsString:@"Stance"]){
-                            c = 3;
-                        }
-                        else if ([name containsString:@"Coord"]){
-                            c = 4;
-                        }
-                        else if ([name containsString:@"Protractor"]){
-                            c = 5;
-                        }
-                        else if ([name containsString:@"Retractor"]){
-                            c = 6;
-                        }
-                        else if ([name containsString:@"Extensor"]){
-                            c = 7;
-                        }
-                        else if ([name containsString:@"Flexor"]){
-                            c = 8;
-                        }
-
-                        
-                       // editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                        NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                      /*  if (firstTimeChangeParams == 1){
-                            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-                            [self setFirstTimeChangeParams:0]; //now it's set
-                        }else{
-                            //setParamsButton.enabled = false;
-                            int currentIndex = 0;
-                            while (currentIndex != 99999){ //should be tmax, not hardcoded btw
-                                currentIndex = 0;
-                                currentIndex = checkMainLoopIndex();
-                            } //xmain should end by now
-
+                            int c = [self convertNameToId:name];
+                        //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                          //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                            cellID[i] = c;
+                            alpha[i] = [columns[1] floatValue];
+                            sigma[i] =[columns[2] floatValue];
+                            sigmaE[i] =[columns[3] floatValue];
+                            sigmaI[i] =[columns[4] floatValue];
+                            betaE[i] =[columns[5] floatValue];
+                            betaI[i] =[columns[6] floatValue];
+                            Idc[i] =[columns[7] floatValue];
                             
-                            ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                            NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+                            [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+                            [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+                            [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+                            [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+                            [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+                            [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+                            [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
                             
-                         //   [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
-*/
-                     //   }
                     }
                 }
 
             }
+            //make changes to param
+            editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc);
+
+            if (firstTimeChangeParams == 1){
+                [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                [self setFirstTimeChangeParams:0]; //now it's set
+            }else{
+                setParamsButton.enabled = false;
+                int currentIndex = 0;
+                while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                    currentIndex = 0;
+                    currentIndex = checkMainLoopIndex();
+                } //xmain should end by now
+                //sleep(0.1);
+                
+                ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                
+                [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+                //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                setParamsButton.enabled = true;
+                
+            }
+
         }
     }
 
