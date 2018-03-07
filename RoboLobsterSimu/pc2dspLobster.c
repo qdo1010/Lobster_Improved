@@ -1336,6 +1336,15 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellRetractor[iSide][iSeg].Idc = Idc;
                 }
                 else if(id == 7){
+                    cellExtensor[iSide][iSeg].alpha = a;
+                    cellExtensor[iSide][iSeg].sigma = s;
+                    cellExtensor[iSide][iSeg].sigmaE = sE;
+                    cellExtensor[iSide][iSeg].sigmaI = sI;
+                    cellExtensor[iSide][iSeg].betaE = bE;
+                    cellExtensor[iSide][iSeg].betaI = bI;
+                    cellExtensor[iSide][iSeg].Idc = Idc;
+                }
+                else if(id ==8){
                     cellFlexor[iSide][iSeg].alpha = a;
                     cellFlexor[iSide][iSeg].sigma = s;
                     cellFlexor[iSide][iSeg].sigmaE = sE;
@@ -1343,6 +1352,8 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellFlexor[iSide][iSeg].betaE = bE;
                     cellFlexor[iSide][iSeg].betaI = bI;
                     cellFlexor[iSide][iSeg].Idc = Idc;
+                    
+                    
                 }
                 //--set initial state of neuron at the fixed point---
         //cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;
