@@ -306,20 +306,23 @@ double *globalBetaE;
 double *globalBetaI;
 double *globalIdc;
 
+int globalSize;
 int *globalCellName;
 int cellChosen;
+
+
 int beginEditingParams = 0;//we have not edit the params
 //function to set params
 void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 
 //function to set multiple neuron params
-void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr); // change params
+void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
 
 
 void chooseCell(int cellID);
 
 //function where Objective C can call
-void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc);
+void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
 //int whatTypeofCell(char* neuronName);
 long elapsed;
 

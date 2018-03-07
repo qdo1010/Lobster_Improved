@@ -269,7 +269,7 @@ int xyz;
 void calcSynapticCurrents(double *I,
                           struct structSynapses *params,
                           double xPost,double spikes) {
-  //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
+    *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
     
     
     //add chemotonic? maybe?
@@ -280,7 +280,7 @@ void calcSynapticCurrents(double *I,
 
   //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(xPost - params->xRp)));
 
-       *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
+   //    *I = params->gamma * *I - params->gStrength * spikes * /(xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
 
 
 } // end of the Synaptic structure
@@ -415,7 +415,7 @@ void xmain()
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         
         //set multiple neuron here!
-         setMultipleNeuronParam(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
+         setMultipleNeuronParam(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
         
         //this is for 1 neuron
       //  setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
@@ -1198,7 +1198,7 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc){
+void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
     //printf("%s\n",neuronName);
     printf("begin editing\n");
     int i;
@@ -1213,17 +1213,21 @@ void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, do
     free(globalCellName);
     
     //then alloc mem
-    globalAlpha = malloc(sizeof(a));
-    globalSigma = malloc(sizeof(s));
-    globalSigmaE = malloc(sizeof(sE));
-    globalSigmaI = malloc(sizeof(sI));
-    globalBetaE = malloc(sizeof(bE));
-    globalBetaI = malloc(sizeof(bI));
-    globalIdc= malloc(sizeof(Idc));
-    globalCellName = malloc(sizeof(neuronName));
+    globalAlpha = malloc(size*sizeof(double));
+    globalSigma = malloc(size*sizeof(double));
+    globalSigmaE = malloc(size*sizeof(double));
+    globalSigmaI = malloc(size*sizeof(double));
+    globalBetaE = malloc(size*sizeof(double));
+    globalBetaI = malloc(size*sizeof(double));
+    globalIdc= malloc(size*sizeof(double));
+    globalCellName = malloc(size*sizeof(int));
     beginEditingParams = 1; //set flag for begin editing
+    globalSize = size;
     
-    for (i=0; i<sizeof(neuronName)/sizeof(int); i++){
+    for (i=0; i< size; i++){
+    //printf("size = %d",size);
+        printf("fkkk");
+    printf("%f",a[i]);
     globalAlpha[i] = a[i];
     globalSigma[i] = s[i];
     globalSigmaE[i] = sE[i];
@@ -1249,9 +1253,9 @@ int checkMainLoopIndex(){
 
 
 ///add the multiple neuron params here//
-void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr){
+void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
     int i;
-    for (i = 0; i < (sizeof(idArr)/sizeof(int)); i++){
+    for (i = 0; i < size; i++){
         //this will set the param for each neuron in the array
         setNeuronParams(idArr[i], aArr[i], sArr[i], sEArr[i], sIArr[i], bEArr[i],bIArr[i], IdcArr[i]);
     }

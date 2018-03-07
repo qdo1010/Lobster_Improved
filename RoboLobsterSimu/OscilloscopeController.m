@@ -513,7 +513,7 @@ typedef id MovieAudioExtractionRef;
 
 
     //Now send all the array to edit Param!
-    editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc);
+    editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
     
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
@@ -599,7 +599,7 @@ typedef id MovieAudioExtractionRef;
 
             }
             //make changes to param
-            editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc);
+            editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
 
             if (firstTimeChangeParams == 1){
                 [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
