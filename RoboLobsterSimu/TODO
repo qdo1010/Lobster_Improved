@@ -1,3 +1,41 @@
+Make an array in Obj c for each of the params
+
+Init that array for each of the Trace Id value
+
+Everytime the user change the value in the param text box, basically just change the param array
+
+Then, when set param is called, just convert Obj C array into C array, and pass the params!
+
+DONE!
+
+
+
+NOW FIX THE LOAD FUNCTION
+READ IN TXT FILE AND LOAD IN PARAMS
+
+.......
+
+
+
+
+1) When Set params, do it to all the cells, not just one cell!
+So keep the state 
+Do the init, but do it once
+
+
+2) Therefore, need a function that takes all the input params and set them all at once
+Implement this function in pc2dspLobster.c
+
+
+RIGHT NOW, Everytime a params change, need to reflect that change in the Param Array??
+
+
+
+
+Once this function is implemented, Load file that load param basically will use this function
+EZ
+
+
 1) load file
 y = 1/(1+e^-x)
 2) Add support to more Cells!!!!!!! those that are spiking only!!

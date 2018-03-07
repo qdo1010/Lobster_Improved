@@ -44,8 +44,20 @@ typedef id MovieAudioExtractionRef;
 @synthesize IndividualTraceInfo;
 @synthesize displayTraceID;
 
+
+@synthesize alpha;
+@synthesize sigma;
+@synthesize sigmaE;
+@synthesize sigmaI;
+@synthesize betaE;
+@synthesize betaI;
+@synthesize Idc;
+@synthesize cellID;
+
+@synthesize settingUpParams; //load param value into array
 @synthesize setParamsButton;
 @synthesize firstTimeChangeParams;
+
 -(id) init
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -72,8 +84,35 @@ typedef id MovieAudioExtractionRef;
     NSLog(@"Executing awakeFromNib in Oscilloscope Controller");
     
    // AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    
+    
     [displayTraceID removeAllItems];
+    
+    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    
+    //init the array that will contains input param values
+    //cell ID tell C code what type of cell it is
+    cellID = malloc(numCell*sizeof(int));
+    
+    //those are the array of params for each cell
+    alpha = malloc(numCell*sizeof(double));
+    sigma = malloc(numCell*sizeof(double));
+    sigmaE = malloc(numCell*sizeof(double));
+    sigmaI = malloc(numCell*sizeof(double));
+    betaE = malloc(numCell*sizeof(double));
+    betaI = malloc(numCell*sizeof(double));
+    Idc = malloc(numCell*sizeof(double));
+    
+    settingUpParams = 1; //first time setting up
+    
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
+        
+        //get all Cell Name and convert those names to ID
+        NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+        cellID[i] = [self convertNameToId:cellName];
+        
+        
+        
         [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
         
         
@@ -123,6 +162,11 @@ typedef id MovieAudioExtractionRef;
     
     [alphaTextBox setDelegate:self];
     [sigmaTextBox setDelegate:self];
+    [sigmaETextBox setDelegate:self];
+    [sigmaITextBox setDelegate:self];
+    [betaETextBox setDelegate:self];
+    [betaITextBox setDelegate:self];
+    [IdcTextBox setDelegate:self];
     
     [self setFirstTimeChangeParams:1]; //never change params
      NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 1                                                  target: self
@@ -130,6 +174,7 @@ typedef id MovieAudioExtractionRef;
                                               userInfo: nil repeats:YES];
            // [self setOscilloscopeView:oscilloscopeView];
 }
+
 
 
 - (IBAction)chooseTraceID:(id)sender {
@@ -146,14 +191,57 @@ typedef id MovieAudioExtractionRef;
     NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
     
     //init all params
-    [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
-    [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
-    [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
-    [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
-    [betaETextBox setStringValue:[[params objectAtIndex:4] stringValue]];
-    [betaITextBox setStringValue:[[params objectAtIndex:5] stringValue]];
-    [IdcTextBox setStringValue:[[params objectAtIndex:6] stringValue]];
+    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 
+
+    
+    //init params input values
+    if (settingUpParams){
+        for (int i = 0; i < numCell; i++){
+            NSLog(@"howw many %d",i);
+            NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+            alpha[i] = [[params objectAtIndex:0] doubleValue];
+            sigma[i] = [[params objectAtIndex:1] doubleValue];
+            sigmaE[i] = [[params objectAtIndex:2] doubleValue];
+            sigmaI[i] = [[params objectAtIndex:3] doubleValue];
+            betaE[i] = [[params objectAtIndex:4] doubleValue];
+            betaI[i] = [[params objectAtIndex:5] doubleValue];
+            Idc[i] = [[params objectAtIndex:6] doubleValue];
+            
+        }
+        settingUpParams = 0;
+    }
+        //init text box too
+       /* [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+        [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+        [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
+        [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
+        [betaETextBox setStringValue:[[params objectAtIndex:4] stringValue]];
+        [betaITextBox setStringValue:[[params objectAtIndex:5] stringValue]];
+        [IdcTextBox setStringValue:[[params objectAtIndex:6] stringValue]];
+        */
+        
+     //   settingUpParams = 0; //done setting up
+   // }
+    
+
+   // else{
+        [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[traceIDchosen]]];
+         [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[traceIDchosen]]];
+        [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[traceIDchosen]]];
+        [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[traceIDchosen]]];
+        [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[traceIDchosen]]];
+
+        [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[traceIDchosen]]];
+
+        [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[traceIDchosen]]];
+
+    
+        
+   // }
+    
+    
+    
     
    // if (traceIDchosen == 0 || traceIDchosen == 1){
    //     [sigmaTextBox setEditable:(false)];
@@ -228,6 +316,13 @@ typedef id MovieAudioExtractionRef;
 }
 -(void) controlTextDidChange:(NSNotification *)notification{
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //this is the param id that contains sigma and alpha
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    int i = traceIDchosen; //id
+    
+    
     if([notification object] == sweepOffsetTextBox){
         [sweepOffsetSlider setFloatValue:[sweepOffsetTextBox floatValue]/(0.001*elapsed)];
         //send the change
@@ -250,26 +345,39 @@ typedef id MovieAudioExtractionRef;
         //send the change
         [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
     }
-   /* else if ([notification object] == alphaTextBox){
-            NSLog(@"%f",[alphaTextBox floatValue]);
-            double a = [alphaTextBox doubleValue];
-            double s = 1.2;
-            char*c = "Flexor";
-            editParam(c,s,a);
-        if (firstTimeChangeParams == 1){
-            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-            [self setFirstTimeChangeParams:0]; //now it's set
-        }else{
-            int currentIndex = 0;
-            while (currentIndex != 99999){ //should be tmax, not hardcoded btw
-                currentIndex = checkMainLoopIndex();
-            } //xmain should end by now
-            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-
-        }
-        
-    }*/
     
+    
+   else if ([notification object] == alphaTextBox){
+            alpha[traceIDchosen] = [alphaTextBox doubleValue];
+       [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+    }
+    
+   else if ([notification object] == sigmaTextBox){
+       sigma[traceIDchosen] = [sigmaTextBox doubleValue];
+       [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+   }
+   else if ([notification object] == sigmaETextBox){
+       sigmaE[traceIDchosen] = [sigmaETextBox doubleValue];
+       [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+      
+   }
+   else if ([notification object] == sigmaITextBox){
+       sigmaI[traceIDchosen] = [sigmaITextBox doubleValue];
+       [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+       
+   }
+   else if ([notification object] == betaETextBox){
+       betaE[traceIDchosen] = [betaETextBox doubleValue];
+       [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+   }
+   else if ([notification object] == betaITextBox){
+       betaI[traceIDchosen] = [betaITextBox doubleValue];
+       [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+   }
+   else if ([notification object] == IdcTextBox){
+       Idc[traceIDchosen] = [IdcTextBox doubleValue];
+       [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
+   }
 }
 
 -(void) createWaveForm{
@@ -278,9 +386,6 @@ typedef id MovieAudioExtractionRef;
 }
 
 
-- (IBAction)displayString:(id)sender {
-    
-}
 
 - (IBAction)changeTraceGain:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -336,36 +441,10 @@ typedef id MovieAudioExtractionRef;
     }
 }
 
-- (IBAction)setParams:(id)sender {
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
-//    NSLog(@"%f",[alphaTextBox floatValue]);
-    double a = [alphaTextBox doubleValue];
-    double s = [sigmaTextBox doubleValue];
-    double sE = [sigmaETextBox doubleValue];
-    double sI = [sigmaITextBox doubleValue];
-    double bE = [betaETextBox doubleValue];
-    double bI = [betaITextBox doubleValue];
-    double Idc = [IdcTextBox doubleValue];
-    traceIDchosen = [[[self displayTraceID] title] integerValue];
-    
-    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
-    
-    //set trace ID in appDelegate
-    //this is the param id that contains sigma and alpha
-    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
-    [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:a]];
-    [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:s]];
-    [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sE]];
-    [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sI]];
-    [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:bE]];
-    [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:bI]];
-    [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc]];
 
-    
-    NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen];
-  //  NSLog(@"choose this %@",name);
-    int c = 0;
+- (int)convertNameToId: (NSString*)name{
+    int  c;
     if ([name containsString:@"Elevator"]){
         c = 0;
     }
@@ -394,9 +473,48 @@ typedef id MovieAudioExtractionRef;
         c = 8;
     }
     else{
-    c = 0;
+        c = 0;
     }
-    editParam(c,a,s,sE, sI, bE, bI,Idc);
+
+    return c;
+}
+
+
+- (IBAction)setParams:(id)sender {
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+//    NSLog(@"%f",[alphaTextBox floatValue]);
+  /*  double a = [alphaTextBox doubleValue];
+    double s = [sigmaTextBox doubleValue];
+    double sE = [sigmaETextBox doubleValue];
+    double sI = [sigmaITextBox doubleValue];
+    double bE = [betaETextBox doubleValue];
+    double bI = [betaITextBox doubleValue];
+    double Idc = [IdcTextBox doubleValue];*/
+    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    
+    //set trace ID in appDelegate
+    //this is the param id that contains sigma and alpha
+    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+
+    for (int i = 0; i < numCell;i++){
+        //loop through all the param array and change them with the users input param!
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+    [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+    [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+    [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+    [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+    [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+    [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+    [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
+    }
+
+
+    //Now send all the array to edit Param!
+    editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
+    
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         [self setFirstTimeChangeParams:0]; //now it's set
@@ -419,13 +537,15 @@ typedef id MovieAudioExtractionRef;
 }
 
 //load params load in a txt file and set the params
-//not yet implemented
 - (IBAction)loadParams:(id)sender {
  /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
     
     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+    //the trace waveform
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
 
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
@@ -441,69 +561,66 @@ typedef id MovieAudioExtractionRef;
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
            // NSLog(@"%@",content);
-  
             NSArray* rows = [content componentsSeparatedByString:@"\n"];
-            for (NSString *row in rows){
-               NSArray* columns = [row componentsSeparatedByString:@","];
+
+            //loop thru all the trace and find them in the text files
+            for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
+                NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+                int c = 0;
                 
-                for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
-                     NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-                    int c = 0;
-                    if ([name containsString:columns[0]]){ //if the column name is in text file...
-                        NSLog(@"this is %@",columns[0]);
+                for (NSString *row in rows){
+                        NSArray* columns = [row componentsSeparatedByString:@","];
+                        if ([name containsString:columns[0]]){ //if the column name is in text file...
+                            NSLog(@"this is %@",columns[0]);
                         //so what name is it?
-                        if ([name containsString:@"Elevator"]){
-                            c = 0;
-                        }
-                        else if ([name containsString:@"Swing"]){
-                            c = 1;
-                        }
-                        else if ([name containsString:@"Depressor"]){
-                            c = 2;
-                        }
-                        else if ([name containsString:@"Stance"]){
-                            c = 3;
-                        }
-                        else if ([name containsString:@"Coord"]){
-                            c = 4;
-                        }
-                        else if ([name containsString:@"Protractor"]){
-                            c = 5;
-                        }
-                        else if ([name containsString:@"Retractor"]){
-                            c = 6;
-                        }
-                        else if ([name containsString:@"Extensor"]){
-                            c = 7;
-                        }
-                        else if ([name containsString:@"Flexor"]){
-                            c = 8;
-                        }
-
-                        
-                       // editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                        NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                      /*  if (firstTimeChangeParams == 1){
-                            [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-                            [self setFirstTimeChangeParams:0]; //now it's set
-                        }else{
-                            //setParamsButton.enabled = false;
-                            int currentIndex = 0;
-                            while (currentIndex != 99999){ //should be tmax, not hardcoded btw
-                                currentIndex = 0;
-                                currentIndex = checkMainLoopIndex();
-                            } //xmain should end by now
-
+                            int c = [self convertNameToId:name];
+                        //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                          //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                            cellID[i] = c;
+                            alpha[i] = [columns[1] floatValue];
+                            sigma[i] =[columns[2] floatValue];
+                            sigmaE[i] =[columns[3] floatValue];
+                            sigmaI[i] =[columns[4] floatValue];
+                            betaE[i] =[columns[5] floatValue];
+                            betaI[i] =[columns[6] floatValue];
+                            Idc[i] =[columns[7] floatValue];
                             
-                            ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                            NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+                            [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+                            [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+                            [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+                            [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+                            [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+                            [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+                            [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
                             
-                         //   [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
-*/
-                     //   }
                     }
                 }
 
             }
+            //make changes to param
+            editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
+
+            if (firstTimeChangeParams == 1){
+                [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                [self setFirstTimeChangeParams:0]; //now it's set
+            }else{
+                setParamsButton.enabled = false;
+                int currentIndex = 0;
+                while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                    currentIndex = 0;
+                    currentIndex = checkMainLoopIndex();
+                } //xmain should end by now
+                //sleep(0.1);
+                
+                ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                
+                [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+                //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                setParamsButton.enabled = true;
+                
+            }
+
         }
     }
 
@@ -584,98 +701,6 @@ typedef id MovieAudioExtractionRef;
     }
 
 }
-
-/*- (IBAction)saveParams:(id)sender {
-
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-
-    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
-    
-    //set trace ID in appDelegate
-    //this is the param id that contains sigma and alpha
-    for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
-        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
-        
-            //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:params];
-            // write the data to the end of the file
-           // NSString* param = [params objectAtIndex:j];
-            NSLog(@"%@",params);
-            // NSData *textData = [param dataUsingEncoding:NSUTF8StringEncoding];
-            //[fileHandle writeData:textData];
-
-    }
-
- /*   NSString *str = [NSString stringWithFormat:@"%@\n",[alphaTextBox stringValue]]; //get text from textField
-    
-    
-    
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains
-    (NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    //file name to write the data to using the documents directory:
-    NSString *fileName = [NSString stringWithFormat:@"%@/NeuronParams.txt",
-                          documentsDirectory];
-    
-    // check for file exist
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:fileName]) {
-        
-        // the file doesn't exist,we can write out the text using the  NSString convenience method
-        
-        NSError *error = noErr;
-        BOOL success = [str writeToFile:fileName atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:fileName];
-        
-        // move to the end of the file
-        [fileHandle seekToEndOfFile];
-        
-        // convert the string to an NSData object
-        //    NSData *textData = [str dataUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        if (!success) {
-            // handle the error
-            NSLog(@"%@", error);
-        }
-        
-    } else {
-        
-        // the file already exists, append the text to the end
-        
-        // get a handle
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:fileName];
-        
-        // move to the end of the file
-        [fileHandle seekToEndOfFile];
-        
-        // convert the string to an NSData object
-    //    NSData *textData = [str dataUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
-        
-        //set trace ID in appDelegate
-        //this is the param id that contains sigma and alpha
-        for (int i = 0; i < [[propertyValue parambuf] count]; i ++){
-        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
-            for (int j = 0; j < [params count]; j++){
-        //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:params];
-        // write the data to the end of the file
-                NSString* param = [params objectAtIndex:j];
-                NSData *textData = [param dataUsingEncoding:NSUTF8StringEncoding];
-                [fileHandle writeData:textData];
-            }
-        }
-        // clean up
-        [fileHandle closeFile];
-    }
-  
- 
-}
-*/
 @end
 
 

@@ -102,7 +102,7 @@ void burstingNeuronInit(struct structBursting *ptr) {
 
 void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
-    ptr->alpha = 5.2;
+    ptr->alpha = 5.0;
 //    ptr->alpha = 4.60108;
     ptr->sigma = 2-sqrt(ptr->alpha)+0.0171159;
     
@@ -270,6 +270,19 @@ void calcSynapticCurrents(double *I,
                           struct structSynapses *params,
                           double xPost,double spikes) {
     *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
+    
+    
+    //add chemotonic? maybe?
+   ///this on not really
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*tanh(xPost-params->xRp);
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(-xPost)));
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) + params->gStrength*tanh(xPost - params->xRp);
+
+  //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(xPost - params->xRp)));
+
+   //    *I = params->gamma * *I - params->gStrength * spikes * /(xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
+
+
 } // end of the Synaptic structure
 
 void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
@@ -400,10 +413,25 @@ void xmain()
     
 
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
-        setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
-        //printf("why am i not called");
+        
+        //set multiple neuron here!
+         setMultipleNeuronParam(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+        
+        //this is for 1 neuron
+      //  setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
+
     }
     else{
+        //alloc some memory for the global
+        globalAlpha = malloc(sizeof(double));
+        globalSigma = malloc(sizeof(double));
+        globalSigmaE = malloc(sizeof(double));
+        globalSigmaI = malloc(sizeof(double));
+        globalBetaE = malloc(sizeof(double));
+        globalBetaI = malloc(sizeof(double));
+        globalIdc= malloc(sizeof(double));
+        globalCellName = malloc(sizeof(int));
+        
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -479,6 +507,7 @@ void xmain()
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.05;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 0.1;*/
     
+    ///you changed it here
     pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.2;
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 0.2;
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.999;    pSlowExc.gStrength = 0.2;
@@ -1169,20 +1198,45 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void editParam(int neuronName, double a, double s, double sE, double sI, double bE, double bI, double Idc){
+void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
     //printf("%s\n",neuronName);
     printf("begin editing\n");
-    beginEditingParams = 1; //set flag for begin editing
-    globalAlpha = a;
-    globalSigma = s;
-    globalSigmaE = sE;
-    globalSigmaI = sI;
-    globalBetaE = bE;
-    globalBetaI = bI;
-    globalIdc = Idc;
+    int i;
+    //free first
+    free(globalAlpha);
+    free(globalSigma);
+    free(globalSigmaE);
+    free(globalSigmaI);
+    free(globalBetaE);
+    free(globalBetaI);
+    free(globalIdc);
+    free(globalCellName);
     
-    globalCellName = neuronName;
-   // xmain();
+    //then alloc mem
+    globalAlpha = malloc(size*sizeof(double));
+    globalSigma = malloc(size*sizeof(double));
+    globalSigmaE = malloc(size*sizeof(double));
+    globalSigmaI = malloc(size*sizeof(double));
+    globalBetaE = malloc(size*sizeof(double));
+    globalBetaI = malloc(size*sizeof(double));
+    globalIdc= malloc(size*sizeof(double));
+    globalCellName = malloc(size*sizeof(int));
+    beginEditingParams = 1; //set flag for begin editing
+    globalSize = size;
+    
+    for (i=0; i< size; i++){
+    //printf("size = %d",size);
+        printf("fkkk");
+    printf("%f",a[i]);
+    globalAlpha[i] = a[i];
+    globalSigma[i] = s[i];
+    globalSigmaE[i] = sE[i];
+    globalSigmaI[i] = sI[i];
+    globalBetaE[i] = bE[i];
+    globalBetaI[i] = bI[i];
+    globalIdc[i] = Idc[i];
+    globalCellName[i] = neuronName[i];
+    }
    // setNeuronParams(neuronName, s, a);
 }
 
@@ -1192,15 +1246,27 @@ int checkMainLoopIndex(){
 }
 
 //this will determine what cell are chosen
-int whatTypeofCell(char* neuronName){
+/*int whatTypeofCell(char* neuronName){
     return 0; //let's assume always Spiking for now
-    ///PLZZ EDIT
-}
+    ///PLZZ EDIT, or whatever, prolly not gonna used
+}*/
+
+
+///add the multiple neuron params here//
+void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
+    int i;
+    for (i = 0; i < size; i++){
+        //this will set the param for each neuron in the array
+        setNeuronParams(idArr[i], aArr[i], sArr[i], sEArr[i], sIArr[i], bEArr[i],bIArr[i], IdcArr[i]);
+    }
+}// change params
+
+////end///////////
 
 void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //identify which type it is?
    // if (id == 8){//Spiking
-        printf("Spiking edit\n");
+        //printf("Spiking edit\n");
         //struct structSpiking** cell = getSpike(neuronName);
        // struct structSpiking** cell;
        // cell = cellFlexor;
@@ -1260,7 +1326,7 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellProtractor[iSide][iSeg].betaI = bI;
                     cellProtractor[iSide][iSeg].Idc = Idc;
                 }
-                else if(id == 7){
+                else if(id == 6){
                     cellRetractor[iSide][iSeg].alpha = a;
                     cellRetractor[iSide][iSeg].sigma = s;
                     cellRetractor[iSide][iSeg].sigmaE = sE;
@@ -1269,7 +1335,16 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellRetractor[iSide][iSeg].betaI = bI;
                     cellRetractor[iSide][iSeg].Idc = Idc;
                 }
-                else if(id == 8){
+                else if(id == 7){
+                    cellExtensor[iSide][iSeg].alpha = a;
+                    cellExtensor[iSide][iSeg].sigma = s;
+                    cellExtensor[iSide][iSeg].sigmaE = sE;
+                    cellExtensor[iSide][iSeg].sigmaI = sI;
+                    cellExtensor[iSide][iSeg].betaE = bE;
+                    cellExtensor[iSide][iSeg].betaI = bI;
+                    cellExtensor[iSide][iSeg].Idc = Idc;
+                }
+                else if(id ==8){
                     cellFlexor[iSide][iSeg].alpha = a;
                     cellFlexor[iSide][iSeg].sigma = s;
                     cellFlexor[iSide][iSeg].sigmaE = sE;
@@ -1277,6 +1352,8 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellFlexor[iSide][iSeg].betaE = bE;
                     cellFlexor[iSide][iSeg].betaI = bI;
                     cellFlexor[iSide][iSeg].Idc = Idc;
+                    
+                    
                 }
                 //--set initial state of neuron at the fixed point---
         //cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;

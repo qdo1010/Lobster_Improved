@@ -41,6 +41,19 @@ extern long elapsed;
 @property (readwrite) double index;
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
+@property (readwrite) int *cellID;
+@property (readwrite)  double *alpha;
+@property (readwrite)  double *sigma;
+@property (readwrite)  double *sigmaE;
+@property (readwrite)  double *sigmaI;
+@property (readwrite)  double *betaE;
+@property (readwrite)  double *betaI;
+@property (readwrite)  double *Idc;
+
+
+@property (readwrite) int settingUpParams;
+
+
 @property (readwrite,retain) NSMutableArray* AllTracesInfo;    //This is an array of traces
 @property (readwrite,retain) NSMutableArray* IndividualTraceInfo;    //This is an array of traces
 
