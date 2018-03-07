@@ -350,32 +350,31 @@ typedef id MovieAudioExtractionRef;
    else if ([notification object] == alphaTextBox){
             alpha[traceIDchosen] = [alphaTextBox doubleValue];
        [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
-       NSLog(@"wtf, i am chagning right?");
     }
     
    else if ([notification object] == sigmaTextBox){
        sigma[traceIDchosen] = [sigmaTextBox doubleValue];
        [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
    }
-   else if ([notification object] == sigmaTextBox){
+   else if ([notification object] == sigmaETextBox){
        sigmaE[traceIDchosen] = [sigmaETextBox doubleValue];
        [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
       
    }
-   else if ([notification object] == sigmaTextBox){
+   else if ([notification object] == sigmaITextBox){
        sigmaI[traceIDchosen] = [sigmaITextBox doubleValue];
        [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
        
    }
-   else if ([notification object] == sigmaTextBox){
+   else if ([notification object] == betaETextBox){
        betaE[traceIDchosen] = [betaETextBox doubleValue];
        [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
    }
-   else if ([notification object] == sigmaTextBox){
+   else if ([notification object] == betaITextBox){
        betaI[traceIDchosen] = [betaITextBox doubleValue];
        [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
    }
-   else if ([notification object] == sigmaTextBox){
+   else if ([notification object] == IdcTextBox){
        Idc[traceIDchosen] = [IdcTextBox doubleValue];
        [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
    }
