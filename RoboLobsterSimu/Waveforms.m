@@ -250,6 +250,147 @@
                 starttime++;
             }
             break;
+            
+        case 9: //cellF
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayF]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayF]];
+            
+
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayF[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayF[starttime][cell]]];
+               // NSLog(@"%f", xArrayF[starttime][cell]);
+
+                starttime++;
+            }
+            
+            break;
+            
+        case 10: //cellB
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayB]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayB]];
+            
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayB[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayB[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+
+        case 11: //cellLL
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayLL]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayLL]];
+            
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayLL[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayLL[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+            
+        case 12: //cellLT
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayLT]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayLT]];
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayLT[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayLT[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+            
+        case 13: //cellPcn
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayPcn]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayPcn]];
+            
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayPcn[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayPcn[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+            
+        case 14: //cellModCom
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayModCom]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayModCom]];
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayModCom[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayModCom[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+            
+        case 15: //cellH
+            [Params addObject:[NSNumber numberWithDouble:alphaArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:betaEArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayH]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayH]];
+            for (i = 0; i < samplesize; i ++){
+                if (invert)
+                    [temp addObject: [NSNumber numberWithDouble: xArrayH[starttime][cell]]];
+                else
+                    [temp addObject: [NSNumber numberWithDouble: -xArrayH[starttime][cell]]];
+                
+                starttime++;
+            }
+
+            break;
+            
+            
         default:
             break;
     }
@@ -258,7 +399,6 @@
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
 }
-
 
 -(NSMutableArray*) selectCell:(cellPointer)cellName{
     //  NSLog(@"Select cell %d", cellName);
@@ -309,11 +449,47 @@
         _cellIndex = (int)cellName - 64;
         _cellTypeIndex = 7;
     }
+    else if (cellName < 74){
+        //F
+        _cellIndex = (int)cellName - 72;
+        _cellTypeIndex = 9; //8 is coord already ...
+    }
+    else if (cellName < 76){
+        //B
+        _cellIndex = (int)cellName - 74;
+        _cellTypeIndex = 10;
+    }
+    else if (cellName < 78){
+        //LL
+        _cellIndex = (int)cellName - 76;
+        _cellTypeIndex = 11;
+    }
+    else if (cellName < 80){
+        //LT
+        _cellIndex = (int)cellName - 78;
+        _cellTypeIndex = 12;
+    }
+    else if (cellName < 90){
+        //Pcn
+        _cellIndex = (int)cellName - 80;
+        _cellTypeIndex = 13;
+    }
+    else if (cellName < 92){
+        //ModCom
+        _cellIndex = (int)cellName - 90;
+        _cellTypeIndex = 14;
+    }
+    else if (cellName < 94){
+        //H
+        _cellIndex = (int)cellName - 92;
+        _cellTypeIndex = 15;
+    }
     else{
         NSLog(@"Not yet supported, choose a different type");
         _cellIndex = -1;
         _cellTypeIndex = -1;
     }
+    //put the cell Index and the cell Types in the return array !
     NSMutableArray* cellIndexArray = [[NSMutableArray alloc] init];
     [cellIndexArray addObject:[NSNumber numberWithInteger: _cellTypeIndex]];
     [cellIndexArray addObject: [NSNumber numberWithInteger:_cellIndex]];

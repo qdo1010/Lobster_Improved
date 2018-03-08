@@ -472,6 +472,27 @@ typedef id MovieAudioExtractionRef;
     else if ([name containsString:@"Flexor"]){
         c = 8;
     }
+    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){
+        c = 9;
+    }
+    else if ([name containsString:@"BL"] || [name containsString:@"BR"]){
+        c = 10;
+    }
+    else if ([name containsString:@"LL"]){
+        c = 11;
+    }
+    else if ([name containsString:@"LT"]){
+        c = 12;
+    }
+    else if ([name containsString:@"Pcn"]){
+        c = 13;
+    }
+    else if ([name containsString:@"ModCom"]){
+        c = 14;
+    }
+    else if ([name containsString:@"HL"] ||[name containsString:@"HR"]){
+        c = 15;
+    }
     else{
         c = 0;
     }
