@@ -110,7 +110,7 @@ typedef id MovieAudioExtractionRef;
         //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
         cellID[i] = [self convertNameToId:cellName];
-        
+        NSLog(@"%@", cellName);
         
         
         [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
@@ -198,7 +198,7 @@ typedef id MovieAudioExtractionRef;
     //init params input values
     if (settingUpParams){
         for (int i = 0; i < numCell; i++){
-            NSLog(@"howw many %d",i);
+            //NSLog(@"howw many %d",i);
             NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
             alpha[i] = [[params objectAtIndex:0] doubleValue];
             sigma[i] = [[params objectAtIndex:1] doubleValue];
