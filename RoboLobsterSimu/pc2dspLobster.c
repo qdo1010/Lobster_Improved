@@ -269,7 +269,7 @@ int xyz;
 void calcSynapticCurrents(double *I,
                           struct structSynapses *params,
                           double xPost,double spikes) {
-    //*I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
+    *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp);
     
     
     //add chemotonic? maybe?
@@ -280,7 +280,7 @@ void calcSynapticCurrents(double *I,
 
   //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(xPost - params->xRp)));
 
-       *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
+     //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
 
 
 } // end of the Synaptic structure

@@ -577,6 +577,7 @@
                       @"cellLLL",
                       @"cellLLR",
                       @"cellLTL",
+                      @"cellLTR",
                       @"cellLTRa",
                       @"cellPcnLlow",
                       @"cellPcnLrosDown",
