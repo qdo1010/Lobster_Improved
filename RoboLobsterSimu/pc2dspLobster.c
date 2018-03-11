@@ -65,6 +65,7 @@ void spikingNeuronInit(struct structSpiking *ptr) {
    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
     ptr->sigma = .2;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
 //   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
     ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
@@ -100,6 +101,8 @@ void burstingNeuronInit(struct structBursting *ptr) {
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
 }  // end of Elevator structure
 
+
+/*
 void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
     ptr->alpha = 5.0;
@@ -127,7 +130,7 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
         ptr->x2 = 1-2*ptr->alphaInit;
 }
 
-
+*/
 
 
 
@@ -176,6 +179,8 @@ void calcBurstingNeuron(struct structBursting *ptr,double cIe,double cIi) {
     ptr->xpp = ptr->xp;
     ptr->xp = ptr->x;
 }
+
+/*
 void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double e) {
     //ptr->sigma = 0.17;
     ptr->x2= ptr->x2;
@@ -210,7 +215,7 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
     ptr->xp= ptr->x;
     ptr->x2= ptr->y2;
 }
-
+*/
 //----Elevator cell (Commisural interneurons described by the regular spiking neuron model)---
 
 
@@ -292,9 +297,14 @@ void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, 
     double iMax = 1.0;  //We need a better value of this.
     double iGain;
     
-    iMod = modParams->gamma * *I - modParams->gStrength * modSpikes * (xModPost - params->xRp);
+    iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - params->xRp);
+  // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
     iGain = iMod/iMax;
-    *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
+   //  *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
+
+    //add param gStrengh)
+    *I = params->gamma * *I - (params->gStrength + iGain)* spikes * (xPost - params->xRp);
+
     
 } // end of the Modulated Synaptic structure
 
@@ -436,8 +446,12 @@ void xmain()
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
             {
-                pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
-                pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
+               // pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
+               // pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
+                //make it bursting for now :(
+                burstingNeuronInit( &cellElevator[iSide][iSeg] );
+                burstingNeuronInit( &cellSwing[iSide][iSeg] );
+                
                 
                 burstingNeuronInit(  &cellDepressor[iSide][iSeg] );
                 burstingNeuronInit(  &cellStance[iSide][iSeg] );
@@ -502,16 +516,16 @@ void xmain()
     // Synaptic Time Constant 0.5(fast) 0.90,0.98, 0.99(slow)
 
     // initialize basic Synapse prototypestypes
-/*  pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.05;
+  /*pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.05;
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 0.1;
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.05;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 0.1;*/
     
     ///you changed it here
-    pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.2;
-    pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 0.2;
-    pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.999;    pSlowExc.gStrength = 0.2;
-    pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.999;    pSlowInh.gStrength = 0.2;
+    pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.1;
+    pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 1;
+    pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.1;
+    pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.999;    pSlowInh.gStrength = 1;
 //•••••••••••••••••••••
     
     for(iSide = 0;iSide < mmSide; ++iSide)  //This loop initializes the parameters for synapses
@@ -1392,13 +1406,21 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                 if(id == 0){
                     cellElevator[iSide][iSeg].alpha = a;
                     cellElevator[iSide][iSeg].betaE = bE;
-
+                    cellElevator[iSide][iSeg].sigmaE = sE;
+                    cellElevator[iSide][iSeg].sigmaI = sI;
+                    cellElevator[iSide][iSeg].betaE = bE;
+                    cellElevator[iSide][iSeg].betaI = bI;
+                    cellElevator[iSide][iSeg].Idc = Idc;
 
                 }
                 else if(id == 1){
                     cellSwing[iSide][iSeg].alpha = a;
                     cellSwing[iSide][iSeg].betaE = bE;
-
+                    cellSwing[iSide][iSeg].sigmaE = sE;
+                    cellSwing[iSide][iSeg].sigmaI = sI;
+                    cellSwing[iSide][iSeg].betaE = bE;
+                    cellSwing[iSide][iSeg].betaI = bI;
+                    cellSwing[iSide][iSeg].Idc = Idc;
                 }
                 else if(id == 2){
                     cellDepressor[iSide][iSeg].alpha = a;
@@ -1794,11 +1816,15 @@ void computeMAPs(double mainLoopIndex)
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)
         {
             calcSpikingNeuron(   &cellCoord[iSide][iSeg],      (iExcIntModComEle[iSide][iSeg]+ iExcSegContEleCoord[iSide][iSeg]+iExcIntRosEleCoord[iSide][iSeg]+iExcIntCaudEleCoord[iSide][iSeg]), 0);
-            calcPacemakerNeuron( &cellElevator[iSide][iSeg],    iExcIntModComEle[iSide][iSeg],      iInhSegCoordEle[iSide][iSeg]);
+          //  calcPacemakerNeuron( &cellElevator[iSide][iSeg],    iExcIntModComEle[iSide][iSeg],      iInhSegCoordEle[iSide][iSeg]);
+            calcBurstingNeuron( &cellElevator[iSide][iSeg],    iExcIntModComEle[iSide][iSeg],      iInhSegCoordEle[iSide][iSeg]);
+            
             //Be sure to add terms for postural command inputs to the depressors.
             calcBurstingNeuron(  &cellDepressor[iSide][iSeg],   iExcIntModComDep[iSide][iSeg],      iInhSegEleDep[iSide][iSeg]);
             calcBurstingNeuron(  &cellStance[iSide][iSeg],      iExcIntModComStance[iSide][iSeg],   iInhSegEleStance[iSide][iSeg]);
-            calcPacemakerNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
+           // calcPacemakerNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
+            calcBurstingNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
+            
             
             calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg], 0);
             calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg],  0);
