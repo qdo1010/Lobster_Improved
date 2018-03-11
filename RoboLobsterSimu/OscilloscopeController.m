@@ -695,6 +695,29 @@ typedef id MovieAudioExtractionRef;
                     else if ([name containsString:@"Flexor"]){
                         c = @"Flexor";
                     }
+                    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){
+                        c = @"FL_FR";
+                    }
+                    else if ([name containsString:@"BL"] || [name containsString:@"BR"]){
+                        c = @"BL_BR";
+                    }
+                    else if ([name containsString:@"LL"]){
+                        c = @"LL";
+                    }
+                    else if ([name containsString:@"LT"]){
+                        c = @"LT";
+                    }
+                    else if ([name containsString:@"Pcn"]){
+                        c = @"Pcn";
+                    }
+                    else if ([name containsString:@"ModCom"]){
+                        c = @"ModCom";
+                    }
+                    else if ([name containsString:@"HL"] ||[name containsString:@"HR"]){
+                        c = @"HL_HR";
+                    }
+
+
                 id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
 
                 NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
