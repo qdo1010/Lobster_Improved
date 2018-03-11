@@ -110,7 +110,7 @@ typedef id MovieAudioExtractionRef;
         //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
         cellID[i] = [self convertNameToId:cellName];
-        
+        NSLog(@"%@", cellName);
         
         
         [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
@@ -198,7 +198,7 @@ typedef id MovieAudioExtractionRef;
     //init params input values
     if (settingUpParams){
         for (int i = 0; i < numCell; i++){
-            NSLog(@"howw many %d",i);
+            //NSLog(@"howw many %d",i);
             NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
             alpha[i] = [[params objectAtIndex:0] doubleValue];
             sigma[i] = [[params objectAtIndex:1] doubleValue];
@@ -471,6 +471,27 @@ typedef id MovieAudioExtractionRef;
     }
     else if ([name containsString:@"Flexor"]){
         c = 8;
+    }
+    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){
+        c = 9;
+    }
+    else if ([name containsString:@"BL"] || [name containsString:@"BR"]){
+        c = 10;
+    }
+    else if ([name containsString:@"LL"]){
+        c = 11;
+    }
+    else if ([name containsString:@"LT"]){
+        c = 12;
+    }
+    else if ([name containsString:@"Pcn"]){
+        c = 13;
+    }
+    else if ([name containsString:@"ModCom"]){
+        c = 14;
+    }
+    else if ([name containsString:@"HL"] ||[name containsString:@"HR"]){
+        c = 15;
     }
     else{
         c = 0;

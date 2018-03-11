@@ -159,6 +159,19 @@ double** xArrayExt;
 double** xArrayFlex;
 double** xArrayCoord;
 
+//command neuron array;
+double** xArrayF; //Forward Walking Command
+
+double** xArrayB;             //Backward Walking Command
+double** xArrayLL;                //Lateral Leading Command
+double** xArrayLT;                 //Lateral Trailing Command
+double** xArrayPcn; //[mmSide][pitchStates],	// There is one on each side for pLow, rosDown, pLevel, rosUp, pHigh The pitchState sets the synaptic strength in each segment/side
+double** xArrayModCom;				// The is the modulatory command on each side
+double** xArrayH;  //This is the hight command and would range fractionate and control the postural commands cellPcnLow cellPcnLevel and cellPcnHigh on both sides.
+
+
+//////////Parameters to show to users
+
 //alpha values
 double alphaArrayElev;
 double alphaArrayDep;
@@ -169,6 +182,16 @@ double alphaArrayRet;
 double alphaArrayExt;
 double alphaArrayFlex;
 double alphaArrayCoord;
+
+double alphaArrayF;
+double alphaArrayB;
+double alphaArrayLL;
+double alphaArrayLT;
+double alphaArrayPcn;
+double alphaArrayModCom;
+double alphaArrayH;
+
+
 
 //sigma values
 double sigmaArrayElev;
@@ -181,6 +204,14 @@ double sigmaArrayExt;
 double sigmaArrayFlex;
 double sigmaArrayCoord;
 
+double sigmaArrayF;
+double sigmaArrayB;
+double sigmaArrayLL;
+double sigmaArrayLT;
+double sigmaArrayPcn;
+double sigmaArrayModCom;
+double sigmaArrayH;
+
 //sE
 double sigmaEArrayElev;
 double sigmaEArrayDep;
@@ -191,6 +222,14 @@ double sigmaEArrayRet;
 double sigmaEArrayExt;
 double sigmaEArrayFlex;
 double sigmaEArrayCoord;
+
+double sigmaEArrayF;
+double sigmaEArrayB;
+double sigmaEArrayLL;
+double sigmaEArrayLT;
+double sigmaEArrayPcn;
+double sigmaEArrayModCom;
+double sigmaEArrayH;
 
 //sI
 double sigmaIArrayElev;
@@ -203,6 +242,14 @@ double sigmaIArrayExt;
 double sigmaIArrayFlex;
 double sigmaIArrayCoord;
 
+double sigmaIArrayF;
+double sigmaIArrayB;
+double sigmaIArrayLL;
+double sigmaIArrayLT;
+double sigmaIArrayPcn;
+double sigmaIArrayModCom;
+double sigmaIArrayH;
+
 //bE
 double betaEArrayElev;
 double betaEArrayDep;
@@ -214,7 +261,15 @@ double betaEArrayExt;
 double betaEArrayFlex;
 double betaEArrayCoord;
 
+double betaEArrayF;
+double betaEArrayB;
+double betaEArrayLL;
+double betaEArrayLT;
+double betaEArrayPcn;
+double betaEArrayModCom;
+double betaEArrayH;
 
+//bI
 double betaIArrayElev;
 double betaIArrayDep;
 double betaIArraySwing;
@@ -225,6 +280,15 @@ double betaIArrayExt;
 double betaIArrayFlex;
 double betaIArrayCoord;
 
+double betaIArrayF;
+double betaIArrayB;
+double betaIArrayLL;
+double betaIArrayLT;
+double betaIArrayPcn;
+double betaIArrayModCom;
+double betaIArrayH;
+
+//Idc
 double IdcArrayElev;
 double IdcArrayDep;
 double IdcArraySwing;
@@ -234,6 +298,14 @@ double IdcArrayRet;
 double IdcArrayExt;
 double IdcArrayFlex;
 double IdcArrayCoord;
+
+double IdcArrayF;
+double IdcArrayB;
+double IdcArrayLL;
+double IdcArrayLT;
+double IdcArrayPcn;
+double IdcArrayModCom;
+double IdcArrayH;
 
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;

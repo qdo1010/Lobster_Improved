@@ -280,7 +280,7 @@ void calcSynapticCurrents(double *I,
 
   //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength*(1/(1+exp(xPost - params->xRp)));
 
-   //    *I = params->gamma * *I - params->gStrength * spikes * /(xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
+     //  *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) - params->gStrength/(1+exp(-(xPost - params->xRp)));
 
 
 } // end of the Synaptic structure
@@ -898,83 +898,101 @@ void xmain()
             if (ind  ==  0){
             //previ = i;
                 int i;
+                
+                ////Alloc Memory for x array
                 xArrayElev  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArrayElev[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
-            
-           // xArrayElev[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg* 1000);
-            
-                xArrayDep  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 
+                xArrayDep  = (double **)malloc(sizeof(double *) * IterNumChosen);
                 for (i=0; i<IterNumChosen; i++){
                     xArrayDep[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
 
                 }
-           // xArrayDep[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArraySwing  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArraySwing[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
-                // xArraySwing[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayStance  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArrayStance[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
-                //xArrayStance[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayProt  = (double **)malloc(sizeof(double *) * IterNumChosen);
-                
                 for (i=0; i<IterNumChosen; i++){
                     xArrayProt[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
                 
-                //xArrayProt[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
-            
+        
                 xArrayRet  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArrayRet[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
                 
-                //xArrayRet[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
             
                 xArrayExt  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArrayExt[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
-                //xArrayExt[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
-            
+
+                
                 xArrayFlex  = (double **)malloc(sizeof(double *) * IterNumChosen);
                 for (i=0; i<IterNumChosen; i++){
                     xArrayFlex[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
                 }
                 
                 xArrayCoord  = (double **)malloc(sizeof(double *) * IterNumChosen);
-
                 for (i=0; i<IterNumChosen; i++){
                     xArrayCoord[i] = (double *)malloc(mmSide*mmSeg * sizeof(double));
-
                 }
-                //xArrayFlex[0] = (double *)malloc(sizeof(double) * mmSide * mmSeg*1000);
+                
+                //cellF   forward
+                xArrayF = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayF[i] = (double *)malloc(mmSide * sizeof(double));
+                }
+                
+                //cellB  backward
+                xArrayB = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayB[i] = (double *)malloc(mmSide * sizeof(double));
+                }
+                
+                //cellLL
+                xArrayLL = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayLL[i] = (double *)malloc(mmSide * sizeof(double));
+                }
+                
+                //cellLT
+                xArrayLT = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayLT[i] = (double *)malloc(mmSide * sizeof(double));
+                }
+                
+                //cellPcn
+                xArrayPcn = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayPcn[i] = (double *)malloc(mmSide * pitchStates *sizeof(double));
+                }
+                
+                //cellModCom
+                xArrayModCom = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayModCom[i] = (double *)malloc(mmSide * sizeof(double));
+                }
+                
+                //cellH
+                xArrayH = (double **)malloc(sizeof(double *) * IterNumChosen);
+                for (i=0; i<IterNumChosen; i++){
+                    xArrayH[i] = (double *)malloc(mmSide * sizeof(double));
+                }
             }
+            
             int indy = 0;
-           // if(beginEditingParams == 1){
-           //     printf("why???");
-            //setNeuronParams(globalCellName, globalSigma, globalAlpha);
-           // }
-            //alpha array
-            
-
-            
-
             //printf("%f", mainLoopIndex);
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
@@ -1079,6 +1097,93 @@ void xmain()
                     indy++;
                 }
             }
+            
+            int indy2 = 0;
+            ///do the command neuron here
+            for(iSide = 0;iSide < mmSide; ++iSide)
+            {
+                xArrayF[ind][indy2] = cellF[iSide].x;
+                alphaArrayF = cellF[iSide].alpha;
+                sigmaArrayF = cellF[iSide].sigma;
+                sigmaIArrayF = cellF[iSide].sigmaI;
+                sigmaEArrayF = cellF[iSide].sigmaE;
+                betaEArrayF = cellF[iSide].betaE;
+                betaIArrayF = cellF[iSide].betaI;
+                IdcArrayF = cellF[iSide].Idc;
+                
+            
+                xArrayB[ind][indy2] = cellB[iSide].x;
+                alphaArrayB = cellB[iSide].alpha;
+                sigmaArrayB = cellB[iSide].sigma;
+                sigmaIArrayB = cellB[iSide].sigmaI;
+                sigmaEArrayB = cellB[iSide].sigmaE;
+                betaEArrayB = cellB[iSide].betaE;
+                betaIArrayB = cellB[iSide].betaI;
+                IdcArrayB = cellB[iSide].Idc;
+                
+                xArrayLL[ind][indy2] = cellLL[iSide].x;
+                alphaArrayLL = cellLL[iSide].alpha;
+                sigmaArrayLL = cellLL[iSide].sigma;
+                sigmaIArrayLL = cellLL[iSide].sigmaI;
+                sigmaEArrayLL = cellLL[iSide].sigmaE;
+                betaEArrayLL = cellLL[iSide].betaE;
+                betaIArrayLL = cellLL[iSide].betaI;
+                IdcArrayLL = cellLL[iSide].Idc;
+            
+                
+                xArrayLT[ind][indy2] = cellLT[iSide].x;
+                alphaArrayLT = cellLT[iSide].alpha;
+                sigmaArrayLT = cellLT[iSide].sigma;
+                sigmaIArrayLT = cellLT[iSide].sigmaI;
+                sigmaEArrayLT = cellLT[iSide].sigmaE;
+                betaEArrayLT = cellLT[iSide].betaE;
+                betaIArrayLT = cellLT[iSide].betaI;
+                IdcArrayLT = cellLT[iSide].Idc;
+                
+                xArrayModCom[ind][indy2] = cellModCom[iSide].x;
+                alphaArrayModCom = cellModCom[iSide].alpha;
+                sigmaArrayModCom = cellModCom[iSide].sigma;
+                sigmaIArrayModCom = cellModCom[iSide].sigmaI;
+                sigmaEArrayModCom = cellModCom[iSide].sigmaE;
+                betaEArrayModCom = cellModCom[iSide].betaE;
+                betaIArrayModCom = cellModCom[iSide].betaI;
+                IdcArrayModCom = cellModCom[iSide].Idc;
+                
+                xArrayH[ind][indy2] = cellH[iSide].x;
+                alphaArrayH = cellH[iSide].alpha;
+                sigmaArrayH = cellH[iSide].sigma;
+                sigmaIArrayH = cellH[iSide].sigmaI;
+                sigmaEArrayH = cellH[iSide].sigmaE;
+                betaEArrayH = cellH[iSide].betaE;
+                betaIArrayH = cellH[iSide].betaI;
+                IdcArrayH = cellH[iSide].Idc;
+                
+                indy2++;
+            }
+            
+            
+            int indy3 = 0;
+            //do the Pcn neuron here, cause it's a special case
+            for(iSide = 0;iSide < mmSide; ++iSide)
+            {
+                for (iSeg =0; iSeg < pitchStates; ++iSeg){
+                    xArrayPcn[ind][indy3] = cellPcn[iSide][iSeg].x;
+                    alphaArrayPcn = cellPcn[iSide][iSeg].alpha;
+                    sigmaArrayPcn = cellPcn[iSide][iSeg].sigma;
+                    sigmaIArrayPcn = cellPcn[iSide][iSeg].sigmaI;
+                    sigmaEArrayPcn = cellPcn[iSide][iSeg].sigmaE;
+                    betaEArrayPcn = cellPcn[iSide][iSeg].betaE;
+                    betaIArrayPcn = cellPcn[iSide][iSeg].betaI;
+                    IdcArrayPcn = cellPcn[iSide][iSeg].Idc;
+                    
+                    indy3++;
+                }
+            
+            }
+            
+            
+            
+        
             ind++;
             if (ind == IterNumChosen-1){
                 ind = 0;
@@ -1093,7 +1198,14 @@ void xmain()
             free(xArrayElev);
             free(xArrayRet);
             free(xArrayCoord);
-
+            
+            free(xArrayPcn);
+            free(xArrayF);
+            free(xArrayB);
+            free(xArrayLL);
+            free(xArrayLT);
+            free(xArrayModCom);
+            free(xArrayH);
             }
             
             fprintf(f10, "\n");
@@ -1226,8 +1338,8 @@ void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, do
     
     for (i=0; i< size; i++){
     //printf("size = %d",size);
-        printf("fkkk");
-    printf("%f",a[i]);
+        //printf("fkkk");
+  //  printf("%f",a[i]);
     globalAlpha[i] = a[i];
     globalSigma[i] = s[i];
     globalSigmaE[i] = sE[i];
@@ -1353,26 +1465,84 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                     cellFlexor[iSide][iSeg].betaI = bI;
                     cellFlexor[iSide][iSeg].Idc = Idc;
                     
-                    
                 }
-                //--set initial state of neuron at the fixed point---
-        //cellFlexor[iSide][iSeg].xpp = -1 + cellFlexor[iSide][iSeg].sigma;
-       // cellFlexor[iSide][iSeg].xp = -1 + cellFlexor[iSide][iSeg].sigma;
-       // cellFlexor[iSide][iSeg].x = -1 + cellFlexor[iSide][iSeg].sigma;
-       // cellFlexor[iSide][iSeg].y = cellFlexor[iSide][iSeg].x - cellFlexor[iSide][iSeg].alpha/(1-cellFlexor[iSide][iSeg].x);
+
             }
         }
-      //  printf("So what\n");
-  //  }
-    //else if (id == 1){//Bursting
-       // struct structBursting**cell = getBurst(neuronName);
-     //   cell->alpha =a;
-      //  cell->sigma =s;
-   // }
-   // else if (id == 2){//PaceMaker
-        //struct structEndogenousPacemaker**cell = getPace(neuronName);
-     //   cell->alpha = a;
-   // }
+    
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        if (id == 9){
+            cellF[iSide].alpha = a;
+            cellF[iSide].sigma = s;
+            cellF[iSide].sigmaE = sE;
+            cellF[iSide].sigmaI = sI;
+            cellF[iSide].betaE = bE;
+            cellF[iSide].betaI = bI;
+            cellF[iSide].Idc = Idc;
+        }
+        else if(id == 10){
+            cellB[iSide].alpha = a;
+            cellB[iSide].sigma = s;
+            cellB[iSide].sigmaE = sE;
+            cellB[iSide].sigmaI = sI;
+            cellB[iSide].betaE = bE;
+            cellB[iSide].betaI = bI;
+            cellB[iSide].Idc = Idc;
+        }
+        else if(id == 11){
+            cellLL[iSide].alpha = a;
+            cellLL[iSide].sigma = s;
+            cellLL[iSide].sigmaE = sE;
+            cellLL[iSide].sigmaI = sI;
+            cellLL[iSide].betaE = bE;
+            cellLL[iSide].betaI = bI;
+            cellLL[iSide].Idc = Idc;
+        }
+        else if (id == 12) {
+            cellLT[iSide].alpha = a;
+            cellLT[iSide].sigma = s;
+            cellLT[iSide].sigmaE = sE;
+            cellLT[iSide].sigmaI = sI;
+            cellLT[iSide].betaE = bE;
+            cellLT[iSide].betaI = bI;
+            cellLT[iSide].Idc = Idc;
+        }
+        else if (id == 14){
+            cellModCom[iSide].alpha = a;
+            cellModCom[iSide].sigma = s;
+            cellModCom[iSide].sigmaE = sE;
+            cellModCom[iSide].sigmaI = sI;
+            cellModCom[iSide].betaE = bE;
+            cellModCom[iSide].betaI = bI;
+            cellModCom[iSide].Idc = Idc;
+        }
+        else if (id == 15){
+            cellH[iSide].alpha = a;
+            cellH[iSide].sigma = s;
+            cellH[iSide].sigmaE = sE;
+            cellH[iSide].sigmaI = sI;
+            cellH[iSide].betaE = bE;
+            cellH[iSide].betaI = bI;
+            cellH[iSide].Idc = Idc;
+        }
+    }
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for (iSeg = 0; iSeg < pitchStates; ++iSeg){
+            if (id == 13){
+                //pcn
+                cellPcn[iSide][iSeg].alpha = a;
+                cellPcn[iSide][iSeg].sigma = s;
+                cellPcn[iSide][iSeg].sigmaE = sE;
+                cellPcn[iSide][iSeg].sigmaI = sI;
+                cellPcn[iSide][iSeg].betaE = bE;
+                cellPcn[iSide][iSeg].betaI = bI;
+                cellPcn[iSide][iSeg].Idc = Idc;
+            }
+        }
+    }
+
     beginEditingParams = 0; //stop editing by turning the edit flag off
     
 

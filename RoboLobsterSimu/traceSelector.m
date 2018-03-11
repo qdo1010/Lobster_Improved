@@ -294,6 +294,7 @@ const char * traceLabels[] = {
     [cellSelector addItemWithTitle:@"cellLLL"];
     [cellSelector addItemWithTitle:@"cellLLR"];
     [cellSelector addItemWithTitle:@"cellLTL"];
+    [cellSelector addItemWithTitle:@"cellLTR"];
     [cellSelector addItemWithTitle:@"cellPcnLlow"];
     [cellSelector addItemWithTitle:@"cellPcnLrosDown"];
     [cellSelector addItemWithTitle:@"cellPcnLlevel"];

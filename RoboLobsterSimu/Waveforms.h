@@ -139,7 +139,7 @@ typedef enum {
 @property (readwrite) int cellIndex;
 @property (readwrite) int cellTypeIndex;
 @property (readwrite) int globalCounter;
-
+//cpg
 extern double** xArrayElev;
 extern double** xArrayDep;
 extern double** xArraySwing;
@@ -150,6 +150,14 @@ extern double** xArrayExt;
 extern double** xArrayFlex;
 extern double** xArrayCoord;
 
+//command
+extern double** xArrayF;
+extern double** xArrayB;
+extern double** xArrayLL;
+extern double** xArrayLT;
+extern double** xArrayModCom;
+extern double** xArrayPcn;
+extern double** xArrayH;
 
 //alpha array
 extern double alphaArrayElev;
@@ -162,6 +170,15 @@ extern double alphaArrayExt;
 extern double alphaArrayFlex;
 extern double alphaArrayCoord;
 
+extern double alphaArrayF;
+extern double alphaArrayB;
+extern double alphaArrayLL;
+extern double alphaArrayLT;
+extern double alphaArrayPcn;
+extern double alphaArrayModCom;
+extern double alphaArrayH;
+
+
 //sigma arr
 extern double sigmaArrayElev;
 extern double sigmaArrayDep;
@@ -173,6 +190,16 @@ extern double sigmaArrayExt;
 extern double sigmaArrayFlex;
 extern double sigmaArrayCoord;
 
+extern double sigmaArrayF;
+extern double sigmaArrayB;
+extern double sigmaArrayLL;
+extern double sigmaArrayLT;
+extern double sigmaArrayPcn;
+extern double sigmaArrayModCom;
+extern double sigmaArrayH;
+
+
+//sE
 extern double sigmaEArrayElev;
 extern double sigmaEArrayDep;
 extern double sigmaEArraySwing;
@@ -182,6 +209,15 @@ extern double sigmaEArrayRet;
 extern double sigmaEArrayExt;
 extern double sigmaEArrayFlex;
 extern double sigmaEArrayCoord;
+
+extern double sigmaEArrayF;
+extern double sigmaEArrayB;
+extern double sigmaEArrayLL;
+extern double sigmaEArrayLT;
+extern double sigmaEArrayPcn;
+extern double sigmaEArrayModCom;
+extern double sigmaEArrayH;
+
 
 //sI
 extern double sigmaIArrayElev;
@@ -194,6 +230,14 @@ extern double sigmaIArrayExt;
 extern double sigmaIArrayFlex;
 extern double sigmaIArrayCoord;
 
+extern double sigmaIArrayF;
+extern double sigmaIArrayB;
+extern double sigmaIArrayLL;
+extern double sigmaIArrayLT;
+extern double sigmaIArrayPcn;
+extern double sigmaIArrayModCom;
+extern double sigmaIArrayH;
+
 //bE
 extern double betaEArrayElev;
 extern double betaEArrayDep;
@@ -205,7 +249,15 @@ extern double betaEArrayExt;
 extern double betaEArrayFlex;
 extern double betaEArrayCoord;
 
+extern double betaEArrayF;
+extern double betaEArrayB;
+extern double betaEArrayLL;
+extern double betaEArrayLT;
+extern double betaEArrayPcn;
+extern double betaEArrayModCom;
+extern double betaEArrayH;
 
+//bI
 extern double betaIArrayElev;
 extern double betaIArrayDep;
 extern double betaIArraySwing;
@@ -216,6 +268,15 @@ extern double betaIArrayExt;
 extern double betaIArrayFlex;
 extern double betaIArrayCoord;
 
+extern double betaIArrayF;
+extern double betaIArrayB;
+extern double betaIArrayLL;
+extern double betaIArrayLT;
+extern double betaIArrayPcn;
+extern double betaIArrayModCom;
+extern double betaIArrayH;
+
+//idc
 extern double IdcArrayElev;
 extern double IdcArrayDep;
 extern double IdcArraySwing;
@@ -225,6 +286,15 @@ extern double IdcArrayRet;
 extern double IdcArrayExt;
 extern double IdcArrayFlex;
 extern double IdcArrayCoord;
+
+extern double IdcArrayF;
+extern double IdcArrayB;
+extern double IdcArrayLL;
+extern double IdcArrayLT;
+extern double IdcArrayPcn;
+extern double IdcArrayModCom;
+extern double IdcArrayH;
+
 typedef void (^CaseBlock)(void);
 
 //-(void) runCalculation;
