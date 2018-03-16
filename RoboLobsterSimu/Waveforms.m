@@ -77,11 +77,11 @@
             
             [Params addObject:[NSNumber numberWithDouble:alphaArrayElev]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayElev]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayElev]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArrayElev]];
             [Params addObject:[NSNumber numberWithDouble:betaEArrayElev]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArrayElev]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArrayElev]];
 
 
             for (i = 0; i < samplesize; i ++){
@@ -119,11 +119,11 @@
             //   NSLog( @"%f\n", xArraySwing[cell]);
             [Params addObject:[NSNumber numberWithDouble:alphaArraySwing]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArraySwing]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArraySwing]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaIArraySwing]];
             [Params addObject:[NSNumber numberWithDouble:betaEArraySwing]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
-            [Params addObject:[NSNumber numberWithDouble:0]];
+            [Params addObject:[NSNumber numberWithDouble:betaIArraySwing]];
+            [Params addObject:[NSNumber numberWithDouble:IdcArraySwing]];
             
             for (i = 0; i < samplesize; i ++){
                 if (invert)
