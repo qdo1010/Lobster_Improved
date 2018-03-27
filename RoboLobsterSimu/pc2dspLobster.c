@@ -522,9 +522,9 @@ void xmain()
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 0.1;*/
     
     ///you changed it here
-    pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.1;
+    pFastExc.xRp = 2.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 1.;
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 1;
-    pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.1;
+    pSlowExc.xRp = 2.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 1.;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.999;    pSlowInh.gStrength = 1;
 //•••••••••••••••••••••
     
