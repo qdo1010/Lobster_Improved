@@ -213,6 +213,17 @@ int minorLineWidth	 = 1;
     //        [sinePath setFlatness:3.0];
     [sinePath moveToPoint:NSMakePoint(0*cWidth,  height/2-[[points objectAtIndex:0] floatValue]*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset)];
     
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:26], NSFontAttributeName,[NSColor blueColor], NSForegroundColorAttributeName, nil];
+    
+    
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSString*name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:idy];
+
+    
+    NSAttributedString * currentText=[[NSAttributedString alloc] initWithString:name attributes: attributes];
+    
+    NSSize attrSize = [currentText size];
+    [currentText drawAtPoint:NSMakePoint(0*cWidth, height/2-0.05*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset + height/5)];
     
     for (int i=0; i < numberOfPoints; i++)
     {
@@ -560,3 +571,5 @@ int minorLineWidth	 = 1;
  }
  }
  */
+
+

@@ -800,7 +800,7 @@ void xmain()
          }
          //compin = compin/10;
          */
-        computeLateralBias(LVhead,compin);//(LVhead,0);//compin);
+       // computeLateralBias(LVhead,compin);//(LVhead,0);//compin);
         computeMAPs(mainLoopIndex); // Calculate for one iteration of network
         comActionPrev = comAction;
         /* ••••••••••••••••••••••This is debugging code
@@ -1018,8 +1018,11 @@ void xmain()
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
                     alphaArrayElev= cellElevator[iSide][iSeg].alpha;
                     sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
+                    sigmaIArrayElev = cellElevator[iSide][iSeg].sigmaI;
+                    sigmaEArrayElev = cellElevator[iSide][iSeg].sigmaE;
                     betaEArrayElev = cellElevator[iSide][iSeg].betaE;
-
+                    betaIArrayElev = cellElevator[iSide][iSeg].betaI;
+                    IdcArrayElev = cellElevator[iSide][iSeg].Idc;
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
@@ -1039,8 +1042,11 @@ void xmain()
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
                     alphaArraySwing = cellSwing[iSide][iSeg].alpha;
                     sigmaArraySwing = cellSwing[iSide][iSeg].sigma;
+                    sigmaIArraySwing = cellSwing[iSide][iSeg].sigmaI;
+                    sigmaEArraySwing = cellSwing[iSide][iSeg].sigmaE;
                     betaEArraySwing = cellSwing[iSide][iSeg].betaE;
-
+                    betaIArraySwing = cellSwing[iSide][iSeg].betaI;
+                    IdcArraySwing = cellSwing[iSide][iSeg].Idc;
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
@@ -1405,7 +1411,7 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
             {
                 if(id == 0){
                     cellElevator[iSide][iSeg].alpha = a;
-                    cellElevator[iSide][iSeg].betaE = bE;
+                    cellElevator[iSide][iSeg].sigma = s;
                     cellElevator[iSide][iSeg].sigmaE = sE;
                     cellElevator[iSide][iSeg].sigmaI = sI;
                     cellElevator[iSide][iSeg].betaE = bE;
@@ -1415,7 +1421,7 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
                 }
                 else if(id == 1){
                     cellSwing[iSide][iSeg].alpha = a;
-                    cellSwing[iSide][iSeg].betaE = bE;
+                    cellSwing[iSide][iSeg].sigma = s;
                     cellSwing[iSide][iSeg].sigmaE = sE;
                     cellSwing[iSide][iSeg].sigmaI = sI;
                     cellSwing[iSide][iSeg].betaE = bE;
@@ -1765,9 +1771,16 @@ void computeMAPs(double mainLoopIndex)
             
             // These are the synapses coupling the modulatory command interneron to the CPG neurons
             calcSynapticCurrents( &iExcIntModComEle[iSide][iSeg],    	&pExcModComEle[iSide][iSeg],  	    cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcSegSwingRet[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcSegSwingExt[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcSegSwingFlx[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+            
+            //typo so maybe i change it back
+            
+           // calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcSegSwingRet[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcModComDep[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+           // calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcSegSwingExt[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcModComSwing[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+          //  calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcSegSwingFlx[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcModComStance[iSide][iSeg],  	cellModCom[iSide].x,       spikesModCom[iSide]/mmSeg);
+            
             
             // These are the synapses coupling the postural command interneron to the depressor neurons
             calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],  	cellPcn[iSide][pitch].x,       spikesPcn[iSide]/mmSeg);
@@ -1820,7 +1833,7 @@ void computeMAPs(double mainLoopIndex)
             calcBurstingNeuron( &cellElevator[iSide][iSeg],    iExcIntModComEle[iSide][iSeg],      iInhSegCoordEle[iSide][iSeg]);
             
             //Be sure to add terms for postural command inputs to the depressors.
-            calcBurstingNeuron(  &cellDepressor[iSide][iSeg],   iExcIntModComDep[iSide][iSeg],      iInhSegEleDep[iSide][iSeg]);
+            calcBurstingNeuron(  &cellDepressor[iSide][iSeg],   iExcIntModComDep[iSide][iSeg],      iInhSegEleDep[iSide][iSeg]);  //modify here
             calcBurstingNeuron(  &cellStance[iSide][iSeg],      iExcIntModComStance[iSide][iSeg],   iInhSegEleStance[iSide][iSeg]);
            // calcPacemakerNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
             calcBurstingNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
@@ -1856,7 +1869,7 @@ void computeMAPs(double mainLoopIndex)
     elapsed = t2 - t1;
 } //End of Fun
 //------------------------------------------------------------------------------
-void computeLateralBias(double h, double c)
+/*void computeLateralBias(double h, double c)
 {
     double error = 0;
     double error1 = 0;
@@ -1893,4 +1906,4 @@ void computeLateralBias(double h, double c)
     
     cellModCom[3].Idc = 0;
 }
-
+*/
