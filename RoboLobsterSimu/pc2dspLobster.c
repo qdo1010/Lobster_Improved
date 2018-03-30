@@ -566,7 +566,7 @@ void xmain()
             pExcSegEleContraLat[iSide][iSeg] = pSlowExc;
             
             //Internal inhibitory synapses of neuronal oscillator
-            pInhSegEleDep[iSide][iSeg] = pSlowInh;
+            pInhSegEleDep[iSide][iSeg] = pSlowInh;    //this is the test synapse <<<<<<<••••••••
             pInhSegEleStance[iSide][iSeg] = pSlowInh;
             pInhSegStanceSwing[iSide][iSeg] = pSlowInh;
             
@@ -1737,10 +1737,14 @@ void computeMAPs(double mainLoopIndex)
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)	//This loop calculates the internal CPG synapses
             
         {
-            calcSynapticCurrents( &iInhSegEleDep[iSide][iSeg],    		&pInhSegEleDep[iSide][iSeg],  		cellElevator[iSide][iSeg].x,       spikesElevator[iSide][iSeg]/mmSeg);
-            calcSynapticCurrents( &iInhSegEleStance[iSide][iSeg],    	&pInhSegEleStance[iSide][iSeg],  	cellElevator[iSide][iSeg].x,       spikesElevator[iSide][iSeg]/mmSeg);
-            calcSynapticCurrents( &iInhSegStanceSwing[iSide][iSeg],    	&pInhSegStanceSwing[iSide][iSeg],  	cellStance[iSide][iSeg].x,         spikesStance[iSide][iSeg]/mmSeg);
+/*            calcSynapticCurrents( &iInhSegEleDep[iSide][iSeg],            &pInhSegEleDep[iSide][iSeg],          cellDepressor[iSide][iSeg].x,       spikesElevator[iSide][iSeg]/mmSeg);
+            calcSynapticCurrents( &iInhSegEleStance[iSide][iSeg],        &pInhSegEleStance[iSide][iSeg],      cellStance[iSide][iSeg].x,       spikesElevator[iSide][iSeg]/mmSeg);
+            calcSynapticCurrents( &iInhSegStanceSwing[iSide][iSeg],        &pInhSegStanceSwing[iSide][iSeg],      cellSwing[iSide][iSeg].x,         spikesStance[iSide][iSeg]/mmSeg);*/
             
+            calcSynapticCurrents( &iInhSegEleDep[iSide][iSeg],            &pInhSegEleDep[iSide][iSeg],          cellDepressor[iSide][iSeg].x,       spikesElevator[iSide][iSeg]);
+            calcSynapticCurrents( &iInhSegEleStance[iSide][iSeg],        &pInhSegEleStance[iSide][iSeg],      cellStance[iSide][iSeg].x,       spikesElevator[iSide][iSeg]);
+            calcSynapticCurrents( &iInhSegStanceSwing[iSide][iSeg],        &pInhSegStanceSwing[iSide][iSeg],      cellSwing[iSide][iSeg].x,         spikesStance[iSide][iSeg]);
+
             // These are the synapses within the core neuronal oscillator
             iInhSegEleDep[iSide][iSeg]         		= iInhSegEleDep[iSide][iSeg] * cCalSeg;
             iInhSegEleStance[iSide][iSeg]         	= iInhSegEleStance[iSide][iSeg] * cCalSeg;
@@ -1758,10 +1762,10 @@ void computeMAPs(double mainLoopIndex)
              pInhIntLTStance      // Inhibition from a Trailing Command interneuron to a stance interneuron
              */
             // These are the synapses coupling the swing interneron to the bifunctional motorneurons
-            calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellSwing[iSide][iSeg].x,   cellF[iSide].x,  spikesSwing[iSide][iSeg]/mmSeg, spikesF[iSide]);
-            calcModulatedCurrents( &iExcSegSwingRet[iSide][iSeg],    &pExcSegSwingRet[iSide][iSeg],  &pInhIntBSwing[iSide],	 cellSwing[iSide][iSeg].x,   cellB[iSide].x,  spikesSwing[iSide][iSeg]/mmSeg, spikesB[iSide]);
-            calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellSwing[iSide][iSeg].x,   cellLT[iSide].x, spikesSwing[iSide][iSeg]/mmSeg, spikesLT[iSide]);
-            calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellSwing[iSide][iSeg].x,   cellLL[iSide].x, spikesSwing[iSide][iSeg]/mmSeg, spikesLL[iSide]);
+            calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellSwing[iSide][iSeg].x,   cellF[iSide].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
+            calcModulatedCurrents( &iExcSegSwingRet[iSide][iSeg],    &pExcSegSwingRet[iSide][iSeg],  &pInhIntBSwing[iSide],	 cellSwing[iSide][iSeg].x,   cellB[iSide].x,  spikesSwing[iSide][iSeg], spikesB[iSide]);
+            calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellSwing[iSide][iSeg].x,   cellLT[iSide].x, spikesSwing[iSide][iSeg], spikesLT[iSide]);
+            calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellSwing[iSide][iSeg].x,   cellLL[iSide].x, spikesSwing[iSide][iSeg], spikesLL[iSide]);
             
             // These are the synapses coupling the stance interneron to the bifunctional motorneurons
             calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellStance[iSide][iSeg].x,  cellF[iSide].x,     spikesStance[iSide][iSeg]/mmSeg, spikesF[iSide]);
