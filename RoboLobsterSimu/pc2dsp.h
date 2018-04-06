@@ -333,10 +333,10 @@ struct structBursting {
     double x, y, alpha, sigma, sigmaE, sigmaI, betaE, betaI, Idc;
     int spike;
 }
-cellDepressor[mmSide][mmSeg],
-cellStance[mmSide][mmSeg];
-//cellSwing[mmSide][mmSeg],
-//cellElevator[mmSide][mmSeg];
+//cellDepressor[mmSide][mmSeg],
+//cellStance[mmSide][mmSeg];
+cellSwing[mmSide][mmSeg],
+cellElevator[mmSide][mmSeg];
 
 
 //no endogenous pacemaker for now
@@ -349,8 +349,10 @@ struct structEndogenousPacemaker {
     double alphaInit;
     int spike;
 }
-cellSwing[mmSide][mmSeg],
-cellElevator[mmSide][mmSeg];
+cellDepressor[mmSide][mmSeg],
+cellStance[mmSide][mmSeg];
+//cellSwing[mmSide][mmSeg],
+//cellElevator[mmSide][mmSeg];
 
 /*
 struct structEndogenousPacemaker {
