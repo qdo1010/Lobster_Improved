@@ -84,7 +84,7 @@ void spikingNeuronInit(struct structSpiking *ptr) {
 void burstingNeuronInit(struct structBursting *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
-    ptr->alpha = 5.3;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
+    ptr->alpha = 5.45;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
     ptr->sigma = -0.26;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
@@ -106,8 +106,8 @@ void burstingNeuronInit(struct structBursting *ptr) {
 void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
 //   ptr->alpha = 4.;
-    ptr->alpha = 4.5;
-    ptr->sigma = 2.1-sqrt(ptr->alpha)+0.0171159;
+    ptr->alpha = 4.85;
+    ptr->sigma = 2.3-sqrt(ptr->alpha)+0.0171159;
     
     //ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     //ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
