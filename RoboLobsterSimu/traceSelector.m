@@ -6,7 +6,7 @@
 //  Copyright © 2017 HongQuan Do. All rights reserved.
 //
 
-#include "traceSelector.h";
+#include "traceSelector.h"
 #import <Foundation/Foundation.h>
 
 @implementation TraceSelector
