@@ -1,3 +1,4 @@
 # Lobster
 
-Change all the parameters, and then choose setParams to set all parameter at once.
+This is a simulation software for the Lobster Robot Motor Program.
+It allows user to verify that the DTM parameters are set correctly to generate walking pattern.
