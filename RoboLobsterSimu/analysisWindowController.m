@@ -97,7 +97,7 @@ NSString *const kDSPTitle          = @"DSPViewController";
     // [[self oscilloscopeView] setNeedsDisplay:YES];
     
     [self viewScope:self];
-    [[self scopeDrawer] open];
+  //  [[self scopeDrawer] open];
     
 }
 
@@ -156,7 +156,7 @@ AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate
 	[self  setScopeInited:NO];
 	[self  logAnalysisWindowController];
         //    [[[appDelegate analysisWindowController] myTabView] setDelegate:(id)self];
-    [[self scopeDrawer] open];
+   // [[self scopeDrawer] open];
 }
 
 - (IBAction)  viewScope:(id)sender
@@ -176,9 +176,9 @@ AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate
 	NSRect iRect = [[self oscilloscopeView] bounds];
 	[_oscilloscopeController setProxOffset:((iRect.size.height / 2) * 2)];
 	[[self oscilloscopeView] setNeedsDisplay:YES];
-    [[self scopeDrawer] open];
+  //  [[self scopeDrawer] open];
         //	return self;
-    [[self scopeDrawer] open];
+   // [[self scopeDrawer] open];
 }
 
 - (IBAction) viewChart:(id)sender
