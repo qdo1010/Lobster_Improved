@@ -1,10 +1,6 @@
-Why ModCom doesn't affect CPG at all????????
+1) Replace NSDrawer w sth else? But with what?? Too slow
 
+2) Retractor and Protractor looks weird
 
-What's missing?
+3) Add threshold so that modcom set alpha and sigma of 4 CPGs (is there a better way) w command neurons
 
-1) Synapse connection is declared
-2) I think Modcom is inited?
-3) I think it's being calculated too
-4) ModCom current is being input into 4 CPG
-5) so why nothing????????????

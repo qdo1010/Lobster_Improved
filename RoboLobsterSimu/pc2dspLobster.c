@@ -107,6 +107,8 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
 //   ptr->alpha = 4.;
     ptr->alpha = 4.85;
+    //2.3
+    
     ptr->sigma = 2.3-sqrt(ptr->alpha)+0.0171159;
     
     //ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
@@ -139,6 +141,42 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
 }
 
 
+void pacemakerNeuronInit2(struct structEndogenousPacemaker *ptr) {
+    ptr->mu = .0001;
+    //   ptr->alpha = 4.;
+    ptr->alpha = 4.35; //this change frequency while keeping duration
+    //2.3
+    
+    ptr->sigma = 2.25-sqrt(ptr->alpha)+0.0171159;  //changing the constant change the duration
+    
+    //ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    //ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
+    //ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    // ptr->betaE = 1.33;    //sets the transient responce to excitatory synaptic current
+    //ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+    // ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
+    // ptr->Idc = 0;
+    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
+    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
+    ptr->Idc = 0;
+    
+    
+    ptr->yr = -1*(2+ptr->alpha)/2;
+    ptr->xr = 1-sqrt(ptr->alpha);
+    ptr->alphaInit = sqrt(ptr->alpha);
+    ptr->xp = -1+ptr->sigma+.01;
+    ptr->xpp = -1+ptr->sigma+.01;
+    if (ptr->sigma<0)
+    {
+        ptr->x2 = (-1+ptr->sigma)- ptr->alpha / (1-(-1+ptr->sigma));
+    }
+    else
+        ptr->x2 = 1-2*ptr->alphaInit;
+}
 
 
 void calcSpikingNeuron(struct structSpiking *ptr,double cIe,double cIi) {
@@ -530,7 +568,7 @@ void xmain()
                 burstingNeuronInit( &cellSwing[iSide][iSeg] );
                 
                 
-                pacemakerNeuronInit(  &cellDepressor[iSide][iSeg] );
+                pacemakerNeuronInit2(  &cellDepressor[iSide][iSeg] );
                 pacemakerNeuronInit(  &cellStance[iSide][iSeg] );
                 
                 spikingNeuronInit(   &cellProtractor[iSide][iSeg] );

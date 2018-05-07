@@ -224,7 +224,7 @@
        AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
       [self setAnalysisWindowController:newAnalysisWindowController];
 
-       [appDelegate showAnalysisWindow:self];
+    [appDelegate showAnalysisWindow:self];
      [[appDelegate analysisWindowController]  viewScope:self];
      [appDelegate setDrawChart: NO];
     
