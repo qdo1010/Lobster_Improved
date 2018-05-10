@@ -2,5 +2,41 @@
 
 2) Retractor and Protractor looks weird
 
-3) Add threshold so that modcom set alpha and sigma of 4 CPGs (is there a better way) w command neurons
+3) Add threshold so that modcom set alpha and sigma of 4 CPGs w command neurons
+
+4) Fix Command Neuron so they don't randomly spike on the Bifunctional Neurons
+---------------------------------- WORKFLOW -----------------------------------------------------
+1) First find and save 3 files that correspond to Slow, Fast, Medium
+2) Open tool, pick neurons to view
+3) Choose the boxes to click
+4) Load params file and display the view
+
+----------------------------------- TASKS --------------------------------------------------------
+Add Command CheckBoxes and Speed
+-Functionality:
+What will command changes/toggling do:
+It will basically set the chosen Command Neuron to Spiking (Max 2 together, need a method to stop ppl picking more than 2)
+Which then activates the CPG Neuron with new alpha, sigma!
+    -> No need for ModCom then? Basically just simulate ModCom?
+        -> What function will it call. or loadParms already implemented
+                It will call setChangeParam, load the chosen saved Parameters (fast, slow, medium)
+                    -> then call xmain to do the calculation
+-Implementation:
+CommandStateViewController is connected to an XIB file
+Want CommandStateViewController to Appear simultanously with the Oscilloscope
+And changes there will affect changes in Oscilloscope
+
+option 1) shared methods
+    The two has to share a common controller, or share method somewhere.
+    That they can both call...prolly a bad idea
+
+option 2) message passing (better)
+    CommandStateController send a message with all its options in an nsarray or sth chosen to OscilloscopeViewController, and OscilloscopeViewController will implement accordingly
+    OscilloscopeViewController will need a OpenMessageMethod
+    Will this method be in AppDelegate? It should?
+
+
+
+
+
 

@@ -17,7 +17,7 @@
 @class Waveforms;
 @class TraceSelector;
 @class PreferenceController;
-
+@class CommandStateViewController;
     //#define numTraces = 8
 
 #pragma mark --- Constants
