@@ -194,7 +194,6 @@ typedef id MovieAudioExtractionRef;
     int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 
 
-    
     //init params input values
     if (settingUpParams){
         for (int i = 0; i < numCell; i++){

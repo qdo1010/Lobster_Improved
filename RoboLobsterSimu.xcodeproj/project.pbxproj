@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48F034EC20A48E5E005368D4 /* CommandStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F034EB20A48E5E005368D4 /* CommandStateViewController.xib */; };
+		48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F034F020A4914B005368D4 /* CommandStateViewController.m */; };
 		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
 		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
 		970E766C1EF17CED002EE43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766B1EF17CED002EE43D /* main.m */; };
@@ -51,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48F034EB20A48E5E005368D4 /* CommandStateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommandStateViewController.xib; sourceTree = "<group>"; };
+		48F034F020A4914B005368D4 /* CommandStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandStateViewController.m; sourceTree = "<group>"; };
+		48F034F120A4914B005368D4 /* CommandStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandStateViewController.h; sourceTree = "<group>"; };
 		97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-02-23 at 3.31.24 PM.png"; sourceTree = "<group>"; };
 		970E76641EF17CED002EE43D /* RoboLobsterSimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboLobsterSimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		970E76671EF17CED002EE43D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -150,6 +155,9 @@
 				970E76681EF17CED002EE43D /* AppDelegate.m */,
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
 				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
+				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
+				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
+				48F034EB20A48E5E005368D4 /* CommandStateViewController.xib */,
 				970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */,
 				970E76AC1EF1A140002EE43D /* analysisWindowController.h */,
 				970E76AF1EF1A158002EE43D /* analysisWindowController.m */,
@@ -316,6 +324,7 @@
 				97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */,
 				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
 				97D4662D203527C60042B141 /* Fast in Resources */,
+				48F034EC20A48E5E005368D4 /* CommandStateViewController.xib in Resources */,
 				970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */,
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
