@@ -13,7 +13,7 @@
 
 @protocol CommandStateViewControllerDelegate;
 
-@interface CommandStateViewController : NSViewController
+@interface CommandStateViewController :NSWindowController
 
 @property (nonatomic, assign) id<CommandStateViewControllerDelegate> delegate;
 

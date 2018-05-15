@@ -27,11 +27,48 @@
 {
     return tableType == TableTypeCommandState;
 }*/
+
+- (NSString *)windowNibName {
+    return @"Window"; // this name tells AppKit which nib file to use
+}
+- (void)windowDidLoad
+{
+    NSLog(@"command view loaded");
+    [super windowDidLoad];
+    [self showWindow:nil];
+}
+- (id)init
+{
+    //    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+    
+//  TraceSelector *ts;
+    NSLog(@"hi");
+//    CommandStateViewController* ct;
+    self = [super initWithWindowNibName:@"Window"];
+   // self  = [super init];
+   // self =  [super initWithNibName:@"CommandStateViewConotroller" bundle:nil];
+
+
+    NSLog(@"Hello command selector");
+    //if (!ct)
+   // {
+   //     NSLog(@"Warning! Could not load command Selector file.\n");
+   // }
+   // else
+   // {
+        //[cellSelector removeAllItems];
+   //     NSLog(@"Command Selector Nib Loaded");
+   // }
+    return self;
+}
+
+
+
 - (void) awakeFromNib
 {
     [super awakeFromNib];
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    
+    NSLog(@"Awake");
   //  [appDelegate setTraceSelector:self];
   //  traceTable = [[NSTableView alloc] init];
   // cellColView = [[NSTableColumn alloc] init];

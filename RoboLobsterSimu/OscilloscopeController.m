@@ -64,6 +64,7 @@ typedef id MovieAudioExtractionRef;
         //    [self setOscilloscopeView:oscilloscopeView];
     self  = [super init];
     
+    
     if(self){
 		//        int ProxOffset, DistOffset;
      //   NSRect  iRect = [[[appDelegate analysisWindowController] oscilloscopeView] bounds];

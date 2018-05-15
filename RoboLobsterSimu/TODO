@@ -4,6 +4,7 @@
 
 3) Add threshold so that modcom set alpha and sigma of 4 CPGs w command neurons
 
+
 4) Fix Command Neuron so they don't randomly spike on the Bifunctional Neurons
 ---------------------------------- WORKFLOW -----------------------------------------------------
 1) First find and save 3 files that correspond to Slow, Fast, Medium
@@ -12,6 +13,13 @@
 4) Load params file and display the view
 
 ----------------------------------- TASKS --------------------------------------------------------
+Task 1)
+Make ModCom spiking only
+Count the number of SPikes
+Feed the spike into Sigma_e, Beta_e
+Alpha, sigma already set
+...
+Task 2)
 Add Command CheckBoxes and Speed
 -Functionality:
 What will command changes/toggling do:

@@ -320,7 +320,8 @@ const char * traceLabels[] = {
         [traceArraytobeSent addObject:[traceArray objectAtIndex:i]];
         
     }
-    [appDelegate drawOscilloscope:appDelegate];
+    [appDelegate openCommandWindow:appDelegate];
+     [appDelegate drawOscilloscope:appDelegate];
 
 }
 @end
