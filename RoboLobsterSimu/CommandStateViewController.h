@@ -10,10 +10,11 @@
 //#import "MovieControllerAnalysis.h"
 //#import "Table.h"
 //#import "sprites.h"
-
+#import "OscilloscopeController.h"
 @protocol CommandStateViewControllerDelegate;
+//@class AppDelegate;
 
-@interface CommandStateViewController : NSViewController
+@interface CommandStateViewController :NSWindowController
 
 @property (nonatomic, assign) id<CommandStateViewControllerDelegate> delegate;
 

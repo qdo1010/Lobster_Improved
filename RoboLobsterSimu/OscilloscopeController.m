@@ -13,7 +13,7 @@
 @implementation OscilloscopeController
 
     // These placeholders fill in for the 32bit Quicktime 7 Audio Extraction API
-typedef id MovieAudioExtractionRef;
+//typedef id MovieAudioExtractionRef;
 
 #pragma mark -
 #pragma mark Properties
@@ -53,6 +53,8 @@ typedef id MovieAudioExtractionRef;
 @synthesize betaI;
 @synthesize Idc;
 @synthesize cellID;
+@synthesize side;
+@synthesize seg;
 
 @synthesize settingUpParams; //load param value into array
 @synthesize setParamsButton;
@@ -63,6 +65,7 @@ typedef id MovieAudioExtractionRef;
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         //    [self setOscilloscopeView:oscilloscopeView];
     self  = [super init];
+    
     
     if(self){
 		//        int ProxOffset, DistOffset;
@@ -93,7 +96,8 @@ typedef id MovieAudioExtractionRef;
     //init the array that will contains input param values
     //cell ID tell C code what type of cell it is
     cellID = malloc(numCell*sizeof(int));
-    
+    side =malloc(numCell*sizeof(int));
+    seg = malloc(numCell*sizeof(int));
     //those are the array of params for each cell
     alpha = malloc(numCell*sizeof(double));
     sigma = malloc(numCell*sizeof(double));
@@ -109,8 +113,13 @@ typedef id MovieAudioExtractionRef;
         
         //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-        cellID[i] = [self convertNameToId:cellName];
+        NSMutableArray* chosenCellArray;
+        chosenCellArray = [self convertNameToId:cellName];
+        cellID[i] = [[chosenCellArray objectAtIndex:0] intValue];
+        side[i] = [[chosenCellArray objectAtIndex:1] intValue];
+        seg[i] = [[chosenCellArray objectAtIndex:2] intValue];
         NSLog(@"%@", cellName);
+        
         
         
         [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
@@ -399,7 +408,6 @@ typedef id MovieAudioExtractionRef;
 }
 
 
-
 - (IBAction)changeTraceOffset:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     [traceOffsetSlider setMinValue:0];
@@ -409,6 +417,50 @@ typedef id MovieAudioExtractionRef;
     
     //replace array value
     [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
+}
+
+- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
+    NSLog(@"%@", [parameters valueForKey:@"lFor"]);
+    if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
+        //turn on left forward
+        NSLog(@"walk forward left");
+        [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardLeft"];
+    }
+    else {
+        NSLog(@"forward left off");
+        [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardLeftOff"];
+    }
+    if ([[parameters valueForKey:@"rFor"]  boolValue] == true){
+        //turn on right forward
+        if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
+            //turn on left forward
+            NSLog(@"walk forward left");
+            [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardRight"];
+        }
+        else {
+            NSLog(@"forward left off");
+            [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardRightOff"];
+        }
+    };
+    if ([[parameters valueForKey:@"lBak"]  boolValue] == true){
+        //turn on left backward
+    };
+    if ([[parameters valueForKey:@"rBak"]  boolValue] == true){
+        //turn on right backward
+    };
+    if ([[parameters valueForKey:@"lLed"]  boolValue] == true){
+        //turn on left leading
+    };
+    if ([[parameters valueForKey:@"rLed"]  boolValue] == true){
+        //turn on right leading
+    };
+    if ([[parameters valueForKey:@"lTra"]  boolValue] == true){
+        //turn on left trailing
+    };
+    if ([[parameters valueForKey:@"rTra"]  boolValue] == true){
+        //turn on right trailing
+    }
+    
 }
 
 - (void)beginSendingStuffToBeDrawn {
@@ -442,8 +494,11 @@ typedef id MovieAudioExtractionRef;
 
 
 
-- (int)convertNameToId: (NSString*)name{
+- (NSMutableArray*)convertNameToId: (NSString*)name{
     int  c;
+    int side;
+    int seg;
+    NSMutableArray* chosenCell = [[NSMutableArray alloc] init];
     if ([name containsString:@"Elevator"]){
         c = 0;
     }
@@ -471,10 +526,13 @@ typedef id MovieAudioExtractionRef;
     else if ([name containsString:@"Flexor"]){
         c = 8;
     }
-    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){
+    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){///NOOO
+        ////NEED TO SEPARATE THE TWO!!!!
         c = 9;
     }
     else if ([name containsString:@"BL"] || [name containsString:@"BR"]){
+        ////NEED TO SEPARATE THE TWO!!!!
+
         c = 10;
     }
     else if ([name containsString:@"LL"]){
@@ -490,13 +548,43 @@ typedef id MovieAudioExtractionRef;
         c = 14;
     }
     else if ([name containsString:@"HL"] ||[name containsString:@"HR"]){
+        ////NEED TO SEPARATE THE TWO!!!!
         c = 15;
     }
     else{
-        c = 0;
+        c = -1; //nothing
     }
+    
+    if ( c < 9){
+        NSString *LR = [name substringFromIndex: [name length] - 2];
+        NSString *code = [LR substringFromIndex: [name length] - 1];
 
-    return c;
+        if ([LR containsString:@"L"]){
+            side = 0;
+        }
+        else{
+            side = 1;
+        }
+        seg = [code intValue];
+    }
+    else if( c != 13){
+        NSString *LR = [name substringFromIndex: [name length] - 1];
+        if ([LR isEqual: @"L"]){
+            side = 0;
+        }
+        else{
+            side = 1;
+        }
+        seg = 0;
+    }
+    else{ //pcn
+        side = -1; //not yet supported
+        seg = -1; //not yet supported
+    }
+    [chosenCell addObject:[NSNumber numberWithInt:c]];
+    [chosenCell addObject: [NSNumber numberWithInt: side]];
+    [chosenCell addObject: [NSNumber numberWithInt: seg]];
+    return chosenCell;
 }
 
 
@@ -533,7 +621,7 @@ typedef id MovieAudioExtractionRef;
 
 
     //Now send all the array to edit Param!
-    editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
+    editParam(cellID,side,seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
     
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
@@ -541,7 +629,7 @@ typedef id MovieAudioExtractionRef;
     }else{
         setParamsButton.enabled = false;
         int currentIndex = 0;
-        while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+        while (currentIndex != 9999){ //should be tmax, not hardcoded btw
             currentIndex = 0;
             currentIndex = checkMainLoopIndex();
         } //xmain should end by now
@@ -555,6 +643,101 @@ typedef id MovieAudioExtractionRef;
         
     }
 }
+
+- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename{
+    /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
+     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
+     
+     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    
+    //the trace waveform
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    NSURL *URL = [NSURL fileURLWithPath:filename];
+
+ //   for( NSURL* URL in [openDlg URLs] )  // See #2, #4
+  //      {
+            NSLog( @"%@", [URL path] );
+            //NOW READ IN THE FILE and LOAD the PARAMS
+            NSString *content = [NSString stringWithContentsOfFile:[URL path]
+                                                          encoding:NSUTF8StringEncoding
+                                                             error:NULL];
+            NSLog(@"%@",content);
+            NSArray* rows = [content componentsSeparatedByString:@"\n"];
+            
+            //loop thru all the trace and find them in the text files
+            for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
+                NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+                int c = 0;
+                int tside;
+                int tseg;
+                for (NSString *row in rows){
+                    NSArray* columns = [row componentsSeparatedByString:@","];
+                    NSLog(@"what is this %@", columns[0]);
+                    NSLog(@"and this is %@", name);
+                    if ([name containsString:columns[0]]){ //if the column name is in text file...
+                        NSLog(@"I found u %@",columns[0]);
+                        //so what name is it?
+                        NSMutableArray* idArray;
+                        idArray = [self convertNameToId:name];
+                        c = [[idArray objectAtIndex:0] intValue];
+                        tside = [[idArray objectAtIndex:1] intValue];
+                        tseg = [[idArray objectAtIndex:2] intValue];
+                        
+                        //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                        //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                        cellID[i] = c;
+                        side[i] = tside;
+                        seg[i] = tseg;
+                        alpha[i] = [columns[1] floatValue];
+                        sigma[i] =[columns[2] floatValue];
+                        sigmaE[i] =[columns[3] floatValue];
+                        sigmaI[i] =[columns[4] floatValue];
+                        betaE[i] =[columns[5] floatValue];
+                        betaI[i] =[columns[6] floatValue];
+                        Idc[i] =[columns[7] floatValue];
+                        
+                        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+                        [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+                        [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+                        [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+                        [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+                        [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+                        [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+                        [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
+                        
+                    }
+                }
+                
+            }
+            //make changes to param
+            editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
+            
+          /*  if (firstTimeChangeParams == 1){
+                [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                [self setFirstTimeChangeParams:0]; //now it's set
+            }else{*/
+                setParamsButton.enabled = false;
+                int currentIndex = 0;
+                while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                    currentIndex = 0;
+                    currentIndex = checkMainLoopIndex();
+               } //xmain should end by now
+                //sleep(0.1);
+                
+                ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+                
+                [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+                //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+                setParamsButton.enabled = true;
+                
+          //  }
+    
+        //}
+    
+}
+
+
 
 //load params load in a txt file and set the params
 - (IBAction)loadParams:(id)sender {
@@ -591,12 +774,20 @@ typedef id MovieAudioExtractionRef;
                 for (NSString *row in rows){
                         NSArray* columns = [row componentsSeparatedByString:@","];
                         if ([name containsString:columns[0]]){ //if the column name is in text file...
-                            NSLog(@"this is %@",columns[0]);
+                            NSLog(@"Hi there %@",columns[0]);
+                            NSLog(@"yes, i found u");
                         //so what name is it?
-                            int c = [self convertNameToId:name];
+                            NSMutableArray* chosenCellArray;
+                            chosenCellArray = [self convertNameToId:name];
+                            int c = [[chosenCellArray objectAtIndex:0] intValue];
+                            int tside =[[chosenCellArray objectAtIndex:1] intValue];
+                            int tseg =[[chosenCellArray objectAtIndex:2] intValue];
+
                         //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
                           //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
                             cellID[i] = c;
+                            side[i]  = tside;
+                            seg[i] = tseg;
                             alpha[i] = [columns[1] floatValue];
                             sigma[i] =[columns[2] floatValue];
                             sigmaE[i] =[columns[3] floatValue];
@@ -619,7 +810,7 @@ typedef id MovieAudioExtractionRef;
 
             }
             //make changes to param
-            editParam(cellID,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
+            editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
 
             if (firstTimeChangeParams == 1){
                 [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
@@ -627,7 +818,7 @@ typedef id MovieAudioExtractionRef;
             }else{
                 setParamsButton.enabled = false;
                 int currentIndex = 0;
-                while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+                while (currentIndex != 9999){ //should be tmax, not hardcoded btw
                     currentIndex = 0;
                     currentIndex = checkMainLoopIndex();
                 } //xmain should end by now
@@ -694,11 +885,17 @@ typedef id MovieAudioExtractionRef;
                     else if ([name containsString:@"Flexor"]){
                         c = @"Flexor";
                     }
-                    else if ([name containsString:@"FL"] || [name containsString:@"FR"]){
-                        c = @"FL_FR";
+                    else if ([name containsString:@"FL"] && ![name containsString:@"exor"]){
+                        c = @"FL";
                     }
-                    else if ([name containsString:@"BL"] || [name containsString:@"BR"]){
-                        c = @"BL_BR";
+                    else if ([name containsString:@"FR"]){
+                        c = @"FR";
+                    }
+                    else if ([name containsString:@"BL"]) {
+                        c = @"BL";
+                    }
+                    else if ([name containsString:@"BR"]){
+                        c = @"BR";
                     }
                     else if ([name containsString:@"LL"]){
                         c = @"LL";
@@ -712,8 +909,11 @@ typedef id MovieAudioExtractionRef;
                     else if ([name containsString:@"ModCom"]){
                         c = @"ModCom";
                     }
-                    else if ([name containsString:@"HL"] ||[name containsString:@"HR"]){
-                        c = @"HL_HR";
+                    else if ([name containsString:@"HL"]){
+                        c = @"HL";
+                    }
+                    else if ([name containsString:@"HR"]){
+                        c = @"HR";
                     }
 
 

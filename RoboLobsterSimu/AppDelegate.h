@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "Waveforms.h"
 #import "traceSelector.h"
-
+#import "CommandStateViewController.h"
 @class OscilloscopeController;
 @class AnalysisWindowController;
 @class GraphViewController;
@@ -34,6 +34,7 @@ extern long elapsed;
 @property (nonatomic, strong) IBOutlet AnalysisWindowController     *analysisWindowController;
 @property (nonatomic, strong) IBOutlet TraceSelector                *traceSelector;
 @property (nonatomic, strong) PreferenceController                  *preferenceController;
+@property (nonatomic, strong) CommandStateViewController                  *commandController;
 
 
 #pragma mark --- Document and associated view stuff
@@ -84,6 +85,8 @@ extern long elapsed;
 #pragma mark --- Load Nib files
 #pragma mark --- Show Windows
 - (IBAction) showAnalysisWindow: (id) sender;
+- (IBAction) showCommandWindow: (id) sender;
+- (IBAction) openCommandWindow:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
 
 #pragma mark --- Signal Processing Menu Selections
 - (void) setupPlottingArrays: (id) sender;

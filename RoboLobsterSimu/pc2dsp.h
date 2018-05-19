@@ -173,139 +173,139 @@ double** xArrayH;  //This is the hight command and would range fractionate and c
 //////////Parameters to show to users
 
 //alpha values
-double alphaArrayElev;
-double alphaArrayDep;
-double alphaArraySwing;
-double alphaArrayStance;
-double alphaArrayProt;
-double alphaArrayRet;
-double alphaArrayExt;
-double alphaArrayFlex;
-double alphaArrayCoord;
+double** alphaArrayElev;
+double** alphaArrayDep;
+double** alphaArraySwing;
+double** alphaArrayStance;
+double** alphaArrayProt;
+double** alphaArrayRet;
+double** alphaArrayExt;
+double** alphaArrayFlex;
+double** alphaArrayCoord;
 
-double alphaArrayF;
-double alphaArrayB;
-double alphaArrayLL;
-double alphaArrayLT;
-double alphaArrayPcn;
-double alphaArrayModCom;
-double alphaArrayH;
+double** alphaArrayF;
+double** alphaArrayB;
+double** alphaArrayLL;
+double** alphaArrayLT;
+double** alphaArrayPcn;
+double** alphaArrayModCom;
+double** alphaArrayH;
 
 
 
 //sigma values
-double sigmaArrayElev;
-double sigmaArrayDep;
-double sigmaArraySwing;
-double sigmaArrayStance;
-double sigmaArrayProt;
-double sigmaArrayRet;
-double sigmaArrayExt;
-double sigmaArrayFlex;
-double sigmaArrayCoord;
+double** sigmaArrayElev;
+double** sigmaArrayDep;
+double** sigmaArraySwing;
+double** sigmaArrayStance;
+double** sigmaArrayProt;
+double** sigmaArrayRet;
+double** sigmaArrayExt;
+double** sigmaArrayFlex;
+double** sigmaArrayCoord;
 
-double sigmaArrayF;
-double sigmaArrayB;
-double sigmaArrayLL;
-double sigmaArrayLT;
-double sigmaArrayPcn;
-double sigmaArrayModCom;
-double sigmaArrayH;
+double** sigmaArrayF;
+double** sigmaArrayB;
+double** sigmaArrayLL;
+double** sigmaArrayLT;
+double** sigmaArrayPcn;
+double** sigmaArrayModCom;
+double** sigmaArrayH;
 
 //sE
-double sigmaEArrayElev;
-double sigmaEArrayDep;
-double sigmaEArraySwing;
-double sigmaEArrayStance;
-double sigmaEArrayProt;
-double sigmaEArrayRet;
-double sigmaEArrayExt;
-double sigmaEArrayFlex;
-double sigmaEArrayCoord;
+double** sigmaEArrayElev;
+double** sigmaEArrayDep;
+double** sigmaEArraySwing;
+double** sigmaEArrayStance;
+double** sigmaEArrayProt;
+double** sigmaEArrayRet;
+double** sigmaEArrayExt;
+double** sigmaEArrayFlex;
+double** sigmaEArrayCoord;
 
-double sigmaEArrayF;
-double sigmaEArrayB;
-double sigmaEArrayLL;
-double sigmaEArrayLT;
-double sigmaEArrayPcn;
-double sigmaEArrayModCom;
-double sigmaEArrayH;
+double**  sigmaEArrayF;
+double**  sigmaEArrayB;
+double**  sigmaEArrayLL;
+double**  sigmaEArrayLT;
+double**  sigmaEArrayPcn;
+double**  sigmaEArrayModCom;
+double**  sigmaEArrayH;
 
 //sI
-double sigmaIArrayElev;
-double sigmaIArrayDep;
-double sigmaIArraySwing;
-double sigmaIArrayStance;
-double sigmaIArrayProt;
-double sigmaIArrayRet;
-double sigmaIArrayExt;
-double sigmaIArrayFlex;
-double sigmaIArrayCoord;
+double**  sigmaIArrayElev;
+double**  sigmaIArrayDep;
+double**  sigmaIArraySwing;
+double**  sigmaIArrayStance;
+double**  sigmaIArrayProt;
+double**  sigmaIArrayRet;
+double**  sigmaIArrayExt;
+double**  sigmaIArrayFlex;
+double**  sigmaIArrayCoord;
 
-double sigmaIArrayF;
-double sigmaIArrayB;
-double sigmaIArrayLL;
-double sigmaIArrayLT;
-double sigmaIArrayPcn;
-double sigmaIArrayModCom;
-double sigmaIArrayH;
+double**  sigmaIArrayF;
+double**  sigmaIArrayB;
+double**  sigmaIArrayLL;
+double**  sigmaIArrayLT;
+double**  sigmaIArrayPcn;
+double**  sigmaIArrayModCom;
+double**  sigmaIArrayH;
 
 //bE
-double betaEArrayElev;
-double betaEArrayDep;
-double betaEArraySwing;
-double betaEArrayStance;
-double betaEArrayProt;
-double betaEArrayRet;
-double betaEArrayExt;
-double betaEArrayFlex;
-double betaEArrayCoord;
+double**  betaEArrayElev;
+double**  betaEArrayDep;
+double**  betaEArraySwing;
+double**  betaEArrayStance;
+double**  betaEArrayProt;
+double**  betaEArrayRet;
+double**  betaEArrayExt;
+double**  betaEArrayFlex;
+double**  betaEArrayCoord;
 
-double betaEArrayF;
-double betaEArrayB;
-double betaEArrayLL;
-double betaEArrayLT;
-double betaEArrayPcn;
-double betaEArrayModCom;
-double betaEArrayH;
+double**  betaEArrayF;
+double**  betaEArrayB;
+double**  betaEArrayLL;
+double**  betaEArrayLT;
+double**  betaEArrayPcn;
+double**  betaEArrayModCom;
+double**  betaEArrayH;
 
 //bI
-double betaIArrayElev;
-double betaIArrayDep;
-double betaIArraySwing;
-double betaIArrayStance;
-double betaIArrayProt;
-double betaIArrayRet;
-double betaIArrayExt;
-double betaIArrayFlex;
-double betaIArrayCoord;
+double**  betaIArrayElev;
+double**  betaIArrayDep;
+double**  betaIArraySwing;
+double**  betaIArrayStance;
+double**  betaIArrayProt;
+double**  betaIArrayRet;
+double**  betaIArrayExt;
+double**  betaIArrayFlex;
+double**  betaIArrayCoord;
 
-double betaIArrayF;
-double betaIArrayB;
-double betaIArrayLL;
-double betaIArrayLT;
-double betaIArrayPcn;
-double betaIArrayModCom;
-double betaIArrayH;
+double**  betaIArrayF;
+double**  betaIArrayB;
+double**  betaIArrayLL;
+double**  betaIArrayLT;
+double**  betaIArrayPcn;
+double**  betaIArrayModCom;
+double**  betaIArrayH;
 
 //Idc
-double IdcArrayElev;
-double IdcArrayDep;
-double IdcArraySwing;
-double IdcArrayStance;
-double IdcArrayProt;
-double IdcArrayRet;
-double IdcArrayExt;
-double IdcArrayFlex;
-double IdcArrayCoord;
+double**  IdcArrayElev;
+double**  IdcArrayDep;
+double**  IdcArraySwing;
+double**  IdcArrayStance;
+double**  IdcArrayProt;
+double**  IdcArrayRet;
+double**  IdcArrayExt;
+double**  IdcArrayFlex;
+double**  IdcArrayCoord;
 
-double IdcArrayF;
-double IdcArrayB;
-double IdcArrayLL;
-double IdcArrayLT;
-double IdcArrayPcn;
-double IdcArrayModCom;
-double IdcArrayH;
+double**  IdcArrayF;
+double**  IdcArrayB;
+double**  IdcArrayLL;
+double**  IdcArrayLT;
+double**  IdcArrayPcn;
+double**  IdcArrayModCom;
+double**  IdcArrayH;
 
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
@@ -385,24 +385,27 @@ double *globalIdc;
 
 int globalSize;
 int *globalCellName;
+int *globalSide;
+int *globalSeg;
+
 int cellChosen;
 
 
 int beginEditingParams = 0;//we have not edit the params
 //function to set params
-void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
+void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 
 //function to set multiple neuron params
-void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
+void setMultipleNeuronParam(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
 
 
 void chooseCell(int cellID);
 
 //function where Objective C can call
-void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
+void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
 //int whatTypeofCell(char* neuronName);
 long elapsed;
 
-
+void allocParamArray(void);
 
 #endif // _pc2dsp_h_

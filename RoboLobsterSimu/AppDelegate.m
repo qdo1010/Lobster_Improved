@@ -47,6 +47,7 @@
 @synthesize oneitertosec;
 @synthesize IDofCellChosen;
 
+@synthesize commandController;
 #pragma mark - App Lifetime
 
 
@@ -184,6 +185,14 @@
     
 } // showAnalysisWindow
 
+
+- (IBAction) showCommandWindow: (id) sender
+{
+    [[self commandController].window orderFront:self];
+    
+} // showAnalysisWindow
+
+
 /*- (void)setupPlottingArrays: (id) sender
 {
     int i;
@@ -214,6 +223,21 @@
 
 #pragma mark --- Start Analyses
 
+
+- (IBAction) openCommandWindow:(id) sender //This is a virtual oscilloscope{
+{
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Executing command Window");
+    CommandStateViewController* newCommandWindow = [[CommandStateViewController alloc] init];
+    [self setCommandController:newCommandWindow];
+    
+    [appDelegate showCommandWindow:self];
+ //   [[appDelegate analysisWindowController]  viewScope:self];
+ //   [appDelegate setDrawChart: NO];
+  //  AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
+ //   [self setAnalysisWindowController:newAnalysisWindowController];
+    
+}
 
 
 - (IBAction) drawOscilloscope:(id) sender //This is a virtual oscilloscope{

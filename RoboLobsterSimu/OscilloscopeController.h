@@ -6,14 +6,14 @@
     //#import <QTKit/QTKit.h>
 #import <CoreAudio/CoreAudio.h>
 #import <AudioUnit/AudioUnit.h>
-
+#import "CommandStateViewController.h"
 @class Waveforms;
 @class OscilloscopeView;
 @class AppDelegate;
+//@class CommandStateViewController;
+@protocol CommandStateViewControllerDelegate;
 
-
-@interface OscilloscopeController : NSViewController {
-}
+@interface OscilloscopeController : NSViewController <CommandStateViewControllerDelegate>
 
 @property (readwrite) double proxGain;
 @property (readwrite) double proxOffset;
@@ -42,6 +42,8 @@ extern long elapsed;
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
 @property (readwrite) int *cellID;
+@property (readwrite) int *side;
+@property (readwrite) int *seg;
 @property (readwrite)  double *alpha;
 @property (readwrite)  double *sigma;
 @property (readwrite)  double *sigmaE;
@@ -105,6 +107,7 @@ extern long elapsed;
 - (IBAction)loadParams:(id)sender;
 - (IBAction)saveParams:(id)sender;
 
+- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename;
 - (void)beginSendingStuffToBeDraw;
 
 //GraphicsViewParameters
@@ -121,4 +124,10 @@ extern long elapsed;
 - (IBAction)chooseTraceID:(id)sender;
 
 - (IBAction) invertProxGraph: (id)sender;
+
+- (IBAction) checkControlCommand: (NSMutableDictionary*)params;
+
+
+
 @end
+
