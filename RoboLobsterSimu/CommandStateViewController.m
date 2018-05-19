@@ -9,6 +9,8 @@
 #import "CommandStateViewController.h"
 //#import "TableDefinition.h"
 #import "AppDelegate.h"
+#import "analysisWindowController.h"
+
 @implementation CommandStateViewController
 @synthesize pitchBox;
 @synthesize rollBox;
@@ -50,6 +52,8 @@
 
 
     NSLog(@"Hello command selector");
+    self.currentParameters = [[NSMutableDictionary alloc] init];
+
     //if (!ct)
    // {
    //     NSLog(@"Warning! Could not load command Selector file.\n");
@@ -69,10 +73,7 @@
     [super awakeFromNib];
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Awake");
-  //  [appDelegate setTraceSelector:self];
-  //  traceTable = [[NSTableView alloc] init];
-  // cellColView = [[NSTableColumn alloc] init];
-  //  [self loadView];
+
     
   //    [self setItemsEnabled:YES];
 }
@@ -124,8 +125,20 @@
 
 - (void)updateTable
 {
+    
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+   // [[appDelegate oscilloscopeController] checkCommandControl];
+    NSLog(@"Update");
+   // OscilloscopeController* oc =  [[appDelegate analysisWindowController] oscilloscopeController];
+  //  OscilloscopeController* oc = [[OscilloscopeController alloc] init];
+   // [oc checkControlCommand:self.currentParameters];
+ //   [[[appDelegate analysisWindowController] oscilloscopeController] setDoInitAndScale:YES];
+  //  [[[appDelegate analysisWindowController] oscilloscopeController] checkControlCommand:self.currentParameters];
+    NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
+    [self setDelegate:[[appDelegate analysisWindowController] oscilloscopeController]];
     [self.delegate commandStateVC:self didUpdateParameters:self.currentParameters];
 }
+
 
 - (IBAction) updateBoxes: (id)sender{
     
@@ -313,8 +326,12 @@
 
 - (IBAction)setlFor:(id)sender{
     bool sta = [sender state];
-	NSNumber * onOrOff =[NSNumber numberWithBool:sta] ;
+    
+	NSNumber * onOrOff =[NSNumber numberWithBool:sta];
+    NSLog(@"this is %@", onOrOff);
 	[self.currentParameters setValue: onOrOff forKey:@"lFor"];
+    //NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
+   // NSLog(@"but is it %@", [self.currentParameters objectForKey:@"lFor"]);
     [self updateTable];
 }
 

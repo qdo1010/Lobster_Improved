@@ -160,140 +160,140 @@ extern double** xArrayPcn;
 extern double** xArrayH;
 
 //alpha array
-extern double alphaArrayElev;
-extern double alphaArrayDep;
-extern double alphaArraySwing;
-extern double alphaArrayStance;
-extern double alphaArrayProt;
-extern double alphaArrayRet;
-extern double alphaArrayExt;
-extern double alphaArrayFlex;
-extern double alphaArrayCoord;
+extern double** alphaArrayElev;
+extern double** alphaArrayDep;
+extern double** alphaArraySwing;
+extern double** alphaArrayStance;
+extern double** alphaArrayProt;
+extern double** alphaArrayRet;
+extern double** alphaArrayExt;
+extern double** alphaArrayFlex;
+extern double** alphaArrayCoord;
 
-extern double alphaArrayF;
-extern double alphaArrayB;
-extern double alphaArrayLL;
-extern double alphaArrayLT;
-extern double alphaArrayPcn;
-extern double alphaArrayModCom;
-extern double alphaArrayH;
+extern double** alphaArrayF;
+extern double** alphaArrayB;
+extern double** alphaArrayLL;
+extern double** alphaArrayLT;
+extern double** alphaArrayPcn;
+extern double** alphaArrayModCom;
+extern double** alphaArrayH;
 
 
 //sigma arr
-extern double sigmaArrayElev;
-extern double sigmaArrayDep;
-extern double sigmaArraySwing;
-extern double sigmaArrayStance;
-extern double sigmaArrayProt;
-extern double sigmaArrayRet;
-extern double sigmaArrayExt;
-extern double sigmaArrayFlex;
-extern double sigmaArrayCoord;
+extern double** sigmaArrayElev;
+extern double** sigmaArrayDep;
+extern double** sigmaArraySwing;
+extern double** sigmaArrayStance;
+extern double** sigmaArrayProt;
+extern double** sigmaArrayRet;
+extern double** sigmaArrayExt;
+extern double** sigmaArrayFlex;
+extern double** sigmaArrayCoord;
 
-extern double sigmaArrayF;
-extern double sigmaArrayB;
-extern double sigmaArrayLL;
-extern double sigmaArrayLT;
-extern double sigmaArrayPcn;
-extern double sigmaArrayModCom;
-extern double sigmaArrayH;
+extern double** sigmaArrayF;
+extern double** sigmaArrayB;
+extern double** sigmaArrayLL;
+extern double** sigmaArrayLT;
+extern double** sigmaArrayPcn;
+extern double** sigmaArrayModCom;
+extern double** sigmaArrayH;
 
 
 //sE
-extern double sigmaEArrayElev;
-extern double sigmaEArrayDep;
-extern double sigmaEArraySwing;
-extern double sigmaEArrayStance;
-extern double sigmaEArrayProt;
-extern double sigmaEArrayRet;
-extern double sigmaEArrayExt;
-extern double sigmaEArrayFlex;
-extern double sigmaEArrayCoord;
+extern double** sigmaEArrayElev;
+extern double** sigmaEArrayDep;
+extern double** sigmaEArraySwing;
+extern double** sigmaEArrayStance;
+extern double** sigmaEArrayProt;
+extern double** sigmaEArrayRet;
+extern double** sigmaEArrayExt;
+extern double** sigmaEArrayFlex;
+extern double** sigmaEArrayCoord;
 
-extern double sigmaEArrayF;
-extern double sigmaEArrayB;
-extern double sigmaEArrayLL;
-extern double sigmaEArrayLT;
-extern double sigmaEArrayPcn;
-extern double sigmaEArrayModCom;
-extern double sigmaEArrayH;
+extern double** sigmaEArrayF;
+extern double** sigmaEArrayB;
+extern double** sigmaEArrayLL;
+extern double** sigmaEArrayLT;
+extern double** sigmaEArrayPcn;
+extern double** sigmaEArrayModCom;
+extern double** sigmaEArrayH;
 
 
 //sI
-extern double sigmaIArrayElev;
-extern double sigmaIArrayDep;
-extern double sigmaIArraySwing;
-extern double sigmaIArrayStance;
-extern double sigmaIArrayProt;
-extern double sigmaIArrayRet;
-extern double sigmaIArrayExt;
-extern double sigmaIArrayFlex;
-extern double sigmaIArrayCoord;
+extern double** sigmaIArrayElev;
+extern double** sigmaIArrayDep;
+extern double** sigmaIArraySwing;
+extern double** sigmaIArrayStance;
+extern double** sigmaIArrayProt;
+extern double** sigmaIArrayRet;
+extern double** sigmaIArrayExt;
+extern double** sigmaIArrayFlex;
+extern double** sigmaIArrayCoord;
 
-extern double sigmaIArrayF;
-extern double sigmaIArrayB;
-extern double sigmaIArrayLL;
-extern double sigmaIArrayLT;
-extern double sigmaIArrayPcn;
-extern double sigmaIArrayModCom;
-extern double sigmaIArrayH;
+extern double** sigmaIArrayF;
+extern double** sigmaIArrayB;
+extern double** sigmaIArrayLL;
+extern double** sigmaIArrayLT;
+extern double** sigmaIArrayPcn;
+extern double** sigmaIArrayModCom;
+extern double** sigmaIArrayH;
 
 //bE
-extern double betaEArrayElev;
-extern double betaEArrayDep;
-extern double betaEArraySwing;
-extern double betaEArrayStance;
-extern double betaEArrayProt;
-extern double betaEArrayRet;
-extern double betaEArrayExt;
-extern double betaEArrayFlex;
-extern double betaEArrayCoord;
+extern double** betaEArrayElev;
+extern double** betaEArrayDep;
+extern double** betaEArraySwing;
+extern double** betaEArrayStance;
+extern double** betaEArrayProt;
+extern double** betaEArrayRet;
+extern double** betaEArrayExt;
+extern double** betaEArrayFlex;
+extern double** betaEArrayCoord;
 
-extern double betaEArrayF;
-extern double betaEArrayB;
-extern double betaEArrayLL;
-extern double betaEArrayLT;
-extern double betaEArrayPcn;
-extern double betaEArrayModCom;
-extern double betaEArrayH;
+extern double** betaEArrayF;
+extern double** betaEArrayB;
+extern double** betaEArrayLL;
+extern double** betaEArrayLT;
+extern double** betaEArrayPcn;
+extern double** betaEArrayModCom;
+extern double** betaEArrayH;
 
 //bI
-extern double betaIArrayElev;
-extern double betaIArrayDep;
-extern double betaIArraySwing;
-extern double betaIArrayStance;
-extern double betaIArrayProt;
-extern double betaIArrayRet;
-extern double betaIArrayExt;
-extern double betaIArrayFlex;
-extern double betaIArrayCoord;
+extern double** betaIArrayElev;
+extern double** betaIArrayDep;
+extern double** betaIArraySwing;
+extern double** betaIArrayStance;
+extern double** betaIArrayProt;
+extern double** betaIArrayRet;
+extern double** betaIArrayExt;
+extern double** betaIArrayFlex;
+extern double** betaIArrayCoord;
 
-extern double betaIArrayF;
-extern double betaIArrayB;
-extern double betaIArrayLL;
-extern double betaIArrayLT;
-extern double betaIArrayPcn;
-extern double betaIArrayModCom;
-extern double betaIArrayH;
+extern double** betaIArrayF;
+extern double** betaIArrayB;
+extern double** betaIArrayLL;
+extern double** betaIArrayLT;
+extern double** betaIArrayPcn;
+extern double** betaIArrayModCom;
+extern double** betaIArrayH;
 
 //idc
-extern double IdcArrayElev;
-extern double IdcArrayDep;
-extern double IdcArraySwing;
-extern double IdcArrayStance;
-extern double IdcArrayProt;
-extern double IdcArrayRet;
-extern double IdcArrayExt;
-extern double IdcArrayFlex;
-extern double IdcArrayCoord;
+extern double** IdcArrayElev;
+extern double** IdcArrayDep;
+extern double** IdcArraySwing;
+extern double** IdcArrayStance;
+extern double** IdcArrayProt;
+extern double** IdcArrayRet;
+extern double** IdcArrayExt;
+extern double** IdcArrayFlex;
+extern double** IdcArrayCoord;
 
-extern double IdcArrayF;
-extern double IdcArrayB;
-extern double IdcArrayLL;
-extern double IdcArrayLT;
-extern double IdcArrayPcn;
-extern double IdcArrayModCom;
-extern double IdcArrayH;
+extern double** IdcArrayF;
+extern double** IdcArrayB;
+extern double** IdcArrayLL;
+extern double** IdcArrayLT;
+extern double** IdcArrayPcn;
+extern double** IdcArrayModCom;
+extern double** IdcArrayH;
 
 typedef void (^CaseBlock)(void);
 

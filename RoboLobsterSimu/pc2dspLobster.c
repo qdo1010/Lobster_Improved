@@ -540,7 +540,7 @@ void xmain()
     if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         
         //set multiple neuron here!
-         setMultipleNeuronParam(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+         setMultipleNeuronParam(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
         
         //this is for 1 neuron
       //  setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
@@ -556,7 +556,8 @@ void xmain()
         globalBetaI = malloc(sizeof(double));
         globalIdc= malloc(sizeof(double));
         globalCellName = malloc(sizeof(int));
-        
+        globalSide = malloc(sizeof(int));
+        globalSeg = malloc(sizeof(int));
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -1126,7 +1127,9 @@ void xmain()
                     xArrayH[i] = (double *)malloc(mmSide * sizeof(double));
                 }
             }
-            
+            //alloc param array
+            allocParamArray(); //alloc mem for alpha,sigma...
+            //done alloc memory
             int indy = 0;
             //printf("%f", mainLoopIndex);
             for(iSide = 0;iSide < mmSide; ++iSide)
@@ -1137,104 +1140,104 @@ void xmain()
                     fprintf(f10," %lf", cellElevator[iSide][iSeg].x);
                     fprintf(f10," ");
                     xArrayElev[ind][indy] = cellElevator[iSide][iSeg].x; //test
-                    alphaArrayElev= cellElevator[iSide][iSeg].alpha;
-                    sigmaArrayElev = cellElevator[iSide][iSeg].sigma;
-                    sigmaIArrayElev = cellElevator[iSide][iSeg].sigmaI;
-                    sigmaEArrayElev = cellElevator[iSide][iSeg].sigmaE;
-                    betaEArrayElev = cellElevator[iSide][iSeg].betaE;
-                    betaIArrayElev = cellElevator[iSide][iSeg].betaI;
-                    IdcArrayElev = cellElevator[iSide][iSeg].Idc;
+                    alphaArrayElev[iSide][iSeg]= cellElevator[iSide][iSeg].alpha;
+                    sigmaArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].sigma;
+                    sigmaIArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].sigmaI;
+                    sigmaEArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].sigmaE;
+                    betaEArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].betaE;
+                    betaIArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].betaI;
+                    IdcArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].Idc;
                     
                     
                     fprintf(f11," %lf", cellDepressor[iSide][iSeg].x);
                     fprintf(f11,"") ;
                     xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].x; //test
-                    alphaArrayDep = cellDepressor[iSide][iSeg].alpha;
-                    sigmaArrayDep = cellDepressor[iSide][iSeg].sigma;
-                    sigmaIArrayDep = cellDepressor[iSide][iSeg].sigmaI;
-                    sigmaEArrayDep = cellDepressor[iSide][iSeg].sigmaE;
-                    betaEArrayDep = cellDepressor[iSide][iSeg].betaE;
-                    betaIArrayDep = cellDepressor[iSide][iSeg].betaI;
-                    IdcArrayDep = cellDepressor[iSide][iSeg].Idc;
+                    alphaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].alpha;
+                    sigmaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].sigma;
+                    sigmaIArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].sigmaI;
+                    sigmaEArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].sigmaE;
+                    betaEArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].betaE;
+                    betaIArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].betaI;
+                    IdcArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].Idc;
 
                     
                     fprintf(f12," %lf", cellSwing[iSide][iSeg].x);
                     fprintf(f12," ");
                     xArraySwing[ind][indy] = cellSwing[iSide][iSeg].x; //test
-                    alphaArraySwing = cellSwing[iSide][iSeg].alpha;
-                    sigmaArraySwing = cellSwing[iSide][iSeg].sigma;
-                    sigmaIArraySwing = cellSwing[iSide][iSeg].sigmaI;
-                    sigmaEArraySwing = cellSwing[iSide][iSeg].sigmaE;
-                    betaEArraySwing = cellSwing[iSide][iSeg].betaE;
-                    betaIArraySwing = cellSwing[iSide][iSeg].betaI;
-                    IdcArraySwing = cellSwing[iSide][iSeg].Idc;
+                    alphaArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].alpha;
+                    sigmaArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].sigma;
+                    sigmaIArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].sigmaI;
+                    sigmaEArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].sigmaE;
+                    betaEArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].betaE;
+                    betaIArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].betaI;
+                    IdcArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].Idc;
                     
                     fprintf(f13," %lf", cellStance[iSide][iSeg].x);
                     fprintf(f13," ");
                     xArrayStance[ind][indy] = cellStance[iSide][iSeg].x; //test
-                    alphaArrayStance = cellStance[iSide][iSeg].alpha;
-                    sigmaArrayStance = cellStance[iSide][iSeg].sigma;
-                    sigmaIArrayStance = cellStance[iSide][iSeg].sigmaI;
-                    sigmaEArrayStance = cellStance[iSide][iSeg].sigmaE;
-                    betaEArrayStance = cellStance[iSide][iSeg].betaE;
-                    betaIArrayStance = cellStance[iSide][iSeg].betaI;
-                    IdcArrayStance = cellStance[iSide][iSeg].Idc;
+                    alphaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].alpha;
+                    sigmaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].sigma;
+                    sigmaIArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].sigmaI;
+                    sigmaEArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].sigmaE;
+                    betaEArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].betaE;
+                    betaIArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].betaI;
+                    IdcArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].Idc;
                     
                     
                     fprintf(f14," %lf", cellProtractor[iSide][iSeg].x);
                     fprintf(f14," ");
                     xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].x; //test
-                    alphaArrayProt = cellProtractor[iSide][iSeg].alpha;
-                    sigmaArrayProt = cellProtractor[iSide][iSeg].sigma;
-                    sigmaIArrayProt = cellProtractor[iSide][iSeg].sigmaI;
-                    sigmaEArrayProt = cellProtractor[iSide][iSeg].sigmaE;
-                    betaEArrayProt = cellProtractor[iSide][iSeg].betaE;
-                    betaIArrayProt = cellProtractor[iSide][iSeg].betaI;
-                    IdcArrayProt = cellProtractor[iSide][iSeg].Idc;
+                    alphaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].alpha;
+                    sigmaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].sigma;
+                    sigmaIArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].sigmaI;
+                    sigmaEArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].sigmaE;
+                    betaEArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].betaE;
+                    betaIArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].betaI;
+                    IdcArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].Idc;
                     
                     
                     fprintf(f15," %lf", cellRetractor[iSide][iSeg].x);
                     fprintf(f15," ");
                     xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].x; //test
-                    alphaArrayRet = cellRetractor[iSide][iSeg].alpha;
-                    sigmaArrayRet = cellRetractor[iSide][iSeg].sigma;
-                    sigmaIArrayRet = cellRetractor[iSide][iSeg].sigmaI;
-                    sigmaEArrayRet = cellRetractor[iSide][iSeg].sigmaE;
-                    betaEArrayRet = cellRetractor[iSide][iSeg].betaE;
-                    betaIArrayRet = cellRetractor[iSide][iSeg].betaI;
-                    IdcArrayRet = cellRetractor[iSide][iSeg].Idc;
+                    alphaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].alpha;
+                    sigmaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].sigma;
+                    sigmaIArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].sigmaI;
+                    sigmaEArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].sigmaE;
+                    betaEArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].betaE;
+                    betaIArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].betaI;
+                    IdcArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].Idc;
                     
                     
                     fprintf(f16," %lf", cellExtensor[iSide][iSeg].x);
                     fprintf(f16," ");
                     xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].x; //test
-                    alphaArrayExt = cellExtensor[iSide][iSeg].alpha;
-                    sigmaArrayExt = cellExtensor[iSide][iSeg].sigma;
-                    sigmaIArrayExt = cellExtensor[iSide][iSeg].sigmaI;
-                    sigmaEArrayExt = cellExtensor[iSide][iSeg].sigmaE;
-                    betaEArrayExt = cellExtensor[iSide][iSeg].betaE;
-                    betaIArrayExt = cellExtensor[iSide][iSeg].betaI;
-                    IdcArrayExt = cellExtensor[iSide][iSeg].Idc;
+                    alphaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].alpha;
+                    sigmaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].sigma;
+                    sigmaIArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].sigmaI;
+                    sigmaEArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].sigmaE;
+                    betaEArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].betaE;
+                    betaIArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].betaI;
+                    IdcArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].Idc;
                     
                     fprintf(f17," %lf", cellFlexor[iSide][iSeg].x);
                     fprintf(f17," ");
                     xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].x; //test
-                    alphaArrayFlex = cellFlexor[iSide][iSeg].alpha;
-                    sigmaArrayFlex = cellFlexor[iSide][iSeg].sigma;
-                    sigmaIArrayFlex = cellFlexor[iSide][iSeg].sigmaI;
-                    sigmaEArrayFlex = cellFlexor[iSide][iSeg].sigmaE;
-                    betaEArrayFlex = cellFlexor[iSide][iSeg].betaE;
-                    betaIArrayFlex = cellFlexor[iSide][iSeg].betaI;
-                    IdcArrayFlex = cellFlexor[iSide][iSeg].Idc;
+                    alphaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].alpha;
+                    sigmaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].sigma;
+                    sigmaIArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].sigmaI;
+                    sigmaEArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].sigmaE;
+                    betaEArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].betaE;
+                    betaIArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].betaI;
+                    IdcArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].Idc;
                     
                     xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].x; //test
-                    alphaArrayCoord = cellCoord[iSide][iSeg].alpha;
-                    sigmaArrayCoord = cellCoord[iSide][iSeg].sigma;
-                    sigmaIArrayCoord = cellCoord[iSide][iSeg].sigmaI;
-                    sigmaEArrayCoord = cellCoord[iSide][iSeg].sigmaE;
-                    betaEArrayCoord = cellCoord[iSide][iSeg].betaE;
-                    betaIArrayCoord = cellCoord[iSide][iSeg].betaI;
-                    IdcArrayCoord = cellCoord[iSide][iSeg].Idc;
+                    alphaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].alpha;
+                    sigmaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].sigma;
+                    sigmaIArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].sigmaI;
+                    sigmaEArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].sigmaE;
+                    betaEArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].betaE;
+                    betaIArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].betaI;
+                    IdcArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].Idc;
                     indy++;
                 }
             }
@@ -1244,60 +1247,60 @@ void xmain()
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
                 xArrayF[ind][indy2] = cellF[iSide].x;
-                alphaArrayF = cellF[iSide].alpha;
-                sigmaArrayF = cellF[iSide].sigma;
-                sigmaIArrayF = cellF[iSide].sigmaI;
-                sigmaEArrayF = cellF[iSide].sigmaE;
-                betaEArrayF = cellF[iSide].betaE;
-                betaIArrayF = cellF[iSide].betaI;
-                IdcArrayF = cellF[iSide].Idc;
+                alphaArrayF[iSide][0] = cellF[iSide].alpha;
+                sigmaArrayF[iSide][0] = cellF[iSide].sigma;
+                sigmaIArrayF[iSide][0] = cellF[iSide].sigmaI;
+                sigmaEArrayF[iSide][0] = cellF[iSide].sigmaE;
+                betaEArrayF[iSide][0] = cellF[iSide].betaE;
+                betaIArrayF[iSide][0] = cellF[iSide].betaI;
+                IdcArrayF[iSide][0] = cellF[iSide].Idc;
                 
             
                 xArrayB[ind][indy2] = cellB[iSide].x;
-                alphaArrayB = cellB[iSide].alpha;
-                sigmaArrayB = cellB[iSide].sigma;
-                sigmaIArrayB = cellB[iSide].sigmaI;
-                sigmaEArrayB = cellB[iSide].sigmaE;
-                betaEArrayB = cellB[iSide].betaE;
-                betaIArrayB = cellB[iSide].betaI;
-                IdcArrayB = cellB[iSide].Idc;
+                alphaArrayB[iSide][0] = cellB[iSide].alpha;
+                sigmaArrayB[iSide][0] = cellB[iSide].sigma;
+                sigmaIArrayB[iSide][0] = cellB[iSide].sigmaI;
+                sigmaEArrayB[iSide][0] = cellB[iSide].sigmaE;
+                betaEArrayB[iSide][0] = cellB[iSide].betaE;
+                betaIArrayB[iSide][0] = cellB[iSide].betaI;
+                IdcArrayB[iSide][0] = cellB[iSide].Idc;
                 
                 xArrayLL[ind][indy2] = cellLL[iSide].x;
-                alphaArrayLL = cellLL[iSide].alpha;
-                sigmaArrayLL = cellLL[iSide].sigma;
-                sigmaIArrayLL = cellLL[iSide].sigmaI;
-                sigmaEArrayLL = cellLL[iSide].sigmaE;
-                betaEArrayLL = cellLL[iSide].betaE;
-                betaIArrayLL = cellLL[iSide].betaI;
-                IdcArrayLL = cellLL[iSide].Idc;
+                alphaArrayLL[iSide][0] = cellLL[iSide].alpha;
+                sigmaArrayLL[iSide][0] = cellLL[iSide].sigma;
+                sigmaIArrayLL[iSide][0] = cellLL[iSide].sigmaI;
+                sigmaEArrayLL[iSide][0] = cellLL[iSide].sigmaE;
+                betaEArrayLL[iSide][0] = cellLL[iSide].betaE;
+                betaIArrayLL[iSide][0] = cellLL[iSide].betaI;
+                IdcArrayLL[iSide][0] = cellLL[iSide].Idc;
             
                 
                 xArrayLT[ind][indy2] = cellLT[iSide].x;
-                alphaArrayLT = cellLT[iSide].alpha;
-                sigmaArrayLT = cellLT[iSide].sigma;
-                sigmaIArrayLT = cellLT[iSide].sigmaI;
-                sigmaEArrayLT = cellLT[iSide].sigmaE;
-                betaEArrayLT = cellLT[iSide].betaE;
-                betaIArrayLT = cellLT[iSide].betaI;
-                IdcArrayLT = cellLT[iSide].Idc;
+                alphaArrayLT[iSide][0] = cellLT[iSide].alpha;
+                sigmaArrayLT[iSide][0] = cellLT[iSide].sigma;
+                sigmaIArrayLT[iSide][0] = cellLT[iSide].sigmaI;
+                sigmaEArrayLT[iSide][0] = cellLT[iSide].sigmaE;
+                betaEArrayLT[iSide][0] = cellLT[iSide].betaE;
+                betaIArrayLT[iSide][0] = cellLT[iSide].betaI;
+                IdcArrayLT[iSide][0] = cellLT[iSide].Idc;
                 
                 xArrayModCom[ind][indy2] = cellModCom[iSide].x;
-                alphaArrayModCom = cellModCom[iSide].alpha;
-                sigmaArrayModCom = cellModCom[iSide].sigma;
-                sigmaIArrayModCom = cellModCom[iSide].sigmaI;
-                sigmaEArrayModCom = cellModCom[iSide].sigmaE;
-                betaEArrayModCom = cellModCom[iSide].betaE;
-                betaIArrayModCom = cellModCom[iSide].betaI;
-                IdcArrayModCom = cellModCom[iSide].Idc;
+                alphaArrayModCom[iSide][0] = cellModCom[iSide].alpha;
+                sigmaArrayModCom[iSide][0] = cellModCom[iSide].sigma;
+                sigmaIArrayModCom[iSide][0] = cellModCom[iSide].sigmaI;
+                sigmaEArrayModCom[iSide][0] = cellModCom[iSide].sigmaE;
+                betaEArrayModCom[iSide][0] = cellModCom[iSide].betaE;
+                betaIArrayModCom[iSide][0] = cellModCom[iSide].betaI;
+                IdcArrayModCom[iSide][0] = cellModCom[iSide].Idc;
                 
                 xArrayH[ind][indy2] = cellH[iSide].x;
-                alphaArrayH = cellH[iSide].alpha;
-                sigmaArrayH = cellH[iSide].sigma;
-                sigmaIArrayH = cellH[iSide].sigmaI;
-                sigmaEArrayH = cellH[iSide].sigmaE;
-                betaEArrayH = cellH[iSide].betaE;
-                betaIArrayH = cellH[iSide].betaI;
-                IdcArrayH = cellH[iSide].Idc;
+                alphaArrayH[iSide][0] = cellH[iSide].alpha;
+                sigmaArrayH[iSide][0] = cellH[iSide].sigma;
+                sigmaIArrayH[iSide][0] = cellH[iSide].sigmaI;
+                sigmaEArrayH[iSide][0] = cellH[iSide].sigmaE;
+                betaEArrayH[iSide][0] = cellH[iSide].betaE;
+                betaIArrayH[iSide][0] = cellH[iSide].betaI;
+                IdcArrayH[iSide][0] = cellH[iSide].Idc;
                 
                 indy2++;
             }
@@ -1309,13 +1312,13 @@ void xmain()
             {
                 for (iSeg =0; iSeg < pitchStates; ++iSeg){
                     xArrayPcn[ind][indy3] = cellPcn[iSide][iSeg].x;
-                    alphaArrayPcn = cellPcn[iSide][iSeg].alpha;
-                    sigmaArrayPcn = cellPcn[iSide][iSeg].sigma;
-                    sigmaIArrayPcn = cellPcn[iSide][iSeg].sigmaI;
-                    sigmaEArrayPcn = cellPcn[iSide][iSeg].sigmaE;
-                    betaEArrayPcn = cellPcn[iSide][iSeg].betaE;
-                    betaIArrayPcn = cellPcn[iSide][iSeg].betaI;
-                    IdcArrayPcn = cellPcn[iSide][iSeg].Idc;
+                    alphaArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].alpha;
+                    sigmaArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].sigma;
+                    sigmaIArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].sigmaI;
+                    sigmaEArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].sigmaE;
+                    betaEArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].betaE;
+                    betaIArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].betaI;
+                    IdcArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].Idc;
                     
                     indy3++;
                 }
@@ -1329,7 +1332,7 @@ void xmain()
             if (ind == IterNumChosen-1){
                 ind = 0;
                 //sleep(0.5*samplesizechosen); //0.5 is the refresh rate of
-
+                ///////////DO I NEED TO FREE PARAM ARRAY AS WELL?
             free(xArrayDep);
             free(xArrayExt);
             free(xArrayFlex);
@@ -1451,7 +1454,7 @@ void indicateNumberOfIteration(int i){
     printf("iteration = %d\n", IterNumChosen);
 }
 
-void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
+void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
     //printf("%s\n",neuronName);
     printf("begin editing\n");
     int i;
@@ -1464,7 +1467,8 @@ void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, do
     free(globalBetaI);
     free(globalIdc);
     free(globalCellName);
-    
+    free(globalSeg);
+    free(globalSide);
     //then alloc mem
     globalAlpha = malloc(size*sizeof(double));
     globalSigma = malloc(size*sizeof(double));
@@ -1474,6 +1478,8 @@ void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, do
     globalBetaI = malloc(size*sizeof(double));
     globalIdc= malloc(size*sizeof(double));
     globalCellName = malloc(size*sizeof(int));
+    globalSide = malloc(size*sizeof(int));
+    globalSeg = malloc(size*sizeof(int));
     beginEditingParams = 1; //set flag for begin editing
     globalSize = size;
     
@@ -1489,6 +1495,8 @@ void editParam(int *neuronName, double *a, double *s, double *sE, double *sI, do
     globalBetaI[i] = bI[i];
     globalIdc[i] = Idc[i];
     globalCellName[i] = neuronName[i];
+    globalSide[i] = side[i];
+    globalSeg[i] = seg[i];
     }
    // setNeuronParams(neuronName, s, a);
 }
@@ -1506,17 +1514,17 @@ int checkMainLoopIndex(){
 
 
 ///add the multiple neuron params here//
-void setMultipleNeuronParam(int* idArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
+void setMultipleNeuronParam(int* idArr, int* sideArr, int* segArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
     int i;
     for (i = 0; i < size; i++){
         //this will set the param for each neuron in the array
-        setNeuronParams(idArr[i], aArr[i], sArr[i], sEArr[i], sIArr[i], bEArr[i],bIArr[i], IdcArr[i]);
+        setNeuronParams(idArr[i], sideArr[i], segArr[i],aArr[i], sArr[i], sEArr[i], sIArr[i], bEArr[i],bIArr[i], IdcArr[i]);
     }
 }// change params
 
 ////end///////////
 
-void setNeuronParams(int id, double a, double s, double sE, double sI, double bE, double bI, double Idc){
+void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //identify which type it is?
    // if (id == 8){//Spiking
         //printf("Spiking edit\n");
@@ -1524,173 +1532,173 @@ void setNeuronParams(int id, double a, double s, double sE, double sI, double bE
        // struct structSpiking** cell;
        // cell = cellFlexor;
         //printf("%f\n",a);
-        int iSide, iSeg;
-        for(iSide = 0;iSide < mmSide; ++iSide)
-        {
+    //    int iSide, iSeg;
+   //     for(iSide = 0;iSide < mmSide; ++iSide)
+    //    {
             //Now loop down the segments
-            for(iSeg = 0;iSeg < mmSeg; ++iSeg)
-            {
+     //       for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+     //       {
                 if(id == 0){
-                    cellElevator[iSide][iSeg].alpha = a;
-                    cellElevator[iSide][iSeg].sigma = s;
-                    cellElevator[iSide][iSeg].sigmaE = sE;
-                    cellElevator[iSide][iSeg].sigmaI = sI;
-                    cellElevator[iSide][iSeg].betaE = bE;
-                    cellElevator[iSide][iSeg].betaI = bI;
-                    cellElevator[iSide][iSeg].Idc = Idc;
+                    cellElevator[side][seg].alpha = a;
+                    cellElevator[side][seg].sigma = s;
+                    cellElevator[side][seg].sigmaE = sE;
+                    cellElevator[side][seg].sigmaI = sI;
+                    cellElevator[side][seg].betaE = bE;
+                    cellElevator[side][seg].betaI = bI;
+                    cellElevator[side][seg].Idc = Idc;
 
                 }
                 else if(id == 1){
-                    cellSwing[iSide][iSeg].alpha = a;
-                    cellSwing[iSide][iSeg].sigma = s;
-                    cellSwing[iSide][iSeg].sigmaE = sE;
-                    cellSwing[iSide][iSeg].sigmaI = sI;
-                    cellSwing[iSide][iSeg].betaE = bE;
-                    cellSwing[iSide][iSeg].betaI = bI;
-                    cellSwing[iSide][iSeg].Idc = Idc;
+                    cellSwing[side][seg].alpha = a;
+                    cellSwing[side][seg].sigma = s;
+                    cellSwing[side][seg].sigmaE = sE;
+                    cellSwing[side][seg].sigmaI = sI;
+                    cellSwing[side][seg].betaE = bE;
+                    cellSwing[side][seg].betaI = bI;
+                    cellSwing[side][seg].Idc = Idc;
                 }
                 else if(id == 2){
-                    cellDepressor[iSide][iSeg].alpha = a;
-                    cellDepressor[iSide][iSeg].sigma = s;
-                    cellDepressor[iSide][iSeg].sigmaE = sE;
-                    cellDepressor[iSide][iSeg].sigmaI = sI;
-                    cellDepressor[iSide][iSeg].betaE = bE;
-                    cellDepressor[iSide][iSeg].betaI = bI;
-                    cellDepressor[iSide][iSeg].Idc = Idc;
+                    cellDepressor[side][seg].alpha = a;
+                    cellDepressor[side][seg].sigma = s;
+                    cellDepressor[side][seg].sigmaE = sE;
+                    cellDepressor[side][seg].sigmaI = sI;
+                    cellDepressor[side][seg].betaE = bE;
+                    cellDepressor[side][seg].betaI = bI;
+                    cellDepressor[side][seg].Idc = Idc;
 
                 }
                 else if(id == 3){
-                    cellStance[iSide][iSeg].alpha = a;
-                    cellStance[iSide][iSeg].sigma = s;
-                    cellStance[iSide][iSeg].sigmaE = sE;
-                    cellStance[iSide][iSeg].sigmaI = sI;
-                    cellStance[iSide][iSeg].betaE = bE;
-                    cellStance[iSide][iSeg].betaI = bI;
-                    cellStance[iSide][iSeg].Idc = Idc;
+                    cellStance[side][seg].alpha = a;
+                    cellStance[side][seg].sigma = s;
+                    cellStance[side][seg].sigmaE = sE;
+                    cellStance[side][seg].sigmaI = sI;
+                    cellStance[side][seg].betaE = bE;
+                    cellStance[side][seg].betaI = bI;
+                    cellStance[side][seg].Idc = Idc;
                     
                 }
                 else if(id == 4){
-                    cellCoord[iSide][iSeg].alpha = a;
-                    cellCoord[iSide][iSeg].sigma = s;
-                    cellCoord[iSide][iSeg].sigmaE = sE;
-                    cellCoord[iSide][iSeg].sigmaI = sI;
-                    cellCoord[iSide][iSeg].betaE = bE;
-                    cellCoord[iSide][iSeg].betaI = bI;
-                    cellCoord[iSide][iSeg].Idc = Idc;
+                    cellCoord[side][seg].alpha = a;
+                    cellCoord[side][seg].sigma = s;
+                    cellCoord[side][seg].sigmaE = sE;
+                    cellCoord[side][seg].sigmaI = sI;
+                    cellCoord[side][seg].betaE = bE;
+                    cellCoord[side][seg].betaI = bI;
+                    cellCoord[side][seg].Idc = Idc;
                 }
                 else if(id == 5){
-                    cellProtractor[iSide][iSeg].alpha = a;
-                    cellProtractor[iSide][iSeg].sigma = s;
-                    cellProtractor[iSide][iSeg].sigmaE = sE;
-                    cellProtractor[iSide][iSeg].sigmaI = sI;
-                    cellProtractor[iSide][iSeg].betaE = bE;
-                    cellProtractor[iSide][iSeg].betaI = bI;
-                    cellProtractor[iSide][iSeg].Idc = Idc;
+                    cellProtractor[side][seg].alpha = a;
+                    cellProtractor[side][seg].sigma = s;
+                    cellProtractor[side][seg].sigmaE = sE;
+                    cellProtractor[side][seg].sigmaI = sI;
+                    cellProtractor[side][seg].betaE = bE;
+                    cellProtractor[side][seg].betaI = bI;
+                    cellProtractor[side][seg].Idc = Idc;
                 }
                 else if(id == 6){
-                    cellRetractor[iSide][iSeg].alpha = a;
-                    cellRetractor[iSide][iSeg].sigma = s;
-                    cellRetractor[iSide][iSeg].sigmaE = sE;
-                    cellRetractor[iSide][iSeg].sigmaI = sI;
-                    cellRetractor[iSide][iSeg].betaE = bE;
-                    cellRetractor[iSide][iSeg].betaI = bI;
-                    cellRetractor[iSide][iSeg].Idc = Idc;
+                    cellRetractor[side][seg].alpha = a;
+                    cellRetractor[side][seg].sigma = s;
+                    cellRetractor[side][seg].sigmaE = sE;
+                    cellRetractor[side][seg].sigmaI = sI;
+                    cellRetractor[side][seg].betaE = bE;
+                    cellRetractor[side][seg].betaI = bI;
+                    cellRetractor[side][seg].Idc = Idc;
                 }
                 else if(id == 7){
-                    cellExtensor[iSide][iSeg].alpha = a;
-                    cellExtensor[iSide][iSeg].sigma = s;
-                    cellExtensor[iSide][iSeg].sigmaE = sE;
-                    cellExtensor[iSide][iSeg].sigmaI = sI;
-                    cellExtensor[iSide][iSeg].betaE = bE;
-                    cellExtensor[iSide][iSeg].betaI = bI;
-                    cellExtensor[iSide][iSeg].Idc = Idc;
+                    cellExtensor[side][seg].alpha = a;
+                    cellExtensor[side][seg].sigma = s;
+                    cellExtensor[side][seg].sigmaE = sE;
+                    cellExtensor[side][seg].sigmaI = sI;
+                    cellExtensor[side][seg].betaE = bE;
+                    cellExtensor[side][seg].betaI = bI;
+                    cellExtensor[side][seg].Idc = Idc;
                 }
                 else if(id ==8){
-                    cellFlexor[iSide][iSeg].alpha = a;
-                    cellFlexor[iSide][iSeg].sigma = s;
-                    cellFlexor[iSide][iSeg].sigmaE = sE;
-                    cellFlexor[iSide][iSeg].sigmaI = sI;
-                    cellFlexor[iSide][iSeg].betaE = bE;
-                    cellFlexor[iSide][iSeg].betaI = bI;
-                    cellFlexor[iSide][iSeg].Idc = Idc;
+                    cellFlexor[side][seg].alpha = a;
+                    cellFlexor[side][seg].sigma = s;
+                    cellFlexor[side][seg].sigmaE = sE;
+                    cellFlexor[side][seg].sigmaI = sI;
+                    cellFlexor[side][seg].betaE = bE;
+                    cellFlexor[side][seg].betaI = bI;
+                    cellFlexor[side][seg].Idc = Idc;
                     
                 }
 
-            }
-        }
-    
-    for(iSide = 0;iSide < mmSide; ++iSide)
-    {
+        //    }
+      //  }
+
+   // for(iSide = 0;iSide < mmSide; ++iSide)
+   // {
         if (id == 9){
-            cellF[iSide].alpha = a;
-            cellF[iSide].sigma = s;
-            cellF[iSide].sigmaE = sE;
-            cellF[iSide].sigmaI = sI;
-            cellF[iSide].betaE = bE;
-            cellF[iSide].betaI = bI;
-            cellF[iSide].Idc = Idc;
+            cellF[side].alpha = a;
+            cellF[side].sigma = s;
+            cellF[side].sigmaE = sE;
+            cellF[side].sigmaI = sI;
+            cellF[side].betaE = bE;
+            cellF[side].betaI = bI;
+            cellF[side].Idc = Idc;
         }
         else if(id == 10){
-            cellB[iSide].alpha = a;
-            cellB[iSide].sigma = s;
-            cellB[iSide].sigmaE = sE;
-            cellB[iSide].sigmaI = sI;
-            cellB[iSide].betaE = bE;
-            cellB[iSide].betaI = bI;
-            cellB[iSide].Idc = Idc;
+            cellB[side].alpha = a;
+            cellB[side].sigma = s;
+            cellB[side].sigmaE = sE;
+            cellB[side].sigmaI = sI;
+            cellB[side].betaE = bE;
+            cellB[side].betaI = bI;
+            cellB[side].Idc = Idc;
         }
         else if(id == 11){
-            cellLL[iSide].alpha = a;
-            cellLL[iSide].sigma = s;
-            cellLL[iSide].sigmaE = sE;
-            cellLL[iSide].sigmaI = sI;
-            cellLL[iSide].betaE = bE;
-            cellLL[iSide].betaI = bI;
-            cellLL[iSide].Idc = Idc;
+            cellLL[side].alpha = a;
+            cellLL[side].sigma = s;
+            cellLL[side].sigmaE = sE;
+            cellLL[side].sigmaI = sI;
+            cellLL[side].betaE = bE;
+            cellLL[side].betaI = bI;
+            cellLL[side].Idc = Idc;
         }
         else if (id == 12) {
-            cellLT[iSide].alpha = a;
-            cellLT[iSide].sigma = s;
-            cellLT[iSide].sigmaE = sE;
-            cellLT[iSide].sigmaI = sI;
-            cellLT[iSide].betaE = bE;
-            cellLT[iSide].betaI = bI;
-            cellLT[iSide].Idc = Idc;
+            cellLT[side].alpha = a;
+            cellLT[side].sigma = s;
+            cellLT[side].sigmaE = sE;
+            cellLT[side].sigmaI = sI;
+            cellLT[side].betaE = bE;
+            cellLT[side].betaI = bI;
+            cellLT[side].Idc = Idc;
         }
         else if (id == 14){
-            cellModCom[iSide].alpha = a;
-            cellModCom[iSide].sigma = s;
-            cellModCom[iSide].sigmaE = sE;
-            cellModCom[iSide].sigmaI = sI;
-            cellModCom[iSide].betaE = bE;
-            cellModCom[iSide].betaI = bI;
-            cellModCom[iSide].Idc = Idc;
+            cellModCom[side].alpha = a;
+            cellModCom[side].sigma = s;
+            cellModCom[side].sigmaE = sE;
+            cellModCom[side].sigmaI = sI;
+            cellModCom[side].betaE = bE;
+            cellModCom[side].betaI = bI;
+            cellModCom[side].Idc = Idc;
         }
         else if (id == 15){
-            cellH[iSide].alpha = a;
-            cellH[iSide].sigma = s;
-            cellH[iSide].sigmaE = sE;
-            cellH[iSide].sigmaI = sI;
-            cellH[iSide].betaE = bE;
-            cellH[iSide].betaI = bI;
-            cellH[iSide].Idc = Idc;
+            cellH[side].alpha = a;
+            cellH[side].sigma = s;
+            cellH[side].sigmaE = sE;
+            cellH[side].sigmaI = sI;
+            cellH[side].betaE = bE;
+            cellH[side].betaI = bI;
+            cellH[side].Idc = Idc;
         }
-    }
-    for(iSide = 0;iSide < mmSide; ++iSide)
-    {
-        for (iSeg = 0; iSeg < pitchStates; ++iSeg){
+   // }
+   // for(iSide = 0;iSide < mmSide; ++iSide)
+  //  {
+   //     for (iSeg = 0; iSeg < pitchStates; ++iSeg){
             if (id == 13){
                 //pcn
-                cellPcn[iSide][iSeg].alpha = a;
-                cellPcn[iSide][iSeg].sigma = s;
-                cellPcn[iSide][iSeg].sigmaE = sE;
-                cellPcn[iSide][iSeg].sigmaI = sI;
-                cellPcn[iSide][iSeg].betaE = bE;
-                cellPcn[iSide][iSeg].betaI = bI;
-                cellPcn[iSide][iSeg].Idc = Idc;
+                cellPcn[side][seg].alpha = a;
+                cellPcn[side][seg].sigma = s;
+                cellPcn[side][seg].sigmaE = sE;
+                cellPcn[side][seg].sigmaI = sI;
+                cellPcn[side][seg].betaE = bE;
+                cellPcn[side][seg].betaI = bI;
+                cellPcn[side][seg].Idc = Idc;
             }
-        }
-    }
+      //  }
+    //}
 
     beginEditingParams = 0; //stop editing by turning the edit flag off
     
@@ -2069,7 +2077,284 @@ void computeMAPs(double mainLoopIndex)
     } // END: for iside
     t2 = clock();
     elapsed = t2 - t1;
-} //End of Fun
+} //End of fun
+
+
+void allocParamArray(void){
+    int i;
+    alphaArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    sigmaArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    sigmaEArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    sigmaIArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    betaEArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    betaIArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    IdcArrayElev = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayDep = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArraySwing = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayStance = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayProt = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayRet = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayExt = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayFlex = (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayCoord = (double **)malloc(sizeof(double *) * mmSide);
+    
+    alphaArrayF = (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    alphaArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //sigma values
+    sigmaArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //sE
+    sigmaEArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaEArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //sI
+    sigmaIArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    sigmaIArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //bE
+    betaEArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    betaEArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //bI
+    betaIArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    betaIArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    //Idc
+    IdcArrayF= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayB= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayLL= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayLT= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayPcn= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayModCom= (double **)malloc(sizeof(double *) * mmSide);
+    IdcArrayH= (double **)malloc(sizeof(double *) * mmSide);
+    
+    
+    for (i=0; i<mmSide; i++){
+        alphaArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        sigmaArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        sigmaEArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        sigmaIArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        betaEArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        betaIArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        IdcArrayElev[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayDep[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArraySwing[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayStance[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayProt[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayRet[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayExt[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayFlex[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayCoord[i] = (double *)malloc(mmSeg * sizeof(double));
+    }
+    for (i=0; i<mmSide; i++){
+        alphaArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        alphaArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //sigma values
+        sigmaArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //sE
+        sigmaEArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaEArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //sI
+        sigmaIArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        sigmaIArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //bE
+        betaEArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaEArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //bI
+        betaIArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        betaIArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+        
+        //Idc
+        IdcArrayF[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayB[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayLL[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayLT[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayModCom[i] = (double *)malloc(mmSeg * sizeof(double));
+        IdcArrayH[i] = (double *)malloc(mmSeg * sizeof(double));
+
+    }
+    
+    for (i=0; i < mmSide; i++){
+        alphaArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        sigmaArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        sigmaEArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        sigmaIArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        betaEArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        betaIArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+        IdcArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
+    }
+}
+
 //------------------------------------------------------------------------------
 /*void computeLateralBias(double h, double c)
 {

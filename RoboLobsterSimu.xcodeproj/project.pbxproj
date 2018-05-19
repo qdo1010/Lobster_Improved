@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4831107120AF1DE60095D277 /* TrailingRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831106F20AF1DE50095D277 /* TrailingRight */; };
+		4831107220AF1DE60095D277 /* TrailingLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107020AF1DE50095D277 /* TrailingLeft */; };
+		4831107520AF1DEE0095D277 /* BackwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107320AF1DEE0095D277 /* BackwardLeft */; };
+		4831107620AF1DEE0095D277 /* BackwardRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831107420AF1DEE0095D277 /* BackwardRight */; };
+		4831107920AF1DF80095D277 /* ForwardRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831107720AF1DF70095D277 /* ForwardRight */; };
+		4831107A20AF1DF80095D277 /* ForwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107820AF1DF70095D277 /* ForwardLeft */; };
+		4831107D20AF1E020095D277 /* LateralLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107B20AF1E020095D277 /* LateralLeft */; };
+		4831107E20AF1E020095D277 /* LateralRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831107C20AF1E020095D277 /* LateralRight */; };
+		4831108020AF25470095D277 /* ForwardLeftOff in Resources */ = {isa = PBXBuildFile; fileRef = 4831107F20AF25470095D277 /* ForwardLeftOff */; };
+		4831108220AF254F0095D277 /* ForwardRightOff in Resources */ = {isa = PBXBuildFile; fileRef = 4831108120AF254F0095D277 /* ForwardRightOff */; };
 		485DFC1420AB5700003B8E45 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DFC1320AB5700003B8E45 /* Window.xib */; };
 		48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F034F020A4914B005368D4 /* CommandStateViewController.m */; };
 		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
@@ -53,6 +63,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4831106F20AF1DE50095D277 /* TrailingRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingRight; sourceTree = "<group>"; };
+		4831107020AF1DE50095D277 /* TrailingLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingLeft; sourceTree = "<group>"; };
+		4831107320AF1DEE0095D277 /* BackwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackwardLeft; sourceTree = "<group>"; };
+		4831107420AF1DEE0095D277 /* BackwardRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackwardRight; sourceTree = "<group>"; };
+		4831107720AF1DF70095D277 /* ForwardRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForwardRight; sourceTree = "<group>"; };
+		4831107820AF1DF70095D277 /* ForwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForwardLeft; sourceTree = "<group>"; };
+		4831107B20AF1E020095D277 /* LateralLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralLeft; sourceTree = "<group>"; };
+		4831107C20AF1E020095D277 /* LateralRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralRight; sourceTree = "<group>"; };
+		4831107F20AF25470095D277 /* ForwardLeftOff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForwardLeftOff; sourceTree = "<group>"; };
+		4831108120AF254F0095D277 /* ForwardRightOff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForwardRightOff; sourceTree = "<group>"; };
 		485DFC1320AB5700003B8E45 /* Window.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 		48F034F020A4914B005368D4 /* CommandStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandStateViewController.m; sourceTree = "<group>"; };
 		48F034F120A4914B005368D4 /* CommandStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandStateViewController.h; sourceTree = "<group>"; };
@@ -85,7 +105,7 @@
 		970E76AC1EF1A140002EE43D /* analysisWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analysisWindowController.h; sourceTree = "<group>"; };
 		970E76AD1EF1A140002EE43D /* OscilloscopeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscilloscopeView.m; sourceTree = "<group>"; };
 		970E76AF1EF1A158002EE43D /* analysisWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analysisWindowController.m; sourceTree = "<group>"; };
-		979A879520376C630085639E /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Base; sourceTree = "<group>"; };
+		979A879520376C630085639E /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Base; path = RoboLobsterSimu/Base; sourceTree = SOURCE_ROOT; };
 		97D4662A203527B90042B141 /* Slow */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Slow; sourceTree = "<group>"; };
 		97D4662C203527C60042B141 /* Fast */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fast; sourceTree = "<group>"; };
 		97D6A7AD200AC28700BF3C15 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -181,6 +201,16 @@
 				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
 				970E769D1EF19FBF002EE43D /* LobsterSynapseList.txt */,
 				979A879520376C630085639E /* Base */,
+				4831107F20AF25470095D277 /* ForwardLeftOff */,
+				4831107020AF1DE50095D277 /* TrailingLeft */,
+				4831108120AF254F0095D277 /* ForwardRightOff */,
+				4831106F20AF1DE50095D277 /* TrailingRight */,
+				4831107320AF1DEE0095D277 /* BackwardLeft */,
+				4831107420AF1DEE0095D277 /* BackwardRight */,
+				4831107B20AF1E020095D277 /* LateralLeft */,
+				4831107C20AF1E020095D277 /* LateralRight */,
+				4831107820AF1DF70095D277 /* ForwardLeft */,
+				4831107720AF1DF70095D277 /* ForwardRight */,
 				970E766B1EF17CED002EE43D /* main.m */,
 				97D4662A203527B90042B141 /* Slow */,
 				97D4662C203527C60042B141 /* Fast */,
@@ -312,13 +342,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4831107520AF1DEE0095D277 /* BackwardLeft in Resources */,
 				970E76741EF17CED002EE43D /* Assets.xcassets in Resources */,
+				4831108020AF25470095D277 /* ForwardLeftOff in Resources */,
+				4831107220AF1DE60095D277 /* TrailingLeft in Resources */,
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
+				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
+				4831107E20AF1E020095D277 /* LateralRight in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
+				4831107920AF1DF80095D277 /* ForwardRight in Resources */,
 				97ECE09C204FAAB300BA2E00 /* Walking in Resources */,
 				979A879620376C630085639E /* Base in Resources */,
 				970E76A71EF1A0A6002EE43D /* OscolloscopeController.xib in Resources */,
+				4831108220AF254F0095D277 /* ForwardRightOff in Resources */,
+				4831107A20AF1DF80095D277 /* ForwardLeft in Resources */,
+				4831107620AF1DEE0095D277 /* BackwardRight in Resources */,
+				4831107D20AF1E020095D277 /* LateralLeft in Resources */,
 				D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */,
 				970E76A61EF1A0A6002EE43D /* AnalysisWindowController.xib in Resources */,
 				97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */,

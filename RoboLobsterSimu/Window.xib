@@ -26,10 +26,10 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="732" height="361"/>
+            <rect key="contentRect" x="196" y="240" width="653" height="361"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="732" height="361"/>
+                <rect key="frame" x="0.0" y="0.0" width="653" height="361"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box borderType="none" title="Task States" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="xQl-EH-hff">
@@ -791,7 +791,7 @@
                     <constraint firstItem="xQl-EH-hff" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="36" id="jSB-I8-C4C"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-434" y="207.5"/>
+            <point key="canvasLocation" x="-473.5" y="207.5"/>
         </window>
     </objects>
 </document>

@@ -43,8 +43,19 @@ option 2) message passing (better)
     OscilloscopeViewController will need a OpenMessageMethod
     Will this method be in AppDelegate? It should?
 
+DONE
+NOW, NEED TO SEPARATE LEFT AND RIGHT!!!!
+USE THIS:
+switch (iSide){
+case left:
+pExcSegPcnDep[iSide][iSeg].gStrength = 0.75;
+case right:
+pExcSegPcnDep[iSide][iSeg].gStrength = 0.50;
 
+Add a Param called left or Right!
 
+WHY DOES ADDING @class Appdelegate fixes forward declaration??
+WHYYY?
 
 
 
