@@ -517,6 +517,27 @@
                                                               ofType:@""];
         [self loadParamsWithName:self : filePath];
     }
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+
+    editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
+    
+    /*  if (firstTimeChangeParams == 1){
+     [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+     [self setFirstTimeChangeParams:0]; //now it's set
+     }else{*/
+    setParamsButton.enabled = false;
+    int currentIndex = 0;
+    while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+        currentIndex = 0;
+        currentIndex = checkMainLoopIndex();
+    } //xmain should end by now
+    //sleep(0.1);
+    
+    ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
+    
+    [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+    //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
+    setParamsButton.enabled = true;
     
 }
 
@@ -768,26 +789,6 @@
                 
             }
             //make changes to param
-            editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
-            
-          /*  if (firstTimeChangeParams == 1){
-                [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-                [self setFirstTimeChangeParams:0]; //now it's set
-            }else{*/
-                setParamsButton.enabled = false;
-                int currentIndex = 0;
-                while (currentIndex != 99999){ //should be tmax, not hardcoded btw
-                    currentIndex = 0;
-                    currentIndex = checkMainLoopIndex();
-               } //xmain should end by now
-                //sleep(0.1);
-                
-                ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
-                
-                [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
-                //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-                setParamsButton.enabled = true;
-                
           //  }
     
         //}
