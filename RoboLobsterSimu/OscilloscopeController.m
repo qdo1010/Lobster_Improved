@@ -557,7 +557,7 @@
     
     if ( c < 9){
         NSString *LR = [name substringFromIndex: [name length] - 2];
-        NSString *code = [LR substringFromIndex: [name length] - 1];
+        NSString *code = [LR substringFromIndex: [LR length] - 1];
 
         if ([LR containsString:@"L"]){
             side = 0;
