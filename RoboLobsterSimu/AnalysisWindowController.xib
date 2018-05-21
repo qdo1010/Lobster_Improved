@@ -23,18 +23,18 @@
         <window title="Analysis" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Analysis Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="585" width="1000" height="850"/>
+            <rect key="contentRect" x="0.0" y="585" width="1000" height="650"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="765" height="850"/>
-            <value key="maxSize" type="size" width="1000" height="850"/>
+            <value key="minSize" type="size" width="765" height="650"/>
+            <value key="maxSize" type="size" width="1000" height="650"/>
             <value key="minFullScreenContentSize" type="size" width="1000" height="850"/>
             <value key="maxFullScreenContentSize" type="size" width="1000" height="850"/>
             <view key="contentView" identifier="GraphController" misplaced="YES" id="6" userLabel="GraphBox" customClass="NSBox">
-                <rect key="frame" x="0.0" y="0.0" width="1000" height="850"/>
+                <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view misplaced="YES" id="BJB-co-hLu" userLabel="OscilloscopeView" customClass="OscilloscopeView">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="850"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </subviews>
