@@ -537,16 +537,16 @@ void xmain()
     //----- Initialize cells --------
     
 
-    if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
+    //if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         
         //set multiple neuron here!
-         setMultipleNeuronParam(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+     //    setMultipleNeuronParam(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
         
         //this is for 1 neuron
       //  setNeuronParams(globalCellName, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc);
 
-    }
-    else{
+   // }
+  //  else{
         //alloc some memory for the global
         globalAlpha = malloc(sizeof(double));
         globalSigma = malloc(sizeof(double));
@@ -592,7 +592,7 @@ void xmain()
         }
         
         
-    }
+   // }
     //----Initialize comInitArray[ ]  = 0 --------
     
     for(ii = 0;ii < mmSeg + 2; ++ii)
@@ -837,11 +837,19 @@ void xmain()
 
     
     int ind = 0; //index to start loop of array of x
-    //while(1){
-    while((int)mainLoopIndex < (int)tmax) {
+    while(1){ //run forever
+    //while((int)mainLoopIndex < (int)tmax) {
         //change to mainLoopIndex <= tmax to stop forever loop
         
         //printf("%d",beginEditingParams);
+        
+        if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
+            
+            //set multiple neuron here!
+            setMultipleNeuronParam(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+            
+            
+        }
         
         globalLoopIndex = (int)mainLoopIndex; //this is to return for Obj C to see
         
@@ -1019,8 +1027,8 @@ void xmain()
         
         //   arr  = (int **)malloc(sizeof(int *) * r);
         //   arr[0] = (int *)malloc(sizeof(int) * c * r);
-        if(mainLoopIndex>10)
-        {
+//        if(mainLoopIndex>10)
+    //    {
             
          //should put this in its own ifdef so as not to confuse w write to file .... will do it soon
          //   xArrayElev = malloc(mmSeg*mmSide*sizeof(double));
@@ -1032,7 +1040,9 @@ void xmain()
          //   xArrayExt = malloc(mmSeg*mmSide*sizeof(double));
          //   xArrayFlex = malloc(mmSeg*mmSide*sizeof(double));
             if (ind  ==  0){
-            //previ = i;
+                
+                //alloc param array
+                allocParamArray(); //alloc mem for alpha,sigma...
                 int i;
                 
                 ////Alloc Memory for x array
@@ -1127,8 +1137,7 @@ void xmain()
                     xArrayH[i] = (double *)malloc(mmSide * sizeof(double));
                 }
             }
-            //alloc param array
-            allocParamArray(); //alloc mem for alpha,sigma...
+        
             //done alloc memory
             int indy = 0;
             //printf("%f", mainLoopIndex);
@@ -1350,6 +1359,8 @@ void xmain()
             free(xArrayLT);
             free(xArrayModCom);
             free(xArrayH);
+                
+            freeParamsArray();
             }
             
             fprintf(f10, "\n");
@@ -1361,7 +1372,7 @@ void xmain()
             fprintf(f16, "\n");
             fprintf(f17, "\n");
             
-        }
+     //   }
         for(jj = 0; jj < mmPcn2; ++jj)
         {
             fprintf(f18," %lf", cellPcn[jj][pitch].x);//f13 now Mot and and f14 is Pcn
@@ -1967,8 +1978,8 @@ void computeMAPs(double mainLoopIndex)
 
             
             // These are the synapses coupling the postural command interneron to the depressor neurons
-            calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],  	cellPcn[iSide][pitch].x,       spikesPcn[iSide]/mmSeg);
-            
+    //        calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],  	cellPcn[iSide][pitch].x,       spikesPcn[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],      cellDepressor[iSide][iSeg].x,       spikesPcn[iSide]/mmSeg);
             //pExcForRet, pExcBackProt, pExcLLFlx, pExcLTExt;
           //  calcSynapticCurrents( &iExcForRet[iSide][iSeg],          &pExcForRet[iSide][iSeg],           cellF[iSide].x,            spikesF[iSide]/mmSeg);  //Walking Command Neurons
             calcSynapticCurrents( &iExcForRet[iSide][iSeg],          &pExcForRet[iSide][iSeg],           cellRetractor[iSide][iSeg].x,            cellF[iSide].spike);  //Walking Command Neurons
@@ -1976,9 +1987,12 @@ void computeMAPs(double mainLoopIndex)
            // calcSynapticCurrents( &iExcBackProt[iSide][iSeg],    	 &pExcBackProt[iSide][iSeg],         cellB[iSide].x,            spikesB[iSide]/mmSeg);
             calcSynapticCurrents( &iExcBackProt[iSide][iSeg],    	 &pExcBackProt[iSide][iSeg],         cellProtractor[iSide][iSeg].x,            cellB[iSide].spike);
             
-            calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellLL[iSide].x,           spikesLL[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellLT[iSide].x,           spikesLT[iSide]/mmSeg);
-            
+           // calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellLL[iSide].x,           spikesLL[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellFlexor[iSide][iSeg].x,           spikesLL[iSide]/mmSeg);
+
+           // calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellLT[iSide].x,           spikesLT[iSide]/mmSeg);
+            calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellExtensor[iSide][iSeg].x,           spikesLT[iSide]/mmSeg);
+
             
           //Directional Command Neuron to ModCom
             calcSynapticCurrents( &iExcForModCom[iSide],       &pExcForModCom[iSide],           cellModCom[iSide].x,            cellF[iSide].spike);  //Walking Command Neurons
@@ -1986,6 +2000,7 @@ void computeMAPs(double mainLoopIndex)
             calcSynapticCurrents( &iExcBackModCom[iSide],    	 &pExcBackModCom[iSide],         cellModCom[iSide].x,            cellB[iSide].spike);
             
             calcSynapticCurrents( &iExcLLModCom[iSide],           &pExcLLModCom[iSide],            cellModCom[iSide].x,             spikesLL[iSide]/mmSeg);
+            
             calcSynapticCurrents( &iExcLTModCom[iSide],           &pExcLTModCom[iSide],            cellModCom[iSide].x,           spikesLT[iSide]/mmSeg);
             
 
@@ -2354,6 +2369,145 @@ void allocParamArray(void){
         IdcArrayPcn[i] = (double *)malloc(pitchStates * sizeof(double));
     }
 }
+
+void freeParamsArray(void){
+    free(alphaArrayElev);
+    free( alphaArrayDep);
+    free(alphaArraySwing);
+    free (alphaArrayStance);
+    free (alphaArrayProt);
+    free (alphaArrayRet);
+    free (alphaArrayExt);
+    free (alphaArrayFlex);
+    free (alphaArrayCoord);
+    
+         free(alphaArrayF);
+    free( alphaArrayB);
+    free(alphaArrayLL);
+    free(alphaArrayLT);
+    free(alphaArrayPcn);
+    free(alphaArrayModCom);
+    free(alphaArrayH);
+    
+    
+    
+    //sigma values
+    free(sigmaArrayElev);
+    free(sigmaArrayDep);
+    free(sigmaArraySwing);
+    free(sigmaArrayStance);
+   free(sigmaArrayProt);
+    free(sigmaArrayRet);
+    free(sigmaArrayExt);
+    free(sigmaArrayFlex);
+    free(sigmaArrayCoord);
+    
+    free(sigmaArrayF);
+    free(sigmaArrayB);
+    free(sigmaArrayLL);
+    free(sigmaArrayLT);
+    free(sigmaArrayPcn);
+    free(sigmaArrayModCom);
+    free(sigmaArrayH);
+    
+    //sE
+    free(sigmaEArrayElev);
+    free( sigmaEArrayDep);
+    free(sigmaEArraySwing);
+    free(sigmaEArrayStance);
+    free(sigmaEArrayProt);
+     free(sigmaEArrayRet);
+    free(sigmaEArrayExt);
+    free(sigmaEArrayFlex);
+    free(sigmaEArrayCoord);
+    
+    free(sigmaEArrayF);
+    free(sigmaEArrayB);
+    free(sigmaEArrayLL);
+    free(sigmaEArrayLT);
+    free(sigmaEArrayPcn);
+    free( sigmaEArrayModCom);
+    free( sigmaEArrayH);
+    
+    //sI
+    free(sigmaIArrayElev);
+         free(sigmaIArrayDep);
+    free(sigmaIArraySwing);
+    free(sigmaIArrayStance);
+    free(sigmaIArrayProt);
+    free(sigmaIArrayRet);
+    free(sigmaIArrayExt);
+    free(sigmaIArrayFlex);
+    free(sigmaIArrayCoord);
+    
+    free(sigmaIArrayF);
+    free(sigmaIArrayB);
+    free(sigmaIArrayLL);
+         free(sigmaIArrayLT);
+    free(sigmaIArrayPcn);
+         free(sigmaIArrayModCom);
+         free(sigmaIArrayH);
+    
+    //bE
+    free(betaEArrayElev);
+    free(betaEArrayDep);
+    free(betaEArraySwing);
+    free(betaEArrayStance);
+    free(betaEArrayProt);
+    free(betaEArrayRet);
+    free(betaEArrayExt);
+    free(betaEArrayFlex);
+    free(betaEArrayCoord);
+    
+    free(betaEArrayF);
+    free( betaEArrayB);
+    free(betaEArrayLL);
+    free(betaEArrayLT);
+    free(betaEArrayPcn);
+    free(betaEArrayModCom);
+    free(betaEArrayH);
+    
+    //bI
+    free(betaIArrayElev);
+    free(betaIArrayDep);
+    free(betaIArraySwing);
+    free(betaIArrayStance);
+    free(betaIArrayProt);
+    free( betaIArrayRet);
+    free( betaIArrayExt);
+    free(  betaIArrayFlex);
+    free( betaIArrayCoord);
+    
+    free(  betaIArrayF);
+    free(  betaIArrayB);
+    free( betaIArrayLL);
+    free(  betaIArrayLT);
+    free( betaIArrayPcn);
+    free(  betaIArrayModCom);
+    free(betaIArrayH);
+    
+    //Idc
+    free(IdcArrayElev);
+    free(  IdcArrayDep);
+    free(  IdcArraySwing);
+    free( IdcArrayStance);
+    free(  IdcArrayProt);
+    free(IdcArrayRet);
+    free(  IdcArrayExt);
+    free(  IdcArrayFlex);
+    free( IdcArrayCoord);
+    
+   free(  IdcArrayF);
+   free(  IdcArrayB);
+    free(  IdcArrayLL);
+    free(  IdcArrayLT);
+    free( IdcArrayPcn);
+    free(  IdcArrayModCom);
+    free(  IdcArrayH);
+    
+    
+}
+
 
 //------------------------------------------------------------------------------
 /*void computeLateralBias(double h, double c)

@@ -19,7 +19,47 @@ Count the number of SPikes
 Feed the spike into Sigma_e, Beta_e
 Alpha, sigma already set
 ...
-Task 2)
+
+At this point, how to deal w modCom?
+Mod Com??
+Should it be connected to CPG?
+Yes, and it should increase Sigma_e and Beta_e
+To start the thing from bursting/spiking?
+
+How will Forward affect ModCom?
+
+Would Forward make Modcom Spike?
+Count number of spikes from Forward?
+Count number of spikes from ModCom?
+
+How would fast, slow, react differently?
+
+Forward --> turn on ModCom
+Count number of spikes from Modcom?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Task 2) (pretty much done)
 Add Command CheckBoxes and Speed
 -Functionality:
 What will command changes/toggling do:
@@ -45,6 +85,7 @@ option 2) message passing (better)
 
 DONE
 NOW, NEED TO SEPARATE LEFT AND RIGHT!!!!
+(done)
 USE THIS:
 switch (iSide){
 case left:
@@ -55,7 +96,29 @@ pExcSegPcnDep[iSide][iSeg].gStrength = 0.50;
 Add a Param called left or Right!
 
 WHY DOES ADDING @class Appdelegate fixes forward declaration??
-WHYYY?
+
+
+Task 3: Make it move continuously...
+HOW TO
+When Xmain is calculating, have to send an interrupt that change values on the fly!
+SO XMAIN WILL KEEP READING FROM A STREAM, AND UPDATE DATA ACCORDINGLY
+WE CAN MAKE XMAIN RUN FOREVER ACTUALLY
+make Xmain run forever!!!!!
+Then, Xmain keep calling a function that will update its parameter constantly!!!!
+What will that function do?
+It will constantly checking from the Params Array obviously!!!
+Ohh!!!
+Call it checkParamChange
+
+What will it do?
+Let's just start w parameter change at this point!
+how will it know if parameter has been changed
+
+IT HAS SOMETHING TO DO WIH BEGIN_EDITING_PARAMS!!!
+DEAL WITH IT!
+
+
+
 
 
 
