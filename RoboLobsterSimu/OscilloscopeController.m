@@ -178,9 +178,14 @@
     [IdcTextBox setDelegate:self];
     
     [self setFirstTimeChangeParams:1]; //never change params
-     NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 1                                                  target: self
+ //   [self begin]
+    [NSTimer scheduledTimerWithTimeInterval: 1                                                  target: self
                                                 selector:@selector(beginSendingStuffToBeDrawn)
                                               userInfo: nil repeats:YES];
+    
+  //  [NSTimer scheduledTimerWithTimeInterval: 10                                                  target: self
+   //                                             selector:@selector(createWaveForm)
+   //                                             userInfo: nil repeats:YES];
            // [self setOscilloscopeView:oscilloscopeView];
 }
 
@@ -191,7 +196,7 @@
     traceIDchosen = [[[self displayTraceID] title] integerValue];
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
-  
+
 
     //set trace ID in appDelegate
     [appDelegate setIDofCellChosen:traceIDchosen];
@@ -388,12 +393,19 @@
    }
 }
 
--(void) createWaveForm{
-    xmain(); //run pc2dsp and write to temp files, automatically run in background async
+//-(void) createWaveForm{
+//   [self performSelectorInBackground:@selector(runMain) withObject:nil];
+   // xmain(); //run pc2dsp and write to temp files, automatically run in background async
     // NSLog(@"total elapse time for 1 iter = %f s", elapsedTime);
-}
+//}
 
-
+//-(void) runMain{
+   // int currentIndex = 0;
+   //  while (currentIndex <= 10000){ //should be tmax, not hardcoded btw
+   //      currentIndex = checkMainLoopIndex();
+   //  } //xmain should end by now
+ //   xmain();
+//}
 
 - (IBAction)changeTraceGain:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -526,16 +538,16 @@
      [self setFirstTimeChangeParams:0]; //now it's set
      }else{*/
     setParamsButton.enabled = false;
-    int currentIndex = 0;
-    while (currentIndex != 99999){ //should be tmax, not hardcoded btw
-        currentIndex = 0;
-        currentIndex = checkMainLoopIndex();
-    } //xmain should end by now
+  //  int currentIndex = 0;
+  //  while (currentIndex != 99999){ //should be tmax, not hardcoded btw
+  //      currentIndex = 0;
+  //      currentIndex = checkMainLoopIndex();
+  //  } //xmain should end by now
     //sleep(0.1);
     
     ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
     
-    [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
+   // [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
     //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
     setParamsButton.enabled = true;
     
@@ -700,17 +712,17 @@
 
     //Now send all the array to edit Param!
     editParam(cellID,side,seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
-    
+    /*
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         [self setFirstTimeChangeParams:0]; //now it's set
     }else{
         setParamsButton.enabled = false;
-        int currentIndex = 0;
-        while (currentIndex != 9999){ //should be tmax, not hardcoded btw
-            currentIndex = 0;
-            currentIndex = checkMainLoopIndex();
-        } //xmain should end by now
+       // int currentIndex = 0;
+      //  while (currentIndex != 9999){ //should be tmax, not hardcoded btw
+       //     currentIndex = 0;
+       //     currentIndex = checkMainLoopIndex();
+       // } //xmain should end by now
         //sleep(0.1);
         
         ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
@@ -719,7 +731,7 @@
         //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         setParamsButton.enabled = true;
         
-    }
+    }*/
 }
 
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename{
@@ -869,17 +881,17 @@
             }
             //make changes to param
             editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
-
+/*
             if (firstTimeChangeParams == 1){
                 [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
                 [self setFirstTimeChangeParams:0]; //now it's set
             }else{
                 setParamsButton.enabled = false;
-                int currentIndex = 0;
-                while (currentIndex != 9999){ //should be tmax, not hardcoded btw
-                    currentIndex = 0;
-                    currentIndex = checkMainLoopIndex();
-                } //xmain should end by now
+             //   int currentIndex = 0;
+             //   while (currentIndex != 9999){ //should be tmax, not hardcoded btw
+             //       currentIndex = 0;
+             //       currentIndex = checkMainLoopIndex();
+             //   } //xmain should end by now
                 //sleep(0.1);
                 
                 ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
@@ -888,7 +900,7 @@
                 //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
                 setParamsButton.enabled = true;
                 
-            }
+            }*/
 
         }
     }

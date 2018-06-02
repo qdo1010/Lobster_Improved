@@ -406,6 +406,8 @@ void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double
 //int whatTypeofCell(char* neuronName);
 long elapsed;
 
-void allocParamArray(void);
+void allocParamArray(void); //alloc mem for param array
+void freeParamsArray(void); //free param array
 
+void checkParamsChange(void); //how to check? check if user from UI make any changes
 #endif // _pc2dsp_h_

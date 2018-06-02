@@ -73,7 +73,7 @@
     }
     else{
         a = 1;
-        b = cell;
+        b = cell - 4;
     }
     
     if (cellType == 13){
@@ -82,8 +82,8 @@
             b = cell;
         }
         else{
-            a = 0;
-            b = cell;
+            a = 1;
+            b = cell - 4;
         }
     }
     switch (cellType) {

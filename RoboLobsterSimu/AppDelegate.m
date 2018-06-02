@@ -93,7 +93,6 @@
     switchColor = 1;
     
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-    
   //  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.5                                                  target: self
     //                                            selector:@selector(sendWaveform)
       //                                          userInfo: nil repeats:YES];
