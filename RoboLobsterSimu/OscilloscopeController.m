@@ -465,10 +465,9 @@
     }
     else {
         NSLog(@"forward left off");
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4]; //4 means turning off
     }
     if ([[parameters valueForKey:@"rFor"]  boolValue] == true){
         //turn on right forward
@@ -481,10 +480,9 @@
         }
     else {
             NSLog(@"forward right off");
-            speed = 4;
             NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardRight"
                                                                   ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
           //  [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardRightOff"];
         }
 
@@ -495,10 +493,9 @@
         //turn on left backward
     }
     else{
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     if ([[parameters valueForKey:@"rBak"]  boolValue] == true){
         //turn on right backward
@@ -507,11 +504,10 @@
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        speed = 4;
 
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     if ([[parameters valueForKey:@"lLed"]  boolValue] == true){
         //turn on left leading
@@ -520,10 +516,9 @@
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     if ([[parameters valueForKey:@"rLed"]  boolValue] == true){
         //turn on right leading
@@ -532,10 +527,9 @@
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     if ([[parameters valueForKey:@"lTra"]  boolValue] == true){
         //turn on left trailing
@@ -544,10 +538,9 @@
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     if ([[parameters valueForKey:@"rTra"]  boolValue] == true){
         //turn on right trailing
@@ -556,10 +549,9 @@
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        speed = 4;
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+        [self loadParamsWithName:self : filePath :4];
     }
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
