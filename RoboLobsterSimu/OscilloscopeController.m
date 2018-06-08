@@ -433,18 +433,42 @@
 
 - (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
     NSLog(@"%@", [parameters valueForKey:@"lFor"]);
+    int speed = -1;
+    if ([[parameters valueForKey:@"spd"] intValue] == 1){
+        NSLog(@"high");
+        speed = 1;
+
+    }
+    else if([[parameters valueForKey:@"spd"] intValue] == 2){
+        NSLog(@"medium");
+        speed = 2;
+
+    }
+    else if([[parameters valueForKey:@"spd"] intValue] == 3){
+        NSLog(@"slow");
+        speed = 3;
+
+    }
+    else {
+        NSLog(@"stop");
+        speed = 4;
+
+    }
+    
     if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
         //turn on left forward
         NSLog(@"walk forward left");
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+    
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
         NSLog(@"forward left off");
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardLeftOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"rFor"]  boolValue] == true){
         //turn on right forward
@@ -453,81 +477,89 @@
           //  [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardRight"];
             NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardRight"
                                                                   ofType:@""];
-            [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
         }
     else {
             NSLog(@"forward right off");
-            NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardRightOff"
+            speed = 4;
+            NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardRight"
                                                                   ofType:@""];
-            [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
           //  [self loadParamsWithName:self :@"/Users/qdo/Lobster/RoboLobsterSimu/ForwardRightOff"];
         }
 
     if ([[parameters valueForKey:@"lBak"]  boolValue] == true){
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
         //turn on left backward
     }
     else{
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardLeftOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"rBak"]  boolValue] == true){
         //turn on right backward
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardRightOff"
+        speed = 4;
+
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"BackwardRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"lLed"]  boolValue] == true){
         //turn on left leading
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralLeftOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"rLed"]  boolValue] == true){
         //turn on right leading
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralRightOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"LateralRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"lTra"]  boolValue] == true){
         //turn on left trailing
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingLeftOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingLeft"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"rTra"]  boolValue] == true){
         //turn on right trailing
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     else {
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingRightOff"
+        speed = 4;
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"TrailingRight"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath];
+        [self loadParamsWithName:self : filePath :speed];
     }
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
@@ -734,25 +766,25 @@
     }*/
 }
 
-- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename{
+- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed {
     /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
      [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
      
      [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    
+
     //the trace waveform
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     NSURL *URL = [NSURL fileURLWithPath:filename];
 
  //   for( NSURL* URL in [openDlg URLs] )  // See #2, #4
   //      {
-            NSLog( @"%@", [URL path] );
+           // NSLog( @"%@", [URL path] );
             //NOW READ IN THE FILE and LOAD the PARAMS
             NSString *content = [NSString stringWithContentsOfFile:[URL path]
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
-            NSLog(@"%@",content);
+          //  NSLog(@"%@",content);
             NSArray* rows = [content componentsSeparatedByString:@"\n"];
             
             //loop thru all the trace and find them in the text files
@@ -762,41 +794,72 @@
                 int tside;
                 int tseg;
                 for (NSString *row in rows){
+                 
                     NSArray* columns = [row componentsSeparatedByString:@","];
-                    NSLog(@"what is this %@", columns[0]);
-                    NSLog(@"and this is %@", name);
-                    if ([name containsString:columns[0]]){ //if the column name is in text file...
-                        NSLog(@"I found u %@",columns[0]);
-                        //so what name is it?
-                        NSMutableArray* idArray;
-                        idArray = [self convertNameToId:name];
-                        c = [[idArray objectAtIndex:0] intValue];
-                        tside = [[idArray objectAtIndex:1] intValue];
-                        tseg = [[idArray objectAtIndex:2] intValue];
-                        
-                        //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                        //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
-                        cellID[i] = c;
-                        side[i] = tside;
-                        seg[i] = tseg;
-                        alpha[i] = [columns[1] floatValue];
-                        sigma[i] =[columns[2] floatValue];
-                        sigmaE[i] =[columns[3] floatValue];
-                        sigmaI[i] =[columns[4] floatValue];
-                        betaE[i] =[columns[5] floatValue];
-                        betaI[i] =[columns[6] floatValue];
-                        Idc[i] =[columns[7] floatValue];
-                        
-                        NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
-                        [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
-                        [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
-                        [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
-                        [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
-                        [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
-                        [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
-                        [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
-                        
+                    int col = 0;
+                    NSString* spd;
+                    if (speed == -1){ //no speed given
+                        col = 0;
+                        spd = columns[0]; //No need to do speed
                     }
+                    else if (speed == 1){ //fast
+                        col = 1;
+                        spd = @"Fast";
+                    }
+                    else if (speed == 2){ //normal
+                        col = 1;
+                        spd = @"Medium";
+
+                    }
+                    else if (speed == 3){ //slow
+                        col = 1;
+                        spd = @"Slow";
+
+                    }
+                    else if (speed == 4){ //stop
+                        col = 1;
+                        spd = @"Stop";
+                    }
+                    NSLog(@"this is speed %@", spd);
+                    NSLog(@"%@", columns[0]);
+                    if ([columns[0] isEqualToString: spd]){ //if first column contains either the speed or the correct name
+                        NSLog(@"HIIIIII");
+                        
+                        if ([name containsString:columns[col]]){ //if the column name is in text file...
+                            NSLog(@"I found u %@",columns[col]);
+                            //so what name is it?
+                            NSMutableArray* idArray;
+                            idArray = [self convertNameToId:name];
+                            c = [[idArray objectAtIndex:0] intValue];
+                            tside = [[idArray objectAtIndex:1] intValue];
+                            tseg = [[idArray objectAtIndex:2] intValue];
+                            
+                            
+                            //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                            //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
+                            cellID[i] = c;
+                            side[i] = tside;
+                            seg[i] = tseg;
+                            alpha[i] = [columns[col+1] floatValue];
+                            sigma[i] =[columns[col+2] floatValue];
+                            sigmaE[i] =[columns[col+3] floatValue];
+                            sigmaI[i] =[columns[col+4] floatValue];
+                            betaE[i] =[columns[col+5] floatValue];
+                            betaI[i] =[columns[col+6] floatValue];
+                            Idc[i] =[columns[col+7] floatValue];
+                            
+                            NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+                            [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
+                            [params replaceObjectAtIndex:1 withObject:[NSNumber numberWithDouble:sigma[i]]];
+                            [params replaceObjectAtIndex:2 withObject:[NSNumber numberWithDouble:sigmaE[i]]];
+                            [params replaceObjectAtIndex:3 withObject:[NSNumber numberWithDouble:sigmaI[i]]];
+                            [params replaceObjectAtIndex:4 withObject:[NSNumber numberWithDouble:betaE[i]]];
+                            [params replaceObjectAtIndex:5 withObject:[NSNumber numberWithDouble:betaI[i]]];
+                            [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
+                            
+                        }
+                    }
+                    
                 }
                 
             }
