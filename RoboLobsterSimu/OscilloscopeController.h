@@ -107,7 +107,8 @@ extern long elapsed;
 - (IBAction)loadParams:(id)sender;
 - (IBAction)saveParams:(id)sender;
 
-- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename;
+- (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed;
+
 - (void)beginSendingStuffToBeDraw;
 
 //GraphicsViewParameters
