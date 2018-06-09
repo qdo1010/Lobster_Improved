@@ -404,19 +404,22 @@ void calcSynapticCurrents(double *I,
 void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
                            struct structSynapses *params,struct structSynapses *modParams,
                            double xPost,double xModPost, double spikes, double modSpikes) {
-    double iMod;	//This is the synaptic current of the modulatory synapse
-    double iMax = 1.0;  //We need a better value of this.
-    double iGain;
+  //  double iMod;	//This is the synaptic current of the modulatory synapse
+  //  double iMax = 1.0;  //We need a better value of this.
+  //  double iGain;
     
-    iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
+   // iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
     // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
-    iGain = iMod/iMax;
+   // iGain = iMod/iMax;
     // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp) ;
     
     //add param gStrengh)
+   // *I = params->gamma * *I - iGain *spikes* (xPost - params->xRp) ;
     
-    *I = params->gamma * *I - (params->gStrength + iGain) *spikes* (xPost - params->xRp);
+//play around here
     
+    *I = (params->gamma + modParams->gamma) * *I - (params->gStrength + modParams->gStrength) *(spikes + modSpikes)* (xPost - params->xRp + xModPost - modParams->xRp);
+   // *I = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
     //    calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellProtractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
     
     //  calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellSwing[iSide][iSeg].x,   cellF[iSide].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
@@ -1944,13 +1947,13 @@ void computeMAPs(double mainLoopIndex)
             
             ///SEARCH FOR ME!!!!!!!!!!!!!!
             // These are the synapses coupling the stance interneron to the bifunctional motorneurons
-            calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellStance[iSide][iSeg].x,  cellF[iSide].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
-       //     calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellProtractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
+        //    calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellStance[iSide][iSeg].x,  cellF[iSide].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
+            calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellProtractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
             
             
             ///SEARCH FOR ME!!!!!!!!!!!!!!
-            calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellStance[iSide][iSeg].x,  cellB[iSide].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
-        //    calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
+        //    calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellStance[iSide][iSeg].x,  cellB[iSide].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
+            calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
 
             
             
