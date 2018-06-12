@@ -404,21 +404,65 @@ void calcSynapticCurrents(double *I,
 void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
                            struct structSynapses *params,struct structSynapses *modParams,
                            double xPost,double xModPost, double spikes, double modSpikes) {
-  //  double iMod;	//This is the synaptic current of the modulatory synapse
-  //  double iMax = 1.0;  //We need a better value of this.
-  //  double iGain;
+    double iMod;	//This is the synaptic current of the modulatory synapse
+    double iMax = 1.0;  //We need a better value of this.
+    double iGain;
+    
+    
+    //Step 1: presypnaptic inhibition
+    
+    if ((int)modSpikes == 0){
+        iMod = modParams->gamma* *I;
+    }
+    else {
+        iMod =  modParams->gamma* *I + modParams->gStrength* modSpikes;
+        // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
+//        *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp) ;        // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) ;
+    }
+//    iGain = (iMod/iMax)*spikes;
+    iGain = (iMod/iMax)*spikes;
+
+    //Step 2: regular Inhibition or i guess regular excitation
+    *I = params->gamma* *I - params->gStrength*iGain*(xPost - params->xRp);
+    
     
    // iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
     // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
-   // iGain = iMod/iMax;
-    // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp) ;
+   //
+   /*
+    if ((int)modSpikes == 0){
+        *I = 0;
+    }
+    else {
+        iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
+        // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
+        iGain = 1 - iMod;
+        *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp) ;        // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) ;
+    }
+   
+     */
     
+
+   /* if ((int)modSpikes == 0){
+        *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) ;;
+    }
+    else {
+        *I = modParams->gamma* *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
+   // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) ;
+    }
+    
+    */
+  //  iGain = iMod/iMax;
+  //  *I = params->gamma* iMod - params->gStrength* iMod*(xPost - params->xRp);
+ //   else{
+ //       *I = params->gamma * *I - params->gStrength* spikes * (xPost - params->xRp) + iGain;
+ //   }
     //add param gStrengh)
-   // *I = params->gamma * *I - iGain *spikes* (xPost - params->xRp) ;
+ //   *I = params->gamma * *I - params->gStrength *spikes* (xPost - params->xRp) ;
     
 //play around here
     
-    *I = (params->gamma + modParams->gamma) * *I - (params->gStrength + modParams->gStrength) *(spikes + modSpikes)* (xPost - params->xRp + xModPost - modParams->xRp);
+  //  *I = (params->gamma + modParams->gamma) * *I - (params->gStrength + modParams->gStrength) *(spikes * (xPost - params->xRp) + modSpikes*(xModPost - modParams->xRp));
    // *I = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
     //    calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellProtractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
     
@@ -1924,14 +1968,20 @@ void computeMAPs(double mainLoopIndex)
              */
             // These are the synapses coupling the swing interneron to the bifunctional motorneurons
             
+           
+         /*   void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
+                                       struct structSynapses *params,struct structSynapses *modParams,
+                                       double xPost,double xModPost, double spikes, double modSpikes) {
+            */
             
            // calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellSwing[iSide][iSeg].x,   cellF[iSide].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
           
-            calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntFSwing[iSide],  cellProtractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,  spikesSwing[iSide][iSeg], spikesF[iSide]);
+            //swing to prot, w B
+            calcModulatedCurrents( &iExcSegSwingProt[iSide][iSeg],   &pExcSegSwingProt[iSide][iSeg], &pInhIntBSwing[iSide],  cellProtractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,  spikesSwing[iSide][iSeg], spikesB[iSide]);
             
             
            // calcModulatedCurrents( &iExcSegSwingRet[iSide][iSeg],    &pExcSegSwingRet[iSide][iSeg],  &pInhIntBSwing[iSide],	 cellSwing[iSide][iSeg].x,   cellB[iSide].x,  spikesSwing[iSide][iSeg], spikesB[iSide]);
-            calcModulatedCurrents( &iExcSegSwingRet[iSide][iSeg],    &pExcSegSwingRet[iSide][iSeg],  &pInhIntBSwing[iSide],	 cellRetractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,  spikesSwing[iSide][iSeg], spikesB[iSide]);
+            calcModulatedCurrents( &iExcSegSwingRet[iSide][iSeg],    &pExcSegSwingRet[iSide][iSeg],  &pInhIntFSwing[iSide],	 cellRetractor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x,   cellSwing[iSide][iSeg].spike, cellF[iSide].spike);
             
             
         //    calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellSwing[iSide][iSeg].x,   cellLT[iSide].x, spikesSwing[iSide][iSeg], spikesLT[iSide]);
@@ -1945,15 +1995,15 @@ void computeMAPs(double mainLoopIndex)
             calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellFlexor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x, spikesSwing[iSide][iSeg], spikesLL[iSide]);
             
             
-            ///SEARCH FOR ME!!!!!!!!!!!!!!
+            ///SEARCH FOR ME!!!!!!!!!!!!!! I CHANGE THE SPIKE!!!!!!!!!!!!!
             // These are the synapses coupling the stance interneron to the bifunctional motorneurons
         //    calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellStance[iSide][iSeg].x,  cellF[iSide].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
-            calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellProtractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesF[iSide]);
+            calcModulatedCurrents( &iExcSegStanceProt[iSide][iSeg],   &pExcSegStanceProt[iSide][iSeg],  &pInhIntFStance[iSide],    	 cellProtractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     cellStance[iSide][iSeg].spike, cellF[iSide].spike);
             
             
             ///SEARCH FOR ME!!!!!!!!!!!!!!
         //    calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellStance[iSide][iSeg].x,  cellB[iSide].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
-            calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     spikesStance[iSide][iSeg], spikesB[iSide]);
+            calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],	  &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     cellStance[iSide][iSeg].spike, cellB[iSide].spike);
 
             
             
@@ -2063,10 +2113,13 @@ void computeMAPs(double mainLoopIndex)
             calcBurstingNeuron(  &cellSwing[iSide][iSeg],       iExcIntModComSwing[iSide][iSeg],    iInhSegStanceSwing[iSide][iSeg]);
             
             //add iExcBackProt
-            calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg] + iExcBackProt[iSide][iSeg], 0);
+         //   calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg] + iExcBackProt[iSide][iSeg], 0);
+            calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg], 0);
             
             //add iExcForRet
-            calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg] + iExcForRet[iSide][iSeg],  0);
+      //      calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg] + iExcForRet[iSide][iSeg],  0);
+            calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg],  0);
+
             
             //add iExcLTExt
             calcSpikingNeuron(   &cellExtensor[iSide][iSeg],    iExcSegStanceExt[iSide][iSeg] + iExcSegSwingExt[iSide][iSeg] + iExcLTExt[iSide][iSeg],  0);
