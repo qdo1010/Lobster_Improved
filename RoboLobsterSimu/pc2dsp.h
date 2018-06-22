@@ -366,7 +366,7 @@ cellElevator[mmSide][mmSeg];
 */
 //////////end of dictionary
 void xmain();
-int samplesizechosen = 500; //init w 500 as the default for now
+int samplesizechosen = 50; //init w 50 as the default for now
 int IterNumChosen = 1000;
 int checkMainLoopIndex();
 void indicateSampleSize(int s);

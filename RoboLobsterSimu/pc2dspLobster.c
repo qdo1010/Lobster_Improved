@@ -405,25 +405,59 @@ void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, 
                            struct structSynapses *params,struct structSynapses *modParams,
                            double xPost,double xModPost, double spikes, double modSpikes) {
     double iMod;	//This is the synaptic current of the modulatory synapse
-    double iMax = 1.0;  //We need a better value of this.
-    double iGain;
+   // double iMax = 1.0;  //We need a better value of this.
+   // double iGain;
     
     
     //Step 1: presypnaptic inhibition
     
- //   if ((int)xModPost < -1000){
- //       iMod =  0;
- //   }
-//    else {
-        iMod = modParams->gamma* *I + modParams->gStrength* modSpikes;
+  //]
+    if ((int)spikes == 1){
+        iMod = (-modSpikes*modParams->gStrength);
+       // iMod = 0;
+    }
+    else{
+//        iMod = (1 - 1000*spikes)*modSpikes*modParams->gStrength; //this makes it so it doesn't go over?
+        iMod = (-modSpikes*modParams->gStrength);
+
+        // iMod = (1-2*spikes)*modSpikes;
+     //   iMod = 0;
+    }
+    //iMod = (1 - 4*spikes)*(modSpikes)*modParams->gStrength;
+    
+  //  iMod2 = *I + modParams->gStrength* modSpikes;
+  //  }
+  // else{
+  //      iMod = 0;
+  //  }
         // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
 //        *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp) ;        // *I = params->gamma * *I - params->gStrength * spikes * (xPost - params->xRp) ;
- //   }
-  //  iGain = (1 - iMod)*spikes;
-    iGain = (1 - iMod/iMax)*spikes ;
+  //  }
+   // iMod = modSpikes;
+   // iGain = (3 -  modParams->gamma* iMod2)*spikes;
+  //  iGain = (1 - iMod/iMax)*spikes ;
 
     //Step 2: regular Inhibition or i guess regular excitation
-    *I = params->gamma* iGain - params->gStrength*iGain*(xPost - params->xRp);
+   // *I =  iGain;
+    
+   // *I= params->gamma *iGain //this is the spiking coming from the Command Neurons, it should be fine
+   // *I =params->gStrength*iMod*(xPost - params->xRp); //this is the original, which we use
+    
+  //  *I = -(-3*iMod*spikes*(xPost - params->xRp)); //this is to test whether we see Inhibition happening asymmetrically
+    //*I =  -params->gamma*spikes*(xPost - params->xRp);
+    //*I = 1;
+   // *I = modSpikes;
+    *I = -params->gamma*spikes*(xPost - params->xRp) - 10*iMod*spikes*(xPost - params->xRp); //this is spiking together
+    //RIGHT now, we have the opposite of what we want. It's close tho!!!!!!
+    
+    
+    
+    //RIGHT NOW, COMMAND IS TOO HIGH. NEED TO CAP IT AT 0!!
+    //THEN, MAKE EVERYTHING OPPOSITE ALSO
+    
+   // BUT PRETTY COOL?
+    //HOW TO REMOVE THE EXTRA EXCITATORY
+    
    // *I = params->gamma* iGain - params->gStrength*(iGain)*(xPost - params->xRp);
 
     
@@ -1990,14 +2024,14 @@ void computeMAPs(double mainLoopIndex)
             
             
         //    calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellSwing[iSide][iSeg].x,   cellLT[iSide].x, spikesSwing[iSide][iSeg], spikesLT[iSide]);
-            calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellExtensor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x, spikesSwing[iSide][iSeg], spikesLT[iSide]);
+        calcModulatedCurrents( &iExcSegSwingExt[iSide][iSeg],    &pExcSegSwingExt[iSide][iSeg],  &pInhIntLTSwing[iSide], cellExtensor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x, cellLT[iSide].spike, cellSwing[iSide][iSeg].spike);
 
             
             
           //  calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellSwing[iSide][iSeg].x,   cellLL[iSide].x, spikesSwing[iSide][iSeg], spikesLL[iSide]);
 
 
-            calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellFlexor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x, spikesSwing[iSide][iSeg], spikesLL[iSide]);
+            calcModulatedCurrents( &iExcSegSwingFlex[iSide][iSeg],   &pExcSegSwingFlx[iSide][iSeg],  &pInhIntLLSwing[iSide], cellFlexor[iSide][iSeg].x,   cellSwing[iSide][iSeg].x, cellLL[iSide].spike, cellSwing[iSide][iSeg].spike);
             
             
             ///SEARCH FOR ME!!!!!!!!!!!!!! I CHANGE THE SPIKE!!!!!!!!!!!!!
@@ -2012,33 +2046,33 @@ void computeMAPs(double mainLoopIndex)
 
             calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg],      &pExcSegStanceRet[iSide][iSeg],   &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,     cellB[iSide].spike,cellStance[iSide][iSeg].spike);
 
-            
-            
-            
+
           //  calcModulatedCurrents( &iExcSegStanceExt[iSide][iSeg],    &pExcSegStanceExt[iSide][iSeg],   &pInhIntLTStance[iSide],     cellStance[iSide][iSeg].x,  cellLT[iSide].x,    spikesStance[iSide][iSeg], spikesLT[iSide]);
-            calcModulatedCurrents( &iExcSegStanceExt[iSide][iSeg],    &pExcSegStanceExt[iSide][iSeg],   &pInhIntLTStance[iSide],     cellExtensor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,    spikesStance[iSide][iSeg], spikesLT[iSide]);
+         //   calcModulatedCurrents( &iExcSegStanceExt[iSide][iSeg],    &pExcSegStanceExt[iSide][iSeg],   &pInhIntLTStance[iSide],     cellExtensor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,    spikesStance[iSide][iSeg], spikesLT[iSide]);
+
+            calcModulatedCurrents( &iExcSegStanceExt[iSide][iSeg],    &pExcSegStanceExt[iSide][iSeg],   &pInhIntLTStance[iSide],     cellExtensor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,    cellLT[iSide].spike, cellStance[iSide][iSeg].spike);
 
             
             
           //  calcModulatedCurrents( &iExcSegStanceFlex[iSide][iSeg],   &pExcSegStanceFlx[iSide][iSeg],   &pInhIntLLStance[iSide], 	 cellStance[iSide][iSeg].x,  cellLL[iSide].x,    spikesStance[iSide][iSeg], spikesLL[iSide]);
-            calcModulatedCurrents( &iExcSegStanceFlex[iSide][iSeg],   &pExcSegStanceFlx[iSide][iSeg],   &pInhIntLLStance[iSide], 	 cellFlexor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,    spikesStance[iSide][iSeg], spikesLL[iSide]);
+            calcModulatedCurrents( &iExcSegStanceFlex[iSide][iSeg],   &pExcSegStanceFlx[iSide][iSeg],   &pInhIntLLStance[iSide], 	 cellFlexor[iSide][iSeg].x,  cellStance[iSide][iSeg].x,    cellLL[iSide].spike, cellStance[iSide][iSeg].spike);
             
 
 ////////////////////IF UNSURE, COME BACK AND CHANGE WHAT's ABOVE HERE/////////////////////////////////////
           //COMMENT OUT MODCOM TO ELEV FOR NOW!!!
             
             // These are the synapses coupling the modulatory command interneron to the CPG neurons
-        //     calcSynapticCurrents( &iExcIntModComEle[iSide][iSeg],    	&pExcModComEle[iSide][iSeg],  	    cellElevator[iSide][iSeg].x,       cellModCom[iSide].spike);
+             calcSynapticCurrents( &iExcIntModComEle[iSide][iSeg],    	&pExcModComEle[iSide][iSeg],  	    cellElevator[iSide][iSeg].x,       cellModCom[iSide].spike);
       
             
-          //  calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcModComDep[iSide][iSeg],  	cellDepressor[iSide][iSeg].x,       cellModCom[iSide].spike);
+            calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcModComDep[iSide][iSeg],  	cellDepressor[iSide][iSeg].x,       cellModCom[iSide].spike);
 
             
      
-        //    calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcModComSwing[iSide][iSeg],  	cellSwing[iSide][iSeg].x,       cellModCom[iSide].spike);
+            calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcModComSwing[iSide][iSeg],  	cellSwing[iSide][iSeg].x,       cellModCom[iSide].spike);
 
             
-         //   calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcModComStance[iSide][iSeg],  	cellStance[iSide][iSeg].x,       cellModCom[iSide].spike);
+            calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcModComStance[iSide][iSeg],  	cellStance[iSide][iSeg].x,       cellModCom[iSide].spike);
 
             
             // These are the synapses coupling the postural command interneron to the depressor neurons
@@ -2123,16 +2157,16 @@ void computeMAPs(double mainLoopIndex)
         //    calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg] + iExcBackProt[iSide][iSeg], 0);
            calcSpikingNeuron(   &cellProtractor[iSide][iSeg],  iExcSegStanceProt[iSide][iSeg]+ iExcSegSwingProt[iSide][iSeg], 0);
             
-            //add iExcForRet
+            //add iExcForRet maybe?????? SEARch for me
        //     calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg] + iExcForRet[iSide][iSeg],  0);
             calcSpikingNeuron(   &cellRetractor[iSide][iSeg],   iExcSegStanceRet[iSide][iSeg] + iExcSegSwingRet[iSide][iSeg],  0);
 
             
             //add iExcLTExt
-            calcSpikingNeuron(   &cellExtensor[iSide][iSeg],    iExcSegStanceExt[iSide][iSeg] + iExcSegSwingExt[iSide][iSeg] + iExcLTExt[iSide][iSeg],  0);
+            calcSpikingNeuron(   &cellExtensor[iSide][iSeg],    iExcSegStanceExt[iSide][iSeg] + iExcSegSwingExt[iSide][iSeg] ,  0);
             
             //add iExcLLFlx
-            calcSpikingNeuron(   &cellFlexor[iSide][iSeg],      iExcSegStanceFlex[iSide][iSeg]+ iExcSegSwingFlex[iSide][iSeg] + iExcLLFlx[iSide][iSeg], 0);
+            calcSpikingNeuron(   &cellFlexor[iSide][iSeg],      iExcSegStanceFlex[iSide][iSeg]+ iExcSegSwingFlex[iSide][iSeg], 0);
             
             if (iSeg == 1){     //This section calculates the Coordinating neurons                                                                                  ••••••••••••••≤≤≤==This needs to be fixed
                 
