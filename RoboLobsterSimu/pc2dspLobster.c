@@ -443,11 +443,11 @@ void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, 
    // *I= params->gamma *iGain //this is the spiking coming from the Command Neurons, it should be fine
    // *I =params->gStrength*iMod*(xPost - params->xRp); //this is the original, which we use
     
-  //  *I = -(-3*iMod*spikes*(xPost - params->xRp)); //this is to test whether we see Inhibition happening asymmetrically
+    *I = -(-3*iMod*spikes*(xPost - params->xRp)); //this is to test whether we see Inhibition happening asymmetrically
     //*I =  -params->gamma*spikes*(xPost - params->xRp);
     //*I = 1;
    // *I = modSpikes;
-    *I = -params->gamma*spikes*(xPost - params->xRp) - 10*iMod*spikes*(xPost - params->xRp); //this is spiking together
+ //   *I = -params->gamma*spikes*(xPost - params->xRp) - 10*iMod*spikes*(xPost - params->xRp); //this is spiking together
     //RIGHT now, we have the opposite of what we want. It's close tho!!!!!!
     
     
@@ -2060,7 +2060,7 @@ void computeMAPs(double mainLoopIndex)
 
 ////////////////////IF UNSURE, COME BACK AND CHANGE WHAT's ABOVE HERE/////////////////////////////////////
           //COMMENT OUT MODCOM TO ELEV FOR NOW!!!
-            
+            /*
             // These are the synapses coupling the modulatory command interneron to the CPG neurons
              calcSynapticCurrents( &iExcIntModComEle[iSide][iSeg],    	&pExcModComEle[iSide][iSeg],  	    cellElevator[iSide][iSeg].x,       cellModCom[iSide].spike);
       
@@ -2073,7 +2073,7 @@ void computeMAPs(double mainLoopIndex)
 
             
             calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcModComStance[iSide][iSeg],  	cellStance[iSide][iSeg].x,       cellModCom[iSide].spike);
-
+*/
             
             // These are the synapses coupling the postural command interneron to the depressor neurons
     //        calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],  	cellPcn[iSide][pitch].x,       spikesPcn[iSide]/mmSeg);
