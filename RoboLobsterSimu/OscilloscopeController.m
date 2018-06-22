@@ -453,7 +453,7 @@
         NSLog(@"stop");
         speed = 4;
         //force CPG to all stop
-        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"Elevator"
+        /*NSString * filePath = [[NSBundle mainBundle] pathForResource:@"Elevator"
                                                               ofType:@""];
         [self loadParamsWithName:self : filePath :speed];
         filePath = [[NSBundle mainBundle] pathForResource:@"Depressor"
@@ -464,7 +464,7 @@
         [self loadParamsWithName:self : filePath :speed];
         filePath = [[NSBundle mainBundle] pathForResource:@"Stance"
                                                               ofType:@""];
-        [self loadParamsWithName:self : filePath :speed];
+         [self loadParamsWithName:self : filePath :speed];*/
     }
     if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
         //turn on left forward
@@ -691,7 +691,7 @@
         else{
             side = 1;
         }
-        seg = [code intValue] - 1;
+        seg = [code intValue] ;//FIX 
     }
     else if( c != 13){
         NSString *LR = [name substringFromIndex: [name length] - 1];
