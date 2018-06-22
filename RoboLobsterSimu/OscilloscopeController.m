@@ -452,9 +452,20 @@
     else {
         NSLog(@"stop");
         speed = 4;
-
+        //force CPG to all stop
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:@"Elevator"
+                                                              ofType:@""];
+        [self loadParamsWithName:self : filePath :speed];
+        filePath = [[NSBundle mainBundle] pathForResource:@"Depressor"
+                                                              ofType:@""];
+        [self loadParamsWithName:self : filePath :speed];
+        filePath = [[NSBundle mainBundle] pathForResource:@"Swing"
+                                                              ofType:@""];
+        [self loadParamsWithName:self : filePath :speed];
+        filePath = [[NSBundle mainBundle] pathForResource:@"Stance"
+                                                              ofType:@""];
+        [self loadParamsWithName:self : filePath :speed];
     }
-    
     if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
         //turn on left forward
         NSLog(@"walk forward left");
@@ -553,6 +564,7 @@
                                                               ofType:@""];
         [self loadParamsWithName:self : filePath :4];
     }
+    
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
     editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
@@ -608,7 +620,7 @@
 
 
 
-- (NSMutableArray*)convertNameToId: (NSString*)name{
+- (NSMutableArray*)convertNameToId: (NSString*)name{ //add Left RIGHT TO CPG TOO....
     int  c;
     int side;
     int seg;
@@ -679,7 +691,7 @@
         else{
             side = 1;
         }
-        seg = [code intValue];
+        seg = [code intValue] - 1;
     }
     else if( c != 13){
         NSString *LR = [name substringFromIndex: [name length] - 1];
@@ -812,11 +824,13 @@
                         col = 1;
                         spd = @"Stop";
                     }
-                    NSLog(@"this is speed %@", spd);
-                    NSLog(@"%@", columns[0]);
+                   // NSLog(@"this is speed %@", spd);
+                   // NSLog(@"%@", columns[0]);
                     if ([columns[0] isEqualToString: spd]){ //if first column contains either the speed or the correct name
                         NSLog(@"HIIIIII");
-                        
+                        NSLog(@"%@",columns[col]);
+                        NSLog(@"%@",name);
+
                         if ([name containsString:columns[col]]){ //if the column name is in text file...
                             NSLog(@"I found u %@",columns[col]);
                             //so what name is it?
@@ -825,8 +839,10 @@
                             c = [[idArray objectAtIndex:0] intValue];
                             tside = [[idArray objectAtIndex:1] intValue];
                             tseg = [[idArray objectAtIndex:2] intValue];
-                            
-                            
+                            NSLog(@"%d",c);
+                            NSLog(@"%d",tside);
+                            NSLog(@"%d",tseg);
+
                             //editParam(c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
                             //  NSLog(@"%d,%@,%@,%@,%@,%@,%@,%@\n",c,columns[1],columns[2],columns[3], columns[4], columns[5],columns[6],columns[7]);
                             cellID[i] = c;

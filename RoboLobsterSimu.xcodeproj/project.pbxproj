@@ -16,6 +16,10 @@
 		4831107D20AF1E020095D277 /* LateralLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107B20AF1E020095D277 /* LateralLeft */; };
 		4831107E20AF1E020095D277 /* LateralRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831107C20AF1E020095D277 /* LateralRight */; };
 		485DFC1420AB5700003B8E45 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DFC1320AB5700003B8E45 /* Window.xib */; };
+		4895E8D520DD52F20037AB7C /* Stance in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D320DD52F20037AB7C /* Stance */; };
+		4895E8D620DD52F20037AB7C /* Swing in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D420DD52F20037AB7C /* Swing */; };
+		4895E8D920DD52FA0037AB7C /* Depressor in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D720DD52FA0037AB7C /* Depressor */; };
+		4895E8DA20DD52FA0037AB7C /* Elevator in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D820DD52FA0037AB7C /* Elevator */; };
 		48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F034F020A4914B005368D4 /* CommandStateViewController.m */; };
 		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
 		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
@@ -70,6 +74,10 @@
 		4831107B20AF1E020095D277 /* LateralLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralLeft; sourceTree = "<group>"; };
 		4831107C20AF1E020095D277 /* LateralRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralRight; sourceTree = "<group>"; };
 		485DFC1320AB5700003B8E45 /* Window.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
+		4895E8D320DD52F20037AB7C /* Stance */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stance; sourceTree = "<group>"; };
+		4895E8D420DD52F20037AB7C /* Swing */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swing; sourceTree = "<group>"; };
+		4895E8D720DD52FA0037AB7C /* Depressor */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Depressor; sourceTree = "<group>"; };
+		4895E8D820DD52FA0037AB7C /* Elevator */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Elevator; sourceTree = "<group>"; };
 		48F034F020A4914B005368D4 /* CommandStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandStateViewController.m; sourceTree = "<group>"; };
 		48F034F120A4914B005368D4 /* CommandStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandStateViewController.h; sourceTree = "<group>"; };
 		97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-02-23 at 3.31.24 PM.png"; sourceTree = "<group>"; };
@@ -199,6 +207,10 @@
 				979A879520376C630085639E /* Base */,
 				4831107020AF1DE50095D277 /* TrailingLeft */,
 				4831106F20AF1DE50095D277 /* TrailingRight */,
+				4895E8D320DD52F20037AB7C /* Stance */,
+				4895E8D420DD52F20037AB7C /* Swing */,
+				4895E8D720DD52FA0037AB7C /* Depressor */,
+				4895E8D820DD52FA0037AB7C /* Elevator */,
 				4831107320AF1DEE0095D277 /* BackwardLeft */,
 				4831107420AF1DEE0095D277 /* BackwardRight */,
 				4831107B20AF1E020095D277 /* LateralLeft */,
@@ -342,8 +354,10 @@
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
+				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
+				4895E8D520DD52F20037AB7C /* Stance in Resources */,
 				4831107920AF1DF80095D277 /* ForwardRight in Resources */,
 				97ECE09C204FAAB300BA2E00 /* Walking in Resources */,
 				979A879620376C630085639E /* Base in Resources */,
@@ -353,9 +367,11 @@
 				4831107D20AF1E020095D277 /* LateralLeft in Resources */,
 				D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */,
 				970E76A61EF1A0A6002EE43D /* AnalysisWindowController.xib in Resources */,
+				4895E8D920DD52FA0037AB7C /* Depressor in Resources */,
 				97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */,
 				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
 				485DFC1420AB5700003B8E45 /* Window.xib in Resources */,
+				4895E8D620DD52F20037AB7C /* Swing in Resources */,
 				97D4662D203527C60042B141 /* Fast in Resources */,
 				970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */,
 			);
