@@ -2060,20 +2060,19 @@ void computeMAPs(double mainLoopIndex)
 
 ////////////////////IF UNSURE, COME BACK AND CHANGE WHAT's ABOVE HERE/////////////////////////////////////
           //COMMENT OUT MODCOM TO ELEV FOR NOW!!!
-            /*
+            
             // These are the synapses coupling the modulatory command interneron to the CPG neurons
              calcSynapticCurrents( &iExcIntModComEle[iSide][iSeg],    	&pExcModComEle[iSide][iSeg],  	    cellElevator[iSide][iSeg].x,       cellModCom[iSide].spike);
       
             
             calcSynapticCurrents( &iExcIntModComDep[iSide][iSeg],    	&pExcModComDep[iSide][iSeg],  	cellDepressor[iSide][iSeg].x,       cellModCom[iSide].spike);
 
-            
-     
+        
             calcSynapticCurrents( &iExcIntModComSwing[iSide][iSeg],    	&pExcModComSwing[iSide][iSeg],  	cellSwing[iSide][iSeg].x,       cellModCom[iSide].spike);
 
             
             calcSynapticCurrents( &iExcIntModComStance[iSide][iSeg],    &pExcModComStance[iSide][iSeg],  	cellStance[iSide][iSeg].x,       cellModCom[iSide].spike);
-*/
+
             
             // These are the synapses coupling the postural command interneron to the depressor neurons
     //        calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],  	cellPcn[iSide][pitch].x,       spikesPcn[iSide]/mmSeg);
@@ -2185,7 +2184,31 @@ void computeMAPs(double mainLoopIndex)
         calcSpikingNeuron(   &cellLT[iSide],           0, 0);			//Lateral Trailing Command
         
         ///EDIT MODCOM ???
-        calcSpikingNeuron(   &cellModCom[iSide],       iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] , 0);           //Modulatory Command
+        //this should do the thresholding to calculate and pick the correct alpha and sigma for Modcom
+        if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 10){
+        //Low
+            cellModCom[iSide].alpha = 4;
+            cellModCom[iSide].sigma= 0.2;
+
+            
+        }
+        else if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 40){
+        //Med
+            cellModCom[iSide].alpha = 5.4;
+            cellModCom[iSide].sigma= 0.2;
+
+        }
+        else {
+        //High
+            cellModCom[iSide].alpha = 7;
+            cellModCom[iSide].sigma= 0.2;
+
+        }
+        calcSpikingNeuron(   &cellModCom[iSide],  0 , 0);
+        
+        //calcSpikingNeuron(   &cellModCom[iSide],       iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] , 0);           //Modulatory Command
+        
+        
         calcSpikingNeuron(   &cellPcn[iSide][rosUp],   0, 0);           //There is one on each side for rosDown, pLevel, rosUp
         calcSpikingNeuron(   &cellPcn[iSide][pLevel],  0, 0);
         calcSpikingNeuron(   &cellPcn[iSide][rosDn],   0, 0);

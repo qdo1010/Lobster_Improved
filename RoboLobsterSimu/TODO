@@ -11,6 +11,28 @@ Just have to make them the same.
 Also, what is up with Seg
 why Seg - 1 mess w the motors neuron??
 Find out...
+-->
+Nah, it's cause the param is set at 0 in the beginning,
+so either u forced the params to be updated immediately!
+or u do sth else...
+it's def not because of seg
+
+DO IT!!!!!!
+
+
+
+
+It's opposite
+Forward and Backward
+
+Modcom what does it do?
+
+Maybe add synaptic changes so u can change gamma and Xrp and gStrength
+
+let users resize windows
+
+Change the size of the traces to make it bigger
+
 
 
 
