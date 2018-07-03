@@ -147,8 +147,7 @@
     }
     
     //Set sigma and alpha to what they really are
-    
-    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    //id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
     //this is the param id that contains sigma and alpha
   //  NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
@@ -177,7 +176,7 @@
     [betaITextBox setDelegate:self];
     [IdcTextBox setDelegate:self];
     
-    [self setFirstTimeChangeParams:1]; //never change params
+    [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
  //   [self begin]
     [NSTimer scheduledTimerWithTimeInterval: 0.1                                                  target: self
                                                 selector:@selector(beginSendingStuffToBeDrawn)

@@ -2101,6 +2101,8 @@ void computeMAPs(double mainLoopIndex)
             calcSynapticCurrents( &iExcLTModCom[iSide],           &pExcLTModCom[iSide],            cellModCom[iSide].x,           spikesLT[iSide]/mmSeg);
             
 
+  //COMMENt OUT DIRECTIONAL COMMAND TO MODCOM
+            //THIS IS NON LINEAR
             
             
             // These are the inhibitory synapses between the coordinating neurons and the segmental elevators and the segmental elevators and neighboring coordinating neurons
@@ -2185,14 +2187,14 @@ void computeMAPs(double mainLoopIndex)
         
         ///EDIT MODCOM ???
         //this should do the thresholding to calculate and pick the correct alpha and sigma for Modcom
-        if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 10){
+        if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 0.1){
         //Low
-            cellModCom[iSide].alpha = 4;
+            cellModCom[iSide].alpha = 4.2;
             cellModCom[iSide].sigma= 0.2;
-
+            
             
         }
-        else if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 40){
+        else if (iExcForModCom[iSide] + iExcBackModCom[iSide] + iExcLLModCom[iSide] + iExcLTModCom[iSide] < 0.5){
         //Med
             cellModCom[iSide].alpha = 5.4;
             cellModCom[iSide].sigma= 0.2;
