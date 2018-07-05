@@ -8,17 +8,6 @@ Protractor and Retractor look fine
 Flexor and Extensor is not...
 Just have to make them the same.
 
-Also, what is up with Seg
-why Seg - 1 mess w the motors neuron??
-Find out...
--->
-Nah, it's cause the param is set at 0 in the beginning,
-so either u forced the params to be updated immediately!
-or u do sth else...
-it's def not because of seg
-
-DO IT!!!!!!
-
 
 
 
@@ -34,7 +23,8 @@ let users resize windows
 Change the size of the traces to make it bigger
 
 
-
+ADD a Functionality to change Synaptic Input and Synaptic Strength.
+So that we can change those value on the fly
 
 
 

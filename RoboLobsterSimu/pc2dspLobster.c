@@ -1979,11 +1979,8 @@ void computeMAPs(double mainLoopIndex)
              calcSynapticCurrents( &iInhSegEleStance[iSide][iSeg],    	&pInhSegEleStance[iSide][iSeg],  	cellStance[iSide][iSeg].x,       spikesElevator[iSide][iSeg]);
             
             
-            
-            
           //  calcSynapticCurrents( &iInhSegStanceSwing[iSide][iSeg],    	&pInhSegStanceSwing[iSide][iSeg],  	cellStance[iSide][iSeg].x,         spikesStance[iSide][iSeg]/mmSeg);
             calcSynapticCurrents( &iInhSegStanceSwing[iSide][iSeg],    	&pInhSegStanceSwing[iSide][iSeg],  	cellSwing[iSide][iSeg].x,         spikesStance[iSide][iSeg]);
-            
             
             // These are the synapses within the core neuronal oscillator
             iInhSegEleDep[iSide][iSeg]         		= iInhSegEleDep[iSide][iSeg] * cCalSeg;
@@ -2079,16 +2076,16 @@ void computeMAPs(double mainLoopIndex)
             calcSynapticCurrents( &iExcSegPcnDep[iSide][iSeg],    &pExcSegPcnDep[iSide][iSeg],      cellDepressor[iSide][iSeg].x,       spikesPcn[iSide]/mmSeg);
             //pExcForRet, pExcBackProt, pExcLLFlx, pExcLTExt;
           //  calcSynapticCurrents( &iExcForRet[iSide][iSeg],          &pExcForRet[iSide][iSeg],           cellF[iSide].x,            spikesF[iSide]/mmSeg);  //Walking Command Neurons
-            calcSynapticCurrents( &iExcForRet[iSide][iSeg],          &pExcForRet[iSide][iSeg],           cellRetractor[iSide][iSeg].x,            cellF[iSide].spike);  //Walking Command Neurons
+        //    calcSynapticCurrents( &iExcForRet[iSide][iSeg],          &pExcForRet[iSide][iSeg],           cellRetractor[iSide][iSeg].x,            cellF[iSide].spike);  //Walking Command Neurons
             
            // calcSynapticCurrents( &iExcBackProt[iSide][iSeg],    	 &pExcBackProt[iSide][iSeg],         cellB[iSide].x,            spikesB[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcBackProt[iSide][iSeg],    	 &pExcBackProt[iSide][iSeg],         cellProtractor[iSide][iSeg].x,            cellB[iSide].spike);
+        //    calcSynapticCurrents( &iExcBackProt[iSide][iSeg],    	 &pExcBackProt[iSide][iSeg],         cellProtractor[iSide][iSeg].x,            cellB[iSide].spike);
             
            // calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellLL[iSide].x,           spikesLL[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellFlexor[iSide][iSeg].x,           spikesLL[iSide]/mmSeg);
+        //    calcSynapticCurrents( &iExcLLFlx[iSide][iSeg],           &pExcLLFlx[iSide][iSeg],            cellFlexor[iSide][iSeg].x,           spikesLL[iSide]/mmSeg);
 
            // calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellLT[iSide].x,           spikesLT[iSide]/mmSeg);
-            calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellExtensor[iSide][iSeg].x,           spikesLT[iSide]/mmSeg);
+        //    calcSynapticCurrents( &iExcLTExt[iSide][iSeg],           &pExcLTExt[iSide][iSeg],            cellExtensor[iSide][iSeg].x,           spikesLT[iSide]/mmSeg);
 
             
           //Directional Command Neuron to ModCom
