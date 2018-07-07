@@ -107,7 +107,7 @@
     betaI = malloc(numCell*sizeof(double));
     Idc = malloc(numCell*sizeof(double));
     
-    settingUpParams = 1; //first time setting up
+    settingUpParams = 1; //first time setting up, will be off forever
     
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
         
@@ -147,8 +147,7 @@
     }
     
     //Set sigma and alpha to what they really are
-    
-    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    //id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
     //this is the param id that contains sigma and alpha
   //  NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
@@ -177,7 +176,7 @@
     [betaITextBox setDelegate:self];
     [IdcTextBox setDelegate:self];
     
-    [self setFirstTimeChangeParams:1]; //never change params
+    [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
  //   [self begin]
     [NSTimer scheduledTimerWithTimeInterval: 0.1                                                  target: self
                                                 selector:@selector(beginSendingStuffToBeDrawn)
@@ -186,7 +185,14 @@
   //  [NSTimer scheduledTimerWithTimeInterval: 10                                                  target: self
    //                                             selector:@selector(createWaveForm)
    //                                             userInfo: nil repeats:YES];
-           // [self setOscilloscopeView:oscilloscopeView];
+           // [self setOscilloscope View:oscilloscopeView];
+  //  [self chooseTraceID:displayTraceID]; //call this to init
+    
+    //set trace ID in appDelegate
+    [appDelegate setIDofCellChosen:0];
+    
+    //this is the param id that contains sigma and alpha
+
 }
 
 
@@ -600,8 +606,44 @@
       //  _startButton.enabled = YES;
        // NSLog(@"is it doing anything?");
         [appDelegate displaySampledWaveforms: [[appDelegate traceSelector] traceArraytobeSent]  : [appDelegate sweepOffset] :[appDelegate sweepDuration]];
+    if (settingUpParams){
     
+    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:0];
+    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+
+        //init params input values
+    
+    for (int i = 0; i < numCell; i++){
+        //NSLog(@"howw many %d",i);
+        params= [[propertyValue parambuf] objectAtIndex:i];
+        alpha[i] = [[params objectAtIndex:0] doubleValue];
+        sigma[i] = [[params objectAtIndex:1] doubleValue];
+        sigmaE[i] = [[params objectAtIndex:2] doubleValue];
+        sigmaI[i] = [[params objectAtIndex:3] doubleValue];
+        betaE[i] = [[params objectAtIndex:4] doubleValue];
+        betaI[i] = [[params objectAtIndex:5] doubleValue];
+        Idc[i] = [[params objectAtIndex:6] doubleValue];
         
+    }
+    settingUpParams = 0;
+
+    
+     
+     [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[0]]];
+     [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[0]]];
+     [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[0]]];
+     [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[0]]];
+     [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[0]]];
+     
+     [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[0]]];
+     
+     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[0]]];
+     
+     
+     // NSLog(@" choose this trace %d", traceIDchosen);
+     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
+    }
     //}
   //  [displayTraceID removeAllItems];
   //  for (int i; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
@@ -691,7 +733,7 @@
         else{
             side = 1;
         }
-        seg = [code intValue] ;//FIX 
+        seg = [code intValue] - 1;//FIX 
     }
     else if( c != 13){
         NSString *LR = [name substringFromIndex: [name length] - 1];
