@@ -160,11 +160,10 @@ double** xArrayFlex;
 double** xArrayCoord;
 
 //command neuron array;
-double** xArrayF; //Forward Walking Command
-
-double** xArrayB;             //Backward Walking Command
-double** xArrayLL;                //Lateral Leading Command
-double** xArrayLT;                 //Lateral Trailing Command
+double** xArrayF;               //Forward Walking Command
+double** xArrayB;                //Backward Walking Command
+double** xArrayLL;               //Lateral Leading Command
+double** xArrayLT;               //Lateral Trailing Command
 double** xArrayPcn; //[mmSide][pitchStates],	// There is one on each side for pLow, rosDown, pLevel, rosUp, pHigh The pitchState sets the synaptic strength in each segment/side
 double** xArrayModCom;				// The is the modulatory command on each side
 double** xArrayH;  //This is the hight command and would range fractionate and control the postural commands cellPcnLow cellPcnLevel and cellPcnHigh on both sides.
