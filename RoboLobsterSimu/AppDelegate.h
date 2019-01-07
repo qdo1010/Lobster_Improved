@@ -61,11 +61,6 @@ extern long elapsed;
 @property (nonatomic, strong) IBOutlet NSMenuItem                   *StaticCalibration;
 @property (readwrite, assign) NSNumber*                                    SampleSize; //sample size of traces
 
-
-//@property (readwrite,retain) NSMutableArray                         *durationArray;    //This  an array of sweep offset
-
-//@property (readwrite,retain) NSMutableArray                         *offsetArray;    //This is an array of sweep offset
-
 @property (readwrite) double sweepDuration;
 @property (readwrite) double sweepOffset;
 
@@ -89,7 +84,6 @@ extern long elapsed;
 - (IBAction) openCommandWindow:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
 
 #pragma mark --- Signal Processing Menu Selections
-- (void) setupPlottingArrays: (id) sender;
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration;
 

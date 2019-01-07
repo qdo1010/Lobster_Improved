@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "appDelegate.h"
+#import "AppDelegate.h"
 #import "analysisWindowController.h"
     //#import "signalProcessing.h"
 #import "Waveforms.h"

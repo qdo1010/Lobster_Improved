@@ -65,7 +65,7 @@ NSString *const kDSPTitle          = @"DSPViewController";
 
 - (id)init
 {
-	AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+	//AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
 	AnalysisWindowController *awc;
 	awc = [super initWithWindowNibName:@"AnalysisWindowController"];
 	if (!awc)
@@ -204,11 +204,14 @@ AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate
 
 - (IBAction) showProgress: (id) sender{
 AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+  
     [[NSApplication sharedApplication] beginSheet:_progress
        modalForWindow:_analysisWindow
         modalDelegate: nil
        didEndSelector: NULL
           contextInfo: NULL];
+    
+    
     [_progress makeKeyAndOrderFront:[appDelegate analysisWindowController]];
 }
 

@@ -62,7 +62,7 @@
 
 -(id) init
 {
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+   // AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         //    [self setOscilloscopeView:oscilloscopeView];
     self  = [super init];
     
@@ -199,7 +199,7 @@
 
 - (IBAction)chooseTraceID:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    traceIDchosen = (int) [[[self displayTraceID] title] integerValue];
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
 
@@ -208,10 +208,10 @@
     [appDelegate setIDofCellChosen:traceIDchosen];
     
     //this is the param id that contains sigma and alpha
-    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+   // NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
     
     //init all params
-    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    int numCell = (int) [[[appDelegate traceSelector] traceArraytobeSent] count];
 
 
     //init params input values
@@ -301,7 +301,7 @@
 
   ///this is to change sweep duration, so to zoom in!
 - (IBAction)changeSweepDuration:(id)sender {
-    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    traceIDchosen = (int) [[[self displayTraceID] title] integerValue];
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     [sweepDurationSlider setMinValue:0];
     [sweepDurationSlider setMaxValue:10000];
@@ -610,7 +610,7 @@
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:0];
-    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    int numCell = (int) [[[appDelegate traceSelector] traceArraytobeSent] count];
 
         //init params input values
     
@@ -767,13 +767,13 @@
     double bE = [betaETextBox doubleValue];
     double bI = [betaITextBox doubleValue];
     double Idc = [IdcTextBox doubleValue];*/
-    traceIDchosen = [[[self displayTraceID] title] integerValue];
+    traceIDchosen = (int)[[[self displayTraceID] title] integerValue];
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
     //set trace ID in appDelegate
     //this is the param id that contains sigma and alpha
-    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    int numCell = (int) [[[appDelegate traceSelector] traceArraytobeSent] count];
 
     for (int i = 0; i < numCell;i++){
         //loop through all the param array and change them with the users input param!
@@ -952,7 +952,7 @@
             //loop thru all the trace and find them in the text files
             for (int i =0;i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i++){
                 NSString* name = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-                int c = 0;
+               // int c = 0;
                 
                 for (NSString *row in rows){
                         NSArray* columns = [row componentsSeparatedByString:@","];
@@ -1130,265 +1130,3 @@
 @end
 
 
-
-
-
-
-///////////////////OLD CODE///////////////////
-
-/*
- - (IBAction)changeGainStep:(id)sender {
- [gainStepView setIncrement: 0.1];
- [gainStepView setMaxValue: 10.0];
- 
- [traceGainSlider setFloatValue:[sender floatValue]];
- [traceGainTextBox setFloatValue:[sender floatValue]];
- }*/
-
-/*
- - (IBAction) resetSweepDuration: (id) sender{          //Reset Samples Per Column
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
- NSRect iRect = [[[appDelegate analysisWindowController] oscilloscopeView] bounds];
-	[self setDoInitAndScale:NO];
- [self setNumColumns:        iRect.size.width];              //This is the width of the graphics window
- [self setSweepDuration:[sender doubleValue]];
- NSLog(@"resetSweepDuration returns %8.3f",[sender doubleValue]);
- 
- [self setSamplingOffset:[self sweepOffset]*[self samplingRate]];
- long sTerm =   ([self sweepDuration]+[self sweepOffset])*[self samplingRate];
- if (sTerm > [self samplingMaximum]) {
- sTerm = [self samplingMaximum];
- }
- [self setSamplingTerminus:sTerm];
- [self setSamplingDuration:  [self samplingTerminus] - [self samplingOffset]];
- [self setSweepOffset:       [self samplingOffset]/[self samplingRate]];                           //This is the sweep onset in sec
- [self setSweepTerminus:     [self samplingTerminus]/[self samplingRate]];                         //This is the sweep terminus in sec.
- 
- [self setSamplingDuration: [self samplingTerminus] - [self samplingOffset]];  //This is the duraion of the sweep in samples
-	
- [self setSampsPerCol:[self samplingDuration]/[self numColumns]];
- 
- [self scaleScopeSweep];
- NSLog(@"\nFollowing resetSweepDuration\n samplingMaximum:%ld \n numColumns:%ld \n samplingOffset:%ld \n samplingTerminus: %ld \n samplingDuration: %ld \n  samplingRate:%8.0f \n sampsPerCol:      %8.0f \n sweepOffset:%8.3f \n sweepTerminus:%8.3f \n  sweepDuration:%8.3f \n  sweepMaximum:%8.3f ",
- 
- [self samplingMaximum],
- [self numColumns],
- [self samplingOffset],
- [self samplingTerminus],
- [self samplingDuration],
- [self samplingRate],
- [self sampsPerCol],
- [self sweepOffset],
- [self sweepTerminus],
- [self sweepDuration],
- [self sweepMaximum]);
- [[[appDelegate analysisWindowController] myCurrentView] setNeedsDisplay:YES];
- //[[self self] drawScopeSweep ];//]:rect];
- }*/
-
-/*
- 
- - (IBAction) resetGainProx: (id) sender{
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-	float percent;
-	float ProxGain;
-	float oscProxGainMax = [self proxGainMax];
-	[self setDoInitAndScale:NO];
-	percent = [sender intValue];
-	ProxGain =  (oscProxGainMax / 100) * percent;
-	[self setProxGain:ProxGain];
-	
-	[[[appDelegate analysisWindowController] myCurrentView] setNeedsDisplay:YES];
-	
- }
- 
- 
- - (IBAction) resetOffsetProx: (id) sender{
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-	float percent;
-	int ProxOffset;
-	[self setDoInitAndScale:NO];
-	percent = [sender intValue];
- NSRect  iRect = [[[appDelegate analysisWindowController] myCurrentView] bounds];
- //    NSRect irect = [[[[appDelegate analysisWindowController] myCurrentView] gRect];
-	ProxOffset =  ((iRect.size.height / 2) / 100) * percent + iRect.size.height / 2;
-	[self setProxOffset:ProxOffset];
-	[[[appDelegate analysisWindowController] myCurrentView] setNeedsDisplay:YES];
-	
- }*/
-
-
-/*- (void) importAudioFromFile:(id)sender
- {
-	_doInitAndScale = YES;
-	_drawSpikes = YES;
-	_drawClusteredSpikes = NO;
-	_drawNoiseLevel = NO;
-	_drawCluster = NO;
- }*/
-
-/*   These are the sampling properties for the Oscilloscope and Chart displays
- long   samplingOffset;     //Sweep offset from origin in samples
- long   samplingTerminus;   //Sweep Terminus from origin in samples
- long   samplingMaximum;    //Duration of file in samples
- double samplingDuration;   //Duration of Sweep in samples
- 
- double samplingRate;       //SamplingRate in Hz
- long   numColumns;          //Number of columns in the display
- double sampsPerCol;        //Samples per Pixel
- 
- double sweepOffset;        //Sweep offset from origin in Sec
- double sweepTerminus;      //Terminus of Sweep in Sec
- double sweepDuration;      //Duration of Sweep in Sec
- double sweepMaximum;       //Duration of file in Sec
- */
-
-/*
- - (void)initScopeSweep{                                         //Initialize [self with the current file data
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
- // [[appDelegate traceWaveforms] sendToBuffer:cellDepressorL2 :100];
-	if (!self.assetInited)
- //		[self loadDSPSourceFromAsset:appDelegate.movieController.videoPlaybackController.asset];
-	//    NSRect iRect = [[[appDelegate analysisWindowController] oscilloscopeView] bounds];
- //    [[self setNumColumns:        iRect.size.width];              //This is the width of the graphics window
- [self setNumColumns: 754];              //This is the width of the oscilloscopeView
- //  [self setSamplingMaximum:1000]; //added this too
-	[self setSampsPerCol:(      _samplingMaximum/_numColumns)];          //This is the gain of the timebase in samples/col
-	[self setSamplingOffset:    0];                             //This is the pointer for the  offset of the data sample
- [self setSamplingTerminus:  _samplingMaximum];                      //This is the pointer for the terminus of the data sample
- [self setSweepOffset:       0.0];                           //This is the sweep onset in sec
- [self setSweepTerminus:     _samplingMaximum/_samplingRate];         //This is the sweep terminus in sec.
- [self setSamplingDuration:  _samplingMaximum];
- NSLog(@"\nFollowing initScopeSweep\n samplingMaximum: %ld \n samplingDuration: %ld \n numColumns: %ld \n samplingOffset: %ld \n samplingTerminus: %ld \n samplingRate: %8.1f \n sampsPerCol: %8.1f \n sweepOffset: %8.3f \n sweepTerminus: %8.3f \n sweepDuration: %8.3f \n sweepMaximum: %8.3f ",
- [self samplingMaximum],
- [self samplingDuration],
- [self numColumns],
- [self samplingOffset],
- [self samplingTerminus],
- [self samplingRate],
- [self sampsPerCol],
- [self sweepOffset],
- [self sweepTerminus],
- [self sweepDuration],
- [self sweepMaximum]
- );
- [[appDelegate analysisWindowController] setScopeInited:YES];
- }*/
-/*
- - (void)logScopeSweep{   //Log Contents of self with the current file data
- //    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
- NSLog(@"\nScope Sweep Parameters\n samplingMaximum: %ld \n samplingDuration: %ld \n numColumns: %ld \n samplingOffset: %ld \n samplingTerminus: %ld \n samplingRate: %8.1f \n sampsPerCol: %8.1f \n sweepOffset: %8.3f \n sweepTerminus: %8.3f \n sweepDuration: %8.3f \n sweepMaximum: %8.3f ",
- [self samplingMaximum],
- [self samplingDuration],
- [self numColumns],
- [self samplingOffset],
- [self samplingTerminus],
- [self samplingRate],
- [self sampsPerCol],
- [self sweepOffset],
- [self sweepTerminus],
- [self sweepDuration],
- [self sweepMaximum]
- );
- }*/
-/*
- - (void)scaleScopeSweep{
-	int samp;
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
- 
-	_maxIp = [[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:0] floatValue];
-	_minIp = [[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:0] floatValue];
-	
-	for (samp = 0; samp < [[[appDelegate traceWaveforms] ipbuf] count]; samp++) {
- 
- 
- if ([[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:samp] floatValue] >= _maxIp) {
- _maxIp = [[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:samp] floatValue];
- NSLog(@" max = %f", _maxIp);
- }
- 
- if ([[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:samp] floatValue] <= _minIp)
- {
- _minIp = [[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:samp] floatValue];
- NSLog(@" min = %f", _minIp);
- }
- }
- 
-	
- NSRect iRect = [[[appDelegate analysisWindowController] oscilloscopeView] bounds];
- 
-	if (_maxIp > _minIp * -1) {
- _proxGain = iRect.size.height / (_maxIp * 3);
- } else
- _proxGain = iRect.size.height / (_minIp * -3);
-	proxGainMax = _proxGain;
- NSLog(@"In ScaleSweep: proxGain is %f ", _proxGain);
- 
- }
- */
-
-/*
- - (void)setDoInitAndScale:(BOOL)flag{
-	_doInitAndScale = flag;
- }*/
-
-#pragma mark --IBAction for Oscilloscope Drawer--
-//Timebase Variables
-
-/*   These are the sampling properties for the Oscilloscope and Chart displays
- long   samplingOffset;     //Sweep offset from origin in samples
- long   samplingTerminus;   //Sweep Terminus from origin in samples
- long   samplingMaximum;    //Duration of file in samples
- double samplingDuration;   //Duration of Sweep in samples
- double samplingRate;       //SamplingRate in Hz
- long   numColumns;         //Number of columns in the display
- double sampsPerCol;        //Samples per Pixel
- 
- double sweepOffset;        //Sweep offset from origin in Sec
- double sweepTerminus;      //Terminus of Sweep in Sec
- double sweepDuration;      //Duration of Sweep in Sec
- double sweepMaximum;       //Duration of file in Sec
- */
-
-#pragma mark --Display controls for timebase and waveform--
-
-/*
- - (IBAction) resetSweepOffset: (id) sender{
- 
- AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
- NSRect iRect = [[[appDelegate analysisWindowController] oscilloscopeView] bounds];
- [self setNumColumns:        iRect.size.width];              //This is the width of the graphics window
-	[self setDoInitAndScale:    NO];
- [self setSweepOffset:       [sender doubleValue]];          //Read the slider value here
- [self setSamplingOffset:    [self sweepOffset]*[self samplingRate]];
- NSLog(@"resetSweepOffset returns %8.3f",[sender doubleValue]);
- 
- //First Compute parameters in Seconds
- long sweepMaxDur = [self sweepMaximum] - [self sweepOffset];
- if([self sweepDuration] > sweepMaxDur)
- [self setSweepDuration:sweepMaxDur];
- [self setSweepTerminus:[self sweepOffset]+[self sweepDuration]];
- 
- [self setSamplingOffset:    [self sweepOffset]*[self samplingRate]];   //  <====The slider returns the offset
- [self setSamplingTerminus: [self sweepTerminus]*[self samplingRate]];
- [self setSamplingDuration:  [self samplingTerminus] - [self samplingOffset]];
-	[self setSampsPerCol:(      [self samplingDuration] / [self numColumns])]; //This is the gain of the timebase in samples/col
- [self scaleScopeSweep];
- 
- NSLog(@"\nFollowing resetSweepOffset\n samplingMaximum: %ld \n numColumns: %ld \n samplingOffset: %ld \n samplingTerminus: %ld \n samplingDuration: %ld \n samplingRate: %8.1f \n sampsPerCol: %8.1f \n sweepOffset: %8.3f \n sweepTerminus: %8.3f \n sweepDuration: %8.3f \n sweepMaximum: %8.3f ",
- [self samplingMaximum],
- [self numColumns],
- [self samplingOffset],
- [self samplingTerminus],
- [self samplingDuration],
- [self samplingRate],
- [self sampsPerCol],
- [self sweepOffset],
- [self sweepTerminus],
- [self sweepDuration],
- [self sweepMaximum]
- );
-	[[[appDelegate analysisWindowController] myCurrentView] setNeedsDisplay:YES];
- //[[self self] drawScopeSweep ];//]:rect];
-	
- }*/

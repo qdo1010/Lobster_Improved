@@ -59,11 +59,6 @@
                name:NSApplicationDidFinishLaunchingNotification
              object:nil];
     
- //   AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
-  //  [self setAnalysisWindowController:newAnalysisWindowController];
- //   [appDelegate showAnalysisWindow:self];
-    // [[appDelegate analysisWindowController]  viewScope:self];
-
     traceSelector = [[TraceSelector alloc] init];
     [self setTraceSelector:traceSelector];
     [appDelegate showTraceSelectorWindow:self];
@@ -83,19 +78,15 @@
     int IterNum = 100000;
     indicateNumberOfIteration(IterNum);
     traceWaveforms = [[Waveforms alloc] init];
-    //durationArray = [[NSMutableArray alloc] init];
     sweepDuration = 5000;
     sweepOffset = 0;
-    //offsetArray = [[NSMutableArray alloc] init];
     traceGainArray = [[NSMutableArray alloc] init];
     traceOffsetArray = [[NSMutableArray alloc] init];
     invertSign = 0;
     switchColor = 1;
     
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
-  //  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.5                                                  target: self
-    //                                            selector:@selector(sendWaveform)
-      //                                          userInfo: nil repeats:YES];
+  
 }
 
 
@@ -192,25 +183,6 @@
 } // showAnalysisWindow
 
 
-/*- (void)setupPlottingArrays: (id) sender
-{
-    int i;
-    plottingArray = [[NSMutableArray alloc] init];
-    for ( i = 1; i <= 8; i++)
-    {
-        ipbuf = [[NSMutableArray alloc] init];
-        [plottingArray addObject:ipbuf];
-        //         [ipbuf release];
-    }
-}*/
-
-//- (IBAction)saveAction:(id)sender {
-    
-//}
-
-//- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
-//    return NSTerminateNow;
-//}
 #pragma mark --- Getters and Setters ---
 
 
@@ -231,11 +203,7 @@
     [self setCommandController:newCommandWindow];
     
     [appDelegate showCommandWindow:self];
- //   [[appDelegate analysisWindowController]  viewScope:self];
- //   [appDelegate setDrawChart: NO];
-  //  AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
- //   [self setAnalysisWindowController:newAnalysisWindowController];
-    
+
 }
 
 
@@ -251,31 +219,8 @@
      [[appDelegate analysisWindowController]  viewScope:self];
      [appDelegate setDrawChart: NO];
     
-    //    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-
-        //   AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
-        //   [self setAnalysisWindowController:newAnalysisWindowController];
-        //    [appDelegate showAnalysisWindow:self];
-    
-  //  if ([appDelegate analysisWindowController] == nil){
-  //      [appDelegate setAnalysisWindowController:[[AnalysisWindowController alloc]init]];
-  //      [appDelegate showAnalysisWindow:self];
-    //}
-   // [appDelegate setDrawChart: NO];
-    //[[appDelegate analysisWindowController]  viewScope:self];
 }
 
-/*- (IBAction) drawChart:(id) sender //This is a virtual chart recorder
-{
-    //AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    //if ([appDelegate analysisWindowController] == nil){
-     //   [appDelegate setAnalysisWindowController:[[AnalysisWindowController alloc]init]];
-     //   [appDelegate showAnalysisWindow:self];}
-    
-  //  [appDelegate setDrawChart: YES];
-   // [[appDelegate analysisWindowController]  viewScope:self];
-}
-*/
 
 
 #pragma mark - Core Data stack
