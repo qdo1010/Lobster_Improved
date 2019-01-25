@@ -10,6 +10,7 @@
 #import "Waveforms.h"
 #import "traceSelector.h"
 #import "CommandStateViewController.h"
+
 @class OscilloscopeController;
 @class AnalysisWindowController;
 @class GraphViewController;

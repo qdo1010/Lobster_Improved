@@ -5,43 +5,33 @@
 //  Created by Brian King on 4/5/13.
 //  Copyright (c) 2013 Northeastern Univeristy. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 #import <Cocoa/Cocoa.h>
-//#import "MovieControllerAnalysis.h"
-//#import "Table.h"
-//#import "sprites.h"
-#import "OscilloscopeController.h"
-@protocol CommandStateViewControllerDelegate;
-//@class AppDelegate;
+@class CommandStateViewController;
+
+//THIS IS WHERE I DECLARE THE PROTOCOL
+@protocol CommandStateViewControllerDelegate<NSObject>
+- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters;
+@end
 
 @interface CommandStateViewController :NSWindowController
 
+//- (id) delegate;
 @property (nonatomic, assign) id<CommandStateViewControllerDelegate> delegate;
 
 //@property (nonatomic, strong) Table *currentTable;
 @property (nonatomic, strong) NSMutableDictionary *currentParameters;
 
-//@property (nonatomic, strong) IBOutlet SpriteView *spriteView;
+//@property (nonatomic, strong) IBOutlet NSTextField *spdBox;
 
-@property (nonatomic, strong) IBOutlet NSTextField *pitchBox;
-@property (nonatomic, strong) IBOutlet NSTextField *rollBox;
-@property (nonatomic, strong) IBOutlet NSTextField *abdBox;
-@property (nonatomic, strong) IBOutlet NSTextField *htBox;
-@property (nonatomic, strong) IBOutlet NSTextField *ltAntYBox;
-@property (nonatomic, strong) IBOutlet NSTextField *spdBox;
-@property (nonatomic, strong) IBOutlet NSTextField *yawBox;
-@property (nonatomic, strong) IBOutlet NSTextField *chPBox;
-@property (nonatomic, strong) IBOutlet NSTextField *uroBox;
+@property (strong) IBOutlet NSPopUpButton *SpeedTag;
+
+- (IBAction)chooseSpeed:(id)sender;
 
 
-- (IBAction)setAbPitch:(id)sender;
-- (IBAction)setChPitch:(id)sender;
-- (IBAction)setHeight:(id)sender;
-- (IBAction)setRoll:(id)sender;
-- (IBAction)setSpeed:(id)sender;
-- (IBAction)setUropods:(id)sender;
-- (IBAction)setPitch:(id)sender;
-- (IBAction)setYaw:(id)sender;
+//- (IBAction)setSpeed:(id)sender;
+
 - (IBAction)setlFor:(id)sender;
 - (IBAction)setrFor:(id)sender;
 - (IBAction)setlBack:(id)sender;
@@ -63,11 +53,9 @@
 
 @end
 
-@protocol CommandStateViewControllerDelegate <NSObject>
 
-- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters;
 
-@end
+
 
 /*Roll*/
 #define ltUp            1

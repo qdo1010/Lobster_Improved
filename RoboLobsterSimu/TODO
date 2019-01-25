@@ -1,3 +1,33 @@
+1) ISSUE with Crashing:
+CommandStateVC
+delegate and protocol
+
+What I want:
+I am doing a recall
+everytime the Command Panel Change, I want to be notified
+
+Problem I see:
+Right now, everytime I change the Command panel, speed boxes specifically,the panel crashes
+
+Why:
+I don't know how Delegate and Protocol work in Objective C
+I have a property that belong to class CommandStateController, which I will call class A
+I want to see whether that property has updated in class Oscilloscope Controller, which I will call class B
+How do I do so?
+
+If we figure this out, we should be able to fix the crashing for good!
+
+
+
+
+
+
+
+
+
+
+
+
 NOTE TO SELF:
 Search SEARCH FOR ME to find where u left off
 

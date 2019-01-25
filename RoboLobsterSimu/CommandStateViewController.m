@@ -6,24 +6,27 @@
 //  Copyright (c) 2013 Northeastern Univeristy. All rights reserved.
 //
 
+//TODO : MAKE SURE EVERYTHING WORKS AS INTENDED
+//ADD STOP to speed
+
 #import "CommandStateViewController.h"
 //#import "TableDefinition.h"
 #import "AppDelegate.h"
 #import "analysisWindowController.h"
 
 @implementation CommandStateViewController
-@synthesize pitchBox;
-@synthesize rollBox;
-@synthesize abdBox;
-@synthesize htBox;
+//@synthesize pitchBox;
+//@synthesize rollBox;
+//@synthesize abdBox;
+//@synthesize htBox;
 //@synthesize ltChYBox;
 //@synthesize rtChYBox;
 //@synthesize rAntYBox;
-@synthesize ltAntYBox;
-@synthesize spdBox;
-@synthesize yawBox;
-@synthesize chPBox;
-@synthesize uroBox;
+//@synthesize ltAntYBox;
+//@synthesize spdBox;
+//@synthesize yawBox;
+//@synthesize chPBox;
+//@synthesize uroBox;
 
 /*- (BOOL)canEditTableType:(enum TableType)tableType
 {
@@ -41,28 +44,12 @@
 }
 - (id)init
 {
-    //    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
-    
-//  TraceSelector *ts;
+ 
     NSLog(@"hi");
-//    CommandStateViewController* ct;
     self = [super initWithWindowNibName:@"Window"];
-   // self  = [super init];
-   // self =  [super initWithNibName:@"CommandStateViewConotroller" bundle:nil];
-
 
     NSLog(@"Hello command selector");
     self.currentParameters = [[NSMutableDictionary alloc] init];
-
-    //if (!ct)
-   // {
-   //     NSLog(@"Warning! Could not load command Selector file.\n");
-   // }
-   // else
-   // {
-        //[cellSelector removeAllItems];
-   //     NSLog(@"Command Selector Nib Loaded");
-   // }
     return self;
 }
 
@@ -71,10 +58,10 @@
 - (void) awakeFromNib
 {
     [super awakeFromNib];
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Awake");
+    [_SpeedTag addItemWithTitle:@"Stop"];
+    [_SpeedTag selectItemWithTitle:@"Stop"];
 
-    
   //    [self setItemsEnabled:YES];
 }
 
@@ -90,74 +77,144 @@
    // [self.spriteView setNeedsDisplay:YES];
 }
 
-/*- (void)setCurrentTable:(Table *)currentTable
-{
-    [self willChangeValueForKey:@"currentTable"];
-    _currentTable = currentTable;
-    [self didChangeValueForKey:@"currentTable"];
-    
-    if ([self.currentTable.items count] > 0)
-        self.currentParameters = [self.currentTable.items objectAtIndex:0];
-    else
-        self.currentParameters = [self defaultValues];
-}
-
-- (NSMutableDictionary *)defaultValues
-{
-    return [[TableDefinition definitionForType:TableTypeCommandState].defaultValues mutableCopy];
-}
-
-- (void)timeDidChangeToTimeKey:(NSString *)timeKey
-{
-    NSUInteger tableIndex = [self.currentTable indexOfTimeKey:timeKey];
-    if (tableIndex != NSNotFound)
-        self.currentParameters = [self.currentTable.items objectAtIndex:tableIndex];
-    else
-        self.currentParameters = [self defaultValues];
-}
-
-- (NSView *)videoOverlayView
-{
-    return nil;
-}
-
-*/
 
 - (void)updateTable
 {
     
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-   // [[appDelegate oscilloscopeController] checkCommandControl];
+    //AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Update");
-   // OscilloscopeController* oc =  [[appDelegate analysisWindowController] oscilloscopeController];
-  //  OscilloscopeController* oc = [[OscilloscopeController alloc] init];
-   // [oc checkControlCommand:self.currentParameters];
- //   [[[appDelegate analysisWindowController] oscilloscopeController] setDoInitAndScale:YES];
-  //  [[[appDelegate analysisWindowController] oscilloscopeController] checkControlCommand:self.currentParameters];
-    NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
-    [self setDelegate:[[appDelegate analysisWindowController] oscilloscopeController]];
-    [self.delegate commandStateVC:self didUpdateParameters:self.currentParameters];
+
+    
+    //set Delegate
+    //usually done in App delegate, but we will do it here for now
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+   self.delegate = [[appDelegate analysisWindowController] oscilloscopeController];
+    [_delegate commandStateVC:self didUpdateParameters:self.currentParameters];
+    
+    
+    
+    
+    // [[appDelegate oscilloscopeController] checkCommandControl];
+    // OscilloscopeController* oc =  [[appDelegate analysisWindowController] oscilloscopeController];
+    //  OscilloscopeController* oc = [[OscilloscopeController alloc] init];
+    // [oc checkControlCommand:self.currentParameters];
+    //   [[[appDelegate analysisWindowController] oscilloscopeController] setDoInitAndScale:YES];
+    //  [[[appDelegate analysisWindowController] oscilloscopeController] checkControlCommand:self.currentParameters];
+    //   NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
 }
 
 
 - (IBAction) updateBoxes: (id)sender{
-    
-	[abdBox setIntValue:  [[self.currentParameters valueForKey:@"Abd"]  intValue]];
-	[yawBox setIntValue:  [[self.currentParameters valueForKey:@"yaw"]  intValue]];
-	[chPBox setIntValue:  [[self.currentParameters valueForKey:@"chP"]  intValue]];
-	[htBox setIntValue:  [[self.currentParameters valueForKey:@"ht"]  intValue]];
-	[ltAntYBox setIntValue:  [[self.currentParameters valueForKey:@"lAntYaw"]  intValue]];
-	[pitchBox setIntValue:  [[self.currentParameters valueForKey:@"ptch"]  intValue]];
+    //[spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
+//	[abdBox setIntValue:  [[self.currentParameters valueForKey:@"Abd"]  intValue]];
+//	[yawBox setIntValue:  [[self.currentParameters valueForKey:@"yaw"]  intValue]];
+//	[chPBox setIntValue:  [[self.currentParameters valueForKey:@"chP"]  intValue]];
+//	[htBox setIntValue:  [[self.currentParameters valueForKey:@"ht"]  intValue]];
+//	[ltAntYBox setIntValue:  [[self.currentParameters valueForKey:@"lAntYaw"]  intValue]];
+//	[pitchBox setIntValue:  [[self.currentParameters valueForKey:@"ptch"]  intValue]];
 //	[ltChYBox setIntValue:  [[self.currentParameters valueForKey:@"lChY"]  intValue]];
 //	[rAntYBox setIntValue:  [[self.currentParameters valueForKey:@"rAntYaw"]  intValue]];
 //	[rtChYBox setIntValue:  [[self.currentParameters valueForKey:@"rChY"]  intValue]];
-	[rollBox setIntValue:  [[self.currentParameters valueForKey:@"roll"]  intValue]];
-	[spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
-	[uroBox setIntValue:  [[self.currentParameters valueForKey:@"uro"]  intValue]];
+//	[rollBox setIntValue:  [[self.currentParameters valueForKey:@"roll"]  intValue]];
+//	[uroBox setIntValue:  [[self.currentParameters valueForKey:@"uro"]  intValue]];
+}
+
+typedef enum : NSUInteger
+{
+    High = 1, Medium, Slow, Stop
+} speedValue;
+
+
+- (IBAction)chooseSpeed:(id)sender {
+    NSInteger selector = [sender indexOfSelectedItem];
+    NSLog(@"%ld",(long)selector);
+    switch (selector){
+        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: high] forKey:@"spd"];}break;
+        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:medium]  forKey:@"spd"];}break;
+        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:slow]  forKey:@"spd"];}break;
+        case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:mystop]  forKey:@"spd"];}break;
+        default:break;
+    }
+  //  [spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
+    [self updateTable];
+
+}
+
+/*- (IBAction)setSpeed:(id)sender
+{
+    NSInteger selector = [sender selectedRow];
+    switch (selector){
+        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: high] forKey:@"spd"];}break;
+        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:medium]  forKey:@"spd"];}break;
+        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:slow]  forKey:@"spd"];}break;
+        case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:mystop]  forKey:@"spd"];}break;
+        default:break;
+    }
+    [spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
+    [self updateTable];
+}*/
+
+- (IBAction)setlFor:(id)sender{
+    bool sta = [sender state];
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:sta];
+    NSLog(@"this is %@", onOrOff);
+    [self.currentParameters setValue: onOrOff forKey:@"lFor"];
+    //NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
+    // NSLog(@"but is it %@", [self.currentParameters objectForKey:@"lFor"]);
+    [self updateTable];
+}
+
+- (IBAction)setrFor:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rFor"];
+    [self updateTable];
+}
+
+- (IBAction)setlBack:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lBak"];
+    [self updateTable];
+}
+- (IBAction)setrBack:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rBak"];
+    [self updateTable];
+}
+- (IBAction)setlLead:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lLed"];
+    [self updateTable];
+}
+
+- (IBAction)setrLead:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rLed"];
+    [self updateTable];
+}
+
+- (IBAction)setlTrail:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lTra"];
+    [self updateTable];
+}
+- (IBAction)setrTrail:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rTra"];
+    [self updateTable];
 }
 
 
 
+
+/*
 - (IBAction)setAbPitch:(id)sender
 {
     
@@ -228,19 +285,6 @@
 	[self updateTable];
 }
 
-//- (IBAction)setLClawYaw:(id)sender
-//{
-//    
-//	NSInteger selector = [sender selectedRow];
-//	switch (selector){
-//		case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: rosUp] forKey:@"lChY"];}break;
-//		case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:pLevel]  forKey:@"lChY"];}break;
-//		case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:rosDn]  forKey:@"lChY"];}break;
-//	}
-//	[ltChYBox setIntValue:  [[self.currentParameters valueForKey:@"lChY"]  intValue]];
-//	[self updateTable];
-//	
-//}
 
 - (IBAction)setPitch:(id)sender
 {
@@ -255,33 +299,7 @@
 	[self updateTable];
 }
 
-//- (IBAction)setRAntYaw:(id)sender
-//{
-//    
-//	NSInteger selector = [sender selectedRow];
-//	switch (selector){
-//		case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: ltAtPro] forKey:@"rAntYaw"];}break;
-//		case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtNor]  forKey:@"rAntYaw"];}break;
-//		case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtLat]  forKey:@"rAntYaw"];}break;
-//		case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtRet]  forKey:@"rAntYaw"];}break;
-//	}
-//	[rAntYBox setIntValue:  [[self.currentParameters valueForKey:@"rAntYaw"]  intValue]];
-//	[self updateTable];
-//}
-//
-//- (IBAction)setRClawYaw:(id)sender
-//{
-//    
-//	NSInteger selector = [sender selectedRow];
-//	switch (selector){
-//		case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: rosUp] forKey:@"rChY"];}break;
-//		case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:pLevel]  forKey:@"rChY"];}break;
-//		case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:rosDn]  forKey:@"rChY"];}break;
-//	}
-//	[rtChYBox setIntValue:  [[self.currentParameters valueForKey:@"rChY"]  intValue]];
-//	[self updateTable];
-//	
-//}
+
 
 - (IBAction)setRoll:(id)sender
 {
@@ -295,21 +313,9 @@
 	[rollBox setIntValue:  [[self.currentParameters valueForKey:@"roll"]  intValue]];
 	[self updateTable];
 }
+*/
 
-- (IBAction)setSpeed:(id)sender
-{
-    
-	NSInteger selector = [sender selectedRow];
-	switch (selector){
-		case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: high] forKey:@"spd"];}break;
-		case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:medium]  forKey:@"spd"];}break;
-		case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:slow]  forKey:@"spd"];}break;
-		case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:mystop]  forKey:@"spd"];}break;
-	}
-	[spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
-	[self updateTable];
-}
-
+/*
 - (IBAction)setUropods:(id)sender
 {
     
@@ -323,64 +329,87 @@
     [self updateTable];
 }
 
-
-- (IBAction)setlFor:(id)sender{
-    bool sta = [sender state];
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:sta];
-    NSLog(@"this is %@", onOrOff);
-	[self.currentParameters setValue: onOrOff forKey:@"lFor"];
-    //NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
-   // NSLog(@"but is it %@", [self.currentParameters objectForKey:@"lFor"]);
-    [self updateTable];
-}
-
-- (IBAction)setrFor:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"rFor"];
-	[self updateTable];
-}
-
-- (IBAction)setlBack:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"lBak"];
-	[self updateTable];
-}
-- (IBAction)setrBack:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"rBak"];
-	[self updateTable];
-}
-- (IBAction)setlLead:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"lLed"];
-	[self updateTable];
-}
-
-- (IBAction)setrLead:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"rLed"];
-	[self updateTable];
-}
-
-- (IBAction)setlTrail:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"lTra"];
-	[self updateTable];
-}
-- (IBAction)setrTrail:(id)sender{
-    
-	NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
-	[self.currentParameters setValue: onOrOff forKey:@"rTra"];
-	[self updateTable];
-}
-
+*/
 
 
 @end
+
+
+
+
+/*- (void)setCurrentTable:(Table *)currentTable
+ {
+ [self willChangeValueForKey:@"currentTable"];
+ _currentTable = currentTable;
+ [self didChangeValueForKey:@"currentTable"];
+ 
+ if ([self.currentTable.items count] > 0)
+ self.currentParameters = [self.currentTable.items objectAtIndex:0];
+ else
+ self.currentParameters = [self defaultValues];
+ }
+ 
+ - (NSMutableDictionary *)defaultValues
+ {
+ return [[TableDefinition definitionForType:TableTypeCommandState].defaultValues mutableCopy];
+ }
+ 
+ - (void)timeDidChangeToTimeKey:(NSString *)timeKey
+ {
+ NSUInteger tableIndex = [self.currentTable indexOfTimeKey:timeKey];
+ if (tableIndex != NSNotFound)
+ self.currentParameters = [self.currentTable.items objectAtIndex:tableIndex];
+ else
+ self.currentParameters = [self defaultValues];
+ }
+ 
+ - (NSView *)videoOverlayView
+ {
+ return nil;
+ }
+ 
+ */
+
+//- (IBAction)setLClawYaw:(id)sender
+//{
+//
+//    NSInteger selector = [sender selectedRow];
+//    switch (selector){
+//        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: rosUp] forKey:@"lChY"];}break;
+//        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:pLevel]  forKey:@"lChY"];}break;
+//        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:rosDn]  forKey:@"lChY"];}break;
+//    }
+//    [ltChYBox setIntValue:  [[self.currentParameters valueForKey:@"lChY"]  intValue]];
+//    [self updateTable];
+//
+//}
+
+//- (IBAction)setRAntYaw:(id)sender
+//{
+//
+//    NSInteger selector = [sender selectedRow];
+//    switch (selector){
+//        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: ltAtPro] forKey:@"rAntYaw"];}break;
+//        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtNor]  forKey:@"rAntYaw"];}break;
+//        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtLat]  forKey:@"rAntYaw"];}break;
+//        case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:ltAtRet]  forKey:@"rAntYaw"];}break;
+//    }
+//    [rAntYBox setIntValue:  [[self.currentParameters valueForKey:@"rAntYaw"]  intValue]];
+//    [self updateTable];
+//}
+//
+//- (IBAction)setRClawYaw:(id)sender
+//{
+//
+//    NSInteger selector = [sender selectedRow];
+//    switch (selector){
+//        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: rosUp] forKey:@"rChY"];}break;
+//        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:pLevel]  forKey:@"rChY"];}break;
+//        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:rosDn]  forKey:@"rChY"];}break;
+//    }
+//    [rtChYBox setIntValue:  [[self.currentParameters valueForKey:@"rChY"]  intValue]];
+//    [self updateTable];
+//
+//}
+
+

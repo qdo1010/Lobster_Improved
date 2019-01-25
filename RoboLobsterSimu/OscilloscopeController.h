@@ -1,19 +1,19 @@
 #import <Cocoa/Cocoa.h>
-//#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
-    //#import <QuickTime/QuickTime.h>
-    //#import <QTKit/QTKit.h>
 #import <CoreAudio/CoreAudio.h>
 #import <AudioUnit/AudioUnit.h>
 #import "CommandStateViewController.h"
 @class Waveforms;
 @class OscilloscopeView;
 @class AppDelegate;
-//@class CommandStateViewController;
-@protocol CommandStateViewControllerDelegate;
 
-@interface OscilloscopeController : NSViewController <CommandStateViewControllerDelegate>
+@interface OscilloscopeController: NSViewController <CommandStateViewControllerDelegate>
+//????????????????????????????????/
+
+//implement the method from CommandStateViewController
+- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters;
 
 @property (readwrite) double proxGain;
 @property (readwrite) double proxOffset;

@@ -246,7 +246,7 @@
 
    // else{
         [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[traceIDchosen]]];
-         [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[traceIDchosen]]];
+        [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[traceIDchosen]]];
         [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[traceIDchosen]]];
         [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[traceIDchosen]]];
         [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[traceIDchosen]]];
@@ -292,7 +292,7 @@
         }
         else if ([[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:i] floatValue] > 0) {
             [[[appDelegate traceWaveforms] ipbuf] replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:-([[[[appDelegate traceWaveforms] ipbuf] objectAtIndex:i] floatValue])]];
-            
+     
         }
 	}*/
 	//[[[appDelegate analysisWindowController] myCurrentView] setNeedsDisplay:YES];
@@ -437,23 +437,24 @@
     [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
 }
 
+
+
+//This function will check for the Parameters being chosen, and tell the software what txt file to pick, to load in the necessary params
+//It's not working
 - (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
     NSLog(@"%@", [parameters valueForKey:@"lFor"]);
     int speed = -1;
     if ([[parameters valueForKey:@"spd"] intValue] == 1){
         NSLog(@"high");
         speed = 1;
-
     }
     else if([[parameters valueForKey:@"spd"] intValue] == 2){
         NSLog(@"medium");
         speed = 2;
-
     }
     else if([[parameters valueForKey:@"spd"] intValue] == 3){
         NSLog(@"slow");
         speed = 3;
-
     }
     else {
         NSLog(@"stop");
@@ -477,7 +478,7 @@
         NSLog(@"walk forward left");
         NSString * filePath = [[NSBundle mainBundle] pathForResource:@"ForwardLeft"
                                                               ofType:@""];
-    
+        //load Params to call Forward left
         [self loadParamsWithName:self : filePath :speed];
     }
     else {
@@ -570,11 +571,11 @@
                                                               ofType:@""];
         [self loadParamsWithName:self : filePath :4];
     }
-    
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    //UNCOMMENT TO RUN
     editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
-    
+
     /*  if (firstTimeChangeParams == 1){
      [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
      [self setFirstTimeChangeParams:0]; //now it's set
@@ -586,15 +587,17 @@
   //      currentIndex = checkMainLoopIndex();
   //  } //xmain should end by now
     //sleep(0.1);
-    
+
     ///Stabilize by making it run on foreground instead of being a background process, so it has to finish
-    
+
    // [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
     //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
     setParamsButton.enabled = true;
-    
+
 }
 
+//this function will call Drawer to draw the trace
+//as well as set up the correct label for the cell being selected
 - (void)beginSendingStuffToBeDrawn {
     
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -650,6 +653,8 @@
   //      [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
   //  }
 }
+
+//This function will switch the color of the viewer
 - (IBAction)changeView:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     if ([appDelegate switchColor] == 0){
@@ -661,7 +666,7 @@
 }
 
 
-
+//This will change the cell name to ID
 - (NSMutableArray*)convertNameToId: (NSString*)name{ //add Left RIGHT TO CPG TOO....
     int  c;
     int side;
@@ -755,7 +760,8 @@
     return chosenCell;
 }
 
-
+//this function control the SetParam button,
+//which will read what params are being chosen, and send the message to C code to edit those params!
 - (IBAction)setParams:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 
@@ -790,6 +796,7 @@
 
     //Now send all the array to edit Param!
     editParam(cellID,side,seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc,[[[appDelegate traceSelector] traceArraytobeSent] count]);
+    
     /*
     if (firstTimeChangeParams == 1){
         [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
@@ -808,10 +815,11 @@
         [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
         //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
         setParamsButton.enabled = true;
-        
     }*/
 }
 
+//this function will load a Parameter file with all the parameters defined.
+//it will also tell the software which line in the parameter file should be used. Each line corresponds to speed (Fast, Slow, Medium, or Stop)
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed {
     /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
      [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
@@ -830,7 +838,7 @@
             NSString *content = [NSString stringWithContentsOfFile:[URL path]
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
-          //  NSLog(@"%@",content);
+            NSLog(@"%@",content);
             NSArray* rows = [content componentsSeparatedByString:@"\n"];
             
             //loop thru all the trace and find them in the text files
