@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482A75402203FAB40073F120 /* SynapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482A753E2203FAB40073F120 /* SynapseController.m */; };
+		482A75412203FAB40073F120 /* SynapseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482A753F2203FAB40073F120 /* SynapseController.xib */; };
 		4831107120AF1DE60095D277 /* TrailingRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831106F20AF1DE50095D277 /* TrailingRight */; };
 		4831107220AF1DE60095D277 /* TrailingLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107020AF1DE50095D277 /* TrailingLeft */; };
 		4831107520AF1DEE0095D277 /* BackwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107320AF1DEE0095D277 /* BackwardLeft */; };
@@ -65,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		482A753D2203FAB40073F120 /* SynapseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynapseController.h; sourceTree = "<group>"; };
+		482A753E2203FAB40073F120 /* SynapseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynapseController.m; sourceTree = "<group>"; };
+		482A753F2203FAB40073F120 /* SynapseController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynapseController.xib; sourceTree = "<group>"; };
 		4831106F20AF1DE50095D277 /* TrailingRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingRight; sourceTree = "<group>"; };
 		4831107020AF1DE50095D277 /* TrailingLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingLeft; sourceTree = "<group>"; };
 		4831107320AF1DEE0095D277 /* BackwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackwardLeft; sourceTree = "<group>"; };
@@ -178,6 +183,9 @@
 				970E76671EF17CED002EE43D /* AppDelegate.h */,
 				970E76681EF17CED002EE43D /* AppDelegate.m */,
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
+				482A753D2203FAB40073F120 /* SynapseController.h */,
+				482A753E2203FAB40073F120 /* SynapseController.m */,
+				482A753F2203FAB40073F120 /* SynapseController.xib */,
 				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
 				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
@@ -354,6 +362,7 @@
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
+				482A75412203FAB40073F120 /* SynapseController.xib in Resources */,
 				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
@@ -399,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */,
+				482A75402203FAB40073F120 /* SynapseController.m in Sources */,
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,

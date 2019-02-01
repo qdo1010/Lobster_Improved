@@ -41,7 +41,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="sCa-yg-4Wb"/>
             </connections>
-            <point key="canvasLocation" x="1310" y="551"/>
+            <point key="canvasLocation" x="1430" y="524"/>
         </window>
         <drawer id="2044" userLabel="scopeDrawer">
             <size key="contentSize" width="195" height="480"/>

@@ -322,6 +322,9 @@ const char * traceLabels[] = {
     }
     [appDelegate openCommandWindow:appDelegate];
      [appDelegate drawOscilloscope:appDelegate];
+    
+   //This is to test if you can open the synapse controller
+    [appDelegate openSynapseControllerWindow:appDelegate];
 
 }
 @end

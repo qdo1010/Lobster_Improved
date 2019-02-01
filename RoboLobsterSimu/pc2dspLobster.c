@@ -725,7 +725,7 @@ void xmain()
     pSlowExc.xRp = 2.2; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 1;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 1;
 //•••••••••••••••••••••
-    
+    //TODO: tune individual synapse!
     for(iSide = 0;iSide < mmSide; ++iSide)  //This loop initializes the parameters for synapses
     {
         // Presynaptic Inhibition from a command to bifunctional interneuron synapse

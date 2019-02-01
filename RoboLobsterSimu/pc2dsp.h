@@ -191,7 +191,6 @@ double** alphaArrayModCom;
 double** alphaArrayH;
 
 
-
 //sigma values
 double** sigmaArrayElev;
 double** sigmaArrayDep;

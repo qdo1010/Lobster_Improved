@@ -9,6 +9,42 @@ Let them see what the options + params are
 And allow user to edit it
 
 
+WHAT WILL IT LOOK LIKE??????
+
+So u need to list all synapse
+
+
+MAKE A SYNAPSE CONTROLLER Class
+
+COPY from TraceSelector
+
+and from OscilloscopeController, where you change Params for alpha, sigma!!!!!
+
+We'll make a window for now
+
+
+How would users know which synapse is present
++ to pick from
+Should we list all of them then..
+
+Need a side and seg option
+
+Cool, we call it in TraceSelector for now just to test
+Will make a button to house it inside the Scope later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2) Resize window?
 How to resize oscilloscope
 

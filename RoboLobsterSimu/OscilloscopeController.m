@@ -848,7 +848,6 @@
                 int tside;
                 int tseg;
                 for (NSString *row in rows){
-                 
                     NSArray* columns = [row componentsSeparatedByString:@","];
                     int col = 0;
                     NSString* spd;

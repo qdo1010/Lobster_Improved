@@ -10,6 +10,7 @@
 #import "Waveforms.h"
 #import "traceSelector.h"
 #import "CommandStateViewController.h"
+#import "SynapseController.h"
 
 @class OscilloscopeController;
 @class AnalysisWindowController;
@@ -36,6 +37,7 @@ extern long elapsed;
 @property (nonatomic, strong) IBOutlet TraceSelector                *traceSelector;
 @property (nonatomic, strong) PreferenceController                  *preferenceController;
 @property (nonatomic, strong) CommandStateViewController                  *commandController;
+@property (nonatomic, strong) SynapseController                  *synapseController; //create an instance of synapse controller here
 
 
 #pragma mark --- Document and associated view stuff
@@ -82,7 +84,11 @@ extern long elapsed;
 #pragma mark --- Show Windows
 - (IBAction) showAnalysisWindow: (id) sender;
 - (IBAction) showCommandWindow: (id) sender;
-- (IBAction) openCommandWindow:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
+- (IBAction) openCommandWindow:         (id) sender; //this is to open the command window
+
+
+- (IBAction) showSynapseControllerWindow: (id) sender;
+- (IBAction) openSynapseControllerWindow:         (id) sender; //this is to open the synapseController window
 
 #pragma mark --- Signal Processing Menu Selections
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms

@@ -10,6 +10,8 @@
 #import "OscilloscopeController.h"
 #import "analysisWindowController.h"
 #import "Waveforms.h"
+
+
 @interface AppDelegate ()
 
 - (IBAction)saveAction:(id)sender;
@@ -48,6 +50,7 @@
 @synthesize IDofCellChosen;
 
 @synthesize commandController;
+@synthesize synapseController;
 #pragma mark - App Lifetime
 
 
@@ -113,9 +116,7 @@
 -(void) sendWaveform{
 //    int size = [SampleSize intValue];
  //   NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
-
     //[traceWaveforms readMultipleArrays:arr :size];
-    
 }
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration{
  //  NSLog(@"sending!!!!!!!!");
@@ -180,8 +181,13 @@
 {
     [[self commandController].window orderFront:self];
     
-} // showAnalysisWindow
+} // showCommandWindow
 
+- (IBAction) showSynapseControllerWindow:(id)sender
+{
+    [[self synapseController].window orderFront:self];
+    
+} // showSynapseWindow
 
 #pragma mark --- Getters and Setters ---
 
@@ -195,7 +201,7 @@
 #pragma mark --- Start Analyses
 
 
-- (IBAction) openCommandWindow:(id) sender //This is a virtual oscilloscope{
+- (IBAction) openCommandWindow:(id) sender //This is to open command controller{
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Executing command Window");
@@ -205,6 +211,16 @@
     [appDelegate showCommandWindow:self];
 
 }
+
+- (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
+{
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Executing synapse controller Window");
+    SynapseController* newSynapseWindow = [[SynapseController alloc] init];
+    [self setSynapseController:newSynapseWindow];
+    [appDelegate showSynapseControllerWindow:self];
+}
+
 
 
 - (IBAction) drawOscilloscope:(id) sender //This is a virtual oscilloscope{
