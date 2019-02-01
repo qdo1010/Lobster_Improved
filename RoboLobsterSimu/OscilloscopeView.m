@@ -204,16 +204,16 @@ int minorLineWidth	 = 1;
     float cWidth = ((float)width)/[(AppDelegate *)[[NSApplication sharedApplication] delegate] sweepDuration];
    // NSLog(@"duration of %d = %f", idy ,[[[(AppDelegate *)[[NSApplication sharedApplication] delegate] durationArray] objectAtIndex:idy] floatValue]);
    // float cWidth = 0.5;
-    float cHeight = height/10;
+    float cHeight = height/4.5;                     //Scale of Trace **************************
     NSBezierPath *sinePath = [NSBezierPath bezierPath];
     float gain = [[[(AppDelegate *)[[NSApplication sharedApplication] delegate] traceGainArray] objectAtIndex:idy] floatValue];
     float offset = [[[(AppDelegate *)[[NSApplication sharedApplication] delegate] traceOffsetArray] objectAtIndex:idy] floatValue];
     
     [sinePath setLineWidth:1.0];
     //        [sinePath setFlatness:3.0];
-    [sinePath moveToPoint:NSMakePoint(0*cWidth,  height/2-[[points objectAtIndex:0] floatValue]*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset)];
+    [sinePath moveToPoint:NSMakePoint(0*cWidth,  height/2-[[points objectAtIndex:0] floatValue]*cHeight*gain + cHeight*([[propertyValue ipbuf] count] - idy -1) + offset)];
     
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:26], NSFontAttributeName,[NSColor blueColor], NSForegroundColorAttributeName, nil];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:16], NSFontAttributeName,[NSColor blueColor], NSForegroundColorAttributeName, nil];
     
     
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
