@@ -1,27 +1,21 @@
 1) Drawer
-
+////////////////////////
 MAKE A SYNAPSE POPUP LIST
-
 Make a box
 Enumerate the 4 synapse types
 Display them to users
 Let them see what the options + params are
 And allow user to edit it
 
-
 WHAT WILL IT LOOK LIKE??????
-
 So u need to list all synapse
-
 
 MAKE A SYNAPSE CONTROLLER Class
 
 COPY from TraceSelector
-
 and from OscilloscopeController, where you change Params for alpha, sigma!!!!!
 
 We'll make a window for now
-
 
 How would users know which synapse is present
 + to pick from
@@ -30,10 +24,31 @@ Should we list all of them then..
 Need a side and seg option
 
 Cool, we call it in TraceSelector for now just to test
+///////////////////////
+DONE
+
+Next step/TODO:
+///////
 Will make a button to house it inside the Scope later
 
+What will the function be?
+What's the behavior
+
+Make a function inside the pc2Lobster.c
+
+This will allow us to edit the values of those synapse on the fly
+
+But how?????????
+Should be similar to how you edit alpha and sigma of different neurons really
+
+hmm, how does that work
+
+There seem to be an ID that you choose for each cell...
 
 
+We should do the same for Synapse?
+
+But there are wayy more synapses than cells....
 
 
 

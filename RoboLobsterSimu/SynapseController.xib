@@ -195,6 +195,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="setDefaultSynapseParams:" target="-2" id="TA8-Df-azJ"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-gR-hDh">
                         <rect key="frame" x="306" y="68" width="140" height="32"/>
