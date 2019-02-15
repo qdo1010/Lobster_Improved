@@ -153,10 +153,15 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseTypeSelector addItemWithTitle:@"pSlowInh"];
 
 
-
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (IBAction)setSynapseParams:(id)sender {
+    
+    
+    
+}
+
+- (IBAction)setDefaultSynapseParams:(id)sender {
 }
 @end

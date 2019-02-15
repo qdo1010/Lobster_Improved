@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //action to set param of synapses
 - (IBAction)setSynapseParams:(id)sender;
+- (IBAction)setDefaultSynapseParams:(id)sender;
 
 @end
 

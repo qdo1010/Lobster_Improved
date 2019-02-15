@@ -151,15 +151,13 @@ const char * traceLabels[] = {
     return ts;
 }
 
-
 - (IBAction)chooseTraceNums:(id)sender
 {
-//    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
+//    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSString *title;
     title = [numberOfTracesSelector titleOfSelectedItem];
        NSLog(@"Number of Traces changed to %@", title);
   //  [appDelegate setNumTraces:[title integerValue]];
-    
 
 }
 
