@@ -631,6 +631,12 @@ void xmain()
         globalCellName = malloc(sizeof(int));
         globalSide = malloc(sizeof(int));
         globalSeg = malloc(sizeof(int));
+    
+        //alloc memory for synapse params
+        globalSynapseName = malloc(sizeof(int));
+        globalgStrength = malloc(sizeof(double));
+        globalGamma = malloc(sizeof(double));
+        globalXrp = malloc(sizeof(double));
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -849,6 +855,8 @@ void xmain()
             }
         }
     }
+    
+    
     //----- Set synaptic currents to ZERO (initialization) -------
     /*
      inhF = 0;       excC = 0;           Bump = 0;
@@ -917,6 +925,10 @@ void xmain()
             
             //set multiple neuron here!
             setMultipleNeuronParams(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+        }
+        
+        if (beginEditingSynapse == 1){
+            setMultipleSynapseParams(globalSynapseName, globalSide, globalSeg, globalXrp, globalGamma, globalgStrength, globalSize);
         }
         
         globalLoopIndex = (int)mainLoopIndex; //this is to return for Obj C to see
@@ -1097,7 +1109,6 @@ void xmain()
         //   arr[0] = (int *)malloc(sizeof(int) * c * r);
     //  if(mainLoopIndex>10)
     //    {
-            
          //should put this in its own ifdef so as not to confuse w write to file .... will do it soon
          //   xArrayElev = malloc(mmSeg*mmSide*sizeof(double));
          //   xArrayDep = malloc(mmSeg*mmSide*sizeof(double));
@@ -1580,119 +1591,120 @@ void setSynapseParams(int id, int side, int seg, double xrp, double gamma, doubl
         pExcIntRCaudEleCoord[side][seg] = pCustom;
     }
     else if(id == 14){
-    pExcSegEleContraLat[side][seg] = pCustom;
+        pExcSegEleContraLat[side][seg] = pCustom;
     }
     else if(id == 15){
-    pInhSegEleDep[side][seg] = pCustom;
+        pInhSegEleDep[side][seg] = pCustom;
     }
     else if(id == 16){
-    pInhSegEleStance[side][seg] = pCustom;
+        pInhSegEleStance[side][seg] = pCustom;
     }
     else if(id == 17){
-    pInhSegStanceSwing[side][seg] = pCustom;
+        pInhSegStanceSwing[side][seg] = pCustom;
     }
     else if(id == 18){
-    pExcSegStanceProt[side][seg] = pCustom;
+        pExcSegStanceProt[side][seg] = pCustom;
     }
     else if(id == 19){
-    pExcSegStanceRet[side][seg] = pCustom;
+        pExcSegStanceRet[side][seg] = pCustom;
     }
     else if(id == 20){
-    pExcSegStanceExt[side][seg] = pCustom;
+        pExcSegStanceExt[side][seg] = pCustom;
     }
     else if(id == 21){
-    pExcSegStanceFlx[side][seg] = pCustom;
+        pExcSegStanceFlx[side][seg] = pCustom;
     }
     else if(id == 22){
-    pExcSegSwingProt[side][seg] = pCustom;
+        pExcSegSwingProt[side][seg] = pCustom;
     }
     else if(id == 23){
-    pExcSegSwingRet[side][seg] = pCustom;
+        pExcSegSwingRet[side][seg] = pCustom;
     }
     else if(id == 24){
-    pExcSegSwingExt[side][seg] = pCustom;
+        pExcSegSwingExt[side][seg] = pCustom;
     }
     else if(id == 25){
-    pExcSegSwingFlx[side][seg] = pCustom;
+        pExcSegSwingFlx[side][seg] = pCustom;
     }
     else if(id == 26){
-    pExcHLYL[side][seg] = pCustom;
+        pExcHLYL[side][seg] = pCustom;
     }
     else if(id == 27){
-    pExcHLRL[side][seg] = pCustom;
+        pExcHLRL[side][seg] = pCustom;
     }
     else if(id == 28){
-    pExcYLFR[side][seg] = pCustom;
+        pExcYLFR[side][seg] = pCustom;
     }
     else if(id == 29){
-    pExcRLFR[side][seg] = pCustom;
+        pExcRLFR[side][seg] = pCustom;
     }
     else if(id == 30){
-    pExcHRYR[side][seg] = pCustom;
+        pExcHRYR[side][seg] = pCustom;
     }
     else if(id == 31){
-    pExcHRRR[side][seg] = pCustom;
+        pExcHRRR[side][seg] = pCustom;
     }
     else if(id == 32){
-    pExcYRFL[side][seg] = pCustom;
+        pExcYRFL[side][seg] = pCustom;
     }
     else if(id == 33){
-    pExcRRFL[side][seg] = pCustom;
+        pExcRRFL[side][seg] = pCustom;
     }
     else if(id == 34){
-    pExcRSLeft[side][seg] = pCustom;
+        pExcRSLeft[side][seg] = pCustom;
     }
     else if(id == 35){
-    pExcRSRight[side][seg] = pCustom;
+        pExcRSRight[side][seg] = pCustom;
     }
     else if(id == 36){
-    pExcSegPcnDep[side][seg] = pCustom;
+        pExcSegPcnDep[side][seg] = pCustom;
     }
     else if(id == 37){
-    pExcC[side][seg] = pCustom;
+        pExcC[side][seg] = pCustom;
     }
     else if(id == 38){
-    pInhF[side][seg] = pCustom;
+        pInhF[side][seg] = pCustom;
     }
     else if(id == 39){
-    pExcB[side][seg] = pCustom;
+        pExcB[side][seg] = pCustom;
     }
     else if(id == 40){
-    pExcModComEle[side][seg] = pCustom;
+        pExcModComEle[side][seg] = pCustom;
     }
     else if(id == 41){
-    pExcModComDep[side][seg] = pCustom;
+        pExcModComDep[side][seg] = pCustom;
     }
     else if(id == 42){
-    pExcModComSwing[side][seg] = pCustom;
+        pExcModComSwing[side][seg] = pCustom;
     }
     else if(id == 43){
-    pExcModComStance[side][seg] = pCustom;
+        pExcModComStance[side][seg] = pCustom;
     }
     else if(id == 44){
-    pExcForRet[side][seg] = pCustom;
+        pExcForRet[side][seg] = pCustom;
     }
     else if(id == 45){
-    pExcBackProt[side][seg] = pCustom;
+        pExcBackProt[side][seg] = pCustom;
     }
     else if(id == 46){
-    pExcLLFlx[side][seg] = pCustom;
+        pExcLLFlx[side][seg] = pCustom;
     }
     else if(id == 47){
-    pExcLTExt[side][seg] = pCustom;
+        pExcLTExt[side][seg] = pCustom;
     }
     else if(id == 48){
-    pExcForModCom[side] = pCustom;
+        pExcForModCom[side] = pCustom;
     }
     else if(id == 49){
-    pExcBackModCom[side] = pCustom;
+        pExcBackModCom[side] = pCustom;
     }
     else if(id == 50){
-    pExcLLModCom[side] = pCustom;
+        pExcLLModCom[side] = pCustom;
     }
     else if(id == 51){
-    pExcLTModCom[side] = pCustom;
+        pExcLTModCom[side] = pCustom;
     }
+    beginEditingSynapse = 0;
 }
 
 //set multiple synapse
