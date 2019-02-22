@@ -56,15 +56,13 @@
 //---------------Parameters initialization-----------------------------------------------
 //--------- Network Geometry (Three types of cells in each segment) ---------------------
 
-
-
 void spikingNeuronInit(struct structSpiking *ptr) {
     ptr->mu = 0.0005;
     ptr->spike = 0;
     ptr->alpha = 4;
    // ptr->alpha = 4.0;//3.85;     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
     ptr->sigma = 0;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
-//   ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
+   // ptr->sigma = 0.46;      //sets the baseline state of the neuron (quiet or spiking/ bursting)
     
     ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
@@ -100,8 +98,6 @@ void burstingNeuronInit(struct structBursting *ptr) {
     ptr->x = -1 + ptr->sigma;
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
 }  // end of Elevator structure
-
-
 
 void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
@@ -140,7 +136,6 @@ void pacemakerNeuronInit(struct structEndogenousPacemaker *ptr) {
         ptr->x2 = 1-2*ptr->alphaInit;
 }
 
-
 void pacemakerNeuronInit2(struct structEndogenousPacemaker *ptr) {
     ptr->mu = .0001;
     //   ptr->alpha = 4.;
@@ -177,7 +172,6 @@ void pacemakerNeuronInit2(struct structEndogenousPacemaker *ptr) {
     else
         ptr->x2 = 1-2*ptr->alphaInit;
 }
-
 
 void calcSpikingNeuron(struct structSpiking *ptr,double cIe,double cIi) {
     ptr->betaIn = ptr->betaE * cIe + ptr->betaI * cIi + ptr->betaDc * ptr->Idc;
@@ -224,8 +218,6 @@ void calcBurstingNeuron(struct structBursting *ptr,double cIe,double cIi) {
     ptr->xpp = ptr->xp;
     ptr->xp = ptr->x;
 }
-
-
 
 void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double e) {
     //ptr->sigma = 0.17;
@@ -310,6 +302,7 @@ struct structSynapses {
     double gamma;          //Time Constant
     double gStrength;      //Synaptic Strength
 }
+pCustom,  //custom synapse
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
 
 pInhSegCoordEle[mmSide][mmSeg],                                                                      // Segmental Inhibition from an Coordinating Neuron to an Elevator
@@ -399,7 +392,6 @@ void calcSynapticCurrents(double *I,
     
 } // end of the Modulated Synaptic structure
 */
-
 
 void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, modParams is the moduatory neuron synapse
                            struct structSynapses *params,struct structSynapses *modParams,
@@ -617,7 +609,6 @@ void xmain()
     tmax = 100000; // maximum nuber of iteretions to compute
     //    showMap(1);
     //----- Initialize cells --------
-    
 
     //if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
         
@@ -719,7 +710,7 @@ void xmain()
     pSlowExc.xRp = -0.0; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 0.05;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 0.1;*/
     
-    ///you changed it here
+    ///you can change it here
     pFastExc.xRp = -0.0; pFastExc.gamma = 0.9;      pFastExc.gStrength = 0.1;
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 1;
     pSlowExc.xRp = 2.2; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 1;
@@ -915,8 +906,6 @@ void xmain()
     //  int **arr;
     //  int count = 0,i,j;
     
-
-    
     int ind = 0; //index to start loop of array of x
     while(1){ //run forever
     //while((int)mainLoopIndex < (int)tmax) {
@@ -927,9 +916,7 @@ void xmain()
         if (beginEditingParams == 1){ //if a edit flag ever been set to start edit neurons param
             
             //set multiple neuron here!
-            setMultipleNeuronParam(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
-            
-            
+            setMultipleNeuronParams(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
         }
         
         globalLoopIndex = (int)mainLoopIndex; //this is to return for Obj C to see
@@ -1108,7 +1095,7 @@ void xmain()
         
         //   arr  = (int **)malloc(sizeof(int *) * r);
         //   arr[0] = (int *)malloc(sizeof(int) * c * r);
-//        if(mainLoopIndex>10)
+    //  if(mainLoopIndex>10)
     //    {
             
          //should put this in its own ifdef so as not to confuse w write to file .... will do it soon
@@ -1414,9 +1401,6 @@ void xmain()
                 }
             
             }
-            
-            
-            
         
             ind++;
             if (ind == IterNumChosen-1){
@@ -1532,65 +1516,14 @@ void xmain()
     //return 0;
 }
 
-
-
-
 void indicateSampleSize(int s){
     samplesizechosen = s;//get the sample size values chosen by Waveforms.m and put it in the global var, so C code knows how long to wait;
     printf("sample size = %d\n", samplesizechosen);
 };
 
-
 void indicateNumberOfIteration(int i){
     IterNumChosen = i;
     printf("iteration = %d\n", IterNumChosen);
-}
-
-void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
-    //printf("%s\n",neuronName);
-    printf("begin editing\n");
-    int i;
-    //free first
-    free(globalAlpha);
-    free(globalSigma);
-    free(globalSigmaE);
-    free(globalSigmaI);
-    free(globalBetaE);
-    free(globalBetaI);
-    free(globalIdc);
-    free(globalCellName);
-    free(globalSeg);
-    free(globalSide);
-    //then alloc mem
-    globalAlpha = malloc(size*sizeof(double));
-    globalSigma = malloc(size*sizeof(double));
-    globalSigmaE = malloc(size*sizeof(double));
-    globalSigmaI = malloc(size*sizeof(double));
-    globalBetaE = malloc(size*sizeof(double));
-    globalBetaI = malloc(size*sizeof(double));
-    globalIdc= malloc(size*sizeof(double));
-    globalCellName = malloc(size*sizeof(int));
-    globalSide = malloc(size*sizeof(int));
-    globalSeg = malloc(size*sizeof(int));
-    beginEditingParams = 1; //set flag for begin editing
-    globalSize = size;
-    
-    for (i=0; i< size; i++){
-    //printf("size = %d",size);
-        //printf("fkkk");
-  //  printf("%f",a[i]);
-    globalAlpha[i] = a[i];
-    globalSigma[i] = s[i];
-    globalSigmaE[i] = sE[i];
-    globalSigmaI[i] = sI[i];
-    globalBetaE[i] = bE[i];
-    globalBetaI[i] = bI[i];
-    globalIdc[i] = Idc[i];
-    globalCellName[i] = neuronName[i];
-    globalSide[i] = side[i];
-    globalSeg[i] = seg[i];
-    }
-   // setNeuronParams(neuronName, s, a);
 }
 
 int checkMainLoopIndex(){
@@ -1598,38 +1531,237 @@ int checkMainLoopIndex(){
     return i;
 }
 
-//this will determine what cell are chosen
-/*int whatTypeofCell(char* neuronName){
-    return 0; //let's assume always Spiking for now
-    ///PLZZ EDIT, or whatever, prolly not gonna used
-}*/
+//set Synapse Params
+void setSynapseParams(int id, int side, int seg, double xrp, double gamma, double gStrength){
+    //this will set the single synapse
+    pCustom.gamma = gamma;
+    pCustom.xRp = xrp;
+    pCustom.gStrength = gStrength;
+    if (id == 0){
+        pInhSegCoordEle[side][seg] = pCustom;
+    }
+    else if(id == 1){
+        pExcSegContEleCoord[side][seg] = pCustom;
+    }
+    else if(id == 2){
+        pExcIntRosEleCoord[side][seg] = pCustom;
+    }
+    else if(id == 3){
+        pExcIntCaudEleCoord[side][seg] = pCustom;
+    }
+    else if(id ==4){
+        pInhIntFSwing[side] = pCustom;
+    }
+    else if(id == 5){
+        pInhIntFStance[side] = pCustom;
+    }
+    else if(id == 6){
+        pInhIntBSwing[side] = pCustom;
+    }
+    else if(id == 7){
+        pInhIntBStance[side] = pCustom;
+    }
+    else if(id == 8){
+        pInhIntLLSwing[side] = pCustom;
+    }
+    else if(id == 9){
+        pInhIntLLStance[side] = pCustom;
+    }
+    else if(id == 10){
+        pInhIntLTSwing[side] = pCustom;
+    }
+    else if(id == 11){
+        pInhIntLTStance[side] = pCustom;
+    }
+    else if(id == 12){
+        pExcIntRosEleCoord[side][seg] = pCustom;
+    }
+    else if(id == 13){
+        pExcIntRCaudEleCoord[side][seg] = pCustom;
+    }
+    else if(id == 14){
+    pExcSegEleContraLat[side][seg] = pCustom;
+    }
+    else if(id == 15){
+    pInhSegEleDep[side][seg] = pCustom;
+    }
+    else if(id == 16){
+    pInhSegEleStance[side][seg] = pCustom;
+    }
+    else if(id == 17){
+    pInhSegStanceSwing[side][seg] = pCustom;
+    }
+    else if(id == 18){
+    pExcSegStanceProt[side][seg] = pCustom;
+    }
+    else if(id == 19){
+    pExcSegStanceRet[side][seg] = pCustom;
+    }
+    else if(id == 20){
+    pExcSegStanceExt[side][seg] = pCustom;
+    }
+    else if(id == 21){
+    pExcSegStanceFlx[side][seg] = pCustom;
+    }
+    else if(id == 22){
+    pExcSegSwingProt[side][seg] = pCustom;
+    }
+    else if(id == 23){
+    pExcSegSwingRet[side][seg] = pCustom;
+    }
+    else if(id == 24){
+    pExcSegSwingExt[side][seg] = pCustom;
+    }
+    else if(id == 25){
+    pExcSegSwingFlx[side][seg] = pCustom;
+    }
+    else if(id == 26){
+    pExcHLYL[side][seg] = pCustom;
+    }
+    else if(id == 27){
+    pExcHLRL[side][seg] = pCustom;
+    }
+    else if(id == 28){
+    pExcYLFR[side][seg] = pCustom;
+    }
+    else if(id == 29){
+    pExcRLFR[side][seg] = pCustom;
+    }
+    else if(id == 30){
+    pExcHRYR[side][seg] = pCustom;
+    }
+    else if(id == 31){
+    pExcHRRR[side][seg] = pCustom;
+    }
+    else if(id == 32){
+    pExcYRFL[side][seg] = pCustom;
+    }
+    else if(id == 33){
+    pExcRRFL[side][seg] = pCustom;
+    }
+    else if(id == 34){
+    pExcRSLeft[side][seg] = pCustom;
+    }
+    else if(id == 35){
+    pExcRSRight[side][seg] = pCustom;
+    }
+    else if(id == 36){
+    pExcSegPcnDep[side][seg] = pCustom;
+    }
+    else if(id == 37){
+    pExcC[side][seg] = pCustom;
+    }
+    else if(id == 38){
+    pInhF[side][seg] = pCustom;
+    }
+    else if(id == 39){
+    pExcB[side][seg] = pCustom;
+    }
+    else if(id == 40){
+    pExcModComEle[side][seg] = pCustom;
+    }
+    else if(id == 41){
+    pExcModComDep[side][seg] = pCustom;
+    }
+    else if(id == 42){
+    pExcModComSwing[side][seg] = pCustom;
+    }
+    else if(id == 43){
+    pExcModComStance[side][seg] = pCustom;
+    }
+    else if(id == 44){
+    pExcForRet[side][seg] = pCustom;
+    }
+    else if(id == 45){
+    pExcBackProt[side][seg] = pCustom;
+    }
+    else if(id == 46){
+    pExcLLFlx[side][seg] = pCustom;
+    }
+    else if(id == 47){
+    pExcLTExt[side][seg] = pCustom;
+    }
+    else if(id == 48){
+    pExcForModCom[side] = pCustom;
+    }
+    else if(id == 49){
+    pExcBackModCom[side] = pCustom;
+    }
+    else if(id == 50){
+    pExcLLModCom[side] = pCustom;
+    }
+    else if(id == 51){
+    pExcLTModCom[side] = pCustom;
+    }
+}
 
+//set multiple synapse
+void setMultipleSynapseParams(int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, int size){
+    //this will set the multiple individual synapse
+    int i;
+    for (i =0; i < size; i++){
+        //this will set the param for each neuron in the array
+        setSynapseParams(idArr[i], sideArr[i], segArr[i], xrpArr[i], gammaArr[i], gStrengthArr[i]);
+    }
+}
+
+//edit Synapse!
+void editSynapseParam(int *synapseName, int* side, int* seg, double* xrp, double* gamma, double* gStrength, int size){
+    //this will edit the global variables
+    int i =0;
+    free(globalXrp);
+    free(globalGamma);
+    free(globalgStrength);
+    free(globalSynapseName);
+    free(globalSeg);
+    free(globalSide);
+    //then alloc mem
+    globalXrp = malloc(size*sizeof(double));
+    globalgStrength = malloc(size*sizeof(double));
+    globalGamma = malloc(size*sizeof(double));
+    globalSynapseName = malloc(size*sizeof(int));
+    globalSide = malloc(size*sizeof(int));
+    globalSeg = malloc(size*sizeof(int));
+    beginEditingSynapse = 1; //set flag for begin editing
+    globalSize = size;
+    
+    for (i=0; i< size; i++){
+        //printf("size = %d",size);
+        //printf("fkkk");
+        //  printf("%f",a[i]);
+        globalgStrength[i] = gStrength[i];
+        globalGamma[i] = gamma[i];
+        globalXrp[i] =xrp[i];
+        globalSynapseName[i] = synapseName[i];
+        globalSide[i] = side[i];
+        globalSeg[i] = seg[i];
+    }
+}
 
 ///add the multiple neuron params here//
-void setMultipleNeuronParam(int* idArr, int* sideArr, int* segArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
+void setMultipleNeuronParams(int* idArr, int* sideArr, int* segArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size){
     int i;
     for (i = 0; i < size; i++){
         //this will set the param for each neuron in the array
         setNeuronParams(idArr[i], sideArr[i], segArr[i],aArr[i], sArr[i], sEArr[i], sIArr[i], bEArr[i],bIArr[i], IdcArr[i]);
     }
-}// change params
-
-////end///////////
+}//change params
+////end////
 
 void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //identify which type it is?
-   // if (id == 8){//Spiking
+    //if (id == 8){//Spiking
         //printf("Spiking edit\n");
-        //struct structSpiking** cell = getSpike(neuronName);
-       // struct structSpiking** cell;
-       // cell = cellFlexor;
+        //struct strufctSpiking** cell = getSpike(neuronName);
+        //struct structSpiking** cell;
+        //cell = cellFlexor;
         //printf("%f\n",a);
     //    int iSide, iSeg;
-   //     for(iSide = 0;iSide < mmSide; ++iSide)
+    //    for(iSide = 0;iSide < mmSide; ++iSide)
     //    {
             //Now loop down the segments
-     //       for(iSeg = 0;iSeg < mmSeg; ++iSeg)
-     //       {
+    //        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+    //        {
                 if(id == 0){
                     cellElevator[side][seg].alpha = a;
                     cellElevator[side][seg].sigma = s;
@@ -1638,7 +1770,6 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
                     cellElevator[side][seg].betaE = bE;
                     cellElevator[side][seg].betaI = bI;
                     cellElevator[side][seg].Idc = Idc;
-
                 }
                 else if(id == 1){
                     cellSwing[side][seg].alpha = a;
@@ -1657,7 +1788,6 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
                     cellDepressor[side][seg].betaE = bE;
                     cellDepressor[side][seg].betaI = bI;
                     cellDepressor[side][seg].Idc = Idc;
-
                 }
                 else if(id == 3){
                     cellStance[side][seg].alpha = a;
@@ -1667,7 +1797,6 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
                     cellStance[side][seg].betaE = bE;
                     cellStance[side][seg].betaI = bI;
                     cellStance[side][seg].Idc = Idc;
-                    
                 }
                 else if(id == 4){
                     cellCoord[side][seg].alpha = a;
@@ -1791,12 +1920,55 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
             }
       //  }
     //}
-
     beginEditingParams = 0; //stop editing by turning the edit flag off
-    
-
 }// change alpha and sigma
 
+void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size){
+    //printf("%s\n",neuronName);
+    printf("begin editing\n");
+    int i;
+    //free first
+    free(globalAlpha);
+    free(globalSigma);
+    free(globalSigmaE);
+    free(globalSigmaI);
+    free(globalBetaE);
+    free(globalBetaI);
+    free(globalIdc);
+    free(globalCellName);
+    free(globalSeg);
+    free(globalSide);
+    //then alloc mem
+    globalAlpha = malloc(size*sizeof(double));
+    globalSigma = malloc(size*sizeof(double));
+    globalSigmaE = malloc(size*sizeof(double));
+    globalSigmaI = malloc(size*sizeof(double));
+    globalBetaE = malloc(size*sizeof(double));
+    globalBetaI = malloc(size*sizeof(double));
+    globalIdc= malloc(size*sizeof(double));
+    globalCellName = malloc(size*sizeof(int));
+    globalSide = malloc(size*sizeof(int));
+    globalSeg = malloc(size*sizeof(int));
+    beginEditingParams = 1; //set flag for begin editing
+    globalSize = size;
+    
+    for (i=0; i< size; i++){
+        //printf("size = %d",size);
+        //printf("fkkk");
+        //  printf("%f",a[i]);
+        globalAlpha[i] = a[i];
+        globalSigma[i] = s[i];
+        globalSigmaE[i] = sE[i];
+        globalSigmaI[i] = sI[i];
+        globalBetaE[i] = bE[i];
+        globalBetaI[i] = bI[i];
+        globalIdc[i] = Idc[i];
+        globalCellName[i] = neuronName[i];
+        globalSide[i] = side[i];
+        globalSeg[i] = seg[i];
+    }
+    // setNeuronParams(neuronName, s, a);
+}
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)
