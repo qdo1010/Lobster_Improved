@@ -6,16 +6,9 @@
 //  Copyright © 2019 Quan Do. All rights reserved.
 //
 
-
 /*
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
-
-
-
- 
-
 */
-
 
 #import "SynapseController.h"
 
@@ -34,11 +27,9 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 @synthesize GammaTextBox;
 @synthesize gStrengthTextBox;
 
-
 - (NSString *)windowNibName {
     return @"SynapseController"; // this name tells AppKit which nib file to use
 }
-
 
 - (id)init
 {
@@ -100,11 +91,11 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseSelector addItemWithTitle:@"pExcSegSwingExt"];
     [synapseSelector addItemWithTitle:@"pExcSegSwingFlx"];
     
-    //  pExcHLYL[mmSide][mmSeg],pExcHLRL[mmSide][mmSeg],pExcYLFR[mmSide][mmSeg],pExcRLFR[mmSide][mmSeg],
-   // pExcHRYR[mmSide][mmSeg],pExcHRRR[mmSide][mmSeg],pExcYRFL[mmSide][mmSeg],pExcRRFL[mmSide][mmSeg],
+   //  pExcHLYL[mmSide][mmSeg],pExcHLRL[mmSide][mmSeg],pExcYLFR[mmSide][mmSeg],pExcRLFR[mmSide][mmSeg],
+   //  pExcHRYR[mmSide][mmSeg],pExcHRRR[mmSide][mmSeg],pExcYRFL[mmSide][mmSeg],pExcRRFL[mmSide][mmSeg],
    //  pExcRSLeft[mmSide][mmSeg],pExcRSRight[mmSide][mmSeg],
-   // pExcSegPcnDep[mmSide][mmSeg],                                                                        //Synapse between pitch Command and segmental depressors
-   // pExcC[mmSide][mmSeg], pInhF[mmSide][mmSeg], pExcB[mmSide][mmSeg],
+   //  pExcSegPcnDep[mmSide][mmSeg],                                                                        //Synapse between pitch Command and segmental depressors
+   //  pExcC[mmSide][mmSeg], pInhF[mmSide][mmSeg], pExcB[mmSide][mmSeg],
   
     [synapseSelector addItemWithTitle:@"pExcHLYL"];
     [synapseSelector addItemWithTitle:@"pExcHLRL"];

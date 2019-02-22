@@ -373,6 +373,7 @@ void indicateNumberOfIteration(int i);
 
 int globalLoopIndex;
 
+//cell
 double *globalSigma;
 double *globalAlpha; //params alpha beta for bursting and spiking neuron
 double *globalSigmaE;
@@ -386,20 +387,35 @@ int *globalCellName;
 int *globalSide;
 int *globalSeg;
 
-int cellChosen;
+//synapse
+int *globalSynapseName;
 
+double *globalXrp;
+double *globalGamma;
+double *globalgStrength;
 
-int beginEditingParams = 0;//we have not edit the params
-//function to set params
+//flag
+int beginEditingParams = 0;//we have not edited the params
+
+//flag
+int beginEditingSynapse = 0; //we have not edited the synapse
+
+//function to set synapse params
+void setSynapseParams(int id, int side, int seg, double xrp, double gamma, double gStrength);
+
+//function to set multiple synapse params
+void setMultipleSynapseParams(int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, int size);
+
+//function to set neuron params
 void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 
 //function to set multiple neuron params
-void setMultipleNeuronParam(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
+void setMultipleNeuronParams(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
 
 
-void chooseCell(int cellID);
-
-//function where Objective C can call
+//function where Objective C can call to edit synapse
+void editSynapseParam(int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
+//function where Objective C can call to edit neurons
 void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
 //int whatTypeofCell(char* neuronName);
 long elapsed;
@@ -407,5 +423,4 @@ long elapsed;
 void allocParamArray(void); //alloc mem for param array
 void freeParamsArray(void); //free param array
 
-void checkParamsChange(void); //how to check? check if user from UI make any changes
 #endif // _pc2dsp_h_
