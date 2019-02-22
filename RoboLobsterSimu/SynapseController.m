@@ -27,6 +27,14 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 @synthesize GammaTextBox;
 @synthesize gStrengthTextBox;
 
+
+@synthesize synapseID;
+@synthesize gStrength;
+@synthesize gamma;
+@synthesize seg;
+@synthesize side;
+@synthesize xrp;
+
 - (NSString *)windowNibName {
     return @"SynapseController"; // this name tells AppKit which nib file to use
 }
@@ -149,7 +157,28 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 
 - (IBAction)setSynapseParams:(id)sender {
     
+    int size = 1; //default
+    int numCell = 1; //default
+    synapseID = malloc(numCell*sizeof(int));
+    side =malloc(numCell*sizeof(int));
+    seg = malloc(numCell*sizeof(int));
+    //those are the array of params for each cell
+    gamma = malloc(numCell*sizeof(double));
+    xrp = malloc(numCell*sizeof(double));
+    gStrength = malloc(numCell*sizeof(double));
     
+    
+    
+    synapseID[0] = [synapseSelector indexOfSelectedItem];
+    side[0] = [SideSelector indexOfSelectedItem];
+    seg[0] = [SegSelector indexOfSelectedItem];
+    
+    gamma[0] = [GammaTextBox doubleValue];
+    xrp[0] = [xRPTextBox doubleValue];
+    gStrength[0] = [gStrengthTextBox doubleValue];
+    
+    //call the func to edit synapse
+    editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
     
 }
 

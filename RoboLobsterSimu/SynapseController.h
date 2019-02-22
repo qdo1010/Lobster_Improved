@@ -20,6 +20,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
 
+
+@property (readwrite) int *synapseID;
+@property (readwrite) int *side;
+@property (readwrite) int *seg;
+@property (readwrite)  double *xrp;
+@property (readwrite)  double *gamma;
+@property (readwrite)  double *gStrength;
+
+
 //action to set param of synapses
 - (IBAction)setSynapseParams:(id)sender;
 - (IBAction)setDefaultSynapseParams:(id)sender;
