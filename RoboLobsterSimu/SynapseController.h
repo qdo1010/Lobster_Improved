@@ -28,10 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readwrite)  double *gamma;
 @property (readwrite)  double *gStrength;
 
+- (IBAction)ConfigureDefaultSynapseParams:(id)sender;
 
 //action to set param of synapses
 - (IBAction)setSynapseParams:(id)sender;
-- (IBAction)setDefaultSynapseParams:(id)sender;
 
 @end
 

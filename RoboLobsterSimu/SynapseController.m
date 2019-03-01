@@ -10,6 +10,9 @@
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
 */
 
+
+//TODO: add feedback to view the synapse params value
+
 #import "SynapseController.h"
 
 @interface SynapseController ()
@@ -151,11 +154,48 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseTypeSelector addItemWithTitle:@"pSlowExc"];
     [synapseTypeSelector addItemWithTitle:@"pSlowInh"];
 
-
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+
+
+//this will set the parameter
+- (IBAction)ConfigureDefaultSynapseParams:(id)sender {
+    switch ([synapseTypeSelector indexOfSelectedItem]) {
+        case 0: //fastExc
+            xRPTextBox.doubleValue = -0.0;
+            GammaTextBox.doubleValue = 0.9;
+            gStrengthTextBox.doubleValue = 0.1;
+            break;
+        case 1: //FastInh
+            xRPTextBox.doubleValue = -2.2;
+            GammaTextBox.doubleValue = 0.9;
+            gStrengthTextBox.doubleValue = 1;
+            break;
+        case 2: //SlowExc
+            xRPTextBox.doubleValue = 2.2;
+            GammaTextBox.doubleValue = 0.995;
+            gStrengthTextBox.doubleValue = 1;
+            break;
+        case 3: //SlowInh
+            xRPTextBox.doubleValue = -2.2;
+            GammaTextBox.doubleValue = 0.995;
+            gStrengthTextBox.doubleValue = 1;
+            break;
+        default:
+            xRPTextBox.doubleValue = 0.;
+            GammaTextBox.doubleValue = 0.;
+            gStrengthTextBox.doubleValue = 0.;
+            break;
+    }
+    
+}
+
+
 - (IBAction)setSynapseParams:(id)sender {
+    
+    NSLog(@"synapse edit");
     
     int size = 1; //default
     int numCell = 1; //default
@@ -166,8 +206,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     gamma = malloc(numCell*sizeof(double));
     xrp = malloc(numCell*sizeof(double));
     gStrength = malloc(numCell*sizeof(double));
-    
-    
     
     synapseID[0] = [synapseSelector indexOfSelectedItem];
     side[0] = [SideSelector indexOfSelectedItem];
@@ -182,6 +220,4 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     
 }
 
-- (IBAction)setDefaultSynapseParams:(id)sender {
-}
 @end
