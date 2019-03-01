@@ -222,8 +222,8 @@ int minorLineWidth	 = 1;
     
     NSAttributedString * currentText=[[NSAttributedString alloc] initWithString:name attributes: attributes];
     
-    NSSize attrSize = [currentText size];
-    [currentText drawAtPoint:NSMakePoint(0*cWidth, height/2-0.05*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset + height/5)];
+    //NSSize attrSize = [currentText size];
+    [currentText drawAtPoint:NSMakePoint(0*cWidth, cHeight/20-0.05*cHeight*gain + height*([[propertyValue ipbuf] count] - idy -1) + offset + cHeight/10)];
     
     for (int i=0; i < numberOfPoints; i++)
     {
