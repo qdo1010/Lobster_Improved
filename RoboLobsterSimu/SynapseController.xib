@@ -169,6 +169,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="ConfigureDefaultSynapseParams:" target="-2" id="60d-zR-q6T"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-4g-UIh">
                         <rect key="frame" x="24" y="46" width="4" height="17"/>
@@ -188,17 +191,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lOq-Z4-IRB">
-                        <rect key="frame" x="338" y="13" width="108" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Set Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="brG-Na-REo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="setDefaultSynapseParams:" target="-2" id="TA8-Df-azJ"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-gR-hDh">
                         <rect key="frame" x="306" y="68" width="140" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
