@@ -153,10 +153,11 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseTypeSelector addItemWithTitle:@"pFastInh"];
     [synapseTypeSelector addItemWithTitle:@"pSlowExc"];
     [synapseTypeSelector addItemWithTitle:@"pSlowInh"];
+    [synapseTypeSelector addItemWithTitle:@"Not Defined"];
 
-    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
+
 
 
 
@@ -190,6 +191,185 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
             break;
     }
     
+}
+
+//make a library to map where each synapse should be
+-(int)synapseMapping: (int)synapseID{
+    //input synapseID
+    //get the mapping
+    return 0;
+}
+
+
+- (IBAction)updateSynapseParams:(id)sender {
+    //0 = pFastExc
+    //1 = pFastInh
+    //2 = pSlowExc
+    //3 = pSlowInh
+    
+    switch ([synapseSelector indexOfSelectedItem]) {
+        case 0: //pInhSegCoordEle //not defined
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 1: //pExcSegContEleCoord //not defined
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 2: //pExcIntRosEleCoord //not defined
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 3://pExcIntCaudEleCoord //not defined
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 4://pInhIntFSwing
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 5://pInhIntFStance
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 6://pInhIntBSwing
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 7://pInhIntBStance
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 8://pInhIntLLSwing
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 9://pInhIntLLStance
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 10://pInhIntLTSwing
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 11://pInhIntLTStance
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 12://pExcIntRosEleCoord
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 13://pExcIntRCaudEleCoord
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 14://pExcSegEleContraLat
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 15://pInhSegEleDep
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 16://pInhSegEleStance
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 17://pInhSegStanceSwing
+            [synapseTypeSelector selectItemAtIndex:3];
+            break;
+        case 18://pExcSegStanceProt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 19://pExcSegStanceRet
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 20://pExcSegStanceExt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 21://pExcSegStanceFlx
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 22://pExcSegSwingProt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 23://pExcSegSwingRet
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 24://pExcSegSwingExt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 25://pExcSegSwingFlx
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 26://pExcHLYL
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 27://pExcHLRL
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 28://pExcYLFR
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 29://pExcRLFR
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 30://pExcHRYR
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 31://pExcHRRR
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 32://pExcYRFL
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 33://pExcRRFL
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 34://pExcRSLeft
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 35://pExcRSRight
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 36://pExcSegPcnDep
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 37://pExcC
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 38://pInhF
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 39://pExcB
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+        case 40://pExcModComEle
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 41://pExcModComDep
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 42://pExcModComSwing
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 43://pExcModComStance
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 44://pExcForRet
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 45://pExcBackProt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 46://pExcLLFlx
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 47://pExcLTExt
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 48://pExcForModCom
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 49://pExcBackModCom
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 50://pExcLLModCom
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        case 51://pExcLTModCom
+            [synapseTypeSelector selectItemAtIndex:2];
+            break;
+        default:
+            [synapseTypeSelector selectItemAtIndex:4];
+            break;
+    }
+    [self ConfigureDefaultSynapseParams:synapseTypeSelector];
+
 }
 
 

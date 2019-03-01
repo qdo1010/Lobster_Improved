@@ -12,6 +12,7 @@
                 <outlet property="SegSelector" destination="8g7-xC-ZTo" id="2DH-4u-AHY"/>
                 <outlet property="SideSelector" destination="K2G-vR-FF2" id="eyS-qF-Jsz"/>
                 <outlet property="SynapseTypeSelector" destination="1p8-eI-wsk" id="OWk-63-4JO"/>
+                <outlet property="UpdateSynapseParams" destination="Dv0-4r-sf6" id="gGT-r7-GNP"/>
                 <outlet property="gStrengthTextBox" destination="iCa-rS-CQM" id="qWA-Xk-LGP"/>
                 <outlet property="synapseSelector" destination="Dv0-4r-sf6" id="Hgi-gL-DBC"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -42,6 +43,9 @@
                                     <menuItem title="Item 3" id="tsw-bE-VpX"/>
                                 </items>
                             </menu>
+                            <connections>
+                                <action selector="updateSynapseParams:" target="-2" id="HXb-sa-1vt"/>
+                            </connections>
                         </popUpButtonCell>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
