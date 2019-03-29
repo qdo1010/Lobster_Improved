@@ -400,6 +400,10 @@ int beginEditingParams = 0;//we have not edited the params
 //flag
 int beginEditingSynapse = 0; //we have not edited the synapse
 
+//flag to write to file
+int writeToFile = 0;
+
+
 //function to set synapse params
 void setSynapseParams(int id, int side, int seg, double xrp, double gamma, double gStrength);
 
@@ -413,10 +417,14 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
 void setMultipleNeuronParams(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
 
 
-//function where Objective C can call to edit synapse
+//function that Objective C can call to edit synapse
 void editSynapseParam(int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
-//function where Objective C can call to edit neurons
+//function that Objective C can call to edit neurons
 void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
+//function that Objective C can call to write to file
+void saveParamsToFile(int flagWriteToFile);
+
+
 //int whatTypeofCell(char* neuronName);
 long elapsed;
 

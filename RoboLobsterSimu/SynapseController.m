@@ -10,8 +10,8 @@
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
 */
 
-
 //TODO: add feedback to view the synapse params value
+//synapse struct
 
 #import "SynapseController.h"
 
@@ -29,7 +29,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 @synthesize xRPTextBox;
 @synthesize GammaTextBox;
 @synthesize gStrengthTextBox;
-
 
 @synthesize synapseID;
 @synthesize gStrength;
@@ -64,7 +63,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseSelector addItemWithTitle:@"pExcIntRosEleCoord"];
     [synapseSelector addItemWithTitle:@"pExcIntCaudEleCoord"];
     
-    
    // pInhIntFSwing[mmSide], pInhIntFStance[mmSide], pInhIntBSwing[mmSide],pInhIntBStance[mmSide],         // Presynaptic Inhibition from a command to bifunctional interneuron synapse
    // pInhIntLLSwing[mmSide],pInhIntLLStance[mmSide],pInhIntLTSwing[mmSide],pInhIntLTStance[mmSide],       // Presynaptic Inhibition from a command to bifunctional interneuron synapse
     [synapseSelector addItemWithTitle:@"pInhIntFSwing"];
@@ -78,7 +76,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     
     [synapseSelector addItemWithTitle:@"pInhIntLTSwing"];
     [synapseSelector addItemWithTitle:@"pInhIntLTStance"];
-    
     
    // pExcIntRosEleCoord[mmSide][mmSeg],  pExcIntRCaudEleCoord[mmSide][mmSeg],                             //Excitatory Synapses from Elevator to adjacent coordinating neurons
    // pExcSegEleContraLat[mmSide][mmSeg],                                                                    //Excitatory Synapses from Elevator to contralateral coordinating neurons
@@ -158,9 +155,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-
-
-
 //this will set the parameter
 - (IBAction)ConfigureDefaultSynapseParams:(id)sender {
     switch ([synapseTypeSelector indexOfSelectedItem]) {
@@ -199,7 +193,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     //get the mapping
     return 0;
 }
-
 
 - (IBAction)updateSynapseParams:(id)sender {
     //0 = pFastExc
@@ -369,14 +362,10 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
             break;
     }
     [self ConfigureDefaultSynapseParams:synapseTypeSelector];
-
 }
 
-
 - (IBAction)setSynapseParams:(id)sender {
-    
     NSLog(@"synapse edit");
-    
     int size = 1; //default
     int numCell = 1; //default
     synapseID = malloc(numCell*sizeof(int));
@@ -397,7 +386,10 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     
     //call the func to edit synapse
     editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
-    
+}
+
+- (IBAction)saveSynapseParams:(id)sender {
+    saveParamsToFile(1);
 }
 
 @end

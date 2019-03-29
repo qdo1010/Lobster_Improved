@@ -9,6 +9,18 @@
 #import <Cocoa/Cocoa.h>
 
 NS_ASSUME_NONNULL_BEGIN
+/*struct Synapse{
+    NSString* name;
+    int side;
+    int seg;
+    double xrp;
+    double gamma;
+    double gStrength;
+};*/
+
+// create a dictionary
+//what would this dictionary look like?
+//idk?
 
 @interface SynapseController : NSWindowController
 @property (strong) IBOutlet NSPopUpButton *synapseSelector;
@@ -20,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
 
-
 @property (readwrite) int *synapseID;
 @property (readwrite) int *side;
 @property (readwrite) int *seg;
@@ -28,12 +39,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readwrite)  double *gamma;
 @property (readwrite)  double *gStrength;
 
+
 - (IBAction)ConfigureDefaultSynapseParams:(id)sender;
 
 - (IBAction)updateSynapseParams:(id)sender;
 
 //action to set param of synapses
 - (IBAction)setSynapseParams:(id)sender;
+- (IBAction)saveSynapseParams:(id)sender;
 
 - (int)synapseMapping: (int)synapseID;
 @end
