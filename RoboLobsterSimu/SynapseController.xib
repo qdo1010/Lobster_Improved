@@ -11,10 +11,10 @@
                 <outlet property="GammaTextBox" destination="ilu-3v-TZy" id="uXc-xy-JDm"/>
                 <outlet property="SegSelector" destination="8g7-xC-ZTo" id="2DH-4u-AHY"/>
                 <outlet property="SideSelector" destination="K2G-vR-FF2" id="eyS-qF-Jsz"/>
-                <outlet property="SynapseTypeSelector" destination="1p8-eI-wsk" id="OWk-63-4JO"/>
                 <outlet property="UpdateSynapseParams" destination="Dv0-4r-sf6" id="gGT-r7-GNP"/>
                 <outlet property="gStrengthTextBox" destination="iCa-rS-CQM" id="qWA-Xk-LGP"/>
                 <outlet property="synapseSelector" destination="Dv0-4r-sf6" id="Hgi-gL-DBC"/>
+                <outlet property="synapseTypeSelector" destination="1p8-eI-wsk" id="eIY-hN-5QI"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
                 <outlet property="xRPTextBox" destination="6Jp-2e-kna" id="EWH-kd-ZnT"/>
             </connections>
@@ -43,10 +43,10 @@
                                     <menuItem title="Item 3" id="tsw-bE-VpX"/>
                                 </items>
                             </menu>
-                            <connections>
-                                <action selector="updateSynapseParams:" target="-2" id="HXb-sa-1vt"/>
-                            </connections>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="updateSynapseParams:" target="-2" id="bEz-Ta-1uG"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
                         <rect key="frame" x="161" y="197" width="77" height="25"/>
@@ -222,7 +222,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-154" y="85"/>
+            <point key="canvasLocation" x="-347" y="95"/>
         </window>
     </objects>
 </document>
