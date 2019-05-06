@@ -77,7 +77,7 @@ void spikingNeuronInit(struct structSpiking *ptr) {
     ptr->xp = -1 + ptr->sigma;
     ptr->x = -1 + ptr->sigma;
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
-}  // end of Elevator structure
+}
 
 void burstingNeuronInit(struct structBursting *ptr) {
     ptr->mu = 0.0005;
@@ -1649,7 +1649,6 @@ void xmain()
             ind++;
             if (ind == IterNumChosen-1){
                 ind = 0;
-                //sleep(0.5*samplesizechosen); //0.5 is the refresh rate of
                 ///////////DO I NEED TO FREE PARAM ARRAY AS WELL?
             free(xArrayDep);
             free(xArrayExt);
@@ -1954,20 +1953,15 @@ void saveParamsToFile(int flagWriteToFile){
 }
 
 
-void indicateSampleSize(int s){
-    samplesizechosen = s;//get the sample size values chosen by Waveforms.m and put it in the global var, so C code knows how long to wait;
-    printf("sample size = %d\n", samplesizechosen);
-};
-
+/**
+This function will set the IterNumChosen Global Var, which tell xmain how big the array it should allocate to store the calculated spiking current values
+ @param i is the iternation number, chosen by Objective C codes, aka users
+ */
 void indicateNumberOfIteration(int i){
     IterNumChosen = i;
     printf("iteration = %d\n", IterNumChosen);
 }
 
-int checkMainLoopIndex(){
-    int i =globalLoopIndex;
-    return i;
-}
 
 //set Synapse Params
 void setSynapseParams(int id, int side, int seg, double xrp, double gamma, double gStrength){

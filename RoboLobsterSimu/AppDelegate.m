@@ -74,12 +74,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     NSLog(@"AppDelegate Did Finish Loading");
-     SampleSize = [NSNumber numberWithInteger:5000];
-    int samplesize = [SampleSize intValue];
-    indicateSampleSize(samplesize);   //call the C function to tell it what samplesize I want
     
     int IterNum = 100000;
+    //Tell C code this is how much I want to iterate,basically allocate this much memory to start calculating for this many iterations
     indicateNumberOfIteration(IterNum);
+    
     traceWaveforms = [[Waveforms alloc] init];
     sweepDuration = 5000;
     sweepOffset = 0;

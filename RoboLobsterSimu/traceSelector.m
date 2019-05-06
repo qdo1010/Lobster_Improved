@@ -128,6 +128,10 @@ const char * traceLabels[] = {
     "cellHR"
 };
 
+/**
+Initialization
+ @return Class with value inited
+ */
 - (id)init
 {
 //    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
@@ -151,27 +155,6 @@ const char * traceLabels[] = {
     return ts;
 }
 
-- (IBAction)chooseTraceNums:(id)sender
-{
-//    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    NSString *title;
-    title = [numberOfTracesSelector titleOfSelectedItem];
-       NSLog(@"Number of Traces changed to %@", title);
-  //  [appDelegate setNumTraces:[title integerValue]];
-
-}
-
-- (IBAction)selectTraces:(id)sender {
-//    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
-    NSString *title;
-    title = [traceSelector titleOfSelectedItem];
-    NSLog(@"Selected Trace is %@", title);
- //[appDelegate setSelectedTrace:[title integerValue]];
-   
-    [self.traceNumberArray addObject:title];
-    [self.traceNumberController rearrangeObjects];
-
-}
 
 - (IBAction)selectCells:(id)sender {
     NSString *title;
@@ -207,6 +190,9 @@ const char * traceLabels[] = {
     
     }
 
+/**
+ when window is loaded, add cells to cellSelector
+ */
 - (void)windowDidLoad
 {
     NSLog(@"trace view loaded");
