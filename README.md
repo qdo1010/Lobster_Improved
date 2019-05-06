@@ -1,13 +1,13 @@
-# Lobster
+# Lobster Simulation
 
 This is a simulation software for the Lobster Robot Motor Program.
 It allows user to verify that the DTM parameters are set correctly to generate walking pattern.
 
 # pc2dsp
 	C Code to init and calculate Discrete Time Mapped Neurons.
-	Calculated values and associated Params are stored in global Arrays that are 		accessible by Objective C classes
+	Calculated values and associated Params are stored in global Arrays that are accessible by Objective C classes
 
-# raceSelector
+# traceSelector
 	TraceSelector.xib (Associated GUI)
 	First pop up Window that allow users to select from a drop down list what neurons to view in the Oscilloscope
 
