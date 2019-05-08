@@ -199,7 +199,6 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     //1 = pFastInh
     //2 = pSlowExc
     //3 = pSlowInh
-    
     switch ([synapseSelector indexOfSelectedItem]) {
         case 0: //pInhSegCoordEle //not defined
             [synapseTypeSelector selectItemAtIndex:4];

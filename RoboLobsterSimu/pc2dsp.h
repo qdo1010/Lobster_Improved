@@ -169,8 +169,7 @@ double** xArrayModCom;				// The is the modulatory command on each side
 double** xArrayH;  //This is the hight command and would range fractionate and control the postural commands cellPcnLow cellPcnLevel and cellPcnHigh on both sides.
 
 
-//////////Parameters to show to users
-
+//////////Arrays that will store the Neuron parameters, to be sent to and received by Objective C code to display to users
 //alpha values
 double** alphaArrayElev;
 double** alphaArrayDep;
@@ -189,7 +188,6 @@ double** alphaArrayLT;
 double** alphaArrayPcn;
 double** alphaArrayModCom;
 double** alphaArrayH;
-
 
 //sigma values
 double** sigmaArrayElev;
@@ -305,6 +303,7 @@ double**  IdcArrayPcn;
 double**  IdcArrayModCom;
 double**  IdcArrayH;
 
+//Struct to define param for spiking neurons
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
@@ -325,19 +324,19 @@ cellExtensor[mmSide][mmSeg],
 cellFlexor[mmSide][mmSeg];
 //cellMot[mmSide][mmSeg],
 
+//Struct to define param for bursting neurons
+//Swing and Elevator are Bursting Neurons?
 struct structBursting {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
     double x, y, alpha, sigma, sigmaE, sigmaI, betaE, betaI, Idc;
     int spike;
 }
-//cellDepressor[mmSide][mmSeg],
-//cellStance[mmSide][mmSeg];
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg];
 
-
-//no endogenous pacemaker for now
+//Struct to define param for endogenous pacemaker neurons
+//Depressor and Stance are Endogenous Pacemaker?
 struct structEndogenousPacemaker {
     double alpha, sigma, mu;
     double yr, xr, x2, y2;
@@ -349,26 +348,13 @@ struct structEndogenousPacemaker {
 }
 cellDepressor[mmSide][mmSeg],
 cellStance[mmSide][mmSeg];
-//cellSwing[mmSide][mmSeg],
-//cellElevator[mmSide][mmSeg];
 
-/*
-struct structEndogenousPacemaker {
-    double xp, xpp, mu, sigmaIn, betaIn;
-    double sigmaDc, betaDc;
-    double x, y, alpha, sigma, sigmaE, sigmaI, betaE, betaI, Idc;
-    int spike;
-}
-cellSwing[mmSide][mmSeg],
-cellElevator[mmSide][mmSeg];
-*/
-//////////end of dictionary
-void xmain();
-int samplesizechosen = 50; //init w 50 as the default for now
-int IterNumChosen = 1000;
-int checkMainLoopIndex();
-void indicateSampleSize(int s);
-void indicateNumberOfIteration(int i);
+
+void xmain(); //this is the main C function that will always run when program starts
+
+int IterNumChosen = 100000;
+
+void indicateNumberOfIteration(int i); //function to change IterNumChosen
 
 
 int globalLoopIndex;

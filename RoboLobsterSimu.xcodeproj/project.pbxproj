@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4824A9442257BD30009D508F /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824A9432257BD30009D508F /* test.xib */; };
 		482A75402203FAB40073F120 /* SynapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482A753E2203FAB40073F120 /* SynapseController.m */; };
 		482A75412203FAB40073F120 /* SynapseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482A753F2203FAB40073F120 /* SynapseController.xib */; };
 		4831107120AF1DE60095D277 /* TrailingRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831106F20AF1DE50095D277 /* TrailingRight */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4824A9432257BD30009D508F /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
 		482A753D2203FAB40073F120 /* SynapseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynapseController.h; sourceTree = "<group>"; };
 		482A753E2203FAB40073F120 /* SynapseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynapseController.m; sourceTree = "<group>"; };
 		482A753F2203FAB40073F120 /* SynapseController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynapseController.xib; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
+				4824A9432257BD30009D508F /* test.xib */,
 				97D6A7AD200AC28700BF3C15 /* TODO */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
 				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
@@ -361,6 +364,7 @@
 				4831107220AF1DE60095D277 /* TrailingLeft in Resources */,
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
+				4824A9442257BD30009D508F /* test.xib in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
 				482A75412203FAB40073F120 /* SynapseController.xib in Resources */,
 				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
