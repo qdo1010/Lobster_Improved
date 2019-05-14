@@ -27,7 +27,7 @@ Invert g_syn for Pre to be negative to create **presynaptic inhibition**.
 **Modulation**
 Call the above function, with the right pre, post and M neurons to create the network:
 
-Example of Synaptic Inhibition from Command Neuron to Bifunctional motor Neurons, via CPG.
+Example of Synaptic Inhibition from Command Neuron (**CellB**) to Bifunctional motor Neurons (**cellRetractor**), via CPG (**cellStance**):
 
 *calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg], &pExcSegStanceRet[iSide][iSeg], &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x, cellStance[iSide][iSeg].x, cellB[iSide].spike, cellStance[iSide][iSeg].spike);*
 
