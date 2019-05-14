@@ -25,12 +25,17 @@ Normalize I_syn for M to 1 and convert it g_syn for Pre to create **heterosynapt
 Invert g_syn for Pre to be negative to create **presynaptic inhibition**.
 			
 **Modulation**
-Call the above function, with the right parameters
-Example:  calcModulatedCurrents(&iExcSegStanceRet[iSide][iSeg], &pExcSegStanceRet[iSide][iSeg], &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x, cellStance[iSide][iSeg].x, cellB[iSide].spike, cellStance[iSide][iSeg].spike);
+Call the above function, with the right pre, post and M neurons to create the network:
+
+Example of Synaptic Inhibition from Command Neuron to Bifunctional motor Neurons, via CPG.
+
+calcModulatedCurrents( &iExcSegStanceRet[iSide][iSeg], &pExcSegStanceRet[iSide][iSeg], &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x, cellStance[iSide][iSeg].x, cellB[iSide].spike, cellStance[iSide][iSeg].spike);
 
 If Heterosynaptic Faciliation works (it doesn't seem to work yet), then all the Command Neurons will facilitate ModCom neuron to get the CPG to fire at three different levels (L,m, H).
 	
 Need to wire Command Neurons (Forward, Backward, Leading, Trailing, Posture) to the ModCom neurons, and make sure heterosynaptic facilitation works.
+
+Hence, we need to call calcModulatedCurrent from Command Neuron to CPG Neurons, via ModCom Neurons.
 
 # traceSelector
 	TraceSelector.xib (Associated GUI)
