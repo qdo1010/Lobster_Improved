@@ -69,6 +69,11 @@ Hence, we need to call calcModulatedCurrent from Command Neuron to CPG Neurons, 
 	This class controls the Synapse Window,
 	where users can manually edit the synapse types and change the params in real time
 	It gives functionality to all the buttons, drop down list, texts in the associated GUI
+**Saving Synapse Parameters**
+Save to a Log file
+**Reading Synapse Parameters**
+Read from Log file, then change the parameter accordingly
+
 
 # CommandStateViewController
 	Window.xib (Associated GUI)
@@ -76,3 +81,6 @@ Hence, we need to call calcModulatedCurrent from Command Neuron to CPG Neurons, 
 	where users can choose to turn on different command neurons, 
 	change the speed of each command (For instance, walk Forward Left fast, or Backward Right Slow)
 	It gives functionality to all the buttons, drop down list, texts in the associated GUI
+**Read Command Neuron Parameters**
+Read from Log file, with different Speed for each Cells
+
