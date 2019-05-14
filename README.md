@@ -11,6 +11,8 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 
 Network of Three cells: Pre (Presynaptic cell), Post (Postsynaptic)  and M (Modulation)
 
+The third neuron can either facilitate or decrease synaptic transmission between Presynaptic cell and postsynaptic cell.
+
 Make Xrp for M positive.
 
 Compute I_syn for M.
