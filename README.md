@@ -9,6 +9,9 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 	
 **Modulatible Synapse** (Need fixing to enable Heterosynaptics Facilitation and Presynaptic Inhibition)
 
+void calcModulatedCurrents(double I, struct structSynapses \*params,struct structSynapses \*modParams,
+                           double xPost,double xModPost, double spikes, double modSpikes) 
+			   
 Network of Three cells: Pre (Presynaptic cell), Post (Postsynaptic)  and M (Modulation)
 
 The third neuron can either facilitate or decrease synaptic transmission between Presynaptic cell and postsynaptic cell.
