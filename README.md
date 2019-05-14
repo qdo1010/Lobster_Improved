@@ -9,7 +9,7 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 	
 **Modulatible Synapse** (Need fixing to enable Heterosynaptics Facilitation and Presynaptic Inhibition)
 
-void calcModulatedCurrents(double \*I, struct structSynapses \*params,struct structSynapses \*modParams,
+Function: void calcModulatedCurrents(double \*I, struct structSynapses \*params,struct structSynapses \*modParams,
                            double xPost,double xModPost, double spikes, double modSpikes) 
 			   
 Network of Three cells: Pre (Presynaptic cell), Post (Postsynaptic)  and M (Modulation)
@@ -25,6 +25,8 @@ Normalize I_syn for M to 1 and convert it g_syn for Pre to create **heterosynapt
 Invert g_syn for Pre to be negative to create **presynaptic inhibition**.
 			
 **Modulation**
+Call the above function, with the right parameters
+Example:  calcModulatedCurrents(&iExcSegStanceRet[iSide][iSeg], &pExcSegStanceRet[iSide][iSeg], &pInhIntBStance[iSide],      cellRetractor[iSide][iSeg].x, cellStance[iSide][iSeg].x, cellB[iSide].spike, cellStance[iSide][iSeg].spike);
 
 If Heterosynaptic Faciliation works (it doesn't seem to work yet), then all the Command Neurons will facilitate ModCom neuron to get the CPG to fire at three different levels (L,m, H).
 	
