@@ -6,6 +6,13 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 # pc2dsp
 	C Code to init and calculate Discrete Time Mapped Neurons.
 	Calculated values and associated Params are stored in global Arrays that are accessible by Objective C classes
+	
+Todo: 
+
+Heterosynaptic Facilitation:
+			
+
+Presynaptic Inhibition:
 
 # traceSelector
 	TraceSelector.xib (Associated GUI)
