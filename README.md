@@ -8,11 +8,10 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 	Calculated values and associated Params are stored in global Arrays that are accessible by Objective C classes
 	
 Todo: 
+Presynaptic Inhibition
 
-Heterosynaptic Facilitation:
+Heterosynaptic Facilitation (Not yet implemented)
 			
-
-Presynaptic Inhibition:
 
 # traceSelector
 	TraceSelector.xib (Associated GUI)
