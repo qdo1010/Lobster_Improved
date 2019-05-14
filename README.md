@@ -9,15 +9,19 @@ It allows user to verify that the DTM parameters are set correctly to generate w
 	
 Modulatible Synapse (Need fixing to enable Heterosynaptics Facilitation and Presynaptic Inhibition)
 
-Make Xrp for M positive
-Compute I_syn for M
-Normalize I_syn for M to 1 and convert it g_syn for Pre to create heterosynaptic facilitation
-Invert g_syn for Pre to be negative to create presynaptic inhibition
+Make Xrp for M positive.
+
+Compute I_syn for M.
+
+Normalize I_syn for M to 1 and convert it g_syn for Pre to create heterosynaptic facilitation.
+
+Invert g_syn for Pre to be negative to create presynaptic inhibition.
 			
 Modulation:
-	If Heterosynaptic Faciliation works (it doesn't seem to work yet), then all the Command Neurons will facilitate ModCom neuron to get the CPG to fire at three different levels (L,m, H).
+
+If Heterosynaptic Faciliation works (it doesn't seem to work yet), then all the Command Neurons will facilitate ModCom neuron to get the CPG to fire at three different levels (L,m, H).
 	
-	Need to wire Command Neurons (Forward, Backward, Leading, Trailing, Posture) to the ModCom neurons, and make sure heterosynaptic facilitation works.
+Need to wire Command Neurons (Forward, Backward, Leading, Trailing, Posture) to the ModCom neurons, and make sure heterosynaptic facilitation works.
 
 # traceSelector
 	TraceSelector.xib (Associated GUI)
