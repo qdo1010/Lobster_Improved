@@ -737,7 +737,8 @@ void xmain()
         //Now loop down the segments
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)
         {
-            // Inject some noise into the CPG neurons
+           // °°°°°°°°°°°°We need to integrate these initializations with the speed control
+           // Inject some noise into the CPG neurons
             R = 2.0 * rand()/(RAND_MAX + 1.0) - 1.0;
             cellElevator[iSide][iSeg].sigma = cellElevator[iSide][iSeg].sigma + R * 0.001 + 0.0005;
             
