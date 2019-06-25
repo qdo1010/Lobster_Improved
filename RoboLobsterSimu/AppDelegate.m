@@ -75,12 +75,12 @@
     // Insert code here to initialize your application
     NSLog(@"AppDelegate Did Finish Loading");
     
-    int IterNum = 100000;
+    int IterNum = 10000;
     //Tell C code this is how much I want to iterate,basically allocate this much memory to start calculating for this many iterations
     indicateNumberOfIteration(IterNum);
     
     traceWaveforms = [[Waveforms alloc] init];
-    sweepDuration = 5000;
+    sweepDuration = 500;
     sweepOffset = 0;
     traceGainArray = [[NSMutableArray alloc] init];
     traceOffsetArray = [[NSMutableArray alloc] init];
