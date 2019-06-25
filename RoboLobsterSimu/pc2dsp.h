@@ -11,7 +11,7 @@
 
 #define CMD_TIMEOUT_TIME      0x7FFFFFFF
 
-
+// This is a test
 // Converted cell numbers mmElevator, mmDepessor, etc. to mmSeg, mmSeg2
 /*
  extern int cmdTimeOut;                     // cmd timeout down counter
