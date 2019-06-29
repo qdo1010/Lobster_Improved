@@ -722,8 +722,8 @@ void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, 
    // *I =params->gStrength*iMod*(xPost - params->xRp); //this is the original, which we use
     
     *I = -(-3*iMod*spikes*(xPost - params->xRp)); //this is to test whether we see Inhibition happening asymmetrically
-    //*I =  -params->gamma*spikes*(xPost - params->xRp);
-    //*I = 1;
+    //.*I =  -params->gamma*spikes*(xPost - params->xRp);
+    //.*I = 1;
    // *I = modSpikes;
  //   *I = -params->gamma*spikes*(xPost - params->xRp) - 10*iMod*spikes*(xPost - params->xRp); //this is spiking together
     //RIGHT now, we have the opposite of what we want. It's close tho!!!!!!
@@ -742,7 +742,7 @@ void calcModulatedCurrents(double *I, //This implements presynaptic inhibition, 
    // iMod = modParams->gamma * *I - modParams->gStrength* modSpikes * (xModPost - modParams->xRp);
     // *I = params->gamma * *I - iGain * spikes * (xPost - params->xRp);
    //
-   /*
+ 
     if ((int)modSpikes == 0){
         *I = 0;
     }
@@ -1442,10 +1442,7 @@ void xmain()
                 fwrite (&pExcSegPcnDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
             }
         }
-        if(fwrite != 0)
-            printf("contents to file written successfully !\n");
-        else
-            printf("error writing file !\n");
+        
         
         // close file
         fclose (paramFile);
