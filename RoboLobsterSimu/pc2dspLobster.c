@@ -507,7 +507,7 @@ void calcPacemakerNeuronFunc(pacemakerNeuron *ptr,double c, double e) {
 //These functions are needed to access the new structure properly, you can call the functions in the same way as before
 //ie. spikingNeuronInit(  &cellDepressor[iSide][iSeg] , speed); it just takes what you send to the function and then passes
 //the inner structure to the function SetSpikeNeuroParam(); so that it functions with the new structure.
-//TLDR, you can use these functions in the exact same way as before, these functions just make sure that works.
+//To put it simply, you can use these functions in the exact same way as before, these functions just make sure that works.
 
 void burstingNeuronInit(paramStruct *intermed, int speed) {
     SetBurstNeuroParam(&(intermed->burstingNeuron), speed);
