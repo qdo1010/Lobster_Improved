@@ -304,6 +304,8 @@ double**  IdcArrayModCom;
 double**  IdcArrayH;
 
 //Struct to define param for spiking neurons
+//Old structure designs with seperate structs
+/*
 struct structSpiking {
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
@@ -348,7 +350,116 @@ struct structEndogenousPacemaker {
 }
 cellDepressor[mmSide][mmSeg],
 cellStance[mmSide][mmSeg];
+*/
 
+// New structure design
+
+typedef struct{
+    double alphaSlow, alphaMed, alphaFast, alphaStop;
+} alphaVal;
+typedef struct{
+    double sigmaSlow, sigmaMed, sigmaFast, sigmaStop;
+} sigmaVal;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} burstingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} spikingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+    double yr, xr, x2, y2;
+    double alphaInit;
+} pacemakerNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} customNeuron;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} synapse;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} modSynapse;
+
+typedef struct{
+    burstingNeuron burstingNeuron;
+    spikingNeuron spikingNeuron;
+    pacemakerNeuron pacemakerNeuron;
+    customNeuron customNeuron;
+    synapse synapse;
+    modSynapse modSynapse;
+} paramStruct;
+
+paramStruct
+//Spiking Neurons
+cellF[mmSide],                  //Forward Walking Command
+cellB[mmSide],                  //Backward Walking Command
+cellLL[mmSide],                 //Lateral Leading Command
+cellLT[mmSide], cellPcn[mmSide][pitchStates],                //Lateral Trailing Command   // There is one on each side for pLow, rosDown, pLevel, rosUp, pHigh The pitchState sets the synaptic strength in each segment/side
+cellModCom[mmSide],                // The is the modulatory command on each side
+cellH[mmSide],
+cellCoord[mmSide][mmSeg],       //Coordinating neuron for each segment
+cellProtractor[mmSide][mmSeg],
+cellRetractor[mmSide][mmSeg],
+cellExtensor[mmSide][mmSeg],
+cellFlexor[mmSide][mmSeg],
+//Bursting Neurons
+cellSwing[mmSide][mmSeg],
+cellElevator[mmSide][mmSeg],
+//Endogenous Pacemaker
+cellDepressor[mmSide][mmSeg],
+cellStance[mmSide][mmSeg],
+//Synapses
+pCustom,  //custom synapse
+pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
+pInhSegCoordEle[mmSide][mmSeg],                                                                      // Segmental Inhibition from an Coordinating Neuron to an Elevator
+pExcSegContEleCoord[mmSide][mmSeg],                                                                  // Intersegmental Exitation from and elevator to a contralatersl coordinating neuron
+pExcIntRosEleCoord[mmSide][mmSeg],pExcIntCaudEleCoord[mmSide][mmSeg],                                // Intersegmental Exitation from and elevator to a rostral or caudal ipsilateral coordinating neuron
+pInhIntFSwing[mmSide], pInhIntFStance[mmSide], pInhIntBSwing[mmSide],pInhIntBStance[mmSide],         // Presynaptic Inhibition from a command to bifunctional interneuron synapse
+pInhIntLLSwing[mmSide],pInhIntLLStance[mmSide],pInhIntLTSwing[mmSide],pInhIntLTStance[mmSide],       // Presynaptic Inhibition from a command to bifunctional interneuron synapse
+pExcIntRosEleCoord[mmSide][mmSeg],  pExcIntRCaudEleCoord[mmSide][mmSeg],                             //Excitatory Synapses from Elevator to adjacent coordinating neurons
+pExcSegEleContraLat[mmSide][mmSeg],                                                                    //Excitatory Synapses from Elevator to contralateral coordinating neurons
+pInhSegEleDep[mmSide][mmSeg],pInhSegEleStance[mmSide][mmSeg],pInhSegStanceSwing[mmSide][mmSeg],      //Inhibitory Synapses from Elevator to Depressor and Swing Interneurons
+pExcSegStanceProt[mmSide][mmSeg],pExcSegStanceRet[mmSide][mmSeg],pExcSegStanceExt[mmSide][mmSeg],pExcSegStanceFlx[mmSide][mmSeg],   //Excitatory Synapses from Stance to Bifuncitonal Motor Neurons
+pExcSegSwingProt[mmSide][mmSeg], pExcSegSwingRet[mmSide][mmSeg], pExcSegSwingExt[mmSide][mmSeg],pExcSegSwingFlx[mmSide][mmSeg],     //Excitatory Synapses from Swing to Biunctional Neurons
+pExcHLYL[mmSide][mmSeg],pExcHLRL[mmSide][mmSeg],pExcYLFR[mmSide][mmSeg],pExcRLFR[mmSide][mmSeg],
+pExcHRYR[mmSide][mmSeg],pExcHRRR[mmSide][mmSeg],pExcYRFL[mmSide][mmSeg],pExcRRFL[mmSide][mmSeg],
+pExcRSLeft[mmSide][mmSeg],pExcRSRight[mmSide][mmSeg],
+pExcSegPcnDep[mmSide][mmSeg],                                                                        //Synapse between pitch Command and segmental depressors
+pExcC[mmSide][mmSeg], pInhF[mmSide][mmSeg], pExcB[mmSide][mmSeg],
+pExcModComEle[mmSide][mmSeg],pExcModComDep[mmSide][mmSeg], pExcModComSwing[mmSide][mmSeg], pExcModComStance[mmSide][mmSeg],//Excitatory synapses from modulatory Commands to CPG Neurons
+pExcForRet[mmSide][mmSeg], pExcBackProt[mmSide][mmSeg], pExcLLFlx[mmSide][mmSeg], pExcLTExt[mmSide][mmSeg],     //Excitatory Synapses from Directional Commands to propulsive synergies
+pExcForModCom[mmSide], pExcBackModCom[mmSide], pExcLLModCom[mmSide], pExcLTModCom[mmSide];
 
 void xmain(); //this is the main C function that will always run when program starts
 
