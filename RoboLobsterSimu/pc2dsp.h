@@ -433,12 +433,18 @@ cellProtractor[mmSide][mmSeg],
 cellRetractor[mmSide][mmSeg],
 cellExtensor[mmSide][mmSeg],
 cellFlexor[mmSide][mmSeg],
+
+
 //Bursting Neurons
 cellSwing[mmSide][mmSeg],
 cellElevator[mmSide][mmSeg],
+
+
 //Endogenous Pacemaker
 cellDepressor[mmSide][mmSeg],
 cellStance[mmSide][mmSeg],
+
+
 //Synapses
 pCustom,  //custom synapse
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
