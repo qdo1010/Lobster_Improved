@@ -304,6 +304,8 @@ void SetSpikeNeuroParam(spikingNeuron *ptr, int speed) {
     //We can use this later, for now we need set values for alpha and sigma
     //ptr->alpha = alphaSpeedInit(speed);
     //ptr->sigma = sigmaSpeedInit(speed);
+    ptr->alpha = 4;
+    ptr->sigma = 0;
     ptr->mu = 0.0005;
     ptr->spike = 0;
     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
