@@ -36,7 +36,7 @@
 #include "pc2dsp.h"
 #include <unistd.h>
 #include <time.h>
-int speed;
+int speed = 1;
 //#include "lb.h"
 //void showMap(int index);
 //#define putChar(chr)   uartPutch(0,chr)
@@ -265,7 +265,7 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 int alphaSpeedInit(int speed) {
     switch (speed){
         case 1:
-            return 25;
+            return 4;
             break;
         case 2:
             return 20;
@@ -284,7 +284,7 @@ int alphaSpeedInit(int speed) {
 int sigmaSpeedInit(int speed) {
     switch (speed){
         case 1:
-            return 25;
+            return 0;
             break;
         case 2:
             return 20;
