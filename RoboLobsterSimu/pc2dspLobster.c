@@ -300,9 +300,37 @@ int sigmaSpeedInit(int speed) {
     }
 }
 
+void SetSpikeNeuroParam(spikingNeuron *ptr, int speed) {
+    //We can use this later, for now we need set values for alpha and sigma
+    //ptr->alpha = alphaSpeedInit(speed);
+    //ptr->sigma = sigmaSpeedInit(speed);
+    ptr->mu = 0.0005;
+    ptr->spike = 0;
+    //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
+    //sets the baseline state of the neuron (quiet or spiking/ bursting)
+    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
+    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
+    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
+    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
+    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
+    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
+    ptr->Idc = 0;
+    
+    //--set initial state of neuron at the fixed point---
+    
+    ptr->xpp = -1 + ptr->sigma;
+    ptr->xp = -1 + ptr->sigma;
+    ptr->x = -1 + ptr->sigma;
+    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
+}  // end of Elevator structure
+
+
 void SetBurstNeuroParam(burstingNeuron *ptr, int speed) {
-    ptr->alpha = alphaSpeedInit(speed);
-    ptr->sigma = sigmaSpeedInit(speed);
+    //We can use this later, for now we need set values for alpha and sigma
+    //ptr->alpha = alphaSpeedInit(speed);
+    //ptr->sigma = sigmaSpeedInit(speed);
+    ptr->alpha = 5.45;
+    ptr->sigma = -0.26;
     ptr->mu = 0.0005;
     ptr->spike = 0;
     //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
@@ -322,32 +350,13 @@ void SetBurstNeuroParam(burstingNeuron *ptr, int speed) {
     ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
 }  // end of Elevator structure
 
-void SetSpikeNeuroParam(spikingNeuron *ptr, int speed) {
-    ptr->alpha = alphaSpeedInit(speed);
-    ptr->sigma = sigmaSpeedInit(speed);
-    ptr->mu = 0.0005;
-    ptr->spike = 0;
-    //sets the type of neuron spiking (alpha < 4) or bursting (alphs > 4)
-    //sets the baseline state of the neuron (quiet or spiking/ bursting)
-    ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
-    ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
-    ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
-    ptr->betaE = 0.133;    //sets the transient responce to excitatory synaptic current
-    ptr->betaI = 0.533;    //sets the transient responce to inhibitory synaptic current
-    ptr->betaDc = 0.266;   //sets the transient responce to injected dc pulse
-    ptr->Idc = 0;
-    
-    //--set initial state of neuron at the fixed point---
-    
-    ptr->xpp = -1 + ptr->sigma;
-    ptr->xp = -1 + ptr->sigma;
-    ptr->x = -1 + ptr->sigma;
-    ptr->y = ptr->x - ptr->alpha/(1-ptr->x);
-}  // end of Elevator structure
 
 void SetPacemakerNeuroParam(pacemakerNeuron *ptr, int speed) {
-    ptr->alpha = alphaSpeedInit(speed);
-    ptr->sigma = sigmaSpeedInit(speed);
+    //We can use this later, for now we need set values for alpha and sigma
+    //ptr->alpha = alphaSpeedInit(speed);
+    //ptr->sigma = sigmaSpeedInit(speed);
+    ptr->alpha = 4.85;
+    ptr->sigma = 2.3 - sqrt(ptr->alpha) + 0.0171159;
     ptr->mu = .0001;
     //   ptr->alpha = 4.;
     //2.3
@@ -384,15 +393,16 @@ void SetPacemakerNeuroParam(pacemakerNeuron *ptr, int speed) {
 }
 
 void SetPacemakerNeuroParam2(pacemakerNeuron *ptr, int speed) {
-    ptr->alpha = alphaSpeedInit(speed);
-    ptr->sigma = sigmaSpeedInit(speed);
+    //We can use this later, for now we need set values for alpha and sigma
+    //ptr->alpha = alphaSpeedInit(speed);
+    //ptr->sigma = sigmaSpeedInit(speed);
+    ptr->alpha = 4.85;
+    ptr->sigma = 2.3 - sqrt(ptr->alpha) + 0.0171159;
     ptr->mu = .0001;
     //   ptr->alpha = 4.;
-    ptr->alpha = 4.35; //this change frequency while keeping duration
     //2.3
     
-    ptr->sigma = 2.25-sqrt(ptr->alpha)+0.0171159;  //changing the constant change the duration
-    
+    ptr->sigma = 2.3-sqrt(ptr->alpha)+0.0171159;
     //ptr->sigmaE = 1.0;     //sets the sensitivity to excitatory synaptic current
     //ptr->sigmaI = 1.0;     //sets the sensitivity to inhibitory synaptic current
     //ptr->sigmaDc = 1.0;    //sets the sensitivity to injected dc current
