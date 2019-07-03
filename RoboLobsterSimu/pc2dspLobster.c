@@ -3185,6 +3185,87 @@ void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double 
     // setNeuronParams(neuronName, s, a);
 }
 
+//One simple function to call to save all parameters to both the file that will be read
+//By the program and the file that we can read to see what the parameters for each neuron and synapse are.
+//Work in progress
+void saveParams() {
+    int iSide;
+    int iSeg;
+    FILE *paramFile;
+    paramFile = fopen ("params.txt", "w");
+    if (paramFile == NULL)
+    {
+        fprintf(stderr, "\nError opend file\n");
+        exit (1);
+    }
+    for(iSide = 0;iSide < mmSide; ++iSide) {
+        fwrite (&pInhIntFSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntFStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntBSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntBStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntLLSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntLLStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntLTSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&pInhIntLTStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellF[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellB[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellLL[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellLT[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellModCom[iSide], sizeof(paramStruct), 1, paramFile);
+        fwrite (&cellH[iSide], sizeof(paramStruct), 1, paramFile);
+        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+        {
+            fwrite (&pExcSegPcnDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcIntRosEleCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcIntRCaudEleCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegEleContraLat[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pInhSegEleDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pInhSegEleStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pInhSegStanceSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegStanceProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegStanceRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegStanceExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegStanceFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegSwingProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegSwingRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegSwingExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegSwingFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcForRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcBackProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcLLFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcLTExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcForModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcBackModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcLLModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcLTModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcModComEle[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcModComDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcModComSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcModComStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&pExcSegPcnDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellElevator[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellDepressor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellProtractor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellRetractor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellExtensor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellFlexor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fwrite (&cellCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+        }
+    }
+  
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for (iSeg =0; iSeg < pitchStates; ++iSeg){
+            fwrite (&cellPcn[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+        }
+    }
+    fclose (paramFile);
+}
+
+
+
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)
 {
