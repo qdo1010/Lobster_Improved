@@ -527,6 +527,13 @@ void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double
 //function that Objective C can call to write to file
 void saveParamsToFile(int flagWriteToFile);
 
+void SaveAllParams(void);
+
+void CreateParamFile (void);
+
+void LoadAllParams (void);
+
+
 
 //int whatTypeofCell(char* neuronName);
 long elapsed;

@@ -1050,6 +1050,23 @@ void xmain()
         globalgStrength = malloc(sizeof(double));
         globalGamma = malloc(sizeof(double));
         globalXrp = malloc(sizeof(double));
+    
+    //This will check if this is the first time the code is runnins and no parameter file exists and if
+    //so it will create a file with the parameters made based off the set values in the initialize functions.
+    //If a parameter file exists it will instead load that file and set all neaurons and synapses based off the
+    //values in the file.
+    
+    /*
+     
+    if( access( "params.txt", F_OK ) != -1 ) {
+        LoadAllParams ();
+    } else {
+        CreateParamFile ();
+    }
+
+    */
+    
+    
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -3185,10 +3202,10 @@ void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double 
     // setNeuronParams(neuronName, s, a);
 }
 
-//One simple function to call to save all parameters to both the file that will be read
+//One simple function to save all parameters to both the file that will be read
 //By the program and the file that we can read to see what the parameters for each neuron and synapse are.
 //Work in progress
-void saveParams() {
+void SaveAllParams() {
     int iSide;
     int iSeg;
     FILE *paramFile;
@@ -3264,6 +3281,242 @@ void saveParams() {
     fclose (paramFile);
 }
 
+
+//Function to create the parameter file the very first time the program runs
+void CreateParamFile () {
+    int iSide, iSeg;
+    double R;
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+        {
+            // pacemakerNeuronInit( &cellElevator[iSide][iSeg] );
+            // pacemakerNeuronInit( &cellSwing[iSide][iSeg] );
+            //make it bursting for now :(
+            burstingNeuronInit( &cellElevator[iSide][iSeg] , speed);
+            burstingNeuronInit( &cellSwing[iSide][iSeg] , speed);
+            
+            
+            pacemakerNeuronInit2(  &cellDepressor[iSide][iSeg] , speed);
+            pacemakerNeuronInit(  &cellStance[iSide][iSeg] , speed);
+            
+            spikingNeuronInit(   &cellProtractor[iSide][iSeg] , speed);
+            spikingNeuronInit(   &cellRetractor[iSide][iSeg] , speed);
+            spikingNeuronInit(   &cellExtensor[iSide][iSeg] , speed);
+            spikingNeuronInit(   &cellFlexor[iSide][iSeg] , speed);
+            spikingNeuronInit(   &cellCoord[iSide][iSeg] , speed);
+            
+            // °°°°°°°°°°°°We need to integrate these initializations with the speed control
+            // Inject some noise into the CPG neurons
+            R = 2.0 * rand()/(RAND_MAX + 1.0) - 1.0;
+            cellElevator[iSide][iSeg].burstingNeuron.sigma = cellElevator[iSide][iSeg].burstingNeuron.sigma + R * 0.001 + 0.0005;
+            
+            R = 2.0 * rand()/(RAND_MAX + 1.0) - 1.0;
+            cellDepressor[iSide][iSeg].pacemakerNeuron.sigma = cellDepressor[iSide][iSeg].pacemakerNeuron.sigma + R * 0.0001 - 0.0195;
+            
+            R = 2.0 * rand()/(RAND_MAX + 1.0) - 1.0;
+            cellSwing[iSide][iSeg].burstingNeuron.sigma = cellSwing[iSide][iSeg].burstingNeuron.sigma + R * 0.0001 - 0.0195;
+            
+            R = 2.0 * rand()/(RAND_MAX + 1.0) - 1.0;
+            cellStance[iSide][iSeg].pacemakerNeuron.sigma = cellStance[iSide][iSeg].pacemakerNeuron.sigma + R * 0.0001 - 0.0195;
+            
+            //------- Set the parameters for synapses {xRp and gamma} ---------
+            
+            //Synapse between pitch Command and segmental depressors
+            pExcSegPcnDep[iSide][iSeg] = pSlowExc;
+            
+            // Excitory synapses between elevator synergies and ajacent coordinating neurons
+            pExcIntRosEleCoord[iSide][iSeg] = pSlowExc;
+            pExcIntRCaudEleCoord[iSide][iSeg] = pSlowExc;
+            pExcSegEleContraLat[iSide][iSeg] = pSlowExc;
+            
+            //Internal inhibitory synapses of neuronal oscillator
+            pInhSegEleDep[iSide][iSeg] = pSlowInh;
+            pInhSegEleStance[iSide][iSeg] = pSlowInh;
+            pInhSegStanceSwing[iSide][iSeg] = pSlowInh;
+            
+            // Excitatory Synapses from Swing/Stance interneruons to bifunctional synapses
+            pExcSegStanceProt[iSide][iSeg] = pSlowExc;
+            pExcSegStanceRet[iSide][iSeg] = pSlowExc;
+            pExcSegStanceExt[iSide][iSeg] = pSlowExc;
+            pExcSegStanceFlx[iSide][iSeg] = pSlowExc;
+            pExcSegSwingProt[iSide][iSeg] = pSlowExc;
+            pExcSegSwingRet[iSide][iSeg] = pSlowExc;
+            pExcSegSwingExt[iSide][iSeg] = pSlowExc;
+            pExcSegSwingFlx[iSide][iSeg] = pSlowExc;
+            
+            // Recruiting excitatory synapses from Walking commands to propulsive synergies
+            pExcForRet[iSide][iSeg] = pSlowExc;
+            pExcBackProt[iSide][iSeg] = pSlowExc;
+            pExcLLFlx[iSide][iSeg] = pSlowExc;
+            pExcLTExt[iSide][iSeg] = pSlowExc;
+            
+            // Recruiting excitatory synapses from Walking commands to ModCom
+            pExcForModCom[iSide] = pSlowExc;
+            pExcBackModCom[iSide] = pSlowExc;
+            pExcLLModCom[iSide] = pSlowExc;
+            pExcLTModCom[iSide] = pSlowExc;
+            
+            //Excitatory synapses from modulatory Commands to CPG Neurons
+            pExcModComEle[iSide][iSeg] = pSlowExc;
+            pExcModComDep[iSide][iSeg] = pSlowExc;
+            pExcModComSwing[iSide][iSeg] = pSlowExc;
+            pExcModComStance[iSide][iSeg] = pSlowExc;
+            
+            switch(pitch) {   //This sets up the gradients of synaptic strength between the pitch command neuron Pcn and the depresssor motor neurons for each segment
+                    
+                case pLow:
+                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.50;
+                    break;
+                    
+                case pLevel:
+                    switch (roll){
+                        case leftDown:{
+                            switch (iSide){
+                                case left:
+                                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.50;
+                                case right:
+                                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.75;
+                            }
+                        case rightDown:
+                            switch (iSide){
+                                case left:
+                                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.75;
+                                case right:
+                                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.50;
+                            }
+                        case rLevel:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.75;
+                        }
+                    }
+                    
+                case pHigh:
+                    pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.95;
+                    break;
+                    
+                case rosDn:{
+                    switch (iSeg){
+                        case 0:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.25;
+                        case 1:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.50;
+                        case 2:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.75;
+                        case 3:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.95;
+                            
+                    }
+                    
+                case rosUp  :
+                    switch (iSeg){
+                        case 0:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.95;
+                        case 1:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.75;
+                        case 2:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.50;
+                        case 3:
+                            pExcSegPcnDep[iSide][iSeg].synapse.gStrength = 0.25;
+                    }
+                    break;
+                }
+            }
+        } //END for (iSeg = 0;iSeg < mmSeg; ++iSeg)
+        spikingNeuronInit(&cellPcn[iSide][pLevel], speed);
+        spikingNeuronInit(&cellModCom[iSide], speed);
+        spikingNeuronInit(&cellH[iSide], speed);
+        spikingNeuronInit(&cellF[iSide], speed);
+        spikingNeuronInit(&cellB[iSide], speed);
+        spikingNeuronInit(&cellLL[iSide], speed);
+        spikingNeuronInit(&cellLT[iSide], speed);
+        pInhIntFSwing[iSide] = pSlowInh;
+        pInhIntFStance[iSide] = pSlowInh;
+        pInhIntBSwing[iSide] = pSlowInh;
+        pInhIntBStance[iSide] = pSlowInh;
+        pInhIntLLSwing[iSide] = pSlowInh;
+        pInhIntLLStance[iSide] = pSlowInh;
+        pInhIntLTSwing[iSide] = pSlowInh;
+        pInhIntLTStance[iSide] = pSlowInh;
+        
+    }
+    
+    SaveAllParams();
+}
+
+
+//One function to load all parameters from a file if the file already exists and
+
+void LoadAllParams () {
+    int iSide;
+    int iSeg;
+    FILE *paramFile;
+    paramFile = fopen ("params.txt", "r");
+    for(iSide = 0;iSide < mmSide; ++iSide) {
+        fread (&pInhIntFSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntFStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntBSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntBStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntLLSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntLLStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntLTSwing[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&pInhIntLTStance[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellF[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellB[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellLL[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellLT[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellModCom[iSide], sizeof(paramStruct), 1, paramFile);
+        fread (&cellH[iSide], sizeof(paramStruct), 1, paramFile);
+        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+        {
+            fread (&pExcSegPcnDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcIntRosEleCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcIntRCaudEleCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegEleContraLat[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pInhSegEleDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pInhSegEleStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pInhSegStanceSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegStanceProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegStanceRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegStanceExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegStanceFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegSwingProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegSwingRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegSwingExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegSwingFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcForRet[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcBackProt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcLLFlx[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcLTExt[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcForModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcBackModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcLLModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcLTModCom[iSide], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcModComEle[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcModComDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcModComSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcModComStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&pExcSegPcnDep[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellElevator[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellDepressor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellSwing[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellStance[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellProtractor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellRetractor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellExtensor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellFlexor[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+            fread (&cellCoord[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+        }
+    }
+    
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for (iSeg =0; iSeg < pitchStates; ++iSeg){
+            fread (&cellPcn[iSide][iSeg], sizeof(paramStruct), 1, paramFile);
+        }
+    }
+    fclose (paramFile);
+    
+}
 
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
