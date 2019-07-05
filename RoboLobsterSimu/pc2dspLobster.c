@@ -1056,17 +1056,19 @@ void xmain()
     //If a parameter file exists it will instead load that file and set all neaurons and synapses based off the
     //values in the file.
     
-    /*
+    
      
     if( access( "params.txt", F_OK ) != -1 ) {
         LoadAllParams ();
+        printf("Parameter file found, loading now...\n");
     } else {
         CreateParamFile ();
+        printf("No parameter file found, creating one now...\n");
     }
 
-    */
     
     
+    /*
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -1100,7 +1102,7 @@ void xmain()
             
         }
         
-        
+        */
    // }
     //----Initialize comInitArray[ ]  = 0 --------
     
@@ -1153,7 +1155,7 @@ void xmain()
     pFastInh.xRp = -2.2; pFastInh.gamma = 0.9;      pFastInh.gStrength = 1;
     pSlowExc.xRp = 2.2; pSlowExc.gamma = 0.995;    pSlowExc.gStrength = 1;
     pSlowInh.xRp = -2.2; pSlowInh.gamma = 0.995;    pSlowInh.gStrength = 1;
-    */
+    
     //Synapses based on new Strucure
     pFastExc.synapse.xRp = -0.0; pFastExc.synapse.gamma = 0.9;      pFastExc.synapse.gStrength = 0.1;
     pFastInh.synapse.xRp = -2.2; pFastInh.synapse.gamma = 0.9;      pFastInh.synapse.gStrength = 1;
@@ -1294,7 +1296,7 @@ void xmain()
             }
         }
     }
-    */
+    
             //Based on new structure
             switch(pitch) {   //This sets up the gradients of synaptic strength between the pitch command neuron Pcn and the depresssor motor neurons for each segment
                     
@@ -1356,7 +1358,7 @@ void xmain()
             }
         }
     }
-    
+    */
     
     //----- Set synaptic currents to ZERO (initialization) -------
     /*
@@ -1422,6 +1424,7 @@ void xmain()
         //printf("%d",beginEditingParams);
         
     //fwrite for the new structure
+        /*
     if (writeToFile == 1){
         FILE *paramFile;
         paramFile = fopen ("params.txt", "w");
@@ -1476,7 +1479,7 @@ void xmain()
         // close file
         fclose (paramFile);
     }
-        /*
+        
         if (writeToFile == 1){
             printf("saving files\n");
             paramFile = fopen("params.txt", "w");
@@ -1722,10 +1725,15 @@ void xmain()
             
             //set multiple neuron here!
             setMultipleNeuronParams(globalCellName, globalSide, globalSeg, globalAlpha, globalSigma, globalSigmaE, globalSigmaI, globalBetaE, globalBetaI, globalIdc, globalSize);
+            //After all neurons are edited the new parameters are saved to the parameter file to be loaded next time.
+            SaveAllParams();
         }
         
         if (beginEditingSynapse == 1){
             setMultipleSynapseParams(globalSynapseName, globalSide, globalSeg, globalXrp, globalGamma, globalgStrength, globalSize);
+            
+             //After all synapses are edited the new parameters are saved to the parameter file to be loaded next time.
+            SaveAllParams();
         }
         
         globalLoopIndex = (int)mainLoopIndex; //this is to return for Obj C to see
@@ -2450,6 +2458,8 @@ void xmain()
         
         // printf("%3f \n", mainLoopIndex);
         
+        /*
+        
         if (writeToFile){
             FILE *NparamFile;
             NparamFile = fopen("neuronParams.txt", "w");
@@ -2487,7 +2497,7 @@ void xmain()
             fclose(NparamFile);
         }
         
-        /*
+        
         if (writeToFile){
             NparamFile = fopen("neuronParams.txt", "w");
             for(iSide = 0;iSide < mmSide; ++iSide)
@@ -3286,6 +3296,11 @@ void SaveAllParams() {
 void CreateParamFile () {
     int iSide, iSeg;
     double R;
+    pFastExc.synapse.xRp = -0.0; pFastExc.synapse.gamma = 0.9;      pFastExc.synapse.gStrength = 0.1;
+    pFastInh.synapse.xRp = -2.2; pFastInh.synapse.gamma = 0.9;      pFastInh.synapse.gStrength = 1;
+    pSlowExc.synapse.xRp = 2.2; pSlowExc.synapse.gamma = 0.995;    pSlowExc.synapse.gStrength = 1;
+    pSlowInh.synapse.xRp = -2.2; pSlowInh.synapse.gamma = 0.995;    pSlowInh.synapse.gStrength = 1;
+    
     for(iSide = 0;iSide < mmSide; ++iSide)
     {
         for(iSeg = 0;iSeg < mmSeg; ++iSeg)
