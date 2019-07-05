@@ -525,6 +525,7 @@ void editSynapseParam(int *synapseName, int* side, int* seg,double*xrp, double* 
 //function that Objective C can call to edit neurons
 void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
 //function that Objective C can call to write to file
+
 void saveParamsToFile(int flagWriteToFile);
 
 void SaveAllParams(void);
@@ -533,7 +534,7 @@ void CreateParamFile (void);
 
 void LoadAllParams (void);
 
-
+void CreateReadableParams (void);
 
 //int whatTypeofCell(char* neuronName);
 long elapsed;

@@ -1058,7 +1058,7 @@ void xmain()
     
     
      
-    if( access( "params.txt", F_OK ) != -1 ) {
+    if( access( "params.dat", F_OK ) != -1 ) {
         LoadAllParams ();
         printf("Parameter file found, loading now...\n");
     } else {
@@ -1427,7 +1427,7 @@ void xmain()
         /*
     if (writeToFile == 1){
         FILE *paramFile;
-        paramFile = fopen ("params.txt", "w");
+        paramFile = fopen ("params.dat", "w");
         if (paramFile == NULL)
         {
             fprintf(stderr, "\nError opend file\n");
@@ -1482,7 +1482,7 @@ void xmain()
         
         if (writeToFile == 1){
             printf("saving files\n");
-            paramFile = fopen("params.txt", "w");
+            paramFile = fopen("params.dat", "w");
             for(iSide = 0;iSide < mmSide; ++iSide)  //This loop initializes the parameters for synapses
             {
                 // Presynaptic Inhibition from a command to bifunctional interneuron synapse
@@ -2462,7 +2462,7 @@ void xmain()
         
         if (writeToFile){
             FILE *NparamFile;
-            NparamFile = fopen("neuronParams.txt", "w");
+            NparamFile = fopen("neuronparams.dat", "w");
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
                 for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -2499,7 +2499,7 @@ void xmain()
         
         
         if (writeToFile){
-            NparamFile = fopen("neuronParams.txt", "w");
+            NparamFile = fopen("neuronparams.dat", "w");
             for(iSide = 0;iSide < mmSide; ++iSide)
             {
                 for(iSeg = 0;iSeg < mmSeg; ++iSeg)
@@ -2755,6 +2755,7 @@ void xmain()
     //  LOG_printf(&trace,"\n");
     //return 0;
 }
+
 
 void saveParamsToFile(int flagWriteToFile){
     writeToFile = flagWriteToFile;
@@ -3219,10 +3220,10 @@ void SaveAllParams() {
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.txt", "w");
+    paramFile = fopen ("params.dat", "w");
     if (paramFile == NULL)
     {
-        fprintf(stderr, "\nError opend file\n");
+        fprintf(stderr, "\nError opening file\n");
         exit (1);
     }
     for(iSide = 0;iSide < mmSide; ++iSide) {
@@ -3289,6 +3290,7 @@ void SaveAllParams() {
         }
     }
     fclose (paramFile);
+    CreateReadableParams ();
 }
 
 
@@ -3465,7 +3467,7 @@ void LoadAllParams () {
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.txt", "r");
+    paramFile = fopen ("params.dat", "r");
     for(iSide = 0;iSide < mmSide; ++iSide) {
         fread (&pInhIntFSwing[iSide], sizeof(paramStruct), 1, paramFile);
         fread (&pInhIntFStance[iSide], sizeof(paramStruct), 1, paramFile);
@@ -3530,8 +3532,435 @@ void LoadAllParams () {
         }
     }
     fclose (paramFile);
-    
+    CreateReadableParams ();
 }
+
+void CreateReadableParams () {
+    int iSide, iSeg;
+    FILE *paramTextFile;
+    paramTextFile = fopen ("params.txt", "w");
+    if (paramTextFile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+        {
+            
+            fprintf(paramTextFile,"cellElevator\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellElevator[iSide][iSeg].burstingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellElevator[iSide][iSeg].burstingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellElevator[iSide][iSeg].burstingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellElevator[iSide][iSeg].burstingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellElevator[iSide][iSeg].burstingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellElevator[iSide][iSeg].burstingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellElevator[iSide][iSeg].burstingNeuron.Idc);
+            
+            
+            fprintf(paramTextFile,"cellDepressor\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellDepressor[iSide][iSeg].pacemakerNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellDepressor[iSide][iSeg].pacemakerNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellSwing\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellSwing[iSide][iSeg].burstingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellSwing[iSide][iSeg].burstingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellSwing[iSide][iSeg].burstingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellSwing[iSide][iSeg].burstingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellSwing[iSide][iSeg].burstingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellSwing[iSide][iSeg].burstingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellSwing[iSide][iSeg].burstingNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellStance\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellStance[iSide][iSeg].pacemakerNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellStance[iSide][iSeg].pacemakerNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellProtractor\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellProtractor[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellProtractor[iSide][iSeg].spikingNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellRetractor\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellRetractor[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellRetractor[iSide][iSeg].spikingNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellExtensor\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellExtensor[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellExtensor[iSide][iSeg].spikingNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellFlexor\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellFlexor[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellFlexor[iSide][iSeg].spikingNeuron.Idc);
+            
+            fprintf(paramTextFile,"cellCoord\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellCoord[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellCoord[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellCoord[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellCoord[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellCoord[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellCoord[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellCoord[iSide][iSeg].spikingNeuron.Idc);
+            
+        }
+    }
+    
+    ///do the command neuron here
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        fprintf(paramTextFile,"cellF\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellF[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellF[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellF[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellF[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellF[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellF[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellF[iSide].spikingNeuron.Idc);
+        
+        fprintf(paramTextFile,"cellB\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellB[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellB[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellB[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellB[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellB[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellB[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellB[iSide].spikingNeuron.Idc);
+        
+        fprintf(paramTextFile,"cellLL\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellLL[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellLL[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellLL[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellLL[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellLL[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellLL[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellLL[iSide].spikingNeuron.Idc);
+        
+        fprintf(paramTextFile,"cellLT\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellLT[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellLT[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellLT[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellLT[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellLT[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellLT[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellLT[iSide].spikingNeuron.Idc);
+        
+        fprintf(paramTextFile,"cellModCom\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellModCom[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellModCom[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellModCom[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellModCom[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellModCom[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellModCom[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellModCom[iSide].spikingNeuron.Idc);
+        
+        fprintf(paramTextFile,"cellH\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Alpha: %f\n", cellH[iSide].spikingNeuron.alpha);
+        fprintf(paramTextFile,"Sigma: %f\n", cellH[iSide].spikingNeuron.sigma);
+        fprintf(paramTextFile,"SigmaI: %f\n", cellH[iSide].spikingNeuron.sigmaI);
+        fprintf(paramTextFile,"SigmaE: %f\n", cellH[iSide].spikingNeuron.sigmaE);
+        fprintf(paramTextFile,"BetaE: %f\n", cellH[iSide].spikingNeuron.betaE);
+        fprintf(paramTextFile,"BetaI: %f\n", cellH[iSide].spikingNeuron.betaI);
+        fprintf(paramTextFile,"Idc: %f\n\n", cellH[iSide].spikingNeuron.Idc);
+    }
+    
+    //do the Pcn neuron here, cause it's a special case
+    for(iSide = 0;iSide < mmSide; ++iSide)
+    {
+        for (iSeg =0; iSeg < pitchStates; ++iSeg){
+            
+            fprintf(paramTextFile,"cellPcn\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Alpha: %f\n", cellPcn[iSide][iSeg].spikingNeuron.alpha);
+            fprintf(paramTextFile,"Sigma: %f\n", cellPcn[iSide][iSeg].spikingNeuron.sigma);
+            fprintf(paramTextFile,"SigmaI: %f\n", cellPcn[iSide][iSeg].spikingNeuron.sigmaI);
+            fprintf(paramTextFile,"SigmaE: %f\n", cellPcn[iSide][iSeg].spikingNeuron.sigmaE);
+            fprintf(paramTextFile,"BetaE: %f\n", cellPcn[iSide][iSeg].spikingNeuron.betaE);
+            fprintf(paramTextFile,"BetaI: %f\n", cellPcn[iSide][iSeg].spikingNeuron.betaI);
+            fprintf(paramTextFile,"Idc: %f\n\n", cellPcn[iSide][iSeg].spikingNeuron.Idc);
+        }
+    }
+    for(iSide = 0;iSide < mmSide; ++iSide)  //This loop initializes the parameters for synapses
+    {
+        // Presynaptic Inhibition from a command to bifunctional interneuron synapse
+        fprintf(paramTextFile,"pInhIntFSwing\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntFSwing[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntFSwing[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntFSwing[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntFStance\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntFStance[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntFStance[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntFStance[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntBSwing\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntBSwing[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntBSwing[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntBSwing[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntBStance\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntBStance[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntBStance[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntBStance[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntLLSwing\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntLLSwing[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntLLSwing[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntLLSwing[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntLLStance\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntLLStance[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntLLStance[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntLLStance[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntLTSwing\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntLTSwing[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntLTSwing[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntLTSwing[iSide].synapse.gStrength);
+        
+        fprintf(paramTextFile,"pInhIntLTStance\n");
+        fprintf(paramTextFile,"Side: %d\n",iSide);
+        fprintf(paramTextFile,"Gamma: %f\n",pInhIntLTStance[iSide].synapse.gamma);
+        fprintf(paramTextFile,"xRp: %f\n",pInhIntLTStance[iSide].synapse.xRp);
+        fprintf(paramTextFile,"gStrength: %f\n\n",pInhIntLTStance[iSide].synapse.gStrength);
+        //Now loop down the segments
+        for(iSeg = 0;iSeg < mmSeg; ++iSeg)
+        {
+            //------- Set the parameters for synapses {xRp and gamma} ---------
+            
+            //Synapse between pitch Command and segmental depressors
+            fprintf(paramTextFile,"pExcSegPcnDep\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegPcnDep[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegPcnDep[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegPcnDep[iSide][iSeg].synapse.gStrength);
+            
+            // Excitory synapses between elevator synergies and ajacent coordinating neurons
+            fprintf(paramTextFile,"pExcIntRosEleCoord\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcIntRosEleCoord[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcIntRosEleCoord[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcIntRosEleCoord[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcIntRCaudEleCoord\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcIntRCaudEleCoord[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcIntRCaudEleCoord[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcIntRCaudEleCoord[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegEleContraLat\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegEleContraLat[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegEleContraLat[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegEleContraLat[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pInhSegEleDep\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pInhSegEleDep[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pInhSegEleDep[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pInhSegEleDep[iSide][iSeg].synapse.gStrength);
+            //Internal inhibitory synapses of neuronal oscillator
+            
+            fprintf(paramTextFile,"pInhSegEleStance\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pInhSegEleStance[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pInhSegEleStance[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pInhSegEleStance[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pInhSegStanceSwing\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pInhSegStanceSwing[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pInhSegStanceSwing[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pInhSegStanceSwing[iSide][iSeg].synapse.gStrength);
+            
+            // Excitatory Synapses from Swing/Stance interneruons to bifunctional synapses
+            fprintf(paramTextFile,"pExcSegStanceProt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegStanceProt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegStanceProt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegStanceProt[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegStanceRet\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegStanceRet[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegStanceRet[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegStanceRet[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegStanceExt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegStanceExt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegStanceExt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegStanceExt[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegStanceFlx\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegStanceFlx[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegStanceFlx[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegStanceFlx[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegSwingProt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegSwingProt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegSwingProt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegSwingProt[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegSwingRet\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegSwingRet[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegSwingRet[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegSwingRet[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegSwingExt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegSwingExt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegSwingExt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegSwingExt[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegSwingFlx\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegSwingFlx[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegSwingFlx[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegSwingFlx[iSide][iSeg].synapse.gStrength);
+            
+            // Recruiting excitatory synapses from Walking commands to propulsive synergies
+            fprintf(paramTextFile,"pExcForRet\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcForRet[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcForRet[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcForRet[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcBackProt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcBackProt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcBackProt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcBackProt[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcLLFlx\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcLLFlx[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcLLFlx[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcLLFlx[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcLTExt\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcLTExt[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcLTExt[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcLTExt[iSide][iSeg].synapse.gStrength);
+            
+            
+            // Recruiting excitatory synapses from Walking commands to ModCom
+            fprintf(paramTextFile,"pExcForModCom\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcForModCom[iSide].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcForModCom[iSide].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcForModCom[iSide].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcBackModCom\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcBackModCom[iSide].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcBackModCom[iSide].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcBackModCom[iSide].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcLLModCom\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcLLModCom[iSide].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcLLModCom[iSide].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcLLModCom[iSide].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcLTModCom\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcLTModCom[iSide].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcLTModCom[iSide].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcLTModCom[iSide].synapse.gStrength);
+            
+            //Excitatory synapses from modulatory Commands to CPG Neurons
+            fprintf(paramTextFile,"pExcModComEle\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcModComEle[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcModComEle[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcModComEle[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcModComDep\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcModComDep[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcModComDep[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcModComDep[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcModComSwing\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcModComSwing[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcModComSwing[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcModComSwing[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcModComStance\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcModComStance[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcModComStance[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcModComStance[iSide][iSeg].synapse.gStrength);
+            
+            fprintf(paramTextFile,"pExcSegPcnDep\n");
+            fprintf(paramTextFile,"Side: %d\nSeg: %d\n",iSide,iSeg);
+            fprintf(paramTextFile,"Gamma: %f\n",pExcSegPcnDep[iSide][iSeg].synapse.gamma);
+            fprintf(paramTextFile,"xRp: %f\n",pExcSegPcnDep[iSide][iSeg].synapse.xRp);
+            fprintf(paramTextFile,"gStrength: %f\n\n",pExcSegPcnDep[iSide][iSeg].synapse.gStrength);
+        }
+    }
+    
+    fclose(paramTextFile);
+}
+
+
+
 
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
