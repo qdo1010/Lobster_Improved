@@ -30,6 +30,12 @@
 @synthesize traceGainTextBox;
 @synthesize traceOffsetTextBox;
 
+@synthesize traceIDchosen;
+@synthesize AllTracesInfo;
+@synthesize IndividualTraceInfo;
+@synthesize displayTraceID;
+
+/*Moved To Parameter Setter
 @synthesize cellNameTextBox;
 @synthesize alphaTextBox;
 @synthesize sigmaTextBox;
@@ -38,11 +44,6 @@
 @synthesize betaETextBox;
 @synthesize betaITextBox;
 @synthesize IdcTextBox;
-
-@synthesize traceIDchosen;
-@synthesize AllTracesInfo;
-@synthesize IndividualTraceInfo;
-@synthesize displayTraceID;
 
 
 @synthesize alpha;
@@ -55,6 +56,10 @@
 @synthesize cellID;
 @synthesize side;
 @synthesize seg;
+ */
+@synthesize side;
+@synthesize seg;
+
 
 @synthesize settingUpParams; //load param value into array
 @synthesize setParamsButton;
@@ -95,6 +100,7 @@
     
     //init the array that will contains input param values
     //cell ID tell C code what type of cell it is
+    /* Moved to Parameter Setter
     cellID = malloc(numCell*sizeof(int));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
@@ -106,7 +112,10 @@
     betaE = malloc(numCell*sizeof(double));
     betaI = malloc(numCell*sizeof(double));
     Idc = malloc(numCell*sizeof(double));
+     */
     
+    side =malloc(numCell*sizeof(int));
+    seg = malloc(numCell*sizeof(int));
     settingUpParams = 1; //first time setting up, will be off forever
     
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){

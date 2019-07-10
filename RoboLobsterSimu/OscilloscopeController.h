@@ -36,9 +36,13 @@
 
 @property (readwrite)  int firstTimeChangeParams;       //is this first change
 
+@property (readwrite) int *cellID;
+@property (readwrite) int *side;
+@property (readwrite) int *seg;
 
 extern long elapsed;
 @property (readwrite) double index;
+/* Moved to Parameter Setter
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
 @property (readwrite) int *cellID;
@@ -51,6 +55,7 @@ extern long elapsed;
 @property (readwrite)  double *betaE;
 @property (readwrite)  double *betaI;
 @property (readwrite)  double *Idc;
+ */
 
 
 @property (readwrite) int settingUpParams;
@@ -83,6 +88,7 @@ extern long elapsed;
 
 @property (weak) IBOutlet NSSlider *traceGainSlider;
 
+/* Moved to Parameter Setter
 @property (weak) IBOutlet NSTextField *cellNameTextBox; //cell Name
 @property (weak) IBOutlet NSTextField *alphaTextBox;
 @property (weak) IBOutlet NSTextField *sigmaTextBox;
@@ -91,6 +97,7 @@ extern long elapsed;
 @property (weak) IBOutlet NSTextField *betaETextBox;
 @property (weak) IBOutlet NSTextField *betaITextBox;
 @property (weak) IBOutlet NSTextField *IdcTextBox;
+ */
 
 @property (weak) IBOutlet NSPopUpButton *displayTraceID;
 
