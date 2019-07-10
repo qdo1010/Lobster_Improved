@@ -262,48 +262,9 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 
 //New functions and required support functions.
 
-int alphaSpeedInit(int speed) {
-    switch (speed){
-        case 1:
-            return 4;
-            break;
-        case 2:
-            return 20;
-            break;
-        case 3:
-            return 15;
-            break;
-        case 4:
-            return 0;
-            break;
-        default:
-            return 0;
-    }
-}
 
-int sigmaSpeedInit(int speed) {
-    switch (speed){
-        case 1:
-            return 0;
-            break;
-        case 2:
-            return 20;
-            break;
-        case 3:
-            return 15;
-            break;
-        case 4:
-            return 0;
-            break;
-        default:
-            return 0;
-    }
-}
 
 void SetSpikeNeuroParam(spikingNeuron *ptr, int speed) {
-    //We can use this later, for now we need set values for alpha and sigma
-    //ptr->alpha = alphaSpeedInit(speed);
-    //ptr->sigma = sigmaSpeedInit(speed);
     ptr->alpha = 4;
     ptr->sigma = 0;
     ptr->mu = 0.0005;
@@ -328,9 +289,6 @@ void SetSpikeNeuroParam(spikingNeuron *ptr, int speed) {
 
 
 void SetBurstNeuroParam(burstingNeuron *ptr, int speed) {
-    //We can use this later, for now we need set values for alpha and sigma
-    //ptr->alpha = alphaSpeedInit(speed);
-    //ptr->sigma = sigmaSpeedInit(speed);
     ptr->alpha = 5.45;
     ptr->sigma = -0.26;
     ptr->mu = 0.0005;
@@ -354,9 +312,6 @@ void SetBurstNeuroParam(burstingNeuron *ptr, int speed) {
 
 
 void SetPacemakerNeuroParam(pacemakerNeuron *ptr, int speed) {
-    //We can use this later, for now we need set values for alpha and sigma
-    //ptr->alpha = alphaSpeedInit(speed);
-    //ptr->sigma = sigmaSpeedInit(speed);
     ptr->alpha = 4.85;
     ptr->sigma = 2.3 - sqrt(ptr->alpha) + 0.0171159;
     ptr->mu = .0001;
@@ -395,9 +350,6 @@ void SetPacemakerNeuroParam(pacemakerNeuron *ptr, int speed) {
 }
 
 void SetPacemakerNeuroParam2(pacemakerNeuron *ptr, int speed) {
-    //We can use this later, for now we need set values for alpha and sigma
-    //ptr->alpha = alphaSpeedInit(speed);
-    //ptr->sigma = sigmaSpeedInit(speed);
     ptr->alpha = 4.85;
     ptr->sigma = 2.3 - sqrt(ptr->alpha) + 0.0171159;
     ptr->mu = .0001;
@@ -3959,7 +3911,63 @@ void CreateReadableParams () {
     fclose(paramTextFile);
 }
 
-
+void TempSpeedSolution(int speed){
+    switch(speed){
+        case 1:
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 4; j++){
+                    cellElevator[i][j].burstingNeuron.alpha = 4;
+                    cellElevator[i][j].burstingNeuron.sigma = -.5;
+                    cellSwing[i][j].burstingNeuron.alpha = 4;
+                    cellSwing[i][j].burstingNeuron.sigma = -.5;
+                    cellDepressor[i][j].burstingNeuron.alpha = 4;
+                    cellDepressor[i][j].burstingNeuron.sigma = -.5;
+                    cellStance[i][j].burstingNeuron.alpha = 4;
+                    cellStance[i][j].burstingNeuron.sigma = -.5;
+                }
+            break;
+        case 2:
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 4; j++){
+                    cellElevator[i][j].burstingNeuron.alpha = 7;
+                    cellElevator[i][j].burstingNeuron.sigma = -.5;
+                    cellSwing[i][j].burstingNeuron.alpha = 7;
+                    cellSwing[i][j].burstingNeuron.sigma = -.5;
+                    cellDepressor[i][j].burstingNeuron.alpha = 7;
+                    cellDepressor[i][j].burstingNeuron.sigma = -.5;
+                    cellStance[i][j].burstingNeuron.alpha = 7;
+                    cellStance[i][j].burstingNeuron.sigma = -.5;
+                }
+            break;
+        case 3:
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 4; j++){
+                    cellElevator[i][j].burstingNeuron.alpha = 6.2;
+                    cellElevator[i][j].burstingNeuron.sigma = -.2;
+                    cellSwing[i][j].burstingNeuron.alpha = 6.2;
+                    cellSwing[i][j].burstingNeuron.sigma = -.2;
+                    cellDepressor[i][j].burstingNeuron.alpha = 6.2;
+                    cellDepressor[i][j].burstingNeuron.sigma = -.2;
+                    cellStance[i][j].burstingNeuron.alpha = 6.2;
+                    cellStance[i][j].burstingNeuron.sigma = -.2;
+                }
+            break;
+        case 4:
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 4; j++){
+                    cellElevator[i][j].burstingNeuron.alpha = 5.8;
+                    cellElevator[i][j].burstingNeuron.sigma = .1;
+                    cellSwing[i][j].burstingNeuron.alpha = 5.8;
+                    cellSwing[i][j].burstingNeuron.sigma = .1;
+                    cellDepressor[i][j].burstingNeuron.alpha = 5.8;
+                    cellDepressor[i][j].burstingNeuron.sigma = .1;
+                    cellStance[i][j].burstingNeuron.alpha = 5.8;
+                    cellStance[i][j].burstingNeuron.sigma = .1;
+                }
+            break;
+    }
+    SaveAllParams();
+}
 
 
 

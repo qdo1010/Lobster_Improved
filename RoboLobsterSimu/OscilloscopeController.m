@@ -437,8 +437,26 @@
     [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
 }
 
+//Temp solution to speed problem.
 
+- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
+    NSLog(@"%@", [parameters valueForKey:@"lFor"]);
+    int speed = -1;
+    if ([[parameters valueForKey:@"spd"] intValue] == 1){
+        TempSpeedSolution(4);
+    }
+    else if([[parameters valueForKey:@"spd"] intValue] == 2){
+        TempSpeedSolution(3);
+    }
+    else if([[parameters valueForKey:@"spd"] intValue] == 3){
+        TempSpeedSolution(2);
+    }
+    else {
+        TempSpeedSolution(1);
+    }
+}
 
+/*
 //This function will check for the Parameters being chosen, and tell the software what txt file to pick, to load in the necessary params
 //It's not working
 - (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
@@ -471,7 +489,7 @@
         [self loadParamsWithName:self : filePath :speed];
         filePath = [[NSBundle mainBundle] pathForResource:@"Stance"
                                                               ofType:@""];
-         [self loadParamsWithName:self : filePath :speed];*/
+         [self loadParamsWithName:self : filePath :speed];
     }
     if ([[parameters valueForKey:@"lFor"]  boolValue] == true){
         //turn on left forward
@@ -576,10 +594,10 @@
     //UNCOMMENT TO RUN
     editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
 
-    /*  if (firstTimeChangeParams == 1){
+     if (firstTimeChangeParams == 1){
      [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
      [self setFirstTimeChangeParams:0]; //now it's set
-     }else{*/
+     }else{
     setParamsButton.enabled = false;
   //  int currentIndex = 0;
   //  while (currentIndex != 99999){ //should be tmax, not hardcoded btw
@@ -595,7 +613,7 @@
     setParamsButton.enabled = true;
 
 }
-
+*/
 //this function will call Drawer to draw the trace
 //as well as set up the correct label for the cell being selected
 - (void)beginSendingStuffToBeDrawn {

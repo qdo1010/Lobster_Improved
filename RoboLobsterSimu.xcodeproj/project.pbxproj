@@ -187,9 +187,9 @@
 				970E76681EF17CED002EE43D /* AppDelegate.m */,
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
 				482A753D2203FAB40073F120 /* SynapseController.h */,
+				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				482A753E2203FAB40073F120 /* SynapseController.m */,
 				482A753F2203FAB40073F120 /* SynapseController.xib */,
-				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
 				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
 				485DFC1320AB5700003B8E45 /* Window.xib */,
@@ -339,6 +339,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
