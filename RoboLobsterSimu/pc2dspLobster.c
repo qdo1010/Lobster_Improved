@@ -3911,65 +3911,6 @@ void CreateReadableParams () {
     fclose(paramTextFile);
 }
 
-void TempSpeedSolution(int speed){
-    switch(speed){
-        case 1:
-            for (int i = 0; i < 2; i++)
-                for (int j = 0; j < 4; j++){
-                    cellElevator[i][j].burstingNeuron.alpha = 4;
-                    cellElevator[i][j].burstingNeuron.sigma = -.5;
-                    cellSwing[i][j].burstingNeuron.alpha = 4;
-                    cellSwing[i][j].burstingNeuron.sigma = -.5;
-                    cellDepressor[i][j].burstingNeuron.alpha = 4;
-                    cellDepressor[i][j].burstingNeuron.sigma = -.5;
-                    cellStance[i][j].burstingNeuron.alpha = 4;
-                    cellStance[i][j].burstingNeuron.sigma = -.5;
-                }
-            break;
-        case 2:
-            for (int i = 0; i < 2; i++)
-                for (int j = 0; j < 4; j++){
-                    cellElevator[i][j].burstingNeuron.alpha = 7;
-                    cellElevator[i][j].burstingNeuron.sigma = -.5;
-                    cellSwing[i][j].burstingNeuron.alpha = 7;
-                    cellSwing[i][j].burstingNeuron.sigma = -.5;
-                    cellDepressor[i][j].burstingNeuron.alpha = 7;
-                    cellDepressor[i][j].burstingNeuron.sigma = -.5;
-                    cellStance[i][j].burstingNeuron.alpha = 7;
-                    cellStance[i][j].burstingNeuron.sigma = -.5;
-                }
-            break;
-        case 3:
-            for (int i = 0; i < 2; i++)
-                for (int j = 0; j < 4; j++){
-                    cellElevator[i][j].burstingNeuron.alpha = 6.2;
-                    cellElevator[i][j].burstingNeuron.sigma = -.2;
-                    cellSwing[i][j].burstingNeuron.alpha = 6.2;
-                    cellSwing[i][j].burstingNeuron.sigma = -.2;
-                    cellDepressor[i][j].burstingNeuron.alpha = 6.2;
-                    cellDepressor[i][j].burstingNeuron.sigma = -.2;
-                    cellStance[i][j].burstingNeuron.alpha = 6.2;
-                    cellStance[i][j].burstingNeuron.sigma = -.2;
-                }
-            break;
-        case 4:
-            for (int i = 0; i < 2; i++)
-                for (int j = 0; j < 4; j++){
-                    cellElevator[i][j].burstingNeuron.alpha = 5.8;
-                    cellElevator[i][j].burstingNeuron.sigma = .1;
-                    cellSwing[i][j].burstingNeuron.alpha = 5.8;
-                    cellSwing[i][j].burstingNeuron.sigma = .1;
-                    cellDepressor[i][j].burstingNeuron.alpha = 5.8;
-                    cellDepressor[i][j].burstingNeuron.sigma = .1;
-                    cellStance[i][j].burstingNeuron.alpha = 5.8;
-                    cellStance[i][j].burstingNeuron.sigma = .1;
-                }
-            break;
-    }
-    SaveAllParams();
-}
-
-
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)
