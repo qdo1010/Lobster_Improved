@@ -17,7 +17,7 @@
 /**
  Description: Trace Selector Class, needed to create the trace selector window, so users can create trace
  */
-@interface TraceSelector : NSWindowController{
+@interface TraceSelector : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
 }
 
 - (IBAction)addCellTrace:(id)sender;  //send commnd to include the chosen traces
