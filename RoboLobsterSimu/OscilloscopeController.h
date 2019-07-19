@@ -1,3 +1,5 @@
+#ifndef   OSCILLOSCOPECONTROLLER_H
+#define   OSCILLOSCOPECONTROLLER_H
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -140,3 +142,4 @@ void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double
 
 @end
 
+#endif

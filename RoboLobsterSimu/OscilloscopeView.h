@@ -1,4 +1,5 @@
-//
+#ifndef   OSCILLOSCOPEVIEW_H
+#define   OSCILLOSCOPEVIEW_H
 //  OScopeView.h
 //  Roboplasm
 //
@@ -26,3 +27,4 @@
 
 
 @end
+#endif

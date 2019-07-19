@@ -1,4 +1,5 @@
-//
+#ifndef   APPDELEGATE_H
+#define   APPDELEGATE_H
 //  AppDelegate.h
 //  RoboLobsterSimu
 //
@@ -103,3 +104,4 @@ void xmain(void);
 
 @end
 
+#endif

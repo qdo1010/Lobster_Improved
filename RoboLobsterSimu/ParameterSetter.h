@@ -1,4 +1,5 @@
-//
+#ifndef   PARAMETERSETTER_H
+#define   PARAMETERSETTER_H
 //  ParameterSetter.h
 //  RoboLobsterSimu
 //
@@ -83,3 +84,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+#endif
