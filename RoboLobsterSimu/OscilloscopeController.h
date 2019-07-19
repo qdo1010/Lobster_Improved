@@ -34,19 +34,19 @@
 @property (readwrite)  double sweepMaximum;       //Duration of file in Sec
 
 
-@property (readwrite)  int firstTimeChangeParams;       //is this first change
 
-@property (readwrite) int *cellID;
+/*
+ @property (readwrite) int *cellID;
 @property (readwrite) int *side;
 @property (readwrite) int *seg;
+*/
 
 extern long elapsed;
 @property (readwrite) double index;
-/* Moved to Parameter Setter
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
-@property (readwrite) int *cellID;
-@property (readwrite) int *side;
+/* Moved to Parameter Setter
+@@property (readwrite) int *side;
 @property (readwrite) int *seg;
 @property (readwrite)  double *alpha;
 @property (readwrite)  double *sigma;
@@ -58,7 +58,7 @@ extern long elapsed;
  */
 
 
-@property (readwrite) int settingUpParams;
+//@property (readwrite) int settingUpParams;
 
 
 @property (readwrite,retain) NSMutableArray* AllTracesInfo;    //This is an array of traces
@@ -68,7 +68,6 @@ extern long elapsed;
 //@property (readwrite, getter=isDoInitAndScale)      BOOL doInitAndScale;
 @property (readwrite)          BOOL assetInited;
 @property (nonatomic, readwrite)          BOOL doInitAndScale;
-@property (weak) IBOutlet NSButton *setParamsButton;
 
 @property (weak) IBOutlet NSSlider *sweepDurationSlider;
 

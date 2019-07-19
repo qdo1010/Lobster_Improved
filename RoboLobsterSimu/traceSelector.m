@@ -7,6 +7,8 @@
 //
 
 #include "traceSelector.h"
+#include "AppDelegate.h"
+#include "ParameterSetter.m"
 #import <Foundation/Foundation.h>
 
 @implementation TraceSelector
@@ -304,11 +306,10 @@ Initialization
         [traceArraytobeSent addObject:[traceArray objectAtIndex:i]];
         
     }
-    [appDelegate openCommandWindow:appDelegate];
      [appDelegate drawOscilloscope:appDelegate];
     
    //This is to test if you can open the synapse controller
-    [appDelegate openSynapseControllerWindow:appDelegate];
+    [appDelegate openParameterSetterWindow:appDelegate];
 
 }
 @end

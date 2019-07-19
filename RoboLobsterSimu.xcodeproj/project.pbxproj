@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4824A9442257BD30009D508F /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824A9432257BD30009D508F /* test.xib */; };
-		482A75402203FAB40073F120 /* SynapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 482A753E2203FAB40073F120 /* SynapseController.m */; };
-		482A75412203FAB40073F120 /* SynapseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482A753F2203FAB40073F120 /* SynapseController.xib */; };
 		4831107120AF1DE60095D277 /* TrailingRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831106F20AF1DE50095D277 /* TrailingRight */; };
 		4831107220AF1DE60095D277 /* TrailingLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107020AF1DE50095D277 /* TrailingLeft */; };
 		4831107520AF1DEE0095D277 /* BackwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107320AF1DEE0095D277 /* BackwardLeft */; };
@@ -25,9 +23,7 @@
 		4895E8DA20DD52FA0037AB7C /* Elevator in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D820DD52FA0037AB7C /* Elevator */; };
 		48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F034F020A4914B005368D4 /* CommandStateViewController.m */; };
 		6461284D22D6629F00DD13EB /* ParameterSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461284B22D6629F00DD13EB /* ParameterSetter.m */; };
-		6461284F22D6691100DD13EB /* analysisWindowController copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461284E22D6691100DD13EB /* analysisWindowController copy.m */; };
 		64A3733622D3C25F00C7FAAF /* parameterSetter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3733522D3C25E00C7FAAF /* parameterSetter.xib */; };
-		64A3733822D3C5EA00C7FAAF /* AnalysisWindowController copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3733722D3C5EA00C7FAAF /* AnalysisWindowController copy.xib */; };
 		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
 		970E76691EF17CED002EE43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E76681EF17CED002EE43D /* AppDelegate.m */; };
 		970E766C1EF17CED002EE43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 970E766B1EF17CED002EE43D /* main.m */; };
@@ -73,9 +69,6 @@
 
 /* Begin PBXFileReference section */
 		4824A9432257BD30009D508F /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
-		482A753D2203FAB40073F120 /* SynapseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynapseController.h; sourceTree = "<group>"; };
-		482A753E2203FAB40073F120 /* SynapseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynapseController.m; sourceTree = "<group>"; };
-		482A753F2203FAB40073F120 /* SynapseController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynapseController.xib; sourceTree = "<group>"; };
 		4831106F20AF1DE50095D277 /* TrailingRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingRight; sourceTree = "<group>"; };
 		4831107020AF1DE50095D277 /* TrailingLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingLeft; sourceTree = "<group>"; };
 		4831107320AF1DEE0095D277 /* BackwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackwardLeft; sourceTree = "<group>"; };
@@ -93,9 +86,7 @@
 		48F034F120A4914B005368D4 /* CommandStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandStateViewController.h; sourceTree = "<group>"; };
 		6461284B22D6629F00DD13EB /* ParameterSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterSetter.m; sourceTree = "<group>"; };
 		6461284C22D6629F00DD13EB /* ParameterSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterSetter.h; sourceTree = "<group>"; };
-		6461284E22D6691100DD13EB /* analysisWindowController copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "analysisWindowController copy.m"; sourceTree = "<group>"; };
 		64A3733522D3C25E00C7FAAF /* parameterSetter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = parameterSetter.xib; sourceTree = "<group>"; };
-		64A3733722D3C5EA00C7FAAF /* AnalysisWindowController copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AnalysisWindowController copy.xib"; sourceTree = "<group>"; };
 		97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-02-23 at 3.31.24 PM.png"; sourceTree = "<group>"; };
 		970E76641EF17CED002EE43D /* RoboLobsterSimu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboLobsterSimu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		970E76671EF17CED002EE43D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,20 +188,15 @@
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
 				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
-				482A753D2203FAB40073F120 /* SynapseController.h */,
-				482A753E2203FAB40073F120 /* SynapseController.m */,
 				64A3733522D3C25E00C7FAAF /* parameterSetter.xib */,
 				6461284C22D6629F00DD13EB /* ParameterSetter.h */,
 				6461284B22D6629F00DD13EB /* ParameterSetter.m */,
-				482A753F2203FAB40073F120 /* SynapseController.xib */,
 				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
 				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
 				485DFC1320AB5700003B8E45 /* Window.xib */,
 				970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */,
 				970E76AC1EF1A140002EE43D /* analysisWindowController.h */,
 				970E76AF1EF1A158002EE43D /* analysisWindowController.m */,
-				64A3733722D3C5EA00C7FAAF /* AnalysisWindowController copy.xib */,
-				6461284E22D6691100DD13EB /* analysisWindowController copy.m */,
 				970E76AB1EF1A140002EE43D /* OscilloscopeView.h */,
 				970E76AD1EF1A140002EE43D /* OscilloscopeView.m */,
 				970E76731EF17CED002EE43D /* Assets.xcassets */,
@@ -380,11 +366,9 @@
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
 				4824A9442257BD30009D508F /* test.xib in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
-				482A75412203FAB40073F120 /* SynapseController.xib in Resources */,
 				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
-				64A3733822D3C5EA00C7FAAF /* AnalysisWindowController copy.xib in Resources */,
 				4895E8D520DD52F20037AB7C /* Stance in Resources */,
 				4831107920AF1DF80095D277 /* ForwardRight in Resources */,
 				97ECE09C204FAAB300BA2E00 /* Walking in Resources */,
@@ -429,7 +413,6 @@
 			files = (
 				6461284D22D6629F00DD13EB /* ParameterSetter.m in Sources */,
 				48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */,
-				482A75402203FAB40073F120 /* SynapseController.m in Sources */,
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
@@ -438,7 +421,6 @@
 				970E76691EF17CED002EE43D /* AppDelegate.m in Sources */,
 				970E769C1EF17D15002EE43D /* pc2dspLobster.c in Sources */,
 				970E76721EF17CED002EE43D /* RoboLobsterSimu.xcdatamodeld in Sources */,
-				6461284F22D6691100DD13EB /* analysisWindowController copy.m in Sources */,
 				970E76AE1EF1A140002EE43D /* OscilloscopeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
