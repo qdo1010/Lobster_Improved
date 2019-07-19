@@ -438,7 +438,7 @@ Idc = malloc(numCell*sizeof(double));
      }
      //init text box too
      
-     /* [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+     [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
      [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
      [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
      [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
