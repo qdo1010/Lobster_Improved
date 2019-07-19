@@ -91,7 +91,7 @@
     
     [displayTraceID removeAllItems];
     
-    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    unsigned long int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
     
     //init the array that will contains input param values
     //cell ID tell C code what type of cell it is

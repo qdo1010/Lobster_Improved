@@ -109,7 +109,7 @@ extern long elapsed;
 
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed;
 
-- (void)beginSendingStuffToBeDraw;
+- (void)beginSendingStuffToBeDrawn;
 
 //GraphicsViewParameters
 - (void) updateSweepValue;
@@ -128,7 +128,9 @@ extern long elapsed;
 
 - (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
-
+//Prototypes to remove warnings
+void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
+//function that Objective C can call to write to file
 
 @end
 
