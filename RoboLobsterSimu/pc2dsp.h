@@ -508,7 +508,7 @@ int writeToFile = 0;
 
 
 //function to set synapse params
-void setSynapseParams(unsigned long int id, unsigned long int side, int seg, double xrp, double gamma, double gStrength);
+void setSynapseParams(unsigned long int id, int side, int seg, double xrp, double gamma, double gStrength);
 
 //function to set multiple synapse params
 void setMultipleSynapseParams(unsigned long int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size);

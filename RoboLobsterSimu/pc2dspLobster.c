@@ -2726,7 +2726,7 @@ void indicateNumberOfIteration(int i){
 
 
 //set Synapse Params
-void setSynapseParams(unsigned long int id, unsigned long int side, int seg, double xrp, double gamma, double gStrength){
+void setSynapseParams(unsigned long int id, int side, int seg, double xrp, double gamma, double gStrength){
     //this will set the single synapse
     pCustom.synapse.gamma = gamma;
     pCustom.synapse.xRp = xrp;

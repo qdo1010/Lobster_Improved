@@ -367,6 +367,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     NSLog(@"synapse edit");
     int size = 1; //default
     int numCell = 1; //default
+    
     synapseID = malloc(numCell*sizeof(int));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
