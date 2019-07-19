@@ -85,14 +85,8 @@ extern long elapsed;
 #pragma mark --- Load Nib files
 #pragma mark --- Show Windows
 - (IBAction) showAnalysisWindow: (id) sender;
-    //- (IBAction) showCommandWindow: (id) sender;
-    //- (IBAction) openCommandWindow:         (id) sender; //this is to open the command window
-
-
-//- (IBAction) showSynapseControllerWindow: (id) sender;
-//- (IBAction) openSynapseControllerWindow:         (id) sender; //this is to open the synapseController window
 - (IBAction) showParameterSetterWindow: (id) sender;
-- (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the synapseController window
+- (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the Parameter Setter window
 
 #pragma mark --- Signal Processing Menu Selections
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
