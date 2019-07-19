@@ -169,7 +169,7 @@ int minorLineWidth	 = 1;
     [[NSBezierPath bezierPathWithRoundedRect:[self bounds] xRadius:0.0 yRadius:0.0] fill];
     // [NSGraphicsContext restoreGraphicsState];
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
-    int numTr = [[propertyValue ipbuf] count] ;
+    unsigned long int numTr = [[propertyValue ipbuf] count] ;
     
     // [self drawXGrid:dirtyRect];
     // [self drawYGrid:dirtyRect];

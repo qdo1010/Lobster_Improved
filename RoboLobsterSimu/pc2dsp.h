@@ -467,7 +467,7 @@ pExcModComEle[mmSide][mmSeg],pExcModComDep[mmSide][mmSeg], pExcModComSwing[mmSid
 pExcForRet[mmSide][mmSeg], pExcBackProt[mmSide][mmSeg], pExcLLFlx[mmSide][mmSeg], pExcLTExt[mmSide][mmSeg],     //Excitatory Synapses from Directional Commands to propulsive synergies
 pExcForModCom[mmSide], pExcBackModCom[mmSide], pExcLLModCom[mmSide], pExcLTModCom[mmSide];
 
-void xmain(); //this is the main C function that will always run when program starts
+void xmain(void); //this is the main C function that will always run when program starts
 
 int IterNumChosen = 100000;
 
@@ -485,13 +485,13 @@ double *globalBetaE;
 double *globalBetaI;
 double *globalIdc;
 
-int globalSize;
+unsigned long int globalSize;
 int *globalCellName;
 int *globalSide;
 int *globalSeg;
 
 //synapse
-int *globalSynapseName;
+unsigned long int *globalSynapseName;
 
 double *globalXrp;
 double *globalGamma;
@@ -508,22 +508,22 @@ int writeToFile = 0;
 
 
 //function to set synapse params
-void setSynapseParams(int id, int side, int seg, double xrp, double gamma, double gStrength);
+void setSynapseParams(unsigned long int id, int side, int seg, double xrp, double gamma, double gStrength);
 
 //function to set multiple synapse params
-void setMultipleSynapseParams(int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, int size);
+void setMultipleSynapseParams(unsigned long int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size);
 
 //function to set neuron params
 void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 
 //function to set multiple neuron params
-void setMultipleNeuronParams(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, int size); // change params
+void setMultipleNeuronParams(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, unsigned long int size); // change params
 
 
 //function that Objective C can call to edit synapse
-void editSynapseParam(int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
+void editSynapseParam(unsigned long int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
 //function that Objective C can call to edit neurons
-void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, int size);
+void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
 //function that Objective C can call to write to file
 
 void saveParamsToFile(int flagWriteToFile);

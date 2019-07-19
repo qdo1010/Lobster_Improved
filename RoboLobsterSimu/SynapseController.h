@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
 
-@property (readwrite) int *synapseID;
+@property (readwrite) unsigned long int *synapseID;
 @property (readwrite) int *side;
 @property (readwrite) int *seg;
 @property (readwrite)  double *xrp;
@@ -49,6 +49,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)saveSynapseParams:(id)sender;
 
 - (int)synapseMapping: (int)synapseID;
+
+//Adding prototypes to remove warnings
+void editSynapseParam(unsigned long int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
+void saveParamsToFile(int flagWriteToFile);
+
+
 @end
 
 NS_ASSUME_NONNULL_END

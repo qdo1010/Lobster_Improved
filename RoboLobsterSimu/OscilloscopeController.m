@@ -94,7 +94,7 @@
     
     [displayTraceID removeAllItems];
     
-    int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    unsigned long int numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
     
     //init the array that will contains input param values
     //cell ID tell C code what type of cell it is
@@ -429,8 +429,6 @@
     [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
 }
 
-
-
 //This function will check for the Parameters being chosen, and tell the software what txt file to pick, to load in the necessary params
 //It's not working
 - (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters{
@@ -568,7 +566,7 @@
     //UNCOMMENT TO RUN
 //    editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
 
-    /*  if (firstTimeChangeParams == 1){
+    /* if (firstTimeChangeParams == 1){
      [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
      [self setFirstTimeChangeParams:0]; //now it's set
      }else{*/

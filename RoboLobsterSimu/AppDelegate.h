@@ -96,5 +96,10 @@ extern long elapsed;
 
 #pragma mark --- User Interface
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
+
+//Prototypes to edn warnings
+void indicateNumberOfIteration(int i);
+void xmain(void);
+
 @end
 
