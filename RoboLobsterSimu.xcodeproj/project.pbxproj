@@ -16,7 +16,6 @@
 		4831107A20AF1DF80095D277 /* ForwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107820AF1DF70095D277 /* ForwardLeft */; };
 		4831107D20AF1E020095D277 /* LateralLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107B20AF1E020095D277 /* LateralLeft */; };
 		4831107E20AF1E020095D277 /* LateralRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831107C20AF1E020095D277 /* LateralRight */; };
-		485DFC1420AB5700003B8E45 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 485DFC1320AB5700003B8E45 /* Window.xib */; };
 		4895E8D520DD52F20037AB7C /* Stance in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D320DD52F20037AB7C /* Stance */; };
 		4895E8D620DD52F20037AB7C /* Swing in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D420DD52F20037AB7C /* Swing */; };
 		4895E8D920DD52FA0037AB7C /* Depressor in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D720DD52FA0037AB7C /* Depressor */; };
@@ -77,7 +76,6 @@
 		4831107820AF1DF70095D277 /* ForwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForwardLeft; sourceTree = "<group>"; };
 		4831107B20AF1E020095D277 /* LateralLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralLeft; sourceTree = "<group>"; };
 		4831107C20AF1E020095D277 /* LateralRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LateralRight; sourceTree = "<group>"; };
-		485DFC1320AB5700003B8E45 /* Window.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 		4895E8D320DD52F20037AB7C /* Stance */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stance; sourceTree = "<group>"; };
 		4895E8D420DD52F20037AB7C /* Swing */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swing; sourceTree = "<group>"; };
 		4895E8D720DD52FA0037AB7C /* Depressor */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Depressor; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				6461284B22D6629F00DD13EB /* ParameterSetter.m */,
 				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
 				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
-				485DFC1320AB5700003B8E45 /* Window.xib */,
 				970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */,
 				970E76AC1EF1A140002EE43D /* analysisWindowController.h */,
 				970E76AF1EF1A158002EE43D /* analysisWindowController.m */,
@@ -384,7 +381,6 @@
 				4895E8D920DD52FA0037AB7C /* Depressor in Resources */,
 				97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */,
 				970E76771EF17CED002EE43D /* Main.storyboard in Resources */,
-				485DFC1420AB5700003B8E45 /* Window.xib in Resources */,
 				4895E8D620DD52F20037AB7C /* Swing in Resources */,
 				97D4662D203527C60042B141 /* Fast in Resources */,
 				970E76A51EF1A0A6002EE43D /* MainMenu.xib in Resources */,
