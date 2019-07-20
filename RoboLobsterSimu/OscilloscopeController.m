@@ -8,6 +8,7 @@
 //#import "DSPSources.h"
 //#import "signalProcessing.h"
 #import "OscilloscopeView.h"
+#import "ParameterSetter.h"
 //#import "VideoPlaybackController.h"
 
 @implementation OscilloscopeController
@@ -645,6 +646,31 @@
   //      [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
   //  }
 }
+
+
+//Fill in the functionality of these functions here
+//These empty functions are here to remove the warnings the compailer was sending
+
+- (void) updateSweepValue {
+    
+};
+
+- (void) initScopeSweep {
+    
+};
+
+- (void) scaleScopeSweep {
+    
+};
+
+- (IBAction)setParams:(id)sender {
+    
+};
+
+- (IBAction) checkControlCommand: (NSMutableDictionary*)params {
+    
+};
+
 
 //This function will switch the color of the viewer
 - (IBAction)changeView:(id)sender {

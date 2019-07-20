@@ -88,6 +88,7 @@ void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsig
 void SaveAllParams(void);
 void saveParamsToFile(int flagWriteToFile);
 
+
 @end
 
 NS_ASSUME_NONNULL_END
