@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,11 +53,11 @@
             </connections>
         </drawer>
         <customView autoresizesSubviews="NO" id="2063" userLabel="scopeFormat">
-            <rect key="frame" x="0.0" y="0.0" width="322" height="705"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="687"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
-                    <rect key="frame" x="42" y="-25" width="275" height="741"/>
+                <box autoresizesSubviews="NO" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
+                    <rect key="frame" x="-3" y="-35" width="275" height="741"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="51s-Sh-6Uy">
                         <rect key="frame" x="3" y="3" width="269" height="735"/>
@@ -294,7 +293,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="tIB-Mz-277">
+                            <button verticalHuggingPriority="750" id="tIB-Mz-277">
                                 <rect key="frame" x="3" y="646" width="82" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Backward" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ZOQ-Ai-z5l">
@@ -302,7 +301,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="E2u-rD-aSa">
+                            <button verticalHuggingPriority="750" id="E2u-rD-aSa">
                                 <rect key="frame" x="3" y="626" width="52" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Lead" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JI9-Pc-e4H">
@@ -310,7 +309,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="ywH-qX-i0p">
+                            <button verticalHuggingPriority="750" id="ywH-qX-i0p">
                                 <rect key="frame" x="112" y="646" width="82" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Backward" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3YR-cM-wdV">
@@ -318,7 +317,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="XL5-iF-bpc">
+                            <button verticalHuggingPriority="750" id="XL5-iF-bpc">
                                 <rect key="frame" x="112" y="626" width="52" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Lead" bezelStyle="regularSquare" imagePosition="left" inset="2" id="hmw-71-K5L">
@@ -326,7 +325,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="p6X-iq-4gN">
+                            <button verticalHuggingPriority="750" id="p6X-iq-4gN">
                                 <rect key="frame" x="112" y="606" width="48" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Trail" bezelStyle="regularSquare" imagePosition="left" inset="2" id="NRv-8N-aPP">
@@ -334,7 +333,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="9HY-g8-S17">
+                            <button verticalHuggingPriority="750" id="9HY-g8-S17">
                                 <rect key="frame" x="112" y="667" width="72" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Forward" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Eo0-X4-4KE">
@@ -342,7 +341,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="tGP-8j-hC5">
+                            <button verticalHuggingPriority="750" id="tGP-8j-hC5">
                                 <rect key="frame" x="3" y="606" width="48" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Trail" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lOG-Sv-Xl1">
@@ -350,7 +349,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="NRV-fb-IDU">
+                            <button verticalHuggingPriority="750" id="NRV-fb-IDU">
                                 <rect key="frame" x="3" y="666" width="72" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Forward" bezelStyle="regularSquare" imagePosition="left" inset="2" id="P5f-m0-q8r">
@@ -358,7 +357,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="7lr-2Q-riJ">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7lr-2Q-riJ">
                                 <rect key="frame" x="3" y="690" width="28" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Left" id="t4P-wp-r7V">
@@ -367,7 +366,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Hy3-pW-bv2">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Hy3-pW-bv2">
                                 <rect key="frame" x="112" y="691" width="36" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Right" id="R0Q-93-1B9">
@@ -376,7 +375,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="661-d3-Xnr">
+                            <popUpButton verticalHuggingPriority="750" id="661-d3-Xnr">
                                 <rect key="frame" x="139" y="511" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="vjL-Tf-ngZ" id="swc-2e-pa8">
@@ -391,7 +390,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="SN5-ez-bue">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SN5-ez-bue">
                                 <rect key="frame" x="94" y="518" width="27" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Roll" id="xvP-ck-98j">
@@ -400,7 +399,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="3TV-3S-WJN">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3TV-3S-WJN">
                                 <rect key="frame" x="92" y="545" width="35" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Pitch" id="pMY-D3-Gcj">
@@ -409,7 +408,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="iKn-l5-tot">
+                            <popUpButton verticalHuggingPriority="750" id="iKn-l5-tot">
                                 <rect key="frame" x="137" y="540" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="AG7-fa-kJC" id="qbM-QP-PRu">
@@ -424,17 +423,17 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Yhl-12-e00">
+                            <popUpButton verticalHuggingPriority="750" id="Yhl-12-e00">
                                 <rect key="frame" x="137" y="567" width="135" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Hard Port" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="t1q-pJ-hpr" id="OlU-Pq-pKr">
+                                <popUpButtonCell key="cell" type="push" title="Hard Port" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="t1q-pJ-hpr" id="OlU-Pq-pKr">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="9yL-w5-sj3">
                                         <items>
-                                            <menuItem title="Hard Port" id="t1q-pJ-hpr"/>
+                                            <menuItem title="Hard Port" state="on" id="t1q-pJ-hpr"/>
                                             <menuItem title="Port" id="xbW-Z9-7kY"/>
-                                            <menuItem title="Proceed" state="on" keyEquivalent="S" id="htV-br-PYF">
+                                            <menuItem title="Proceed" keyEquivalent="S" id="htV-br-PYF">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                             <menuItem title="Starbord" id="ghW-Q8-Ivf"/>
@@ -443,7 +442,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="S5r-jY-o52">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="S5r-jY-o52">
                                 <rect key="frame" x="93" y="574" width="29" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Yaw" id="3ZI-5L-YMg">
@@ -452,7 +451,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button misplaced="YES" id="XUi-Nm-hLI">
+                            <button id="XUi-Nm-hLI">
                                 <rect key="frame" x="10" y="573" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="Stop" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" allowsMixedState="YES" inset="2" id="0rQ-AI-Ffb">
@@ -460,7 +459,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button misplaced="YES" id="kGE-06-mPi">
+                            <button id="kGE-06-mPi">
                                 <rect key="frame" x="10" y="551" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="Slow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="67B-Cg-xtZ">
@@ -468,7 +467,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button misplaced="YES" id="Wrv-pn-lFr">
+                            <button id="Wrv-pn-lFr">
                                 <rect key="frame" x="10" y="529" width="81" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="Medium" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cnu-mA-WkL">
@@ -476,7 +475,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button misplaced="YES" id="bWC-Pz-NbI">
+                            <button id="bWC-Pz-NbI">
                                 <rect key="frame" x="10" y="507" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="radio" title="Fast" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="aEX-aJ-U0e">
@@ -484,7 +483,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="5a7-1Y-Hi6">
+                            <popUpButton verticalHuggingPriority="750" id="5a7-1Y-Hi6">
                                 <rect key="frame" x="8" y="433" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oAg-pn-vQu" id="pzZ-kH-O21">
@@ -499,7 +498,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="aS5-qj-KJ8">
+                            <popUpButton verticalHuggingPriority="750" id="aS5-qj-KJ8">
                                 <rect key="frame" x="8" y="379" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="DTN-sU-U3n" id="kvk-j2-Kbj">
@@ -514,7 +513,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Xxq-ek-JTZ">
+                            <popUpButton verticalHuggingPriority="750" id="Xxq-ek-JTZ">
                                 <rect key="frame" x="122" y="432" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="yZa-ll-jLJ" id="4DL-Zr-VcV">
@@ -529,7 +528,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="EI9-9U-5gP">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EI9-9U-5gP">
                                 <rect key="frame" x="122" y="462" width="43" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Ht" id="Rk3-66-kTt">
@@ -538,7 +537,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="evt-tx-RRI">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="evt-tx-RRI">
                                 <rect key="frame" x="8" y="462" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Ch Pitch" id="mbr-gu-qSV">
@@ -547,7 +546,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="vbA-Vn-Vos">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vbA-Vn-Vos">
                                 <rect key="frame" x="8" y="411" width="55" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Ab Pitch" id="Cgt-4j-BHX">
@@ -556,7 +555,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Nom-c2-rGx">
+                            <popUpButton verticalHuggingPriority="750" id="Nom-c2-rGx">
                                 <rect key="frame" x="124" y="379" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xHG-YU-CxP" id="lvA-tK-fjK">
@@ -571,7 +570,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="P3G-jc-tAF">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="P3G-jc-tAF">
                                 <rect key="frame" x="130" y="407" width="25" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Ant" id="pGc-8i-ZtG">
@@ -584,7 +583,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="151" y="-264.5"/>
+            <point key="canvasLocation" x="115" y="-272.5"/>
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">
             <connections>

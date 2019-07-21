@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4824A9442257BD30009D508F /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4824A9432257BD30009D508F /* test.xib */; };
 		4831107120AF1DE60095D277 /* TrailingRight in Resources */ = {isa = PBXBuildFile; fileRef = 4831106F20AF1DE50095D277 /* TrailingRight */; };
 		4831107220AF1DE60095D277 /* TrailingLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107020AF1DE50095D277 /* TrailingLeft */; };
 		4831107520AF1DEE0095D277 /* BackwardLeft in Resources */ = {isa = PBXBuildFile; fileRef = 4831107320AF1DEE0095D277 /* BackwardLeft */; };
@@ -67,7 +66,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4824A9432257BD30009D508F /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
 		4831106F20AF1DE50095D277 /* TrailingRight */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingRight; sourceTree = "<group>"; };
 		4831107020AF1DE50095D277 /* TrailingLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrailingLeft; sourceTree = "<group>"; };
 		4831107320AF1DEE0095D277 /* BackwardLeft */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BackwardLeft; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
-				4824A9432257BD30009D508F /* test.xib */,
 				97D6A7AD200AC28700BF3C15 /* TODO */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
 				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
@@ -333,10 +330,9 @@
 			};
 			buildConfigurationList = 970E765F1EF17CED002EE43D /* Build configuration list for PBXProject "RoboLobsterSimu" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -362,7 +358,6 @@
 				4831107220AF1DE60095D277 /* TrailingLeft in Resources */,
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
-				4824A9442257BD30009D508F /* test.xib in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
 				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
