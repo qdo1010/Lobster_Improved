@@ -1,3 +1,5 @@
+#ifndef   OSCILLOSCOPECONTROLLER_H
+#define   OSCILLOSCOPECONTROLLER_H
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -9,7 +11,7 @@
 @class OscilloscopeView;
 @class AppDelegate;
 
-@interface OscilloscopeController: NSViewController <CommandStateViewControllerDelegate>
+@interface OscilloscopeController: NSViewController <CommandStateViewControllerDelegate, NSTextFieldDelegate>
 //????????????????????????????????/
 
 //implement the method from CommandStateViewController
@@ -135,8 +137,9 @@ extern long elapsed;
 - (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
 //Prototypes to remove warnings
-void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
+void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
 //function that Objective C can call to write to file
 
 @end
 
+#endif

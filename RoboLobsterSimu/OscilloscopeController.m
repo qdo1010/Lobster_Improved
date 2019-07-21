@@ -8,6 +8,7 @@
 //#import "DSPSources.h"
 //#import "signalProcessing.h"
 #import "OscilloscopeView.h"
+#import "ParameterSetter.h"
 //#import "VideoPlaybackController.h"
 
 @implementation OscilloscopeController
@@ -223,7 +224,7 @@
      settingUpParams = 0;
      }
      //init text box too
-     /* [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+    [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
      [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
      [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
      [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
@@ -645,6 +646,31 @@
   //      [displayTraceID addItemWithTitle:[NSString stringWithFormat:@"%d", i]];
   //  }
 }
+
+
+//Fill in the functionality of these functions here
+//These empty functions are here to remove the warnings the compailer was sending
+
+- (void) updateSweepValue {
+    
+};
+
+- (void) initScopeSweep {
+    
+};
+
+- (void) scaleScopeSweep {
+    
+};
+
+- (IBAction)setParams:(id)sender {
+    
+};
+
+- (IBAction) checkControlCommand: (NSMutableDictionary*)params {
+    
+};
+
 
 //This function will switch the color of the viewer
 - (IBAction)changeView:(id)sender {

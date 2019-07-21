@@ -1,4 +1,5 @@
-//
+#ifndef   PARAMETERSETTER_H
+#define   PARAMETERSETTER_H
 //  ParameterSetter.h
 //  RoboLobsterSimu
 //
@@ -26,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 //what would this dictionary look like?
 //idk?
 
-@interface ParameterSetter : NSWindowController
+@interface ParameterSetter : NSWindowController <NSTextFieldDelegate>
 
 // Moved from Parameter Setter
 @property (readwrite)  int neuronChosen;      //Duration of file in Sec
 @property (weak) IBOutlet NSPopUpButton *neuronID;    //Neuron ID is formerly displayTraceID
 
  @property (readwrite) int *cellID;
- @property (readwrite) int *side;
- @property (readwrite) int *seg;
+ @property (readwrite) unsigned long *side;
+ @property (readwrite) unsigned long *seg;
  @property (readwrite)  double *alpha;
  @property (readwrite)  double *sigma;
  @property (readwrite)  double *sigmaE;
@@ -57,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
 
-@property (readwrite) int *synapseID;
+@property (readwrite) unsigned long *synapseID;
 @property (readwrite)  double *xrp;
 @property (readwrite)  double *gamma;
 @property (readwrite)  double *gStrength;
@@ -80,6 +81,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)saveSynapseParams:(id)sender;
 
 - (int)synapseMapping: (int)synapseID;
+
+//Function prototypes to fix warnings
+void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
+void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
+void SaveAllParams(void);
+void saveParamsToFile(int flagWriteToFile);
+
+
 @end
 
 NS_ASSUME_NONNULL_END
+#endif

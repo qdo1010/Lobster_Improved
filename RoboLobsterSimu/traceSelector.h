@@ -1,11 +1,12 @@
-//
+#ifndef TRACESELECTOR_H
+#define TRACESELECTOR_H
 //  traceSelector.h
 //  RoboLobsterSimu
 //
 //  Created by Joseph Ayers on 6/15/17.
 //  Copyright © 2017 HongQuan Do. All rights reserved.
 //
-//#import "traceSelector.h"
+#import "traceSelector.h"
 #import <Cocoa/Cocoa.h>
 #import "Waveforms.h"
 #import "AppDelegate.h"
@@ -16,7 +17,7 @@
 /**
  Description: Trace Selector Class, needed to create the trace selector window, so users can create trace
  */
-@interface TraceSelector : NSWindowController{
+@interface TraceSelector : NSWindowController <NSTableViewDelegate, NSTableViewDataSource> {
 }
 
 - (IBAction)addCellTrace:(id)sender;  //send commnd to include the chosen traces
@@ -48,3 +49,4 @@
 - (id)init;
 
 @end
+#endif

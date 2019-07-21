@@ -487,8 +487,8 @@ double *globalIdc;
 
 unsigned long int globalSize;
 int *globalCellName;
-int *globalSide;
-int *globalSeg;
+unsigned long *globalSide;
+unsigned long *globalSeg;
 
 //synapse
 unsigned long int *globalSynapseName;
@@ -508,22 +508,22 @@ int writeToFile = 0;
 
 
 //function to set synapse params
-void setSynapseParams(unsigned long int id, int side, int seg, double xrp, double gamma, double gStrength);
+void setSynapseParams(unsigned long int id, unsigned long side, unsigned long seg, double xrp, double gamma, double gStrength);
 
 //function to set multiple synapse params
-void setMultipleSynapseParams(unsigned long int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size);
+void setMultipleSynapseParams(unsigned long int* idArr, unsigned long *sideArr, unsigned long *segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size);
 
 //function to set neuron params
-void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
+void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc); // change params
 
 //function to set multiple neuron params
-void setMultipleNeuronParams(int* idArr,int *sideArr, int*segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, unsigned long int size); // change params
+void setMultipleNeuronParams(int* idArr, unsigned long *sideArr, unsigned long *segArr,  double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr, unsigned long int size); // change params
 
 
 //function that Objective C can call to edit synapse
-void editSynapseParam(unsigned long int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
+void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double *xrp, double *gamma, double *gStrength, int size);
 //function that Objective C can call to edit neurons
-void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
+void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
 //function that Objective C can call to write to file
 
 void saveParamsToFile(int flagWriteToFile);

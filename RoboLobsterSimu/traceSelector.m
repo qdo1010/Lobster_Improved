@@ -8,7 +8,7 @@
 
 #include "traceSelector.h"
 #include "AppDelegate.h"
-#include "ParameterSetter.m"
+#include "ParameterSetter.h"
 #import <Foundation/Foundation.h>
 
 @implementation TraceSelector

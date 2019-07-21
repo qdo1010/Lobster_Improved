@@ -2726,7 +2726,7 @@ void indicateNumberOfIteration(int i){
 
 
 //set Synapse Params
-void setSynapseParams(unsigned long int id, int side, int seg, double xrp, double gamma, double gStrength){
+void setSynapseParams(unsigned long int id, unsigned long side, unsigned long seg, double xrp, double gamma, double gStrength){
     //this will set the single synapse
     pCustom.synapse.gamma = gamma;
     pCustom.synapse.xRp = xrp;
@@ -2891,7 +2891,7 @@ void setSynapseParams(unsigned long int id, int side, int seg, double xrp, doubl
 }
 
 //set multiple synapse
-void setMultipleSynapseParams(unsigned long int* idArr, int* sideArr, int* segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size){
+void setMultipleSynapseParams(unsigned long int* idArr, unsigned long *sideArr, unsigned long *segArr, double* xrpArr, double* gammaArr, double* gStrengthArr, unsigned long int size){
     //this will set the multiple individual synapse
     int i;
     for (i =0; i < size; i++){
@@ -2901,7 +2901,7 @@ void setMultipleSynapseParams(unsigned long int* idArr, int* sideArr, int* segAr
 }
 
 //edit Synapse!
-void editSynapseParam(unsigned long int *synapseName, int* side, int* seg, double* xrp, double* gamma, double* gStrength, int size){
+void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg, double* xrp, double* gamma, double* gStrength, int size){
     //this will edit the global variables
     int i =0;
     free(globalXrp);
@@ -2934,7 +2934,7 @@ void editSynapseParam(unsigned long int *synapseName, int* side, int* seg, doubl
 }
 
 ///add the multiple neuron params here//
-void setMultipleNeuronParams(int* idArr, int* sideArr, int* segArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr,unsigned long int size){
+void setMultipleNeuronParams(int* idArr, unsigned long *sideArr, unsigned long *segArr, double* aArr, double* sArr,double* sEArr, double* sIArr, double *bEArr, double *bIArr, double *IdcArr,unsigned long int size){
     int i;
     for (i = 0; i < size; i++){
         //this will set the param for each neuron in the array
@@ -2943,7 +2943,7 @@ void setMultipleNeuronParams(int* idArr, int* sideArr, int* segArr, double* aArr
 }//change params
 ////end////
 
-void setNeuronParams(int id, int side, int seg, double a, double s, double sE, double sI, double bE, double bI, double Idc){
+void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc){
     //identify which type it is?
     //if (id == 8){//Spiking
         //printf("Spiking edit\n");
@@ -3118,7 +3118,7 @@ void setNeuronParams(int id, int side, int seg, double a, double s, double sE, d
     beginEditingParams = 0; //stop editing by turning the edit flag off
 }// change alpha and sigma
 
-void editParam(int *neuronName, int*side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size){
+void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size){
     //printf("%s\n",neuronName);
     printf("begin editing\n");
     int i;

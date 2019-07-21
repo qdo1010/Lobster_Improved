@@ -1,4 +1,5 @@
-//
+#ifndef WAVEFORMS_H
+#define WAVEFORMS_H
 //  Waveforms.h
 //  RoboLobster
 //
@@ -312,3 +313,4 @@ typedef void (^CaseBlock)(void);
 
 
 @end
+#endif

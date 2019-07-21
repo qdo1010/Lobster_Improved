@@ -1,4 +1,5 @@
-//
+#ifndef   COMMANDSTATEVIEWCONTROLLER_H
+#define   COMMANDSTATEVIEWCONTROLLER_H
 //  CommandStateViewController.h
 //  Roboplasm
 //
@@ -147,3 +148,4 @@
 #define mediumIntensity  2
 #define highIntensity   3
 
+#endif
