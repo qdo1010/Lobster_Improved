@@ -10,6 +10,9 @@
 #import "OscilloscopeController.h"
 #import "analysisWindowController.h"
 #import "Waveforms.h"
+#import "ParameterSetter.h"
+
+
 @interface AppDelegate ()
 
 - (IBAction)saveAction:(id)sender;
@@ -48,6 +51,8 @@
 @synthesize IDofCellChosen;
 
 @synthesize commandController;
+//@synthesize synapseController;
+@synthesize parameterSetter;
 #pragma mark - App Lifetime
 
 
@@ -71,14 +76,13 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     NSLog(@"AppDelegate Did Finish Loading");
-     SampleSize = [NSNumber numberWithInteger:5000];
-    int samplesize = [SampleSize intValue];
-    indicateSampleSize(samplesize);   //call the C function to tell it what samplesize I want
     
-    int IterNum = 100000;
+    int IterNum = 10000;
+    //Tell C code this is how much I want to iterate,basically allocate this much memory to start calculating for this many iterations
     indicateNumberOfIteration(IterNum);
+    
     traceWaveforms = [[Waveforms alloc] init];
-    sweepDuration = 5000;
+    sweepDuration = 500;
     sweepOffset = 0;
     traceGainArray = [[NSMutableArray alloc] init];
     traceOffsetArray = [[NSMutableArray alloc] init];
@@ -113,9 +117,7 @@
 -(void) sendWaveform{
 //    int size = [SampleSize intValue];
  //   NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
-
     //[traceWaveforms readMultipleArrays:arr :size];
-    
 }
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration{
  //  NSLog(@"sending!!!!!!!!");
@@ -133,7 +135,7 @@
     {
         enabled = YES;
     }
-    else if (action == @selector(drawChart:))
+//    else if (action == @selector(drawChart:))
     {
         enabled = YES;
     }
@@ -180,8 +182,13 @@
 {
     [[self commandController].window orderFront:self];
     
-} // showAnalysisWindow
+} // showCommandWindow
 
+- (IBAction) showParameterSetterWindow:(id)sender
+{
+    [[self parameterSetter].window orderFront:self];
+    
+} // showSynapseWindow
 
 #pragma mark --- Getters and Setters ---
 
@@ -195,7 +202,7 @@
 #pragma mark --- Start Analyses
 
 
-- (IBAction) openCommandWindow:(id) sender //This is a virtual oscilloscope{
+- (IBAction) openCommandWindow:(id) sender //This is to open command controller{
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Executing command Window");
@@ -205,6 +212,25 @@
     [appDelegate showCommandWindow:self];
 
 }
+/*
+- (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
+{
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Executing synapse controller Window");
+    SynapseController* newSynapseWindow = [[SynapseController alloc] init];
+    [self setSynapseController:newSynapseWindow];
+    [appDelegate showSynapseControllerWindow:self];
+}
+*/
+- (IBAction) openParameterSetterWindow: (id) sender //this is to open the parameterSetter window
+{
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Opening Parameter Setter Window");
+    ParameterSetter* newParameterSetterWindow = [[ParameterSetter alloc] init];
+    [self setParameterSetter:newParameterSetterWindow];
+    [appDelegate showParameterSetterWindow:self];
+}
+
 
 
 - (IBAction) drawOscilloscope:(id) sender //This is a virtual oscilloscope{

@@ -1,45 +1,82 @@
-1) ISSUE with Crashing:
-CommandStateVC
-delegate and protocol
+Stop Bursting Neuron when you hit stop
 
-What I want:
-I am doing a recall
-everytime the Command Panel Change, I want to be notified
+Put all Command Neurons Param file into 1 file
 
-Problem I see:
-Right now, everytime I change the Command panel, speed boxes specifically,the panel crashes
+Save to a parameter file?
+What to save?
+Synapse
 
-Why:
-I don't know how Delegate and Protocol work in Objective C
-I have a property that belong to class CommandStateController, which I will call class A
-I want to see whether that property has updated in class Oscilloscope Controller, which I will call class B
-How do I do so?
+What would the synapse file look like?
+I don't know?
+Not sure
 
-If we figure this out, we should be able to fix the crashing for good!
+1) Drawer
+////////////////////////
+MAKE A SYNAPSE POPUP LIST
+Make a box
+Enumerate the 4 synapse types
+Display them to users
+Let them see what the options + params are
+And allow user to edit it
 
+WHAT WILL IT LOOK LIKE??????
+So u need to list all synapse
 
+MAKE A SYNAPSE CONTROLLER Class
 
+COPY from TraceSelector
+and from OscilloscopeController, where you change Params for alpha, sigma!!!!!
 
+We'll make a window for now
 
+How would users know which synapse is present
++ to pick from
+Should we list all of them then..
 
+Need a side and seg option
 
+Cool, we call it in TraceSelector for now just to test
+///////////////////////
+DONE
 
+Next step/TODO:
+///////
+Will make a button to house it inside the Scope later
 
+What will the function be?
+What's the behavior
 
+Make a function inside the pc2Lobster.c
 
+This will allow us to edit the values of those synapse on the fly
+
+But how?
+Should be similar to how you edit alpha and sigma of different neurons really
+
+hmm, how does that work
+
+There seem to be an ID that you choose for each cell...
+
+We should do the same for Synapse?
+
+But there are wayy more synapses than cells....
+
+Make synapse saved file
+So that the program will write to the synapse.
+
+WHAT would the saved file look like?
+
+2) Resize window?
+How to resize oscilloscope
 
 NOTE TO SELF:
 Search SEARCH FOR ME to find where u left off
-
 
 RIGHT NOW,
 Protractor and Retractor look fine
 
 Flexor and Extensor is not...
 Just have to make them the same.
-
-
-
 
 It's opposite
 Forward and Backward

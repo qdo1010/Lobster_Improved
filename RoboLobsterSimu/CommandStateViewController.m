@@ -140,20 +140,6 @@ typedef enum : NSUInteger
 
 }
 
-/*- (IBAction)setSpeed:(id)sender
-{
-    NSInteger selector = [sender selectedRow];
-    switch (selector){
-        case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: high] forKey:@"spd"];}break;
-        case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:medium]  forKey:@"spd"];}break;
-        case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:slow]  forKey:@"spd"];}break;
-        case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:mystop]  forKey:@"spd"];}break;
-        default:break;
-    }
-    [spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
-    [self updateTable];
-}*/
-
 - (IBAction)setlFor:(id)sender{
     bool sta = [sender state];
     
@@ -211,8 +197,21 @@ typedef enum : NSUInteger
     [self updateTable];
 }
 
+@end
 
-
+/*- (IBAction)setSpeed:(id)sender
+ {
+ NSInteger selector = [sender selectedRow];
+ switch (selector){
+ case 0:{[self.currentParameters setValue: [NSNumber numberWithInt: high] forKey:@"spd"];}break;
+ case 1:{[self.currentParameters setValue: [NSNumber numberWithInt:medium]  forKey:@"spd"];}break;
+ case 2:{[self.currentParameters setValue: [NSNumber numberWithInt:slow]  forKey:@"spd"];}break;
+ case 3:{[self.currentParameters setValue: [NSNumber numberWithInt:mystop]  forKey:@"spd"];}break;
+ default:break;
+ }
+ [spdBox setIntValue:  [[self.currentParameters valueForKey:@"spd"]  intValue]];
+ [self updateTable];
+ }*/
 
 /*
 - (IBAction)setAbPitch:(id)sender
@@ -330,12 +329,6 @@ typedef enum : NSUInteger
 }
 
 */
-
-
-@end
-
-
-
 
 /*- (void)setCurrentTable:(Table *)currentTable
  {

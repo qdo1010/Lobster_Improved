@@ -34,15 +34,19 @@
 @property (readwrite)  double sweepMaximum;       //Duration of file in Sec
 
 
-@property (readwrite)  int firstTimeChangeParams;       //is this first change
 
+/*
+ @property (readwrite) int *cellID;
+@property (readwrite) int *side;
+@property (readwrite) int *seg;
+*/
 
 extern long elapsed;
 @property (readwrite) double index;
 @property (readwrite)  int traceIDchosen;      //Duration of file in Sec
 
-@property (readwrite) int *cellID;
-@property (readwrite) int *side;
+/* Moved to Parameter Setter
+@@property (readwrite) int *side;
 @property (readwrite) int *seg;
 @property (readwrite)  double *alpha;
 @property (readwrite)  double *sigma;
@@ -51,9 +55,10 @@ extern long elapsed;
 @property (readwrite)  double *betaE;
 @property (readwrite)  double *betaI;
 @property (readwrite)  double *Idc;
+ */
 
 
-@property (readwrite) int settingUpParams;
+//@property (readwrite) int settingUpParams;
 
 
 @property (readwrite,retain) NSMutableArray* AllTracesInfo;    //This is an array of traces
@@ -63,7 +68,6 @@ extern long elapsed;
 //@property (readwrite, getter=isDoInitAndScale)      BOOL doInitAndScale;
 @property (readwrite)          BOOL assetInited;
 @property (nonatomic, readwrite)          BOOL doInitAndScale;
-@property (weak) IBOutlet NSButton *setParamsButton;
 
 @property (weak) IBOutlet NSSlider *sweepDurationSlider;
 
@@ -83,6 +87,7 @@ extern long elapsed;
 
 @property (weak) IBOutlet NSSlider *traceGainSlider;
 
+/* Moved to Parameter Setter
 @property (weak) IBOutlet NSTextField *cellNameTextBox; //cell Name
 @property (weak) IBOutlet NSTextField *alphaTextBox;
 @property (weak) IBOutlet NSTextField *sigmaTextBox;
@@ -91,6 +96,7 @@ extern long elapsed;
 @property (weak) IBOutlet NSTextField *betaETextBox;
 @property (weak) IBOutlet NSTextField *betaITextBox;
 @property (weak) IBOutlet NSTextField *IdcTextBox;
+ */
 
 @property (weak) IBOutlet NSPopUpButton *displayTraceID;
 
@@ -109,7 +115,7 @@ extern long elapsed;
 
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed;
 
-- (void)beginSendingStuffToBeDraw;
+- (void)beginSendingStuffToBeDrawn;
 
 //GraphicsViewParameters
 - (void) updateSweepValue;
@@ -128,7 +134,9 @@ extern long elapsed;
 
 - (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
-
+//Prototypes to remove warnings
+void editParam(int *neuronName, int* side, int*seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
+//function that Objective C can call to write to file
 
 @end
 

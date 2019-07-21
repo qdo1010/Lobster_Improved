@@ -10,6 +10,8 @@
 #import "Waveforms.h"
 #import "traceSelector.h"
 #import "CommandStateViewController.h"
+//#import "SynapseController.h"
+#import "ParameterSetter.h"
 
 @class OscilloscopeController;
 @class AnalysisWindowController;
@@ -32,10 +34,12 @@ extern long elapsed;
 
 
 #pragma mark --- Window controller
-@property (nonatomic, strong) IBOutlet AnalysisWindowController     *analysisWindowController;
-@property (nonatomic, strong) IBOutlet TraceSelector                *traceSelector;
-@property (nonatomic, strong) PreferenceController                  *preferenceController;
-@property (nonatomic, strong) CommandStateViewController                  *commandController;
+@property (nonatomic, strong) IBOutlet AnalysisWindowController  *analysisWindowController;
+@property (nonatomic, strong) IBOutlet TraceSelector             *traceSelector;
+@property (nonatomic, strong) PreferenceController               *preferenceController;
+@property (nonatomic, strong) CommandStateViewController         *commandController;
+//@property (nonatomic, strong) SynapseController                  *synapseController; //create an instance of synapse controller here
+@property (nonatomic, strong) ParameterSetter                    *parameterSetter; //create an instance of ParameterSetter here
 
 
 #pragma mark --- Document and associated view stuff
@@ -81,8 +85,8 @@ extern long elapsed;
 #pragma mark --- Load Nib files
 #pragma mark --- Show Windows
 - (IBAction) showAnalysisWindow: (id) sender;
-- (IBAction) showCommandWindow: (id) sender;
-- (IBAction) openCommandWindow:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
+- (IBAction) showParameterSetterWindow: (id) sender;
+- (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the Parameter Setter window
 
 #pragma mark --- Signal Processing Menu Selections
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
@@ -92,5 +96,10 @@ extern long elapsed;
 
 #pragma mark --- User Interface
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
+
+//Prototypes to edn warnings
+void indicateNumberOfIteration(int i);
+void xmain(void);
+
 @end
 
