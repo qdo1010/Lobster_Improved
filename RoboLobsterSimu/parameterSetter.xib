@@ -308,7 +308,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VNJ-av-bg3">
-                        <rect key="frame" x="110" y="71" width="107" height="22"/>
+                        <rect key="frame" x="111" y="71" width="107" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ikG-XK-AVG">
                             <font key="font" metaFont="system"/>
@@ -447,7 +447,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-29.5" y="210.5"/>
+            <point key="canvasLocation" x="57" y="203"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="rrP-as-JzR"/>
     </objects>
