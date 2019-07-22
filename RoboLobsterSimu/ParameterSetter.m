@@ -739,4 +739,8 @@ Idc = malloc(numCell*sizeof(double));
     saveParamsToFile(1);
 }
 
+- (IBAction)resetParamsToDefault:(id)sender {
+    CreateParamFile();
+}
+
 @end

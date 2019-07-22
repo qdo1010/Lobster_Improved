@@ -87,7 +87,7 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
 void SaveAllParams(void);
 void saveParamsToFile(int flagWriteToFile);
-
+void CreateParamFile (void);
 
 @end
 
