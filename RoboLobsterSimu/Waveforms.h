@@ -13,7 +13,7 @@
  #define Waveforms_h
  #define numSamples = 5000;
  
- //@interface Waveforms : NSObject
+//@interface Waveforms : NSObject
  
  
  double ibuf[8][5000];

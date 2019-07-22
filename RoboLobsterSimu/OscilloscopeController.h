@@ -1,21 +1,15 @@
-#ifndef   OSCILLOSCOPECONTROLLER_H
-#define   OSCILLOSCOPECONTROLLER_H
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
 #import <CoreAudio/CoreAudio.h>
 #import <AudioUnit/AudioUnit.h>
-#import "CommandStateViewController.h"
+//#import "CommandStateViewController.h"
 @class Waveforms;
 @class OscilloscopeView;
 @class AppDelegate;
 
-@interface OscilloscopeController: NSViewController <CommandStateViewControllerDelegate, NSTextFieldDelegate>
-//????????????????????????????????/
-
-//implement the method from CommandStateViewController
-- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters;
+@interface OscilloscopeController: NSViewController
 
 @property (readwrite) double proxGain;
 @property (readwrite) double proxOffset;
@@ -111,9 +105,11 @@ extern long elapsed;
 - (IBAction)changeTraceOffset:(id)sender;
 
 - (IBAction)changeView:(id)sender;
+/*
 - (IBAction)setParams:(id)sender;
 - (IBAction)loadParams:(id)sender;
 - (IBAction)saveParams:(id)sender;
+*/
 
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed;
 

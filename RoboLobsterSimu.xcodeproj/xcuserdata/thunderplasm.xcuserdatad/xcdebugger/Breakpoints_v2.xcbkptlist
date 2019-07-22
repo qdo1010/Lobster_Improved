@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "789"
             endingLineNumber = "789"
-            landmarkName = "-loadParams:"
+            landmarkName = "-loadParamsWithName:::"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

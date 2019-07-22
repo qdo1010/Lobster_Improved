@@ -1,5 +1,3 @@
-#ifndef   ANALYSISWINDOWCONTROLLER_H
-#define   ANALYSISWINDOWCONTROLLER_H
 // AnalysisWindowController.h
 //  Roboplasm
 //
