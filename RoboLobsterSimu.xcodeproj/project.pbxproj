@@ -19,7 +19,6 @@
 		4895E8D620DD52F20037AB7C /* Swing in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D420DD52F20037AB7C /* Swing */; };
 		4895E8D920DD52FA0037AB7C /* Depressor in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D720DD52FA0037AB7C /* Depressor */; };
 		4895E8DA20DD52FA0037AB7C /* Elevator in Resources */ = {isa = PBXBuildFile; fileRef = 4895E8D820DD52FA0037AB7C /* Elevator */; };
-		48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F034F020A4914B005368D4 /* CommandStateViewController.m */; };
 		6461284D22D6629F00DD13EB /* ParameterSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461284B22D6629F00DD13EB /* ParameterSetter.m */; };
 		64A3733622D3C25F00C7FAAF /* parameterSetter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A3733522D3C25E00C7FAAF /* parameterSetter.xib */; };
 		97044E0B2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 97044E0A2040B1B9005C2BDC /* Screen Shot 2018-02-23 at 3.31.24 PM.png */; };
@@ -78,8 +77,6 @@
 		4895E8D420DD52F20037AB7C /* Swing */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Swing; sourceTree = "<group>"; };
 		4895E8D720DD52FA0037AB7C /* Depressor */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Depressor; sourceTree = "<group>"; };
 		4895E8D820DD52FA0037AB7C /* Elevator */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Elevator; sourceTree = "<group>"; };
-		48F034F020A4914B005368D4 /* CommandStateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandStateViewController.m; sourceTree = "<group>"; };
-		48F034F120A4914B005368D4 /* CommandStateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandStateViewController.h; sourceTree = "<group>"; };
 		6461284B22D6629F00DD13EB /* ParameterSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterSetter.m; sourceTree = "<group>"; };
 		6461284C22D6629F00DD13EB /* ParameterSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterSetter.h; sourceTree = "<group>"; };
 		64A3733522D3C25E00C7FAAF /* parameterSetter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = parameterSetter.xib; sourceTree = "<group>"; };
@@ -170,8 +167,8 @@
 		970E76661EF17CED002EE43D /* RoboLobsterSimu */ = {
 			isa = PBXGroup;
 			children = (
-				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				97D6A7AD200AC28700BF3C15 /* TODO */,
+				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
 				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
 				970E769A1EF17D15002EE43D /* pc2dsp.h */,
@@ -186,8 +183,6 @@
 				64A3733522D3C25E00C7FAAF /* parameterSetter.xib */,
 				6461284C22D6629F00DD13EB /* ParameterSetter.h */,
 				6461284B22D6629F00DD13EB /* ParameterSetter.m */,
-				48F034F120A4914B005368D4 /* CommandStateViewController.h */,
-				48F034F020A4914B005368D4 /* CommandStateViewController.m */,
 				970E76A31EF1A0A6002EE43D /* AnalysisWindowController.xib */,
 				970E76AC1EF1A140002EE43D /* analysisWindowController.h */,
 				970E76AF1EF1A158002EE43D /* analysisWindowController.m */,
@@ -404,7 +399,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6461284D22D6629F00DD13EB /* ParameterSetter.m in Sources */,
-				48F034F220A4914B005368D4 /* CommandStateViewController.m in Sources */,
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
