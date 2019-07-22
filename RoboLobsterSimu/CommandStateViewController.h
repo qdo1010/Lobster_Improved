@@ -1,5 +1,3 @@
-#ifndef   COMMANDSTATEVIEWCONTROLLER_H
-#define   COMMANDSTATEVIEWCONTROLLER_H
 //  CommandStateViewController.h
 //  Roboplasm
 //
