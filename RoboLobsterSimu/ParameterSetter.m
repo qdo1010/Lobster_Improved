@@ -407,7 +407,7 @@ Idc = malloc(numCell*sizeof(double));
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     neuronChosen = (int) [[[self neuronID] title] integerValue];
     
-    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+//    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
     
         //set trace ID in appDelegate
@@ -417,7 +417,7 @@ Idc = malloc(numCell*sizeof(double));
         // NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:neuronChosen];
     
         //init all params
-    int numCell = (int) [[[appDelegate traceSelector] traceArraytobeSent] count];
+//    int numCell = (int) [[[appDelegate traceSelector] traceArraytobeSent] count];
     
     /* Moved to Parameter Setter
      //init params input values
