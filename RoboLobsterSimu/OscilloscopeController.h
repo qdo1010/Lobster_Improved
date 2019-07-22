@@ -1,3 +1,4 @@
+
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -29,7 +30,6 @@
 @property (readwrite)  double sweepDuration;      //Duration of Sweep in Sec
 @property (readwrite)  double sweepMaximum;       //Duration of file in Sec
 
-
 - (IBAction)setlFor:(id)sender;
 - (IBAction)setrFor:(id)sender;
 - (IBAction)setlBack:(id)sender;
@@ -39,15 +39,15 @@
 - (IBAction)setlTrail:(id)sender;
 - (IBAction)setrTrail:(id)sender;
 
-    // These are not used:
+// These are not used:
 
-    //@property (nonatomic, strong) IBOutlet NSTextField *rAntYBox;
-    //@property (nonatomic, strong) IBOutlet NSTextField *ltChYBox;
-    //@property (nonatomic, strong) IBOutlet NSTextField *rtChYBox;
-    //- (IBAction)setLAntYaw:(id)sender;
-    //- (IBAction)setLClawYaw:(id)sender;
-    //- (IBAction)setRAntYaw:(id)sender;
-    //- (IBAction)setRClawYaw:(id)sender;
+//@property (nonatomic, strong) IBOutlet NSTextField *rAntYBox;
+//@property (nonatomic, strong) IBOutlet NSTextField *ltChYBox;
+//@property (nonatomic, strong) IBOutlet NSTextField *rtChYBox;
+//- (IBAction)setLAntYaw:(id)sender;
+//- (IBAction)setLClawYaw:(id)sender;
+//- (IBAction)setRAntYaw:(id)sender;
+//- (IBAction)setRClawYaw:(id)sender;
 
 
 /*
@@ -231,4 +231,5 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 #define lowIntensity    1
 #define mediumIntensity  2
 #define highIntensity   3
+
 
