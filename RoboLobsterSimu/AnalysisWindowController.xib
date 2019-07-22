@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -605,9 +604,6 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
-                        <connections>
-                            <binding destination="2057" name="hidden" keyPath="self" id="Cat-Ya-0Ek"/>
-                        </connections>
                     </view>
                 </box>
             </subviews>
@@ -618,15 +614,8 @@
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">
             <connections>
-                <outlet property="displayTraceID" destination="SnV-VR-QBn" id="WUL-cs-rwo"/>
-                <outlet property="sweepDurationSlider" destination="4JF-mF-ics" id="8K8-g4-ogs"/>
-                <outlet property="sweepDurationTextBox" destination="IE2-tv-dSE" id="tND-vr-fND"/>
-                <outlet property="sweepOffsetSlider" destination="fyy-64-97L" id="qqW-dc-B39"/>
                 <outlet property="sweepOffsetTextBox" destination="2071" id="bKT-Us-xa1"/>
-                <outlet property="traceGainSlider" destination="nXu-uX-kk8" id="9Jq-QH-D7D"/>
                 <outlet property="traceGainTextBox" destination="2136" id="ncT-tF-8Dh"/>
-                <outlet property="traceOffsetSlider" destination="137-9a-HjQ" id="3W3-dj-R7M"/>
-                <outlet property="traceOffsetTextBox" destination="1PZ-Wf-6Bf" id="7At-cA-V8n"/>
             </connections>
         </viewController>
         <window title="Progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="1775">
