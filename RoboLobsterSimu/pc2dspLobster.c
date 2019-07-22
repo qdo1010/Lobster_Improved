@@ -2709,10 +2709,7 @@ void xmain()
 }
 
 
-void saveParamsToFile(int flagWriteToFile){
-    writeToFile = flagWriteToFile;
-    printf("saving\n");
-}
+
 
 
 /**

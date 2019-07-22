@@ -79,14 +79,14 @@ NS_ASSUME_NONNULL_BEGIN
 //action to set param of synapses
 - (IBAction)setSynapseParams:(id)sender;
 - (IBAction)saveSynapseParams:(id)sender;
-
+- (IBAction)resetParamsToDefault:(id)sender;
 - (int)synapseMapping: (int)synapseID;
 
 //Function prototypes to fix warnings
 void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
 void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
 void SaveAllParams(void);
-void saveParamsToFile(int flagWriteToFile);
+
 void CreateParamFile (void);
 
 @end

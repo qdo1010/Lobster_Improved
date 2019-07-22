@@ -736,7 +736,7 @@ Idc = malloc(numCell*sizeof(double));
 }
 
 - (IBAction)saveSynapseParams:(id)sender {
-    saveParamsToFile(1);
+    SaveAllParams();
 }
 
 - (IBAction)resetParamsToDefault:(id)sender {
