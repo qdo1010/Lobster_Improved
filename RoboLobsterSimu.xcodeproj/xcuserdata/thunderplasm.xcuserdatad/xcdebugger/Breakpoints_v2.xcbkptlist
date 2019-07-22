@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RoboLobsterSimu/OscilloscopeController.m"
-            timestampString = "584913061.930323"
+            timestampString = "585522093.691942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "789"
-            endingLineNumber = "789"
+            startingLineNumber = "790"
+            endingLineNumber = "790"
             landmarkName = "-loadParamsWithName:::"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RoboLobsterSimu/traceSelector.m"
-            timestampString = "584913061.930403"
+            filePath = "RoboLobsterSimu/AppDelegate.m"
+            timestampString = "585522093.695699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "-addCellTrace:"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-drawOscilloscope:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoboLobsterSimu/OscilloscopeController.m"
+            timestampString = "585522093.69607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1032"
+            endingLineNumber = "1032"
+            landmarkName = "-updateTable"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

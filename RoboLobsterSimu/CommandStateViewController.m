@@ -10,7 +10,6 @@
 //ADD STOP to speed
 
 #import "CommandStateViewController.h"
-//#import "TableDefinition.h"
 #import "AppDelegate.h"
 #import "analysisWindowController.h"
 

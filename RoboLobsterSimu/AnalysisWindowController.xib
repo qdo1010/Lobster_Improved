@@ -301,6 +301,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setlBack:" target="2057" id="sOY-0g-dy5"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="E2u-rD-aSa">
                                 <rect key="frame" x="3" y="626" width="52" height="18"/>
@@ -309,6 +312,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setlLead:" target="2057" id="U8n-Hm-zx8"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="ywH-qX-i0p">
                                 <rect key="frame" x="112" y="646" width="82" height="18"/>
@@ -317,6 +323,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setrBack:" target="2057" id="t2Z-pD-cAt"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="XL5-iF-bpc">
                                 <rect key="frame" x="112" y="626" width="52" height="18"/>
@@ -325,6 +334,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setrLead:" target="2057" id="9LV-sn-Jf2"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="p6X-iq-4gN">
                                 <rect key="frame" x="112" y="606" width="48" height="18"/>
@@ -333,6 +345,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setrTrail:" target="2057" id="KCb-jS-3GT"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="9HY-g8-S17">
                                 <rect key="frame" x="112" y="667" width="72" height="18"/>
@@ -341,6 +356,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setrFor:" target="2057" id="RL3-NK-T3F"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="tGP-8j-hC5">
                                 <rect key="frame" x="3" y="606" width="48" height="18"/>
@@ -349,6 +367,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setlTrail:" target="2057" id="VfM-FF-PUY"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="NRV-fb-IDU">
                                 <rect key="frame" x="3" y="666" width="72" height="18"/>
@@ -357,6 +378,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setlFor:" target="2057" id="3lU-KN-QrZ"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7lr-2Q-riJ">
                                 <rect key="frame" x="3" y="690" width="28" height="17"/>
@@ -587,6 +611,9 @@
                     </view>
                 </box>
             </subviews>
+            <connections>
+                <binding destination="2057" name="hidden" keyPath="self" id="oTH-kO-1lx"/>
+            </connections>
             <point key="canvasLocation" x="81" y="-314"/>
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">

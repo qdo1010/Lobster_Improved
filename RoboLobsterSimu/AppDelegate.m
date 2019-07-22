@@ -177,13 +177,6 @@
     
 } // showAnalysisWindow
 
-
-- (IBAction) showCommandWindow: (id) sender
-{
-    [[self commandController].window orderFront:self];
-    
-} // showCommandWindow
-
 - (IBAction) showParameterSetterWindow:(id)sender
 {
     [[self parameterSetter].window orderFront:self];
@@ -201,17 +194,6 @@
 
 #pragma mark --- Start Analyses
 
-
-- (IBAction) openCommandWindow:(id) sender //This is to open command controller{
-{
-    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    NSLog(@"Executing command Window");
-    CommandStateViewController* newCommandWindow = [[CommandStateViewController alloc] init];
-    [self setCommandController:newCommandWindow];
-    
-    [appDelegate showCommandWindow:self];
-
-}
 /*
 - (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
 {

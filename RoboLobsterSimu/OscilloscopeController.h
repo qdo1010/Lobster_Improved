@@ -75,6 +75,10 @@ extern long elapsed;
 
 //@property (readwrite) int settingUpParams;
 
+@property (nonatomic, strong) NSMutableDictionary *currentParameters;
+//@property (nonatomic, strong) Table *currentTable;
+
+
 
 @property (readwrite,retain) NSMutableArray* AllTracesInfo;    //This is an array of traces
 @property (readwrite,retain) NSMutableArray* IndividualTraceInfo;    //This is an array of traces
@@ -152,14 +156,23 @@ extern long elapsed;
 - (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
 //Prototypes to remove warnings
-void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
+void editParam(int                  *neuronName,
+               unsigned long        *side,
+               unsigned long        *seg,
+               double               *a,
+               double               *s,
+               double               *sE,
+               double               *sI,
+               double               *bE,
+               double               *bI,
+               double *             Idc,
+               unsigned long int    size);
 //function that Objective C can call to write to file
 
-@end
 
 
 /*Roll*/
-#define ltUp            1
+#define ltUp           1
 #define rLevel         2
 #define rtUp           3
 
@@ -178,7 +191,7 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 #define slow            3
 #define medium          2
 #define high            1
-#define loaded            4
+#define loaded          4
 
 /*Yaw*/
 #define hardLeft        1
@@ -187,24 +200,17 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 #define easyRight       4
 #define hardRight       5
 
-
 /*ChPitch*/
 #define ChUp            1
 #define cLevel          2
 #define ChDn            3
 #define ChLow           4
 
-/*ltAntYaw*/
-#define ltAtPro         1
-#define ltAtNor         2
-#define ltAtLat         3
-#define ltAtRet         4
-
-/*rtAntYaw*/
-#define rtAtPro         1
-#define rtAtNor         2
-#define rtAtLat         3
-#define rtAtRet         4
+/*AntYaw*/
+#define AtPro         1
+#define AtNor         2
+#define AtLat         3
+#define AtRet         4
 
 
 /*AbPitch*/
@@ -213,7 +219,6 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 #define Norm            3
 #define Dep             4
 #define Flex            5
-
 
 #define LeftLabel       4
 #define lForCheck       5
@@ -227,8 +232,5 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 #define rLeadCheck      12
 #define rTrailCheck     13
 
-
-#define lowIntensity    1
-#define mediumIntensity  2
-#define highIntensity   3
+@end
 
