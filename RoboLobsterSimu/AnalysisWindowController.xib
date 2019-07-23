@@ -611,8 +611,15 @@
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">
             <connections>
+                <outlet property="displayTraceID" destination="SnV-VR-QBn" id="2C1-8p-Vmd"/>
+                <outlet property="sweepDurationSlider" destination="4JF-mF-ics" id="5aI-wM-FvY"/>
+                <outlet property="sweepDurationTextBox" destination="IE2-tv-dSE" id="Yuq-yv-yci"/>
+                <outlet property="sweepOffsetSlider" destination="fyy-64-97L" id="6PC-vE-q25"/>
                 <outlet property="sweepOffsetTextBox" destination="2071" id="bKT-Us-xa1"/>
+                <outlet property="traceGainSlider" destination="nXu-uX-kk8" id="Vqu-SI-tWt"/>
                 <outlet property="traceGainTextBox" destination="2136" id="ncT-tF-8Dh"/>
+                <outlet property="traceOffsetSlider" destination="137-9a-HjQ" id="d7i-ik-Adv"/>
+                <outlet property="traceOffsetTextBox" destination="1PZ-Wf-6Bf" id="n1D-IP-zNt"/>
             </connections>
         </viewController>
         <window title="Progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="1775">
