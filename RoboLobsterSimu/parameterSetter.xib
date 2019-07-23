@@ -33,19 +33,23 @@
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dv0-4r-sf6">
                         <rect key="frame" x="399" y="305" width="186" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="11W-KX-WDz" id="jgu-sE-X1w">
+                        <popUpButtonCell key="cell" type="push" title="Selected Synapse" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="11W-KX-WDz" id="jgu-sE-X1w">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="z9T-VA-gUR">
                                 <items>
-                                    <menuItem title="Item 1" state="on" id="11W-KX-WDz"/>
+                                    <menuItem title="Selected Synapse" state="on" id="11W-KX-WDz"/>
                                     <menuItem title="Item 2" id="yZr-v1-WkA"/>
                                     <menuItem title="Item 3" id="tsw-bE-VpX"/>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="-2" name="content" keyPath="self" id="6aN-11-Teg"/>
+                            </connections>
                         </popUpButtonCell>
                         <connections>
                             <action selector="updateSynapseParams:" target="-2" id="bEz-Ta-1uG"/>
+                            <binding destination="-2" name="content" keyPath="self" id="j7f-Lf-OwA"/>
                         </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
@@ -395,5 +399,6 @@
             </connections>
             <point key="canvasLocation" x="-29" y="211"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="gOB-my-dT5"/>
     </objects>
 </document>
