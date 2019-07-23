@@ -2,12 +2,8 @@
 #import "OscilloscopeController.h"//Hi Quan, this is my first edit. It's practice to see if I can create a branch an then open a pull request for you.
 #import "AppDelegate.h"
 #import "analysisWindowController.h"
-//#import "GraphViewController.h"
-//#import "GraphicsView.h"
 #import "Waveforms.h"
 
-//#import "DSPSources.h"
-//#import "signalProcessing.h"
 #import "OscilloscopeView.h"
 #import "ParameterSetter.h"
 //#import "VideoPlaybackController.h"

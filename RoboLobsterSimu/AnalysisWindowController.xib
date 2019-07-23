@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -56,8 +57,8 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="687"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
-                    <rect key="frame" x="-3" y="-35" width="275" height="741"/>
+                <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
+                    <rect key="frame" x="-12" y="-40" width="275" height="741"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="51s-Sh-6Uy">
                         <rect key="frame" x="3" y="3" width="269" height="735"/>
@@ -610,7 +611,7 @@
             <connections>
                 <binding destination="2057" name="hidden" keyPath="self" id="oTH-kO-1lx"/>
             </connections>
-            <point key="canvasLocation" x="81" y="-314"/>
+            <point key="canvasLocation" x="81" y="-314.5"/>
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">
             <connections>

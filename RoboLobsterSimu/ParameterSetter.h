@@ -1,5 +1,4 @@
-#ifndef   PARAMETERSETTER_H
-#define   PARAMETERSETTER_H
+
 //  ParameterSetter.h
 //  RoboLobsterSimu
 //
@@ -13,7 +12,6 @@
 #import "traceSelector.h"
 
 
-NS_ASSUME_NONNULL_BEGIN
 /*struct Synapse{
     NSString* name;
     int side;
@@ -90,6 +88,3 @@ void SaveAllParams(void);
 void CreateParamFile (void);
 
 @end
-
-NS_ASSUME_NONNULL_END
-#endif

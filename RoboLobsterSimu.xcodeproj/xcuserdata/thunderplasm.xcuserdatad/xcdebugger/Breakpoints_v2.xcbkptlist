@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RoboLobsterSimu/OscilloscopeController.m"
-            timestampString = "585522428.409992"
+            timestampString = "585609069.114448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "790"
-            endingLineNumber = "790"
+            startingLineNumber = "786"
+            endingLineNumber = "786"
             landmarkName = "-loadParamsWithName:::"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RoboLobsterSimu/AppDelegate.m"
-            timestampString = "585522428.413759"
+            timestampString = "585609069.114511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-drawOscilloscope:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,13 +42,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RoboLobsterSimu/OscilloscopeController.m"
-            timestampString = "585522428.413835"
+            timestampString = "585609069.114943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1032"
-            endingLineNumber = "1032"
+            startingLineNumber = "1028"
+            endingLineNumber = "1028"
             landmarkName = "-updateTable"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoboLobsterSimu/ParameterSetter.h"
+            timestampString = "585609069.115012"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ParameterSetter neuronChosen]"
+                  moduleName = "RoboLobsterSimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josephayers/Lobster_Improved/RoboLobsterSimu/ParameterSetter.h"
+                  timestampString = "585609069.476379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ParameterSetter setNeuronChosen:]"
+                  moduleName = "RoboLobsterSimu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/josephayers/Lobster_Improved/RoboLobsterSimu/ParameterSetter.h"
+                  timestampString = "585609069.478529"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
