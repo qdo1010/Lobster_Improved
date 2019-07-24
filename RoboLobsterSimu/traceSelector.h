@@ -44,6 +44,8 @@
 @property (nonatomic, strong) NSMutableArray                *traceArraytobeSent;
 
 - (IBAction)selectCells:(id)sender;
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row;
+- (NSUInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 
 - (void) awakeFromNib;
 - (id)init;

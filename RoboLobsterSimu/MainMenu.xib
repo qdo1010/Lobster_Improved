@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G8c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="101201" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -207,11 +207,7 @@
                                     <action selector="drawOscilloscope:" target="583" id="593"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Chart" id="470">
-                                <connections>
-                                    <action selector="drawChart:" target="583" id="592"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Chart" id="470"/>
                         </items>
                     </menu>
                 </menuItem>

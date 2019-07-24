@@ -1,5 +1,4 @@
-#ifndef   APPDELEGATE_H
-#define   APPDELEGATE_H
+
 //  AppDelegate.h
 //  RoboLobsterSimu
 //
@@ -85,8 +84,8 @@ extern long elapsed;
 
 #pragma mark --- Load Nib files
 #pragma mark --- Show Windows
-- (IBAction) showAnalysisWindow: (id) sender;
-- (IBAction) showParameterSetterWindow: (id) sender;
+- (IBAction) showAnalysisWindow:                (id) sender;
+- (IBAction) showParameterSetterWindow:         (id) sender;
 - (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the Parameter Setter window
 
 #pragma mark --- Signal Processing Menu Selections
@@ -103,5 +102,3 @@ void indicateNumberOfIteration(int i);
 void xmain(void);
 
 @end
-
-#endif

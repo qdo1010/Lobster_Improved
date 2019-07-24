@@ -128,11 +128,9 @@ extern long elapsed;
 - (IBAction)changeTraceOffset:(id)sender;
 
 - (IBAction)changeView:(id)sender;
-/*
 - (IBAction)setParams:(id)sender;
 - (IBAction)loadParams:(id)sender;
 - (IBAction)saveParams:(id)sender;
-*/
 
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed;
 
@@ -156,81 +154,8 @@ extern long elapsed;
 - (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
 //Prototypes to remove warnings
-void editParam(int                  *neuronName,
-               unsigned long        *side,
-               unsigned long        *seg,
-               double               *a,
-               double               *s,
-               double               *sE,
-               double               *sI,
-               double               *bE,
-               double               *bI,
-               double *             Idc,
-               unsigned long int    size);
+void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);
 //function that Objective C can call to write to file
-
-
-
-/*Roll*/
-#define ltUp           1
-#define rLevel         2
-#define rtUp           3
-
-/*Pitch*/
-#define rosUp           1
-#define pLevel          2
-#define rosDn           3
-
-/*Height*/
-#define hHigh           1
-#define hNor            2
-#define hLow            3
-
-/*speeds*/
-#define mystop          5
-#define slow            3
-#define medium          2
-#define high            1
-#define loaded          4
-
-/*Yaw*/
-#define hardLeft        1
-#define easyLeft        2
-#define proceed         3
-#define easyRight       4
-#define hardRight       5
-
-/*ChPitch*/
-#define ChUp            1
-#define cLevel          2
-#define ChDn            3
-#define ChLow           4
-
-/*AntYaw*/
-#define AtPro         1
-#define AtNor         2
-#define AtLat         3
-#define AtRet         4
-
-
-/*AbPitch*/
-#define Ext             1
-#define Ele             2
-#define Norm            3
-#define Dep             4
-#define Flex            5
-
-#define LeftLabel       4
-#define lForCheck       5
-#define lBackCheck      6
-#define lLeadCheck      7
-#define lTrailCheck     8
-
-#define RightLabel      9
-#define rForCheck       10
-#define rBackCheck      11
-#define rLeadCheck      12
-#define rTrailCheck     13
 
 @end
 

@@ -17,9 +17,9 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 
 #import "ParameterSetter.h"
 
-@interface ParameterSetter ()
+//@interface ParameterSetter ()
 
-@end
+//@end
 
 @implementation ParameterSetter
 
@@ -40,6 +40,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 @synthesize xrp;
 
 @synthesize cellNameTextBox;
+@synthesize neuronTypeSelector;
 @synthesize alphaTextBox;
 @synthesize sigmaTextBox;
 @synthesize sigmaETextBox;
@@ -73,11 +74,13 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 - (id)init
 {
     self = [super initWithWindowNibName:@"parameterSetter"];
-    NSLog(@"Hello this is The Parameter Setter");
+    NSLog(@"Parameter Setter Inited");
     return self;
 }
 
 - (void)windowDidLoad {
+    NSLog(@"Executing Parameter Setter WindowDidLoad");
+    
     [super windowDidLoad];
     [synapseSelector removeAllItems];
     [synapseTypeSelector removeAllItems];
@@ -202,9 +205,12 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     
 
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    NSLog(@"Parameter Setter window loaded");
+    
 }
 
 - (void) awakeFromNib {
+    NSLog(@"Executing awakeFromNib in Parameter Setter");
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
@@ -293,7 +299,8 @@ Idc = malloc(numCell*sizeof(double));
     
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[neuronChosen]]];
     
-
+    NSLog(@"Parameter Setter AwakeFromNIB completed");
+    
 }
 
 //this will set the parameter
@@ -751,7 +758,7 @@ Idc = malloc(numCell*sizeof(double));
 }
 
 - (IBAction)setSynapseParams:(id)sender {
-    NSLog(@"synapse edit");
+    NSLog(@"executing SetSynapseParams");
     int size = 1; //default
     int numCell = 1; //default
     synapseID = malloc(numCell*sizeof(int));

@@ -25,7 +25,7 @@
 //what would this dictionary look like?
 //idk?
 
-@interface ParameterSetter : NSWindowController <NSTextFieldDelegate>
+@interface ParameterSetter : NSWindowController
 
 // Moved from Parameter Setter
 @property (readwrite)  int neuronChosen;      //Duration of file in Sec
@@ -55,6 +55,7 @@
 @property (strong) IBOutlet NSTextField *gStrengthTextBox;
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
+@property (strong) IBOutlet NSPopUpButton *neuronTypeSelector;
 
 @property (readwrite) unsigned long *synapseID;
 @property (readwrite)  double *xrp;
