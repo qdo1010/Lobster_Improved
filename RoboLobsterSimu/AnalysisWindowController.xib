@@ -58,7 +58,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
-                    <rect key="frame" x="-12" y="-40" width="275" height="741"/>
+                    <rect key="frame" x="-3" y="-28" width="275" height="741"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="51s-Sh-6Uy">
                         <rect key="frame" x="3" y="3" width="269" height="735"/>
