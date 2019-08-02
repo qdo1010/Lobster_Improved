@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,7 +35,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="619" height="359"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="619" height="359"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -53,13 +53,9 @@
                                     <menuItem title="Item 3" id="tsw-bE-VpX"/>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="-2" name="content" keyPath="self" id="6aN-11-Teg"/>
-                            </connections>
                         </popUpButtonCell>
                         <connections>
                             <action selector="updateSynapseParams:" target="-2" id="bEz-Ta-1uG"/>
-                            <binding destination="-2" name="content" keyPath="self" id="j7f-Lf-OwA"/>
                         </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
@@ -91,9 +87,6 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
-                        <connections>
-                            <binding destination="-2" name="content" keyPath="self" id="Scp-Gw-KgA"/>
-                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDY-sG-JsN">
                         <rect key="frame" x="304" y="283" width="63" height="17"/>
@@ -117,13 +110,9 @@
                                     <menuItem title="Item 3" id="6gw-GQ-1He"/>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="-2" name="content" keyPath="self" id="HgF-Zc-Wfb"/>
-                            </connections>
                         </popUpButtonCell>
                         <connections>
                             <action selector="chooseNeuron:" target="-2" id="XGO-eO-BC1"/>
-                            <binding destination="-2" name="content" keyPath="self" id="Jog-ka-PhN"/>
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="126-MG-YD1">
@@ -181,7 +170,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-gR-hDh">
-                        <rect key="frame" x="219" y="4" width="140" height="32"/>
+                        <rect key="frame" x="265" y="4" width="140" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Set New Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1w-QO-HXM">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -336,7 +325,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-fA-rcU">
-                        <rect key="frame" x="349" y="4" width="118" height="32"/>
+                        <rect key="frame" x="400" y="4" width="118" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Save Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gPF-qI-OeF">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -434,6 +423,17 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umt-2V-Pq5">
+                        <rect key="frame" x="142" y="4" width="123" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Reset Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uQS-VJ-aJd">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="resetParamsToDefault:" target="-2" id="zt9-vD-QuO"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
