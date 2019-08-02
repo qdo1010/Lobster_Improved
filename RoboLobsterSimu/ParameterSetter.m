@@ -208,13 +208,27 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     NSLog(@"Parameter Setter window loaded");
     
 }
-
+- (id)initWithDefaultWindowNib
+{
+  if (!self){
+        self = [super initWithWindowNibName:@"ParameterSetter"];
+        if (self)
+        {
+            NSLog(@"Executing InitWithDefaultWIndowNib in Parameter Setter");
+        }
+        else
+        {
+            NSLog(@"Warning! Could not load ParameterSetter nib.\n");
+        }
+    }
+    return self;
+}
+    
 - (void) awakeFromNib {
     NSLog(@"Executing awakeFromNib in Parameter Setter");
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
-    NSLog(@"Executing awakeFromNib in Parameter Setter");
  
 cellID = malloc(numCell*sizeof(int));
 side =malloc(numCell*sizeof(int));

@@ -82,6 +82,7 @@
 - (int)synapseMapping: (int)synapseID;
 
 //Function prototypes to fix warnings
+- (id)initWithDefaultWindowNib;
 void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
 void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
 void SaveAllParams(void);

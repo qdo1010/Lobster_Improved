@@ -11,6 +11,10 @@
 @class AppDelegate;
 
 @interface OscilloscopeController: NSViewController
+//????????????????????????????????/
+
+//implement the method from CommandStateViewController
+//- (void)commandStateVC:(CommandStateViewController *)commandStateVC didUpdateParameters:(NSMutableDictionary *)parameters;
 
 @property (readwrite) double proxGain;
 @property (readwrite) double proxOffset;
