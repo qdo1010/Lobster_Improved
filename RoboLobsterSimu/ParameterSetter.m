@@ -489,7 +489,13 @@ Idc = malloc(numCell*sizeof(double));
     [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[5]]];
     
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[6]]];
+     
+     
+     
+    
     */
+    
+    
     [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[neuronChosen]]];
     [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[neuronChosen]]];
     [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[neuronChosen]]];
@@ -517,6 +523,22 @@ Idc = malloc(numCell*sizeof(double));
     
     
 }
+
+//(Spencer) Trying to create simpler Dictionary of current parameters
+/*
+- (void) loadParametersFromFile{
+    int iSide;
+    int iSeg;
+    paramStruct input;
+    FILE *paramFile;
+    paramFile = fopen ("params.dat", "r");
+    while(fread(&input, sizeof(paramStruct), 1, paramFile)){
+        
+    }
+
+}
+*/
+
     - (IBAction)setParams:(id)sender {
         AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         
