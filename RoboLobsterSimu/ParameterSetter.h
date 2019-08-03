@@ -12,6 +12,79 @@
 #import "traceSelector.h"
 
 
+#define mmSeg    4              //  Number of Segments in a Spinal Cord model (110)
+#define mmSeg2   2*mmSeg        //  Number of Segments in a Spinal Cord model (110)
+#define mmSide    2
+#define pitchStates 5
+//Trying this for setting up dictionary
+
+/*
+typedef struct{
+    double alphaSlow, alphaMed, alphaFast, alphaStop;
+} alphaVal;
+typedef struct{
+    double sigmaSlow, sigmaMed, sigmaFast, sigmaStop;
+} sigmaVal;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} burstingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} spikingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+    double yr, xr, x2, y2;
+    double alphaInit;
+} pacemakerNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} customNeuron;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} synapse;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} modSynapse;
+
+typedef struct{
+    burstingNeuron burstingNeuron;
+    spikingNeuron spikingNeuron;
+    pacemakerNeuron pacemakerNeuron;
+    customNeuron customNeuron;
+    synapse synapse;
+    modSynapse modSynapse;
+} paramStruct;
+*/
 /*struct Synapse{
     NSString* name;
     int side;
