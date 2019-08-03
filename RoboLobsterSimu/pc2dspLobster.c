@@ -3908,6 +3908,173 @@ void CreateReadableParams () {
     fclose(paramTextFile);
 }
 
+/*
+
+double * ReturnCurrentParams(long id, long side, long seg){
+    double ParamArray[7];
+    
+    
+        ParamArray[0] = cellElevator[side][seg].burstingNeuron.alpha;
+        ParamArray[1] = cellElevator[side][seg].burstingNeuron.sigma;
+        ParamArray[2] = cellElevator[side][seg].burstingNeuron.sigmaE;
+        ParamArray[3] = cellElevator[side][seg].burstingNeuron.sigmaI;
+        ParamArray[4] = cellElevator[side][seg].burstingNeuron.betaE;
+        ParamArray[5] = cellElevator[side][seg].burstingNeuron.betaI;
+        ParamArray[6] = cellElevator[side][seg].burstingNeuron.Idc;
+    
+    /*
+    else if(id == 1){
+        cellSwing[side][seg].burstingNeuron.alpha = a;
+        cellSwing[side][seg].burstingNeuron.sigma = s;
+        cellSwing[side][seg].burstingNeuron.sigmaE = sE;
+        cellSwing[side][seg].burstingNeuron.sigmaI = sI;
+        cellSwing[side][seg].burstingNeuron.betaE = bE;
+        cellSwing[side][seg].burstingNeuron.betaI = bI;
+        cellSwing[side][seg].burstingNeuron.Idc = Idc;
+    }
+    else if(id == 2){
+        cellDepressor[side][seg].pacemakerNeuron.alpha = a;
+        cellDepressor[side][seg].pacemakerNeuron.sigma = s;
+        cellDepressor[side][seg].pacemakerNeuron.sigmaE = sE;
+        cellDepressor[side][seg].pacemakerNeuron.sigmaI = sI;
+        cellDepressor[side][seg].pacemakerNeuron.betaE = bE;
+        cellDepressor[side][seg].pacemakerNeuron.betaI = bI;
+        cellDepressor[side][seg].pacemakerNeuron.Idc = Idc;
+    }
+    else if(id == 3){
+        cellStance[side][seg].pacemakerNeuron.alpha = a;
+        cellStance[side][seg].pacemakerNeuron.sigma = s;
+        cellStance[side][seg].pacemakerNeuron.sigmaE = sE;
+        cellStance[side][seg].pacemakerNeuron.sigmaI = sI;
+        cellStance[side][seg].pacemakerNeuron.betaE = bE;
+        cellStance[side][seg].pacemakerNeuron.betaI = bI;
+        cellStance[side][seg].pacemakerNeuron.Idc = Idc;
+    }
+    else if(id == 4){
+        cellCoord[side][seg].spikingNeuron.alpha = a;
+        cellCoord[side][seg].spikingNeuron.sigma = s;
+        cellCoord[side][seg].spikingNeuron.sigmaE = sE;
+        cellCoord[side][seg].spikingNeuron.sigmaI = sI;
+        cellCoord[side][seg].spikingNeuron.betaE = bE;
+        cellCoord[side][seg].spikingNeuron.betaI = bI;
+        cellCoord[side][seg].spikingNeuron.Idc = Idc;
+    }
+    else if(id == 5){
+        cellProtractor[side][seg].spikingNeuron.alpha = a;
+        cellProtractor[side][seg].spikingNeuron.sigma = s;
+        cellProtractor[side][seg].spikingNeuron.sigmaE = sE;
+        cellProtractor[side][seg].spikingNeuron.sigmaI = sI;
+        cellProtractor[side][seg].spikingNeuron.betaE = bE;
+        cellProtractor[side][seg].spikingNeuron.betaI = bI;
+        cellProtractor[side][seg].spikingNeuron.Idc = Idc;
+    }
+    else if(id == 6){
+        cellRetractor[side][seg].spikingNeuron.alpha = a;
+        cellRetractor[side][seg].spikingNeuron.sigma = s;
+        cellRetractor[side][seg].spikingNeuron.sigmaE = sE;
+        cellRetractor[side][seg].spikingNeuron.sigmaI = sI;
+        cellRetractor[side][seg].spikingNeuron.betaE = bE;
+        cellRetractor[side][seg].spikingNeuron.betaI = bI;
+        cellRetractor[side][seg].spikingNeuron.Idc = Idc;
+    }
+    else if(id == 7){
+        cellExtensor[side][seg].spikingNeuron.alpha = a;
+        cellExtensor[side][seg].spikingNeuron.sigma = s;
+        cellExtensor[side][seg].spikingNeuron.sigmaE = sE;
+        cellExtensor[side][seg].spikingNeuron.sigmaI = sI;
+        cellExtensor[side][seg].spikingNeuron.betaE = bE;
+        cellExtensor[side][seg].spikingNeuron.betaI = bI;
+        cellExtensor[side][seg].spikingNeuron.Idc = Idc;
+    }
+    else if(id ==8){
+        cellFlexor[side][seg].spikingNeuron.alpha = a;
+        cellFlexor[side][seg].spikingNeuron.sigma = s;
+        cellFlexor[side][seg].spikingNeuron.sigmaE = sE;
+        cellFlexor[side][seg].spikingNeuron.sigmaI = sI;
+        cellFlexor[side][seg].spikingNeuron.betaE = bE;
+        cellFlexor[side][seg].spikingNeuron.betaI = bI;
+        cellFlexor[side][seg].spikingNeuron.Idc = Idc;
+        
+    }
+    
+    //    }
+    //  }
+    
+    // for(iSide = 0;iSide < mmSide; ++iSide)
+    // {
+    if (id == 9){
+        cellF[side].spikingNeuron.alpha = a;
+        cellF[side].spikingNeuron.sigma = s;
+        cellF[side].spikingNeuron.sigmaE = sE;
+        cellF[side].spikingNeuron.sigmaI = sI;
+        cellF[side].spikingNeuron.betaE = bE;
+        cellF[side].spikingNeuron.betaI = bI;
+        cellF[side].spikingNeuron.Idc = Idc;
+    }
+    else if(id == 10){
+        cellB[side].spikingNeuron.alpha = a;
+        cellB[side].spikingNeuron.sigma = s;
+        cellB[side].spikingNeuron.sigmaE = sE;
+        cellB[side].spikingNeuron.sigmaI = sI;
+        cellB[side].spikingNeuron.betaE = bE;
+        cellB[side].spikingNeuron.betaI = bI;
+        cellB[side].spikingNeuron.Idc = Idc;
+    }
+    else if(id == 11){
+        cellLL[side].spikingNeuron.alpha = a;
+        cellLL[side].spikingNeuron.sigma = s;
+        cellLL[side].spikingNeuron.sigmaE = sE;
+        cellLL[side].spikingNeuron.sigmaI = sI;
+        cellLL[side].spikingNeuron.betaE = bE;
+        cellLL[side].spikingNeuron.betaI = bI;
+        cellLL[side].spikingNeuron.Idc = Idc;
+    }
+    else if (id == 12) {
+        cellLT[side].spikingNeuron.alpha = a;
+        cellLT[side].spikingNeuron.sigma = s;
+        cellLT[side].spikingNeuron.sigmaE = sE;
+        cellLT[side].spikingNeuron.sigmaI = sI;
+        cellLT[side].spikingNeuron.betaE = bE;
+        cellLT[side].spikingNeuron.betaI = bI;
+        cellLT[side].spikingNeuron.Idc = Idc;
+    }
+    else if (id == 14){
+        cellModCom[side].spikingNeuron.alpha = a;
+        cellModCom[side].spikingNeuron.sigma = s;
+        cellModCom[side].spikingNeuron.sigmaE = sE;
+        cellModCom[side].spikingNeuron.sigmaI = sI;
+        cellModCom[side].spikingNeuron.betaE = bE;
+        cellModCom[side].spikingNeuron.betaI = bI;
+        cellModCom[side].spikingNeuron.Idc = Idc;
+    }
+    else if (id == 15){
+        cellH[side].spikingNeuron.alpha = a;
+        cellH[side].spikingNeuron.sigma = s;
+        cellH[side].spikingNeuron.sigmaE = sE;
+        cellH[side].spikingNeuron.sigmaI = sI;
+        cellH[side].spikingNeuron.betaE = bE;
+        cellH[side].spikingNeuron.betaI = bI;
+        cellH[side].spikingNeuron.Idc = Idc;
+    }
+    // }
+    // for(iSide = 0;iSide < mmSide; ++iSide)
+    //  {
+    //     for (iSeg = 0; iSeg < pitchStates; ++iSeg){
+    if (id == 13){
+        //pcn
+        cellPcn[side][seg].spikingNeuron.alpha = a;
+        cellPcn[side][seg].spikingNeuron.sigma = s;
+        cellPcn[side][seg].spikingNeuron.sigmaE = sE;
+        cellPcn[side][seg].spikingNeuron.sigmaI = sI;
+        cellPcn[side][seg].spikingNeuron.betaE = bE;
+        cellPcn[side][seg].spikingNeuron.betaI = bI;
+        cellPcn[side][seg].spikingNeuron.Idc = Idc;
+    }
+    //  }
+    
+    return ParamArray;
+}
+*/
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)

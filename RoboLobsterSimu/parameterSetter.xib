@@ -170,9 +170,9 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-gR-hDh">
-                        <rect key="frame" x="265" y="4" width="140" height="32"/>
+                        <rect key="frame" x="370" y="4" width="165" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Set New Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1w-QO-HXM">
+                        <buttonCell key="cell" type="push" title="Set Synapse Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1w-QO-HXM">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -324,17 +324,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-fA-rcU">
-                        <rect key="frame" x="400" y="4" width="118" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Save Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gPF-qI-OeF">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="saveSynapseParams:" target="-2" id="bWN-ks-xdD"/>
-                        </connections>
-                    </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jp-2e-kna">
                         <rect key="frame" x="406" y="245" width="96" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -424,8 +413,19 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-uq-GwK">
+                        <rect key="frame" x="224" y="4" width="157" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set Neuron Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5m7-Gi-40j">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setNeuronParams:" target="-2" id="Hnu-4h-B9N"/>
+                        </connections>
+                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umt-2V-Pq5">
-                        <rect key="frame" x="142" y="4" width="123" height="32"/>
+                        <rect key="frame" x="110" y="4" width="123" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Reset Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uQS-VJ-aJd">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -438,7 +438,7 @@
                 </subviews>
             </view>
             <connections>
-                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+                <outlet property="delegate" destination="Umt-2V-Pq5" id="7ks-Ko-iWc"/>
             </connections>
             <point key="canvasLocation" x="-29.5" y="210.5"/>
         </window>
