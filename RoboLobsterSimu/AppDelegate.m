@@ -119,6 +119,7 @@
  //   NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
     //[traceWaveforms readMultipleArrays:arr :size];
 }
+
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration{
  //  NSLog(@"sending!!!!!!!!");
     
