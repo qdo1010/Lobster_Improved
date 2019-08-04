@@ -3910,7 +3910,7 @@ void CreateReadableParams () {
 
 
 
-double ReturnCurrentParams(long id, long side, long seg, int data){
+double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
     double ParamArray[7];
     
     if(id == 0){
@@ -4060,6 +4060,271 @@ double ReturnCurrentParams(long id, long side, long seg, int data){
      ParamArray[4] = cellPcn[side][seg].spikingNeuron.betaE;
      ParamArray[5] = cellPcn[side][seg].spikingNeuron.betaI;
      ParamArray[6] = cellPcn[side][seg].spikingNeuron.Idc;
+    }
+    return ParamArray[data];
+}
+
+double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
+    double ParamArray[3];
+    if (id == 0){
+        ParamArray[0] = pInhSegCoordEle[side][seg].synapse.xRp;
+        ParamArray[1] = pInhSegCoordEle[side][seg].synapse.gamma;
+        ParamArray[2] = pInhSegCoordEle[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegContEleCoord[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegContEleCoord[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegContEleCoord[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
+        ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
+        ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcIntCaudEleCoord[side][seg].synapse.xRp;
+        ParamArray[1] = pExcIntCaudEleCoord[side][seg].synapse.gamma;
+        ParamArray[2] = pExcIntCaudEleCoord[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntFSwing[side].synapse.xRp;
+        ParamArray[1] = pInhIntFSwing[side].synapse.gamma;
+        ParamArray[2] = pInhIntFSwing[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntFStance[side].synapse.xRp;
+        ParamArray[1] = pInhIntFStance[side].synapse.gamma;
+        ParamArray[2] = pInhIntFStance[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntBSwing[side].synapse.xRp;
+        ParamArray[1] = pInhIntBSwing[side].synapse.gamma;
+        ParamArray[2] = pInhIntBSwing[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntBStance[side].synapse.xRp;
+        ParamArray[1] = pInhIntBStance[side].synapse.gamma;
+        ParamArray[2] = pInhIntBStance[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntLLSwing[side].synapse.xRp;
+        ParamArray[1] = pInhIntLLSwing[side].synapse.gamma;
+        ParamArray[2] = pInhIntLLSwing[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntLLStance[side].synapse.xRp;
+        ParamArray[1] = pInhIntLLStance[side].synapse.gamma;
+        ParamArray[2] = pInhIntLLStance[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntLTSwing[side].synapse.xRp;
+        ParamArray[1] = pInhIntLTSwing[side].synapse.gamma;
+        ParamArray[2] = pInhIntLTSwing[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhIntLTStance[side].synapse.xRp;
+        ParamArray[1] = pInhIntLTStance[side].synapse.gamma;
+        ParamArray[2] = pInhIntLTStance[side].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
+        ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
+        ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcIntRCaudEleCoord[side][seg].synapse.xRp;
+        ParamArray[1] = pExcIntRCaudEleCoord[side][seg].synapse.gamma;
+        ParamArray[2] = pExcIntRCaudEleCoord[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegEleContraLat[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegEleContraLat[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegEleContraLat[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhSegEleDep[side][seg].synapse.xRp;
+        ParamArray[1] = pInhSegEleDep[side][seg].synapse.gamma;
+        ParamArray[2] = pInhSegEleDep[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhSegEleStance[side][seg].synapse.xRp;
+        ParamArray[1] = pInhSegEleStance[side][seg].synapse.gamma;
+        ParamArray[2] = pInhSegEleStance[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhSegStanceSwing[side][seg].synapse.xRp;
+        ParamArray[1] = pInhSegStanceSwing[side][seg].synapse.gamma;
+        ParamArray[2] = pInhSegStanceSwing[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegStanceProt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegStanceProt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegStanceProt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegStanceRet[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegStanceRet[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegStanceRet[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegStanceExt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegStanceExt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegStanceExt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegStanceFlx[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegStanceFlx[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegStanceFlx[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegSwingProt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegSwingProt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegSwingProt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegSwingRet[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegSwingRet[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegSwingRet[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegSwingExt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegSwingExt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegSwingExt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegSwingFlx[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegSwingFlx[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegSwingFlx[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcHLYL[side][seg].synapse.xRp;
+        ParamArray[1] = pExcHLYL[side][seg].synapse.gamma;
+        ParamArray[2] = pExcHLYL[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcHLRL[side][seg].synapse.xRp;
+        ParamArray[1] = pExcHLRL[side][seg].synapse.gamma;
+        ParamArray[2] = pExcHLRL[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcYLFR[side][seg].synapse.xRp;
+        ParamArray[1] = pExcYLFR[side][seg].synapse.gamma;
+        ParamArray[2] = pExcYLFR[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcRLFR[side][seg].synapse.xRp;
+        ParamArray[1] = pExcRLFR[side][seg].synapse.gamma;
+        ParamArray[2] = pExcRLFR[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcHRYR[side][seg].synapse.xRp;
+        ParamArray[1] = pExcHRYR[side][seg].synapse.gamma;
+        ParamArray[2] = pExcHRYR[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcHRRR[side][seg].synapse.xRp;
+        ParamArray[1] = pExcHRRR[side][seg].synapse.gamma;
+        ParamArray[2] = pExcHRRR[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcYRFL[side][seg].synapse.xRp;
+        ParamArray[1] = pExcYRFL[side][seg].synapse.gamma;
+        ParamArray[2] = pExcYRFL[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcRRFL[side][seg].synapse.xRp;
+        ParamArray[1] = pExcRRFL[side][seg].synapse.gamma;
+        ParamArray[2] = pExcRRFL[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcRSLeft[side][seg].synapse.xRp;
+        ParamArray[1] = pExcRSLeft[side][seg].synapse.gamma;
+        ParamArray[2] = pExcRSLeft[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcRSRight[side][seg].synapse.xRp;
+        ParamArray[1] = pExcRSRight[side][seg].synapse.gamma;
+        ParamArray[2] = pExcRSRight[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcSegPcnDep[side][seg].synapse.xRp;
+        ParamArray[1] = pExcSegPcnDep[side][seg].synapse.gamma;
+        ParamArray[2] = pExcSegPcnDep[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcC[side][seg].synapse.xRp;
+        ParamArray[1] = pExcC[side][seg].synapse.gamma;
+        ParamArray[2] = pExcC[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pInhF[side][seg].synapse.xRp;
+        ParamArray[1] = pInhF[side][seg].synapse.gamma;
+        ParamArray[2] = pInhF[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcB[side][seg].synapse.xRp;
+        ParamArray[1] = pExcB[side][seg].synapse.gamma;
+        ParamArray[2] = pExcB[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcModComEle[side][seg].modSynapse.xRp;
+        ParamArray[1] = pExcModComEle[side][seg].modSynapse.gamma;
+        ParamArray[2] = pExcModComEle[side][seg].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcModComDep[side][seg].modSynapse.xRp;
+        ParamArray[1] = pExcModComDep[side][seg].modSynapse.gamma;
+        ParamArray[2] = pExcModComDep[side][seg].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcModComSwing[side][seg].modSynapse.xRp;
+        ParamArray[1] = pExcModComSwing[side][seg].modSynapse.gamma;
+        ParamArray[2] = pExcModComSwing[side][seg].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcModComStance[side][seg].modSynapse.xRp;
+        ParamArray[1] = pExcModComStance[side][seg].modSynapse.gamma;
+        ParamArray[2] = pExcModComStance[side][seg].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcForRet[side][seg].synapse.xRp;
+        ParamArray[1] = pExcForRet[side][seg].synapse.gamma;
+        ParamArray[2] = pExcForRet[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcBackProt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcBackProt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcBackProt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcLLFlx[side][seg].synapse.xRp;
+        ParamArray[1] = pExcLLFlx[side][seg].synapse.gamma;
+        ParamArray[2] = pExcLLFlx[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcLTExt[side][seg].synapse.xRp;
+        ParamArray[1] = pExcLTExt[side][seg].synapse.gamma;
+        ParamArray[2] = pExcLTExt[side][seg].synapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcForModCom[side].modSynapse.xRp;
+        ParamArray[1] = pExcForModCom[side].modSynapse.gamma;
+        ParamArray[2] = pExcForModCom[side].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcBackModCom[side].modSynapse.xRp;
+        ParamArray[1] = pExcBackModCom[side].modSynapse.gamma;
+        ParamArray[2] = pExcBackModCom[side].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcLLModCom[side].modSynapse.xRp;
+        ParamArray[1] = pExcLLModCom[side].modSynapse.gamma;
+        ParamArray[2] = pExcLLModCom[side].modSynapse.gStrength;
+    }
+    else if (id == 1){
+        ParamArray[0] = pExcLTModCom[side].modSynapse.xRp;
+        ParamArray[1] = pExcLTModCom[side].modSynapse.gamma;
+        ParamArray[2] = pExcLTModCom[side].modSynapse.gStrength;
     }
     return ParamArray[data];
 }
