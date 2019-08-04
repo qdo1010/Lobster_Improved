@@ -254,7 +254,7 @@ Idc = malloc(numCell*sizeof(double));
             //        cellID[i] = [[chosenCellArray objectAtIndex:0] intValue];
         side[i] = [[chosenCellArray objectAtIndex:1] intValue];
         seg[i] = [[chosenCellArray objectAtIndex:2] intValue];
-        NSLog(@"%@", cellName);
+//        NSLog(@"%@", cellName);
             //set trace name first//
         [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
         
