@@ -196,6 +196,8 @@
     
 } // showCommandWindow
 */
+
+/*
 - (IBAction) showParameterSetterWindow:(id)sender
 {
     if (parameterSetter == nil)
@@ -206,7 +208,7 @@
     [[self parameterSetter].window orderFront:self];
     
 } // showSynapseWindow
-
+*/
 #pragma mark --- Getters and Setters ---
 
 
