@@ -88,7 +88,7 @@
     }
     switch (cellType) {
         case 0:
-             NSLog( @"%f\n", xArrayElev[cell]);
+//             NSLog( @"%f\n", xArrayElev[cell]);
             /*
             //keep this as an array for now in case in the future we want indiv params
             
@@ -124,7 +124,7 @@
 
 
             */
-            NSLog( @"%f\n", xArrayDep[cell]);
+ //           NSLog( @"%f\n", xArrayDep[cell]);
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayDep[starttime][cell]]];
@@ -135,7 +135,7 @@
             }
             break;
         case 2:
-              NSLog( @"%f\n", xArraySwing[cell]);
+//              NSLog( @"%f\n", xArraySwing[cell]);
             /*
             [Params addObject:[NSNumber numberWithDouble:alphaArraySwing[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArraySwing[a][b]]];
@@ -156,7 +156,7 @@
             break;
         case 3:
             
-               NSLog( @"%f\n", xArrayStance[cell]);
+//               NSLog( @"%f\n", xArrayStance[cell]);
             /*
             [Params addObject:[NSNumber numberWithDouble:alphaArrayStance[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayStance[a][b]]];
@@ -176,7 +176,7 @@
             }
             break;
         case 4:
-              NSLog( @"%f\n", xArrayProt[cell]);
+ //             NSLog( @"%f\n", xArrayProt[cell]);
             /*
             [Params addObject:[NSNumber numberWithDouble:alphaArrayProt[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayProt[a][b]]];
@@ -198,7 +198,7 @@
             }
             break;
         case 5:
-               NSLog( @"%f\n", xArrayRet[cell]);
+ //              NSLog( @"%f\n", xArrayRet[cell]);
             /*
             [Params addObject:[NSNumber numberWithDouble:alphaArrayRet[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayRet[a][b]]];
