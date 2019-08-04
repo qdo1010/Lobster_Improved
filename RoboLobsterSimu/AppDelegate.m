@@ -259,10 +259,11 @@
 {
        AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Executing drawOscilloscope");
-
+    
+    if (_analysisWindowController == nil) {    //This stops it from opening multiple Oscilloscope Windows
        AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
       [self setAnalysisWindowController:newAnalysisWindowController];
-
+    }
     [appDelegate showAnalysisWindow:self];
      [[appDelegate analysisWindowController]  viewScope:self];
      [appDelegate setDrawChart: NO];
