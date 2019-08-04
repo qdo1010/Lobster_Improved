@@ -160,7 +160,8 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
 void SaveAllParams(void);
 void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc);
-double ReturnCurrentParams(long id, long side, long seg);
+double ReturnCurrentNeuronParams(long id, long side, long seg, int data);
+double ReturnCurrentSynapseParams(long id, long side, long seg, int data);
 void CreateParamFile (void);
 
 @end
