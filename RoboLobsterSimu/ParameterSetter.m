@@ -268,6 +268,9 @@ Idc = malloc(numCell*sizeof(double));
         
         [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     }
+    long side = [SideSelector indexOfSelectedItem];
+    long seg = [SegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronID indexOfSelectedItem];
     /*
         //init params input values
         id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -303,15 +306,15 @@ Idc = malloc(numCell*sizeof(double));
     
     
         // else{
-    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[neuronChosen]]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[neuronChosen]]];
-    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[neuronChosen]]];
-    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[neuronChosen]]];
-    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[neuronChosen]]];
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 4)]];
     
-    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[neuronChosen]]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 5)]];
     
-    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[neuronChosen]]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 6)]];
     
     NSLog(@"Parameter Setter AwakeFromNIB completed");
     
@@ -448,6 +451,9 @@ Idc = malloc(numCell*sizeof(double));
 - (IBAction)chooseNeuron:(id)sender {  //Formerly ChooseTraceID in OscilloscopeController
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     neuronChosen = (int) [[[self neuronID] title] integerValue];
+    long side = [SideSelector indexOfSelectedItem];
+    long seg = [SegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronID indexOfSelectedItem];
     
 //    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
@@ -517,15 +523,15 @@ Idc = malloc(numCell*sizeof(double));
     */
     
     
-    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[neuronChosen]]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[neuronChosen]]];
-    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[neuronChosen]]];
-    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[neuronChosen]]];
-    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[neuronChosen]]];
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 4)]];
     
-    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[neuronChosen]]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 5)]];
     
-    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[neuronChosen]]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentParams( neuronToChange, side, seg, 6)]];
     
 
     

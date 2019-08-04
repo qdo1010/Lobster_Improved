@@ -289,6 +289,7 @@
 }
 
 
+
   ///this is to change sweep duration, so to zoom in!
 - (IBAction)changeSweepDuration:(id)sender {
     traceIDchosen = (int) [[[self displayTraceID] title] integerValue];
@@ -415,7 +416,7 @@
      [[appDelegate traceGainArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceGainSlider floatValue]]];
     
 }
-
+/*
 
 - (IBAction)setlFor:(id)sender{
     bool sta = [sender state];
@@ -473,7 +474,7 @@
     [self.currentParameters setValue: onOrOff forKey:@"rTra"];
     [self updateTable];
 }
-
+*/
 - (IBAction)changeTraceOffset:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     [traceOffsetSlider setMinValue:0];

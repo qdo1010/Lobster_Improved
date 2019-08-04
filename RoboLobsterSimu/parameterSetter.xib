@@ -69,6 +69,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="chooseNeuron:" target="-2" id="z6I-Lv-pYQ"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8g7-xC-ZTo">
                         <rect key="frame" x="239" y="318" width="77" height="25"/>
@@ -84,6 +87,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="chooseNeuron:" target="-2" id="MHE-sy-9Wu"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDY-sG-JsN">
                         <rect key="frame" x="304" y="283" width="63" height="17"/>

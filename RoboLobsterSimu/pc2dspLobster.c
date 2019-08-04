@@ -3908,12 +3908,12 @@ void CreateReadableParams () {
     fclose(paramTextFile);
 }
 
-/*
 
-double * ReturnCurrentParams(long id, long side, long seg){
+
+double ReturnCurrentParams(long id, long side, long seg, int data){
     double ParamArray[7];
     
-    
+    if(id == 0){
         ParamArray[0] = cellElevator[side][seg].burstingNeuron.alpha;
         ParamArray[1] = cellElevator[side][seg].burstingNeuron.sigma;
         ParamArray[2] = cellElevator[side][seg].burstingNeuron.sigmaE;
@@ -3921,160 +3921,149 @@ double * ReturnCurrentParams(long id, long side, long seg){
         ParamArray[4] = cellElevator[side][seg].burstingNeuron.betaE;
         ParamArray[5] = cellElevator[side][seg].burstingNeuron.betaI;
         ParamArray[6] = cellElevator[side][seg].burstingNeuron.Idc;
-    
-    /*
+    }
+
     else if(id == 1){
-        cellSwing[side][seg].burstingNeuron.alpha = a;
-        cellSwing[side][seg].burstingNeuron.sigma = s;
-        cellSwing[side][seg].burstingNeuron.sigmaE = sE;
-        cellSwing[side][seg].burstingNeuron.sigmaI = sI;
-        cellSwing[side][seg].burstingNeuron.betaE = bE;
-        cellSwing[side][seg].burstingNeuron.betaI = bI;
-        cellSwing[side][seg].burstingNeuron.Idc = Idc;
+     ParamArray[0] = cellSwing[side][seg].burstingNeuron.alpha;
+     ParamArray[1] = cellSwing[side][seg].burstingNeuron.sigma;
+     ParamArray[2] = cellSwing[side][seg].burstingNeuron.sigmaE;
+     ParamArray[3] = cellSwing[side][seg].burstingNeuron.sigmaI;
+     ParamArray[4] = cellSwing[side][seg].burstingNeuron.betaE;
+     ParamArray[5] = cellSwing[side][seg].burstingNeuron.betaI;
+     ParamArray[6] = cellSwing[side][seg].burstingNeuron.Idc;
+     
     }
     else if(id == 2){
-        cellDepressor[side][seg].pacemakerNeuron.alpha = a;
-        cellDepressor[side][seg].pacemakerNeuron.sigma = s;
-        cellDepressor[side][seg].pacemakerNeuron.sigmaE = sE;
-        cellDepressor[side][seg].pacemakerNeuron.sigmaI = sI;
-        cellDepressor[side][seg].pacemakerNeuron.betaE = bE;
-        cellDepressor[side][seg].pacemakerNeuron.betaI = bI;
-        cellDepressor[side][seg].pacemakerNeuron.Idc = Idc;
+     ParamArray[0] = cellDepressor[side][seg].pacemakerNeuron.alpha;
+     ParamArray[1] = cellDepressor[side][seg].pacemakerNeuron.sigma;
+     ParamArray[2] = cellDepressor[side][seg].pacemakerNeuron.sigmaE;
+     ParamArray[3] = cellDepressor[side][seg].pacemakerNeuron.sigmaI;
+     ParamArray[4] = cellDepressor[side][seg].pacemakerNeuron.betaE;
+     ParamArray[5] = cellDepressor[side][seg].pacemakerNeuron.betaI;
+     ParamArray[6] = cellDepressor[side][seg].pacemakerNeuron.Idc;
     }
     else if(id == 3){
-        cellStance[side][seg].pacemakerNeuron.alpha = a;
-        cellStance[side][seg].pacemakerNeuron.sigma = s;
-        cellStance[side][seg].pacemakerNeuron.sigmaE = sE;
-        cellStance[side][seg].pacemakerNeuron.sigmaI = sI;
-        cellStance[side][seg].pacemakerNeuron.betaE = bE;
-        cellStance[side][seg].pacemakerNeuron.betaI = bI;
-        cellStance[side][seg].pacemakerNeuron.Idc = Idc;
+     ParamArray[0] = cellStance[side][seg].pacemakerNeuron.alpha;
+     ParamArray[1] = cellStance[side][seg].pacemakerNeuron.sigma;
+     ParamArray[2] = cellStance[side][seg].pacemakerNeuron.sigmaE;
+     ParamArray[3] = cellStance[side][seg].pacemakerNeuron.sigmaI;
+     ParamArray[4] = cellStance[side][seg].pacemakerNeuron.betaE;
+     ParamArray[5] = cellStance[side][seg].pacemakerNeuron.betaI;
+     ParamArray[6] = cellStance[side][seg].pacemakerNeuron.Idc;
     }
     else if(id == 4){
-        cellCoord[side][seg].spikingNeuron.alpha = a;
-        cellCoord[side][seg].spikingNeuron.sigma = s;
-        cellCoord[side][seg].spikingNeuron.sigmaE = sE;
-        cellCoord[side][seg].spikingNeuron.sigmaI = sI;
-        cellCoord[side][seg].spikingNeuron.betaE = bE;
-        cellCoord[side][seg].spikingNeuron.betaI = bI;
-        cellCoord[side][seg].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellCoord[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellCoord[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellCoord[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellCoord[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellCoord[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellCoord[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellCoord[side][seg].spikingNeuron.Idc;
     }
     else if(id == 5){
-        cellProtractor[side][seg].spikingNeuron.alpha = a;
-        cellProtractor[side][seg].spikingNeuron.sigma = s;
-        cellProtractor[side][seg].spikingNeuron.sigmaE = sE;
-        cellProtractor[side][seg].spikingNeuron.sigmaI = sI;
-        cellProtractor[side][seg].spikingNeuron.betaE = bE;
-        cellProtractor[side][seg].spikingNeuron.betaI = bI;
-        cellProtractor[side][seg].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellProtractor[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellProtractor[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellProtractor[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellProtractor[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellProtractor[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellProtractor[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellProtractor[side][seg].spikingNeuron.Idc;
+
     }
     else if(id == 6){
-        cellRetractor[side][seg].spikingNeuron.alpha = a;
-        cellRetractor[side][seg].spikingNeuron.sigma = s;
-        cellRetractor[side][seg].spikingNeuron.sigmaE = sE;
-        cellRetractor[side][seg].spikingNeuron.sigmaI = sI;
-        cellRetractor[side][seg].spikingNeuron.betaE = bE;
-        cellRetractor[side][seg].spikingNeuron.betaI = bI;
-        cellRetractor[side][seg].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellRetractor[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellRetractor[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellRetractor[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellRetractor[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellRetractor[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellRetractor[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellRetractor[side][seg].spikingNeuron.Idc;
     }
     else if(id == 7){
-        cellExtensor[side][seg].spikingNeuron.alpha = a;
-        cellExtensor[side][seg].spikingNeuron.sigma = s;
-        cellExtensor[side][seg].spikingNeuron.sigmaE = sE;
-        cellExtensor[side][seg].spikingNeuron.sigmaI = sI;
-        cellExtensor[side][seg].spikingNeuron.betaE = bE;
-        cellExtensor[side][seg].spikingNeuron.betaI = bI;
-        cellExtensor[side][seg].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellExtensor[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellExtensor[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellExtensor[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellExtensor[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellExtensor[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellExtensor[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellExtensor[side][seg].spikingNeuron.Idc;
     }
     else if(id ==8){
-        cellFlexor[side][seg].spikingNeuron.alpha = a;
-        cellFlexor[side][seg].spikingNeuron.sigma = s;
-        cellFlexor[side][seg].spikingNeuron.sigmaE = sE;
-        cellFlexor[side][seg].spikingNeuron.sigmaI = sI;
-        cellFlexor[side][seg].spikingNeuron.betaE = bE;
-        cellFlexor[side][seg].spikingNeuron.betaI = bI;
-        cellFlexor[side][seg].spikingNeuron.Idc = Idc;
-        
+     ParamArray[0] = cellFlexor[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellFlexor[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellFlexor[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellFlexor[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellFlexor[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellFlexor[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellFlexor[side][seg].spikingNeuron.Idc;
     }
-    
-    //    }
-    //  }
-    
-    // for(iSide = 0;iSide < mmSide; ++iSide)
-    // {
-    if (id == 9){
-        cellF[side].spikingNeuron.alpha = a;
-        cellF[side].spikingNeuron.sigma = s;
-        cellF[side].spikingNeuron.sigmaE = sE;
-        cellF[side].spikingNeuron.sigmaI = sI;
-        cellF[side].spikingNeuron.betaE = bE;
-        cellF[side].spikingNeuron.betaI = bI;
-        cellF[side].spikingNeuron.Idc = Idc;
+    else if (id == 9){
+     ParamArray[0] = cellF[side].spikingNeuron.alpha;
+     ParamArray[1] = cellF[side].spikingNeuron.sigma;
+     ParamArray[2] = cellF[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellF[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellF[side].spikingNeuron.betaE;
+     ParamArray[5] = cellF[side].spikingNeuron.betaI;
+     ParamArray[6] = cellF[side].spikingNeuron.Idc;
     }
     else if(id == 10){
-        cellB[side].spikingNeuron.alpha = a;
-        cellB[side].spikingNeuron.sigma = s;
-        cellB[side].spikingNeuron.sigmaE = sE;
-        cellB[side].spikingNeuron.sigmaI = sI;
-        cellB[side].spikingNeuron.betaE = bE;
-        cellB[side].spikingNeuron.betaI = bI;
-        cellB[side].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellB[side].spikingNeuron.alpha;
+     ParamArray[1] = cellB[side].spikingNeuron.sigma;
+     ParamArray[2] = cellB[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellB[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellB[side].spikingNeuron.betaE;
+     ParamArray[5] = cellB[side].spikingNeuron.betaI;
+     ParamArray[6] = cellB[side].spikingNeuron.Idc;
     }
     else if(id == 11){
-        cellLL[side].spikingNeuron.alpha = a;
-        cellLL[side].spikingNeuron.sigma = s;
-        cellLL[side].spikingNeuron.sigmaE = sE;
-        cellLL[side].spikingNeuron.sigmaI = sI;
-        cellLL[side].spikingNeuron.betaE = bE;
-        cellLL[side].spikingNeuron.betaI = bI;
-        cellLL[side].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellLL[side].spikingNeuron.alpha;
+     ParamArray[1] = cellLL[side].spikingNeuron.sigma;
+     ParamArray[2] = cellLL[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellLL[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellLL[side].spikingNeuron.betaE;
+     ParamArray[5] = cellLL[side].spikingNeuron.betaI;
+     ParamArray[6] = cellLL[side].spikingNeuron.Idc;
     }
     else if (id == 12) {
-        cellLT[side].spikingNeuron.alpha = a;
-        cellLT[side].spikingNeuron.sigma = s;
-        cellLT[side].spikingNeuron.sigmaE = sE;
-        cellLT[side].spikingNeuron.sigmaI = sI;
-        cellLT[side].spikingNeuron.betaE = bE;
-        cellLT[side].spikingNeuron.betaI = bI;
-        cellLT[side].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellLT[side].spikingNeuron.alpha;
+     ParamArray[1] = cellLT[side].spikingNeuron.sigma;
+     ParamArray[2] = cellLT[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellLT[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellLT[side].spikingNeuron.betaE;
+     ParamArray[5] = cellLT[side].spikingNeuron.betaI;
+     ParamArray[6] = cellLT[side].spikingNeuron.Idc;
     }
     else if (id == 14){
-        cellModCom[side].spikingNeuron.alpha = a;
-        cellModCom[side].spikingNeuron.sigma = s;
-        cellModCom[side].spikingNeuron.sigmaE = sE;
-        cellModCom[side].spikingNeuron.sigmaI = sI;
-        cellModCom[side].spikingNeuron.betaE = bE;
-        cellModCom[side].spikingNeuron.betaI = bI;
-        cellModCom[side].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellModCom[side].spikingNeuron.alpha;
+     ParamArray[1] = cellModCom[side].spikingNeuron.sigma;
+     ParamArray[2] = cellModCom[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellModCom[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellModCom[side].spikingNeuron.betaE;
+     ParamArray[5] = cellModCom[side].spikingNeuron.betaI;
+     ParamArray[6] = cellModCom[side].spikingNeuron.Idc;
     }
     else if (id == 15){
-        cellH[side].spikingNeuron.alpha = a;
-        cellH[side].spikingNeuron.sigma = s;
-        cellH[side].spikingNeuron.sigmaE = sE;
-        cellH[side].spikingNeuron.sigmaI = sI;
-        cellH[side].spikingNeuron.betaE = bE;
-        cellH[side].spikingNeuron.betaI = bI;
-        cellH[side].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellH[side].spikingNeuron.alpha;
+     ParamArray[1] = cellH[side].spikingNeuron.sigma;
+     ParamArray[2] = cellH[side].spikingNeuron.sigmaE;
+     ParamArray[3] = cellH[side].spikingNeuron.sigmaI;
+     ParamArray[4] = cellH[side].spikingNeuron.betaE;
+     ParamArray[5] = cellH[side].spikingNeuron.betaI;
+     ParamArray[6] = cellH[side].spikingNeuron.Idc;
     }
-    // }
-    // for(iSide = 0;iSide < mmSide; ++iSide)
-    //  {
-    //     for (iSeg = 0; iSeg < pitchStates; ++iSeg){
-    if (id == 13){
+    else if (id == 13){
         //pcn
-        cellPcn[side][seg].spikingNeuron.alpha = a;
-        cellPcn[side][seg].spikingNeuron.sigma = s;
-        cellPcn[side][seg].spikingNeuron.sigmaE = sE;
-        cellPcn[side][seg].spikingNeuron.sigmaI = sI;
-        cellPcn[side][seg].spikingNeuron.betaE = bE;
-        cellPcn[side][seg].spikingNeuron.betaI = bI;
-        cellPcn[side][seg].spikingNeuron.Idc = Idc;
+     ParamArray[0] = cellPcn[side][seg].spikingNeuron.alpha;
+     ParamArray[1] = cellPcn[side][seg].spikingNeuron.sigma;
+     ParamArray[2] = cellPcn[side][seg].spikingNeuron.sigmaE;
+     ParamArray[3] = cellPcn[side][seg].spikingNeuron.sigmaI;
+     ParamArray[4] = cellPcn[side][seg].spikingNeuron.betaE;
+     ParamArray[5] = cellPcn[side][seg].spikingNeuron.betaI;
+     ParamArray[6] = cellPcn[side][seg].spikingNeuron.Idc;
     }
-    //  }
-    
-    return ParamArray;
+    return ParamArray[data];
 }
-*/
+
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
 void computeMAPs(double mainLoopIndex)
