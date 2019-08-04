@@ -19,21 +19,21 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Analysis" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Analysis Window">
+        <window title="Analysis" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="5" userLabel="Analysis Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="585" width="1000" height="650"/>
+            <rect key="contentRect" x="0.0" y="585" width="1016" height="649"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="765" height="650"/>
             <value key="maxSize" type="size" width="1000" height="650"/>
             <value key="minFullScreenContentSize" type="size" width="1000" height="650"/>
             <value key="maxFullScreenContentSize" type="size" width="1000" height="650"/>
             <view key="contentView" identifier="GraphController" id="6" userLabel="GraphBox" customClass="NSBox">
-                <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                <rect key="frame" x="0.0" y="0.0" width="1016" height="649"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view id="BJB-co-hLu" userLabel="OscilloscopeView" customClass="OscilloscopeView">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1016" height="649"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </subviews>
@@ -41,7 +41,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="sCa-yg-4Wb"/>
             </connections>
-            <point key="canvasLocation" x="1430" y="524"/>
+            <point key="canvasLocation" x="1438" y="523.5"/>
         </window>
         <drawer id="2044" userLabel="scopeDrawer">
             <size key="contentSize" width="195" height="480"/>
