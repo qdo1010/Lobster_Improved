@@ -85,10 +85,10 @@ NSString *const kDSPTitle          = @"DSPViewController";
     NSLog(@"analysis view loaded");
     [super windowDidLoad];
     [self showWindow:nil];
-/*   NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.1
+  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.1
                                                  target: self
                                                 selector:@selector(updateRect)
-                                userInfo: nil repeats:YES];*/
+                                userInfo: nil repeats:YES];
    // AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
 
   //  [[[appDelegate analysisWindowController] oscilloscopeController] setDoInitAndScale:YES];

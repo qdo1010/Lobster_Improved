@@ -435,7 +435,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="resetParamsToDefault:" target="-2" id="zt9-vD-QuO"/>
+                            <action selector="resetParamsToDefault:" target="-2" id="szA-Xt-fSz"/>
                         </connections>
                     </button>
                 </subviews>
