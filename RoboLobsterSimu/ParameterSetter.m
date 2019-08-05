@@ -249,11 +249,11 @@ Idc = malloc(numCell*sizeof(double));
         
             //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-        NSMutableArray* chosenCellArray;
-        chosenCellArray = [self convertNameToId:cellName];
-            //        cellID[i] = [[chosenCellArray objectAtIndex:0] intValue];
-        side[i] = [[chosenCellArray objectAtIndex:1] intValue];
-        seg[i] = [[chosenCellArray objectAtIndex:2] intValue];
+       // NSMutableArray* chosenCellArray;
+     //   chosenCellArray = [self convertNameToId:cellName];
+        cellID[i] = [self convertNameToId:cellName IDValue:0];
+        side[i] = [self convertNameToId:cellName IDValue:1];
+        seg[i] = [self convertNameToId:cellName IDValue:2];
 //        NSLog(@"%@", cellName);
             //set trace name first//
         [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
@@ -361,10 +361,11 @@ Idc = malloc(numCell*sizeof(double));
     
 }
         //This will change the cell name to ID
-    - (NSMutableArray*)convertNameToId: (NSString*)name{ //add Left RIGHT TO CPG TOO....
+- (int)convertNameToId: (NSString*)name IDValue: (int) IDValue { //add Left RIGHT TO CPG TOO....
         int  c;
         int side;
         int seg;
+        int IDArray[3];
         NSMutableArray* chosenCell = [[NSMutableArray alloc] init];
         if ([name containsString:@"Elevator"]){
             c = 0;
@@ -448,10 +449,10 @@ Idc = malloc(numCell*sizeof(double));
             side = -1; //not yet supported
             seg = -1; //not yet supported
         }
-        [chosenCell addObject:[NSNumber numberWithInt:c]];
-        [chosenCell addObject: [NSNumber numberWithInt: side]];
-        [chosenCell addObject: [NSNumber numberWithInt: seg]];
-        return chosenCell;
+    IDArray[0] = c;
+    IDArray[1] = side;
+    IDArray[2] = seg;
+        return IDArray[IDValue];
     }
     
         //this function control the SetParam button,
