@@ -167,7 +167,6 @@
 		970E76661EF17CED002EE43D /* RoboLobsterSimu */ = {
 			isa = PBXGroup;
 			children = (
-				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				97D6A7AD200AC28700BF3C15 /* TODO */,
 				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
