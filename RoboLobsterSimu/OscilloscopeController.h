@@ -135,7 +135,7 @@ extern long elapsed;
 
 - (IBAction) invertProxGraph: (id)sender;
 
-- (IBAction) checkControlCommand: (NSMutableDictionary*)params;
+//- (IBAction) checkControlCommand: (NSMutableDictionary*)params;
 
 //Prototypes to remove warnings
 void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc,unsigned long int size);

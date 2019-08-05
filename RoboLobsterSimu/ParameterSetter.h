@@ -152,7 +152,7 @@ typedef struct{
 - (IBAction)setSynapseParams:(id)sender;
 - (IBAction)saveSynapseParams:(id)sender;
 - (IBAction)resetParamsToDefault:(id)sender;
-- (int)synapseMapping: (int)synapseID;
+//- (int)synapseMapping: (int)synapseID;
 
 //Function prototypes to fix warnings
 - (id)initWithDefaultWindowNib;

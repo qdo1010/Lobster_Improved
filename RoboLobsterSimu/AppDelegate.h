@@ -55,7 +55,7 @@ extern long elapsed;
 
 
 @property (readwrite,retain) NSMutableArray                         *plottingArray;    //This is an array of traces
-//@property (readwrite,retain) NSMutableArray                         *ipbuf;           //This is a trace array
+@property (readwrite,retain) NSMutableArray                         *ipbuf;           //This is a trace array
 @property (nonatomic, assign) BOOL                                   drawChart;
 @property (nonatomic, assign) BOOL                                   drawUnclustered;
 @property (nonatomic, assign, getter=isCalibrationType) BOOL         calibrationType;

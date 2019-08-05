@@ -199,7 +199,7 @@
 }
 
 
-
+ /*
 - (IBAction)chooseTraceID:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     traceIDchosen = (int) [[[self displayTraceID] title] integerValue];
@@ -218,6 +218,7 @@
     
     
     //init params input values
+   
     if (settingUpParams){
         for (int i = 0; i < numCell; i++){
             //NSLog(@"howw many %d",i);
@@ -233,6 +234,7 @@
         }
         settingUpParams = 0;
     }
+    */
     //init text box too
     /* [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
      [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
@@ -246,7 +248,7 @@
     //   settingUpParams = 0; //done setting up
     // }
     
-    
+    /*
     // else{
     [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[traceIDchosen]]];
     [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[traceIDchosen]]];
@@ -258,7 +260,7 @@
     
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[traceIDchosen]]];
     
-    
+    */
     
     // }
     
@@ -271,11 +273,12 @@
     // else{
     //     [sigmaTextBox setEditable:(true)];
     // }
+    /*
     NSLog(@" choose this trace %d", traceIDchosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:traceIDchosen]];
     
 }
-
+*/
 
 - (IBAction) invertProxGraph: (id)sender{
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -341,7 +344,7 @@
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
     //this is the param id that contains sigma and alpha
-    NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
+    //NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:traceIDchosen];
     int i = traceIDchosen; //id
     
     
@@ -368,7 +371,7 @@
         [[appDelegate traceOffsetArray] replaceObjectAtIndex:traceIDchosen withObject:[NSString stringWithFormat:@"%f",[traceOffsetSlider floatValue]]];
     }
     
-    
+    /*
     else if ([notification object] == alphaTextBox){
         alpha[traceIDchosen] = [alphaTextBox doubleValue];
         [params replaceObjectAtIndex:0 withObject:[NSNumber numberWithDouble:alpha[i]]];
@@ -400,6 +403,7 @@
         Idc[traceIDchosen] = [IdcTextBox doubleValue];
         [params replaceObjectAtIndex:6 withObject:[NSNumber numberWithDouble:Idc[i]]];
     }
+     */
 }
 
 //-(void) createWaveForm{
@@ -612,6 +616,7 @@
     //  _startButton.enabled = YES;
     // NSLog(@"is it doing anything?");
     [appDelegate displaySampledWaveforms: [[appDelegate traceSelector] traceArraytobeSent]  : [appDelegate sweepOffset] :[appDelegate sweepDuration]];
+   /*
     if (settingUpParams){
         
         id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -650,6 +655,7 @@
         // NSLog(@" choose this trace %d", traceIDchosen);
         [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
     }
+    */
     //}
     //  [displayTraceID removeAllItems];
     //  for (int i; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
@@ -676,9 +682,9 @@
 
 //};
 
-- (IBAction) checkControlCommand: (NSMutableDictionary*)params {
+//- (IBAction) checkControlCommand: (NSMutableDictionary*)params {
     
-};
+//};
 
 //This function will switch the color of the viewer
 - (IBAction)changeView:(id)sender {
@@ -785,20 +791,20 @@
     [chosenCell addObject: [NSNumber numberWithInt: seg]];
     return chosenCell;
 }
-
+/*
 //this function control the SetParam button,
 //which will read what params are being chosen, and send the message to C code to edit those params!
 - (IBAction)setParams:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     
     //    NSLog(@"%f",[alphaTextBox floatValue]);
-    /*  double a = [alphaTextBox doubleValue];
+     double a = [alphaTextBox doubleValue];
      double s = [sigmaTextBox doubleValue];
      double sE = [sigmaETextBox doubleValue];
      double sI = [sigmaITextBox doubleValue];
      double bE = [betaETextBox doubleValue];
      double bI = [betaITextBox doubleValue];
-     double Idc = [IdcTextBox doubleValue];*/
+     double Idc = [IdcTextBox doubleValue];
     traceIDchosen = (int)[[[self displayTraceID] title] integerValue];
     
     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -841,16 +847,17 @@
      [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
      //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
      setParamsButton.enabled = true;
-     }*/
+     }
 }
 
 //this function will load a Parameter file with all the parameters defined.
 //it will also tell the software which line in the parameter file should be used. Each line corresponds to speed (Fast, Slow, Medium, or Stop)
+
 - (IBAction)loadParamsWithName:(id)sender :(NSString*)filename :(int)speed {
     /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
      [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
      
-     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
+     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     
     //the trace waveform
@@ -960,7 +967,7 @@
     /*   NSArray *fileURLs = [NSArray arrayWithObjects:nil];
      [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
      
-     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];*/
+     [[NSWorkspace sharedWorkspace] selectFile:fileURLs inFileViewerRootedAtPath:nil];
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     
     //the trace waveform
@@ -1027,7 +1034,7 @@
             }
             //make changes to param
             editParam(cellID,side, seg,alpha,sigma,sigmaE, sigmaI, betaE, betaI,Idc, [[[appDelegate traceSelector] traceArraytobeSent] count]);
-            /*
+            
              if (firstTimeChangeParams == 1){
              [appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
              [self setFirstTimeChangeParams:0]; //now it's set
@@ -1046,7 +1053,7 @@
              //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
              setParamsButton.enabled = true;
              
-             }*/
+             }
             
         }
     }
@@ -1160,6 +1167,7 @@
     }
     
 }
+*/
 @end
 
 
