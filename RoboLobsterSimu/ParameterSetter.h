@@ -12,6 +12,79 @@
 #import "traceSelector.h"
 
 
+#define mmSeg    4              //  Number of Segments in a Spinal Cord model (110)
+#define mmSeg2   2*mmSeg        //  Number of Segments in a Spinal Cord model (110)
+#define mmSide    2
+#define pitchStates 5
+//Trying this for setting up dictionary
+
+/*
+typedef struct{
+    double alphaSlow, alphaMed, alphaFast, alphaStop;
+} alphaVal;
+typedef struct{
+    double sigmaSlow, sigmaMed, sigmaFast, sigmaStop;
+} sigmaVal;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} burstingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} spikingNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+    double yr, xr, x2, y2;
+    double alphaInit;
+} pacemakerNeuron;
+
+typedef struct{
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+} customNeuron;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} synapse;
+
+typedef struct{
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constantf
+    double gStrength;
+} modSynapse;
+
+typedef struct{
+    burstingNeuron burstingNeuron;
+    spikingNeuron spikingNeuron;
+    pacemakerNeuron pacemakerNeuron;
+    customNeuron customNeuron;
+    synapse synapse;
+    modSynapse modSynapse;
+} paramStruct;
+*/
 /*struct Synapse{
     NSString* name;
     int side;
@@ -25,7 +98,7 @@
 //what would this dictionary look like?
 //idk?
 
-@interface ParameterSetter : NSWindowController <NSTextFieldDelegate>
+@interface ParameterSetter : NSWindowController
 
 // Moved from Parameter Setter
 @property (readwrite)  int neuronChosen;      //Duration of file in Sec
@@ -55,6 +128,7 @@
 @property (strong) IBOutlet NSTextField *gStrengthTextBox;
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
+@property (strong) IBOutlet NSPopUpButton *neuronTypeSelector;
 
 @property (readwrite) unsigned long *synapseID;
 @property (readwrite)  double *xrp;
@@ -81,10 +155,13 @@
 - (int)synapseMapping: (int)synapseID;
 
 //Function prototypes to fix warnings
+- (id)initWithDefaultWindowNib;
 void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double *a, double *s, double *sE, double *sI, double *bE, double *bI, double *Idc, unsigned long int size);
 void editSynapseParam(unsigned long int *synapseName, unsigned long *side, unsigned long *seg,double*xrp, double *gamma, double *gStrength, int size);
 void SaveAllParams(void);
-
+void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc);
+double ReturnCurrentNeuronParams(long id, long side, long seg, int data);
+double ReturnCurrentSynapseParams(long id, long side, long seg, int data);
 void CreateParamFile (void);
 
 @end

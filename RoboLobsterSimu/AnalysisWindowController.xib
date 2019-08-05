@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,21 +19,21 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Analysis" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Analysis Window">
+        <window title="Analysis" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="5" userLabel="Analysis Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="585" width="1000" height="650"/>
+            <rect key="contentRect" x="0.0" y="585" width="1016" height="649"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="765" height="650"/>
             <value key="maxSize" type="size" width="1000" height="650"/>
             <value key="minFullScreenContentSize" type="size" width="1000" height="650"/>
             <value key="maxFullScreenContentSize" type="size" width="1000" height="650"/>
             <view key="contentView" identifier="GraphController" id="6" userLabel="GraphBox" customClass="NSBox">
-                <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                <rect key="frame" x="0.0" y="0.0" width="1016" height="649"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view id="BJB-co-hLu" userLabel="OscilloscopeView" customClass="OscilloscopeView">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1016" height="649"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </subviews>
@@ -42,7 +41,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="sCa-yg-4Wb"/>
             </connections>
-            <point key="canvasLocation" x="1430" y="524"/>
+            <point key="canvasLocation" x="1438" y="523.5"/>
         </window>
         <drawer id="2044" userLabel="scopeDrawer">
             <size key="contentSize" width="195" height="480"/>
@@ -57,7 +56,7 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="687"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
+                <box autoresizesSubviews="NO" borderType="line" title="Box" titlePosition="noTitle" transparent="YES" id="zsl-SX-Tvj">
                     <rect key="frame" x="-3" y="-28" width="275" height="741"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="51s-Sh-6Uy">
@@ -608,15 +607,19 @@
                     </view>
                 </box>
             </subviews>
-            <connections>
-                <binding destination="2057" name="hidden" keyPath="self" id="oTH-kO-1lx"/>
-            </connections>
             <point key="canvasLocation" x="81" y="-314.5"/>
         </customView>
         <viewController id="2057" userLabel="oscilloscopeController" customClass="OscilloscopeController">
             <connections>
+                <outlet property="displayTraceID" destination="SnV-VR-QBn" id="2C1-8p-Vmd"/>
+                <outlet property="sweepDurationSlider" destination="4JF-mF-ics" id="5aI-wM-FvY"/>
+                <outlet property="sweepDurationTextBox" destination="IE2-tv-dSE" id="Yuq-yv-yci"/>
+                <outlet property="sweepOffsetSlider" destination="fyy-64-97L" id="6PC-vE-q25"/>
                 <outlet property="sweepOffsetTextBox" destination="2071" id="bKT-Us-xa1"/>
+                <outlet property="traceGainSlider" destination="nXu-uX-kk8" id="Vqu-SI-tWt"/>
                 <outlet property="traceGainTextBox" destination="2136" id="ncT-tF-8Dh"/>
+                <outlet property="traceOffsetSlider" destination="137-9a-HjQ" id="d7i-ik-Adv"/>
+                <outlet property="traceOffsetTextBox" destination="1PZ-Wf-6Bf" id="n1D-IP-zNt"/>
             </connections>
         </viewController>
         <window title="Progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="1775">

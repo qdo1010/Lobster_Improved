@@ -50,7 +50,7 @@
 @synthesize oneitertosec;
 @synthesize IDofCellChosen;
 
-@synthesize commandController;
+//@synthesize commandController;
 //@synthesize synapseController;
 @synthesize parameterSetter;
 #pragma mark - App Lifetime
@@ -119,6 +119,7 @@
  //   NSMutableArray* arr = [NSMutableArray arrayWithObjects:@"cellElevatorL1",@"cellDepressorL1",@"cellSwingL1",@"cellStanceL1",@"cellElevatorR2", nil];
     //[traceWaveforms readMultipleArrays:arr :size];
 }
+
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration{
  //  NSLog(@"sending!!!!!!!!");
     
@@ -164,6 +165,17 @@
 }
 
 
+- (ParameterSetter *)parameterSetter
+{
+    if (parameterSetter == nil)
+    {
+        ParameterSetter *newParameterSetter = [[ParameterSetter alloc] initWithDefaultWindowNib];
+        [self setParameterSetter:newParameterSetter];
+    }
+    return parameterSetter;
+}
+
+
 - (IBAction) showAnalysisWindow: (id) sender
 {
     [[self analysisWindowController].window orderFront:self];
@@ -177,8 +189,22 @@
     
 } // showAnalysisWindow
 
+/*
+- (IBAction) showCommandWindow: (id) sender
+{
+    [[self commandController].window orderFront:self];
+    
+} // showCommandWindow
+*/
+
+
 - (IBAction) showParameterSetterWindow:(id)sender
 {
+    if (parameterSetter == nil)
+    {
+        ParameterSetter *newParameterSetter = [[ParameterSetter alloc] initWithDefaultWindowNib];
+        [self setParameterSetter:newParameterSetter];
+    }
     [[self parameterSetter].window orderFront:self];
     
 } // showSynapseWindow
@@ -195,6 +221,17 @@
 #pragma mark --- Start Analyses
 
 /*
+- (IBAction) openCommandWindow:(id) sender //This is to open command controller{
+{
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    NSLog(@"Executing command Window");
+    CommandStateViewController* newCommandWindow = [[CommandStateViewController alloc] init];
+    [self setCommandController:newCommandWindow];
+    
+    [appDelegate showCommandWindow:self];
+
+}
+
 - (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -207,10 +244,15 @@
 - (IBAction) openParameterSetterWindow: (id) sender //this is to open the parameterSetter window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+   if (parameterSetter == nil){
     NSLog(@"Opening Parameter Setter Window");
     ParameterSetter* newParameterSetterWindow = [[ParameterSetter alloc] init];
     [self setParameterSetter:newParameterSetterWindow];
     [appDelegate showParameterSetterWindow:self];
+    }
+    else{
+        NSLog(@"Parameter Setter Window was open");
+    }
 }
 
 
@@ -219,10 +261,11 @@
 {
        AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Executing drawOscilloscope");
-
+    
+    if (_analysisWindowController == nil) {    //This stops it from opening multiple Oscilloscope Windows
        AnalysisWindowController *newAnalysisWindowController = [[AnalysisWindowController alloc] init];
       [self setAnalysisWindowController:newAnalysisWindowController];
-
+    }
     [appDelegate showAnalysisWindow:self];
      [[appDelegate analysisWindowController]  viewScope:self];
      [appDelegate setDrawChart: NO];

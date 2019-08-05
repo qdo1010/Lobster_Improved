@@ -192,6 +192,18 @@ Initialization
     
     }
 
+- (NSUInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    NSLog(@"Method -numberOfRowsInTableView is called with count %d.", [traceArray count]);
+    return [traceArray count];
+}
+
+ - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row {
+        //NSLog(@"Method -tableView:%@ objectValueForTalbeColumn:%@ row:%d is called with result %@.", tableView, tableColumn, row, [[items objectAtIndex:row] objectForKey:[tableColumn identifier]]);
+        if (row != -1)
+            return [[traceArray objectAtIndex:row] objectForKey:[tableColumn identifier]];
+        return nil;
+    }
+
 /**
  when window is loaded, add cells to cellSelector
  */

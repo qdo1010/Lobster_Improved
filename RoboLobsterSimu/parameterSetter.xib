@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,7 +35,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="619" height="359"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="619" height="359"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -53,14 +53,7 @@
                                     <menuItem title="Item 3" id="tsw-bE-VpX"/>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="-2" name="content" keyPath="self" id="6aN-11-Teg"/>
-                            </connections>
                         </popUpButtonCell>
-                        <connections>
-                            <action selector="updateSynapseParams:" target="-2" id="bEz-Ta-1uG"/>
-                            <binding destination="-2" name="content" keyPath="self" id="j7f-Lf-OwA"/>
-                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
                         <rect key="frame" x="108" y="318" width="77" height="25"/>
@@ -76,6 +69,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="chooseNeuron:" target="-2" id="z6I-Lv-pYQ"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8g7-xC-ZTo">
                         <rect key="frame" x="239" y="318" width="77" height="25"/>
@@ -92,7 +88,7 @@
                             </menu>
                         </popUpButtonCell>
                         <connections>
-                            <binding destination="-2" name="content" keyPath="self" id="Scp-Gw-KgA"/>
+                            <action selector="chooseNeuron:" target="-2" id="MHE-sy-9Wu"/>
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDY-sG-JsN">
@@ -117,13 +113,9 @@
                                     <menuItem title="Item 3" id="6gw-GQ-1He"/>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="-2" name="content" keyPath="self" id="HgF-Zc-Wfb"/>
-                            </connections>
                         </popUpButtonCell>
                         <connections>
                             <action selector="chooseNeuron:" target="-2" id="XGO-eO-BC1"/>
-                            <binding destination="-2" name="content" keyPath="self" id="Jog-ka-PhN"/>
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="126-MG-YD1">
@@ -181,9 +173,9 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-gR-hDh">
-                        <rect key="frame" x="219" y="4" width="140" height="32"/>
+                        <rect key="frame" x="370" y="4" width="165" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Set New Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1w-QO-HXM">
+                        <buttonCell key="cell" type="push" title="Set Synapse Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1w-QO-HXM">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -335,17 +327,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-fA-rcU">
-                        <rect key="frame" x="349" y="4" width="118" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Save Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gPF-qI-OeF">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="saveSynapseParams:" target="-2" id="bWN-ks-xdD"/>
-                        </connections>
-                    </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Jp-2e-kna">
                         <rect key="frame" x="406" y="245" width="96" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -435,10 +416,32 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-uq-GwK">
+                        <rect key="frame" x="224" y="4" width="157" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set Neuron Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5m7-Gi-40j">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setNeuronParams:" target="-2" id="Hnu-4h-B9N"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umt-2V-Pq5">
+                        <rect key="frame" x="110" y="4" width="123" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Reset Params" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uQS-VJ-aJd">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="resetParamsToDefault:" target="-2" id="szA-Xt-fSz"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
-                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+                <outlet property="delegate" destination="Umt-2V-Pq5" id="7ks-Ko-iWc"/>
             </connections>
             <point key="canvasLocation" x="-29.5" y="210.5"/>
         </window>

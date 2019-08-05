@@ -1,5 +1,3 @@
-#ifndef   APPDELEGATE_H
-#define   APPDELEGATE_H
 //  AppDelegate.h
 //  RoboLobsterSimu
 //
@@ -10,7 +8,7 @@
 #import <CoreData/CoreData.h>
 #import "Waveforms.h"
 #import "traceSelector.h"
-#import "CommandStateViewController.h"
+//#import "CommandStateViewController.h"
 //#import "SynapseController.h"
 #import "ParameterSetter.h"
 
@@ -21,7 +19,7 @@
 @class Waveforms;
 @class TraceSelector;
 @class PreferenceController;
-@class CommandStateViewController;
+//@class CommandStateViewController;
     //#define numTraces = 8
 
 #pragma mark --- Constants
@@ -38,7 +36,7 @@ extern long elapsed;
 @property (nonatomic, strong) IBOutlet AnalysisWindowController  *analysisWindowController;
 @property (nonatomic, strong) IBOutlet TraceSelector             *traceSelector;
 @property (nonatomic, strong) PreferenceController               *preferenceController;
-@property (nonatomic, strong) CommandStateViewController         *commandController;
+//@property (nonatomic, strong) CommandStateViewController         *commandController;
 //@property (nonatomic, strong) SynapseController                  *synapseController; //create an instance of synapse controller here
 @property (nonatomic, strong) ParameterSetter                    *parameterSetter; //create an instance of ParameterSetter here
 
@@ -85,8 +83,8 @@ extern long elapsed;
 
 #pragma mark --- Load Nib files
 #pragma mark --- Show Windows
-- (IBAction) showAnalysisWindow: (id) sender;
-- (IBAction) showParameterSetterWindow: (id) sender;
+- (IBAction) showAnalysisWindow:                (id) sender;
+- (IBAction) showParameterSetterWindow:         (id) sender;
 - (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the Parameter Setter window
 
 #pragma mark --- Signal Processing Menu Selections
@@ -103,5 +101,3 @@ void indicateNumberOfIteration(int i);
 void xmain(void);
 
 @end
-
-#endif

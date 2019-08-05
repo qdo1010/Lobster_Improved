@@ -24,7 +24,7 @@
         self.ipbuf = [[NSMutableArray alloc] init];
         self.parambuf = [[NSMutableArray alloc]init]; //array that stores alpha and sigma
         self->sTime = CACurrentMediaTime();
-
+        
         globalCounter = 0;
         //        self.result  = [self runCalculation];
     }
@@ -34,38 +34,38 @@
 -(void)readMultipleArrays :(NSMutableArray *)cellArray :(double) offset :(double)duration {
     [_ipbuf removeAllObjects];
     [_parambuf removeAllObjects];
-  //  NSLog(@"global counter = %d", globalCounter);
+    //  NSLog(@"global counter = %d", globalCounter);
     for (int i = 0; i < [cellArray count]; i ++){
         NSString* cellName = [cellArray objectAtIndex:i]; //get cellName from array of cellName
-       // NSLog(@"%@",cellName);
+        // NSLog(@"%@",cellName);
         cellPointer cell = [self convertCellNameToCellPointer:cellName]; //convert to enum type
         int samplesize = duration;
         int starttime = offset;
         [self readArray:cell:starttime:samplesize];
     }
-  //  if (globalCounter < (int)(100000/samplesize-1)){ //100,000 is the max the array go to before it resets
-  //      globalCounter++; //increase globalCounter
-  //  }
-  //  else{
-   //     CFTimeInterval elapsedTime = CACurrentMediaTime() - self->sTime;
-     //   NSLog(@"total elapse time to sample 100,0000 = %f s", elapsedTime);
-  //      globalCounter = 0;} //stop
-
-
+    //  if (globalCounter < (int)(100000/samplesize-1)){ //100,000 is the max the array go to before it resets
+    //      globalCounter++; //increase globalCounter
+    //  }
+    //  else{
+    //     CFTimeInterval elapsedTime = CACurrentMediaTime() - self->sTime;
+    //   NSLog(@"total elapse time to sample 100,0000 = %f s", elapsedTime);
+    //      globalCounter = 0;} //stop
+    
+    
 }
 
 -(void) readArray :(cellPointer)cellName : (int) starttime :(int) samplesize{
     NSMutableArray*temp = [[NSMutableArray alloc] init];
     
     NSMutableArray*Params = [[NSMutableArray alloc] init];//array to store a,s
-
+    
     NSMutableArray*indies = [self selectCell:cellName];
     int cellType = (int) [[indies objectAtIndex:0] integerValue];
     int cell = (int) [[indies objectAtIndex:1] integerValue];
     //CFTimeInterval startTime = CACurrentMediaTime();
     int invert = [(AppDelegate *)[[NSApplication sharedApplication] delegate] invertSign];
     int i;
-
+    
     int a,b; //index to access params array
     if (cell <= 3){
         a = 0;
@@ -99,15 +99,15 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayElev[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayElev[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayElev[a][b]]];
-
-
+            
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayElev[starttime][cell]]]; //put neg sign to invert trace
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayElev[starttime][cell]]]; //put neg sign to invert trace
-
-              //  NSLog(@"%f", xArrayElev[starttime][cell]);
+                
+                //  NSLog(@"%f", xArrayElev[starttime][cell]);
                 starttime++;
             }
             break;
@@ -115,13 +115,13 @@
         case 1:
             [Params addObject:[NSNumber numberWithDouble:alphaArrayDep[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayDep[a][b]]];
-           [Params addObject:[NSNumber numberWithDouble:sigmaEArrayDep[a][b]]];
+            [Params addObject:[NSNumber numberWithDouble:sigmaEArrayDep[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaIArrayDep[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaEArrayDep[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayDep[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayDep[a][b]]];
-
-
+            
+            
             
             //   NSLog( @"%f\n", xArrayDep[cell]);
             for (i = 0; i < samplesize; i ++){
@@ -147,7 +147,7 @@
                     [temp addObject: [NSNumber numberWithDouble: xArraySwing[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArraySwing[starttime][cell]]];
-
+                
                 starttime++;
             }
             break;
@@ -160,13 +160,13 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayStance[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayStance[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayStance[a][b]]];
-
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayStance[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayStance[starttime][cell]]];
-
+                
                 starttime++;
             }
             break;
@@ -179,15 +179,15 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayProt[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayProt[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayProt[a][b]]];
-
-
+            
+            
             for (i = 0; i < samplesize; i ++){
                 
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayProt[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayProt[starttime][cell]]];
-
+                
                 starttime++;
             }
             break;
@@ -200,7 +200,7 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayRet[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayRet[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayRet[a][b]]];
-
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayRet[starttime][cell]]];
@@ -218,13 +218,13 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayExt[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayExt[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayExt[a][b]]];
-
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
-                [temp addObject: [NSNumber numberWithDouble: xArrayExt[starttime][cell]]];
+                    [temp addObject: [NSNumber numberWithDouble: xArrayExt[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayExt[starttime][cell]]];
-   
+                
                 starttime++;
             }
             break;
@@ -237,19 +237,19 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayFlex[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayFlex[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayFlex[a][b]]];
-
-
+            
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
-                [temp addObject: [NSNumber numberWithDouble: xArrayFlex[starttime][cell]]];
+                    [temp addObject: [NSNumber numberWithDouble: xArrayFlex[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayFlex[starttime][cell]]];
-
+                
                 starttime++;
             }
             break;
         case 8:
-              //NSLog( @"%f\n", xArrayCoord[cell]);
+            //NSLog( @"%f\n", xArrayCoord[cell]);
             [Params addObject:[NSNumber numberWithDouble:alphaArrayCoord[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayCoord[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaEArrayCoord[a][b]]];
@@ -257,7 +257,7 @@
             [Params addObject:[NSNumber numberWithDouble:betaEArrayCoord[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:betaIArrayCoord[a][b]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayCoord[a][b]]];
-
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayCoord[starttime][cell]]];
@@ -277,14 +277,14 @@
             [Params addObject:[NSNumber numberWithDouble:betaIArrayF[cell][0]]];
             [Params addObject:[NSNumber numberWithDouble:IdcArrayF[cell][0]]];
             
-
+            
             for (i = 0; i < samplesize; i ++){
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayF[starttime][cell]]];
                 else
                     [temp addObject: [NSNumber numberWithDouble: -xArrayF[starttime][cell]]];
-               // NSLog(@"%f", xArrayF[starttime][cell]);
-
+                // NSLog(@"%f", xArrayF[starttime][cell]);
+                
                 starttime++;
             }
             
@@ -307,9 +307,9 @@
                 
                 starttime++;
             }
-
+            
             break;
-
+            
         case 11: //cellLL
             [Params addObject:[NSNumber numberWithDouble:alphaArrayLL[cell][0]]];
             [Params addObject:[NSNumber numberWithDouble:sigmaArrayLL[cell][0]]];
@@ -327,7 +327,7 @@
                 
                 starttime++;
             }
-
+            
             break;
             
         case 12: //cellLT
@@ -346,7 +346,7 @@
                 
                 starttime++;
             }
-
+            
             break;
             
         case 13: //cellPcn
@@ -366,7 +366,7 @@
                 
                 starttime++;
             }
-
+            
             break;
             
         case 14: //cellModCom
@@ -385,7 +385,7 @@
                 
                 starttime++;
             }
-
+            
             break;
             
         case 15: //cellH
@@ -404,7 +404,7 @@
                 
                 starttime++;
             }
-
+            
             break;
             
             

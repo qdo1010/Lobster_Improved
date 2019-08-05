@@ -7,6 +7,7 @@
 //
 #import "AppDelegate.h"
 
+
 /*
 pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
 */
@@ -16,9 +17,9 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 
 #import "ParameterSetter.h"
 
-@interface ParameterSetter ()
+//@interface ParameterSetter ()
 
-@end
+//@end
 
 @implementation ParameterSetter
 
@@ -39,6 +40,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 @synthesize xrp;
 
 @synthesize cellNameTextBox;
+@synthesize neuronTypeSelector;
 @synthesize alphaTextBox;
 @synthesize sigmaTextBox;
 @synthesize sigmaETextBox;
@@ -72,11 +74,13 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 - (id)init
 {
     self = [super initWithWindowNibName:@"parameterSetter"];
-    NSLog(@"Hello this is The Parameter Setter");
+    NSLog(@"Parameter Setter Inited");
     return self;
 }
 
 - (void)windowDidLoad {
+    NSLog(@"Executing Parameter Setter WindowDidLoad");
+    
     [super windowDidLoad];
     [synapseSelector removeAllItems];
     [synapseTypeSelector removeAllItems];
@@ -179,16 +183,52 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
     [synapseTypeSelector addItemWithTitle:@"pSlowExc"];
     [synapseTypeSelector addItemWithTitle:@"pSlowInh"];
     [synapseTypeSelector addItemWithTitle:@"Not Defined"];
+    
+    [neuronID removeAllItems];
+    [neuronID addItemWithTitle:@"cellElevator"];
+    [neuronID addItemWithTitle:@"cellSwing"];
+    [neuronID addItemWithTitle:@"cellDepressor"];
+    [neuronID addItemWithTitle:@"cellStance"];
+    [neuronID addItemWithTitle:@"cellCoord"];
+    [neuronID addItemWithTitle:@"cellProtractor"];
+    [neuronID addItemWithTitle:@"cellRetractor"];
+    [neuronID addItemWithTitle:@"cellExtensor"];
+    [neuronID addItemWithTitle:@"cellFlexor"];
+    [neuronID addItemWithTitle:@"cellF"];
+    [neuronID addItemWithTitle:@"cellB"];
+    [neuronID addItemWithTitle:@"cellLL"];
+    [neuronID addItemWithTitle:@"cellLT"];
+    [neuronID addItemWithTitle:@"cellModCom"];
+    [neuronID addItemWithTitle:@"cellH"];
+    [neuronID addItemWithTitle:@"cellPcn"];
+    
+    
 
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    NSLog(@"Parameter Setter window loaded");
+    
 }
-
+- (id)initWithDefaultWindowNib
+{
+  if (!self){
+        self = [super initWithWindowNibName:@"ParameterSetter"];
+        if (self)
+        {
+            NSLog(@"Executing InitWithDefaultWIndowNib in Parameter Setter");
+        }
+        else
+        {
+            NSLog(@"Warning! Could not load ParameterSetter nib.\n");
+        }
+    }
+    return self;
+}
+    
 - (void) awakeFromNib {
      [super awakeFromNib]; 
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
-    NSLog(@"Executing awakeFromNib in Parameter Setter");
  
 cellID = malloc(numCell*sizeof(int));
 side =malloc(numCell*sizeof(int));
@@ -209,12 +249,12 @@ Idc = malloc(numCell*sizeof(double));
         
             //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-        NSMutableArray* chosenCellArray;
-        chosenCellArray = [self convertNameToId:cellName];
-            //        cellID[i] = [[chosenCellArray objectAtIndex:0] intValue];
-        side[i] = [[chosenCellArray objectAtIndex:1] intValue];
-        seg[i] = [[chosenCellArray objectAtIndex:2] intValue];
-        NSLog(@"%@", cellName);
+       // NSMutableArray* chosenCellArray;
+     //   chosenCellArray = [self convertNameToId:cellName];
+        cellID[i] = [self convertNameToId:cellName IDValue:0];
+        side[i] = [self convertNameToId:cellName IDValue:1];
+        seg[i] = [self convertNameToId:cellName IDValue:2];
+//        NSLog(@"%@", cellName);
             //set trace name first//
         [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
         
@@ -225,9 +265,16 @@ Idc = malloc(numCell*sizeof(double));
         [betaETextBox setDelegate:self];
         [betaITextBox setDelegate:self];
         [IdcTextBox setDelegate:self];
+        [xRPTextBox setDelegate:self];
+        [GammaTextBox setDelegate:self];
+        [gStrengthTextBox setDelegate:self];
         
         [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     }
+    long side = [SideSelector indexOfSelectedItem];
+    long seg = [SegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronID indexOfSelectedItem];
+    long synapseSelected = [synapseTypeSelector indexOfSelectedItem];
     /*
         //init params input values
         id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -263,17 +310,23 @@ Idc = malloc(numCell*sizeof(double));
     
     
         // else{
-    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[neuronChosen]]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[neuronChosen]]];
-    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[neuronChosen]]];
-    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[neuronChosen]]];
-    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[neuronChosen]]];
+    //Filling synapse text boxes:
+    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 0)]];
+    [GammaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
+    [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
     
-    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[neuronChosen]]];
+    //Filling neuron text boxes
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 4)]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 5)]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
     
-    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[neuronChosen]]];
     
-
+    NSLog(@"Parameter Setter AwakeFromNIB completed");
+    
 }
 
 //this will set the parameter
@@ -308,10 +361,11 @@ Idc = malloc(numCell*sizeof(double));
     
 }
         //This will change the cell name to ID
-    - (NSMutableArray*)convertNameToId: (NSString*)name{ //add Left RIGHT TO CPG TOO....
+- (int)convertNameToId: (NSString*)name IDValue: (int) IDValue { //add Left RIGHT TO CPG TOO....
         int  c;
         int side;
         int seg;
+        int IDArray[3];
         NSMutableArray* chosenCell = [[NSMutableArray alloc] init];
         if ([name containsString:@"Elevator"]){
             c = 0;
@@ -395,10 +449,10 @@ Idc = malloc(numCell*sizeof(double));
             side = -1; //not yet supported
             seg = -1; //not yet supported
         }
-        [chosenCell addObject:[NSNumber numberWithInt:c]];
-        [chosenCell addObject: [NSNumber numberWithInt: side]];
-        [chosenCell addObject: [NSNumber numberWithInt: seg]];
-        return chosenCell;
+    IDArray[0] = c;
+    IDArray[1] = side;
+    IDArray[2] = seg;
+        return IDArray[IDValue];
     }
     
         //this function control the SetParam button,
@@ -407,6 +461,10 @@ Idc = malloc(numCell*sizeof(double));
 - (IBAction)chooseNeuron:(id)sender {  //Formerly ChooseTraceID in OscilloscopeController
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     neuronChosen = (int) [[[self neuronID] title] integerValue];
+    long side = [SideSelector indexOfSelectedItem];
+    long seg = [SegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronID indexOfSelectedItem];
+    long synapseSelected = [synapseTypeSelector indexOfSelectedItem];
     
 //    id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
     
@@ -453,16 +511,40 @@ Idc = malloc(numCell*sizeof(double));
     
     
         // else{
-    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",alpha[neuronChosen]]];
-    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",sigma[neuronChosen]]];
-    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaE[neuronChosen]]];
-    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",sigmaI[neuronChosen]]];
-    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",betaE[neuronChosen]]];
+    //Commenting this out so I can try my version of getting the current parameters in
+    //order to fill the text boxes.
     
-    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",betaI[neuronChosen]]];
+    /*
+     //WIP
+    double* ParamArray = ReturnCurrentParams([neuronID indexOfSelectedItem], [SideSelector indexOfSelectedItem], [SegSelector indexOfSelectedItem]);
     
-    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",Idc[neuronChosen]]];
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ParamArray[0]]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[1]]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[2]]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[3]]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[4]]];
     
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[5]]];
+    
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ParamArray[6]]];
+     
+     
+     
+    
+    */
+    //Filling synapse text boxes
+    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 0)]];
+    [GammaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
+    [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
+    
+    //Filling neuron text boxes
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 4)]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 5)]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
 
     
         // }
@@ -478,7 +560,24 @@ Idc = malloc(numCell*sizeof(double));
     NSLog(@" choose this trace %d", neuronChosen);
     [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:neuronChosen]];
     
+    
 }
+
+//(Spencer) Trying to create simpler Dictionary of current parameters
+/*
+- (void) loadParametersFromFile{
+    int iSide;
+    int iSeg;
+    paramStruct input;
+    FILE *paramFile;
+    paramFile = fopen ("params.dat", "r");
+    while(fread(&input, sizeof(paramStruct), 1, paramFile)){
+        
+    }
+
+}
+*/
+
     - (IBAction)setParams:(id)sender {
         AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         
@@ -713,7 +812,7 @@ Idc = malloc(numCell*sizeof(double));
 }
 
 - (IBAction)setSynapseParams:(id)sender {
-    NSLog(@"synapse edit");
+    NSLog(@"executing SetSynapseParams");
     int size = 1; //default
     int numCell = 1; //default
     synapseID = malloc(numCell*sizeof(int));
@@ -741,7 +840,42 @@ Idc = malloc(numCell*sizeof(double));
 }
 
 - (IBAction)resetParamsToDefault:(id)sender {
+    long side = [SideSelector indexOfSelectedItem];
+    long seg = [SegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronID indexOfSelectedItem];
+    long synapseSelected = [synapseTypeSelector indexOfSelectedItem];
     CreateParamFile();
+    
+    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 0)]];
+    [GammaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
+    [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
+    
+    //Filling neuron text boxes
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 4)]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 5)]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
 }
+- (IBAction)setNeuronParams:(id)sender {
+    
+    //    NSLog(@"%f",[alphaTextBox floatValue]);
+      double a = [alphaTextBox doubleValue];
+     double s = [sigmaTextBox doubleValue];
+     double sE = [sigmaETextBox doubleValue];
+     double sI = [sigmaITextBox doubleValue];
+     double bE = [betaETextBox doubleValue];
+     double bI = [betaITextBox doubleValue];
+     double Idc = [IdcTextBox doubleValue];
+     long side = [SideSelector indexOfSelectedItem];
+     long seg = [SegSelector indexOfSelectedItem];
+     long neuronToChange = [neuronID indexOfSelectedItem];
+    
+    
+    setNeuronParams(neuronToChange, side, seg, a, s, sE, sI, bE, bI, Idc);
+    SaveAllParams();
+     }
 
 @end
