@@ -9,30 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RoboLobsterSimu/OscilloscopeController.m"
-            timestampString = "585609069.114448"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "786"
-            endingLineNumber = "786"
-            landmarkName = "-loadParamsWithName:::"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RoboLobsterSimu/AppDelegate.m"
             timestampString = "585609069.114511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
             endingLineNumber = "228"
-            landmarkName = "-drawOscilloscope:"
-            landmarkType = "7">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -47,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1028"
             endingLineNumber = "1028"
-            landmarkName = "-updateTable"
+            landmarkName = "-loadParams:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,11 +58,11 @@
                   moduleName = "RoboLobsterSimu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/josephayers/Lobster_Improved/RoboLobsterSimu/ParameterSetter.h"
-                  timestampString = "585775274.340328"
+                  timestampString = "586714330.512398"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
@@ -89,11 +73,11 @@
                   moduleName = "RoboLobsterSimu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/josephayers/Lobster_Improved/RoboLobsterSimu/ParameterSetter.h"
-                  timestampString = "585775274.34267"
+                  timestampString = "586714330.5144629"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
                   offsetFromSymbolStart = "15">
                </Location>
             </Locations>

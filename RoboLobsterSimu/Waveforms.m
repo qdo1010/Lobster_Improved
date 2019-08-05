@@ -128,6 +128,7 @@
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayDep[starttime][cell]]];
                 else
+   NSLog( @"ReadArray in Waveform %i %i %i %f\n", i, samplesize, cellType,  xArrayDep[cell]);
                     [temp addObject: [NSNumber numberWithDouble: -xArrayDep[starttime][cell]]];
                 starttime++;
             }
