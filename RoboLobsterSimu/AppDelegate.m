@@ -200,11 +200,13 @@
 
 - (IBAction) showParameterSetterWindow:(id)sender
 {
+    
     if (parameterSetter == nil)
     {
         ParameterSetter *newParameterSetter = [[ParameterSetter alloc] initWithDefaultWindowNib];
         [self setParameterSetter:newParameterSetter];
     }
+     
     [[self parameterSetter].window orderFront:self];
     
 } // showSynapseWindow

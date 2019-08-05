@@ -243,7 +243,7 @@ betaI = malloc(numCell*sizeof(double));
 Idc = malloc(numCell*sizeof(double));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
-    settingUpParams = 1; //first time setting up, will be off forever
+    //settingUpParams = 1; //first time setting up, will be off forever
     
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
         
@@ -269,7 +269,7 @@ Idc = malloc(numCell*sizeof(double));
         [GammaTextBox setDelegate:self];
         [gStrengthTextBox setDelegate:self];
         
-        [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
+       // [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     }
     long side = [SideSelector indexOfSelectedItem];
     long seg = [SegSelector indexOfSelectedItem];
@@ -577,18 +577,18 @@ Idc = malloc(numCell*sizeof(double));
 
 }
 */
-
+/*
     - (IBAction)setParams:(id)sender {
         AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         
             //    NSLog(@"%f",[alphaTextBox floatValue]);
-        /*  double a = [alphaTextBox doubleValue];
+          double a = [alphaTextBox doubleValue];
          double s = [sigmaTextBox doubleValue];
          double sE = [sigmaETextBox doubleValue];
          double sI = [sigmaITextBox doubleValue];
          double bE = [betaETextBox doubleValue];
          double bI = [betaITextBox doubleValue];
-         double Idc = [IdcTextBox doubleValue];*/
+         double Idc = [IdcTextBox doubleValue];
         neuronChosen = (int)[[[self neuronID] title] integerValue];
         
         id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -631,17 +631,18 @@ Idc = malloc(numCell*sizeof(double));
          [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
          //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
          setParamsButton.enabled = true;
-         }*/
+         }
     }
-
+*/
 
 //make a library to map where each synapse should be
+/*
 -(int)synapseMapping: (int)synapseID{
     //input synapseID
     //get the mapping
     return 0;
 }
-
+*/
 - (IBAction)updateSynapseParams:(id)sender {
     //0 = pFastExc
     //1 = pFastInh
@@ -833,9 +834,6 @@ Idc = malloc(numCell*sizeof(double));
     
     //call the func to edit synapse
     editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
-}
-
-- (IBAction)saveSynapseParams:(id)sender {
     SaveAllParams();
 }
 

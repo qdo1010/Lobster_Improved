@@ -149,6 +149,7 @@ enum {
 } cellPointer;
 int numCells = 92;
 //x array
+
 double** xArrayElev;
 double** xArrayDep;
 double** xArraySwing;
@@ -171,6 +172,7 @@ double** xArrayH;  //This is the hight command and would range fractionate and c
 
 //////////Arrays that will store the Neuron parameters, to be sent to and received by Objective C code to display to users
 //alpha values
+/*
 double** alphaArrayElev;
 double** alphaArrayDep;
 double** alphaArraySwing;
@@ -302,7 +304,7 @@ double**  IdcArrayLT;
 double**  IdcArrayPcn;
 double**  IdcArrayModCom;
 double**  IdcArrayH;
-
+*/
 //Struct to define param for spiking neurons
 //Old structure designs with seperate structs
 /*
@@ -539,7 +541,7 @@ void CreateReadableParams (void);
 //int whatTypeofCell(char* neuronName);
 long elapsed;
 
-void allocParamArray(void); //alloc mem for param array
-void freeParamsArray(void); //free param array
+//void allocParamArray(void); //alloc mem for param array
+//void freeParamsArray(void); //free param array
 
 #endif // _pc2dsp_h_
