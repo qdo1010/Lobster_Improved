@@ -225,7 +225,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 }
     
 - (void) awakeFromNib {
-    NSLog(@"Executing awakeFromNib in Parameter Setter");
+     [super awakeFromNib]; 
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
