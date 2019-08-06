@@ -206,7 +206,7 @@
         ParameterSetter *newParameterSetter = [[ParameterSetter alloc] initWithDefaultWindowNib];
         [self setParameterSetter:newParameterSetter];
     }
-     
+    NSLog(@"\n\n\nlist is %p \n\n\n", [self parameterSetter].window);
     [[self parameterSetter].window orderFront:self];
     
 } // showSynapseWindow

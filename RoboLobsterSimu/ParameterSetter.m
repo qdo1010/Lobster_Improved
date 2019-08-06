@@ -311,7 +311,7 @@ Idc = malloc(numCell*sizeof(double));
     
         // else{
     //Filling synapse text boxes:
-    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 0)]];
+    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( 0, 0, 0, 0)]];
     [GammaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
     [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
     
