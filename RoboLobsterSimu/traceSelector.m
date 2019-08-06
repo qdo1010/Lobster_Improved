@@ -136,6 +136,7 @@ Initialization
  */
 - (id)init
 {
+    self = [super init];
 //    AppDelegate *appDelegate           = [[NSApplication sharedApplication] delegate];
     TraceSelector *ts;
     ts = [super initWithWindowNibName:@"TraceSelector"];

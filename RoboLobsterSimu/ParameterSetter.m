@@ -225,7 +225,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 }
     
 - (void) awakeFromNib {
-    NSLog(@"Executing awakeFromNib in Parameter Setter");
+     [super awakeFromNib]; 
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
@@ -243,17 +243,17 @@ betaI = malloc(numCell*sizeof(double));
 Idc = malloc(numCell*sizeof(double));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
-    settingUpParams = 1; //first time setting up, will be off forever
+    //settingUpParams = 1; //first time setting up, will be off forever
     
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
         
             //get all Cell Name and convert those names to ID
         NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
-        NSMutableArray* chosenCellArray;
-        chosenCellArray = [self convertNameToId:cellName];
-            //        cellID[i] = [[chosenCellArray objectAtIndex:0] intValue];
-        side[i] = [[chosenCellArray objectAtIndex:1] intValue];
-        seg[i] = [[chosenCellArray objectAtIndex:2] intValue];
+       // NSMutableArray* chosenCellArray;
+     //   chosenCellArray = [self convertNameToId:cellName];
+        cellID[i] = [self convertNameToId:cellName IDValue:0];
+        side[i] = [self convertNameToId:cellName IDValue:1];
+        seg[i] = [self convertNameToId:cellName IDValue:2];
 //        NSLog(@"%@", cellName);
             //set trace name first//
         [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
@@ -269,7 +269,7 @@ Idc = malloc(numCell*sizeof(double));
         [GammaTextBox setDelegate:self];
         [gStrengthTextBox setDelegate:self];
         
-        [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
+       // [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     }
     long side = [SideSelector indexOfSelectedItem];
     long seg = [SegSelector indexOfSelectedItem];
@@ -361,10 +361,11 @@ Idc = malloc(numCell*sizeof(double));
     
 }
         //This will change the cell name to ID
-    - (NSMutableArray*)convertNameToId: (NSString*)name{ //add Left RIGHT TO CPG TOO....
+- (int)convertNameToId: (NSString*)name IDValue: (int) IDValue { //add Left RIGHT TO CPG TOO....
         int  c;
         int side;
         int seg;
+        int IDArray[3];
         NSMutableArray* chosenCell = [[NSMutableArray alloc] init];
         if ([name containsString:@"Elevator"]){
             c = 0;
@@ -448,10 +449,10 @@ Idc = malloc(numCell*sizeof(double));
             side = -1; //not yet supported
             seg = -1; //not yet supported
         }
-        [chosenCell addObject:[NSNumber numberWithInt:c]];
-        [chosenCell addObject: [NSNumber numberWithInt: side]];
-        [chosenCell addObject: [NSNumber numberWithInt: seg]];
-        return chosenCell;
+    IDArray[0] = c;
+    IDArray[1] = side;
+    IDArray[2] = seg;
+        return IDArray[IDValue];
     }
     
         //this function control the SetParam button,
@@ -576,18 +577,18 @@ Idc = malloc(numCell*sizeof(double));
 
 }
 */
-
+/*
     - (IBAction)setParams:(id)sender {
         AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
         
             //    NSLog(@"%f",[alphaTextBox floatValue]);
-        /*  double a = [alphaTextBox doubleValue];
+          double a = [alphaTextBox doubleValue];
          double s = [sigmaTextBox doubleValue];
          double sE = [sigmaETextBox doubleValue];
          double sI = [sigmaITextBox doubleValue];
          double bE = [betaETextBox doubleValue];
          double bI = [betaITextBox doubleValue];
-         double Idc = [IdcTextBox doubleValue];*/
+         double Idc = [IdcTextBox doubleValue];
         neuronChosen = (int)[[[self neuronID] title] integerValue];
         
         id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
@@ -630,17 +631,18 @@ Idc = malloc(numCell*sizeof(double));
          [appDelegate performSelector:@selector(createWaveForm) withObject:nil];
          //[appDelegate performSelectorInBackground:@selector(createWaveForm) withObject:nil];
          setParamsButton.enabled = true;
-         }*/
+         }
     }
-
+*/
 
 //make a library to map where each synapse should be
+/*
 -(int)synapseMapping: (int)synapseID{
     //input synapseID
     //get the mapping
     return 0;
 }
-
+*/
 - (IBAction)updateSynapseParams:(id)sender {
     //0 = pFastExc
     //1 = pFastInh
@@ -832,9 +834,6 @@ Idc = malloc(numCell*sizeof(double));
     
     //call the func to edit synapse
     editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
-}
-
-- (IBAction)saveSynapseParams:(id)sender {
     SaveAllParams();
 }
 

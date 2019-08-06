@@ -1878,7 +1878,7 @@ void xmain()
             if (ind  ==  0){
                 
                 //alloc param array
-                allocParamArray(); //alloc mem for alpha,sigma...
+                //allocParamArray(); //alloc mem for alpha,sigma...
                 int i;
                 
                 ////Alloc Memory for x array
@@ -2184,7 +2184,8 @@ void xmain()
                 //printf("%f",mainLoopIndex);
                 fprintf(f10," %lf", cellElevator[iSide][iSeg].burstingNeuron.x);
                 fprintf(f10," ");
-                xArrayElev[ind][indy] = cellElevator[iSide][iSeg].burstingNeuron.x; //test
+                xArrayElev[ind][indy] = cellElevator[iSide][iSeg].burstingNeuron.x;
+                /*//test
                 alphaArrayElev[iSide][iSeg]= cellElevator[iSide][iSeg].burstingNeuron.alpha;
                 sigmaArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].burstingNeuron.sigma;
                 sigmaIArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].burstingNeuron.sigmaI;
@@ -2192,10 +2193,11 @@ void xmain()
                 betaEArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].burstingNeuron.betaE;
                 betaIArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].burstingNeuron.betaI;
                 IdcArrayElev[iSide][iSeg] = cellElevator[iSide][iSeg].burstingNeuron.Idc;
-                
+                */
                 fprintf(f11," %lf", cellDepressor[iSide][iSeg].pacemakerNeuron.x);
                 fprintf(f11,"") ;
                 xArrayDep[ind][indy] = cellDepressor[iSide][iSeg].pacemakerNeuron.x; //test
+                /*
                 alphaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.alpha;
                 sigmaArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.sigma;
                 sigmaIArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.sigmaI;
@@ -2203,10 +2205,11 @@ void xmain()
                 betaEArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.betaE;
                 betaIArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.betaI;
                 IdcArrayDep[iSide][iSeg] = cellDepressor[iSide][iSeg].pacemakerNeuron.Idc;
-                
+                */
                 fprintf(f12," %lf", cellSwing[iSide][iSeg].burstingNeuron.x);
                 fprintf(f12," ");
                 xArraySwing[ind][indy] = cellSwing[iSide][iSeg].burstingNeuron.x; //test
+                /*
                 alphaArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.alpha;
                 sigmaArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.sigma;
                 sigmaIArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.sigmaI;
@@ -2214,10 +2217,11 @@ void xmain()
                 betaEArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.betaE;
                 betaIArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.betaI;
                 IdcArraySwing[iSide][iSeg] = cellSwing[iSide][iSeg].burstingNeuron.Idc;
-                
+                */
                 fprintf(f13," %lf", cellStance[iSide][iSeg].pacemakerNeuron.x);
                 fprintf(f13," ");
                 xArrayStance[ind][indy] = cellStance[iSide][iSeg].pacemakerNeuron.x; //test
+                /*
                 alphaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.alpha;
                 sigmaArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.sigma;
                 sigmaIArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.sigmaI;
@@ -2225,10 +2229,11 @@ void xmain()
                 betaEArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.betaE;
                 betaIArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.betaI;
                 IdcArrayStance[iSide][iSeg] = cellStance[iSide][iSeg].pacemakerNeuron.Idc;
-                
+                */
                 fprintf(f14," %lf", cellProtractor[iSide][iSeg].spikingNeuron.x);
                 fprintf(f14," ");
                 xArrayProt[ind][indy] = cellProtractor[iSide][iSeg].spikingNeuron.x; //test
+                /*
                 alphaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2236,10 +2241,11 @@ void xmain()
                 betaEArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayProt[iSide][iSeg] = cellProtractor[iSide][iSeg].spikingNeuron.Idc;
-                
+                */
                 fprintf(f15," %lf", cellRetractor[iSide][iSeg].spikingNeuron.x);
                 fprintf(f15," ");
                 xArrayRet[ind][indy] = cellRetractor[iSide][iSeg].spikingNeuron.x; //test
+                /*
                 alphaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2247,10 +2253,11 @@ void xmain()
                 betaEArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayRet[iSide][iSeg] = cellRetractor[iSide][iSeg].spikingNeuron.Idc;
-                
+                */
                 fprintf(f16," %lf", cellExtensor[iSide][iSeg].spikingNeuron.x);
                 fprintf(f16," ");
                 xArrayExt[ind][indy] = cellExtensor[iSide][iSeg].spikingNeuron.x; //test
+                /*
                 alphaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2258,10 +2265,11 @@ void xmain()
                 betaEArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayExt[iSide][iSeg] = cellExtensor[iSide][iSeg].spikingNeuron.Idc;
-                
+                */
                 fprintf(f17," %lf", cellFlexor[iSide][iSeg].spikingNeuron.x);
                 fprintf(f17," ");
                 xArrayFlex[ind][indy] = cellFlexor[iSide][iSeg].spikingNeuron.x; //test
+                /*
                 alphaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2269,8 +2277,9 @@ void xmain()
                 betaEArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayFlex[iSide][iSeg] = cellFlexor[iSide][iSeg].spikingNeuron.Idc;
-                
+                */
                 xArrayCoord[ind][indy] = cellCoord[iSide][iSeg].spikingNeuron.x; //test
+                /*
                 alphaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2278,6 +2287,7 @@ void xmain()
                 betaEArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayCoord[iSide][iSeg] = cellCoord[iSide][iSeg].spikingNeuron.Idc;
+                 */
                 indy++;
                 
             }
@@ -2288,6 +2298,7 @@ void xmain()
         for(iSide = 0;iSide < mmSide; ++iSide)
         {
             xArrayF[ind][indy2] = cellF[iSide].spikingNeuron.x;
+            /*
             alphaArrayF[iSide][0] = cellF[iSide].spikingNeuron.alpha;
             sigmaArrayF[iSide][0] = cellF[iSide].spikingNeuron.sigma;
             sigmaIArrayF[iSide][0] = cellF[iSide].spikingNeuron.sigmaI;
@@ -2296,8 +2307,9 @@ void xmain()
             betaIArrayF[iSide][0] = cellF[iSide].spikingNeuron.betaI;
             IdcArrayF[iSide][0] = cellF[iSide].spikingNeuron.Idc;
             
-            
+            */
             xArrayB[ind][indy2] = cellB[iSide].spikingNeuron.x;
+            /*
             alphaArrayB[iSide][0] = cellB[iSide].spikingNeuron.alpha;
             sigmaArrayB[iSide][0] = cellB[iSide].spikingNeuron.sigma;
             sigmaIArrayB[iSide][0] = cellB[iSide].spikingNeuron.sigmaI;
@@ -2305,8 +2317,9 @@ void xmain()
             betaEArrayB[iSide][0] = cellB[iSide].spikingNeuron.betaE;
             betaIArrayB[iSide][0] = cellB[iSide].spikingNeuron.betaI;
             IdcArrayB[iSide][0] = cellB[iSide].spikingNeuron.Idc;
-            
+            */
             xArrayLL[ind][indy2] = cellLL[iSide].spikingNeuron.x;
+            /*
             alphaArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.alpha;
             sigmaArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.sigma;
             sigmaIArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.sigmaI;
@@ -2314,9 +2327,10 @@ void xmain()
             betaEArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.betaE;
             betaIArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.betaI;
             IdcArrayLL[iSide][0] = cellLL[iSide].spikingNeuron.Idc;
-            
+            */
             
             xArrayLT[ind][indy2] = cellLT[iSide].spikingNeuron.x;
+            /*
             alphaArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.alpha;
             sigmaArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.sigma;
             sigmaIArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.sigmaI;
@@ -2324,8 +2338,9 @@ void xmain()
             betaEArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.betaE;
             betaIArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.betaI;
             IdcArrayLT[iSide][0] = cellLT[iSide].spikingNeuron.Idc;
-            
+            */
             xArrayModCom[ind][indy2] = cellModCom[iSide].spikingNeuron.x;
+            /*
             alphaArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.alpha;
             sigmaArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.sigma;
             sigmaIArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.sigmaI;
@@ -2333,8 +2348,9 @@ void xmain()
             betaEArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.betaE;
             betaIArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.betaI;
             IdcArrayModCom[iSide][0] = cellModCom[iSide].spikingNeuron.Idc;
-            
+            */
             xArrayH[ind][indy2] = cellH[iSide].spikingNeuron.x;
+            /*
             alphaArrayH[iSide][0] = cellH[iSide].spikingNeuron.alpha;
             sigmaArrayH[iSide][0] = cellH[iSide].spikingNeuron.sigma;
             sigmaIArrayH[iSide][0] = cellH[iSide].spikingNeuron.sigmaI;
@@ -2342,7 +2358,7 @@ void xmain()
             betaEArrayH[iSide][0] = cellH[iSide].spikingNeuron.betaE;
             betaIArrayH[iSide][0] = cellH[iSide].spikingNeuron.betaI;
             IdcArrayH[iSide][0] = cellH[iSide].spikingNeuron.Idc;
-            
+            */
             indy2++;
         }
         
@@ -2353,6 +2369,7 @@ void xmain()
         {
             for (iSeg =0; iSeg < pitchStates; ++iSeg){
                 xArrayPcn[ind][indy3] = cellPcn[iSide][iSeg].spikingNeuron.x;
+         /*
                 alphaArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.alpha;
                 sigmaArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.sigma;
                 sigmaIArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.sigmaI;
@@ -2360,13 +2377,13 @@ void xmain()
                 betaEArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.betaE;
                 betaIArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.betaI;
                 IdcArrayPcn[iSide][iSeg] = cellPcn[iSide][iSeg].spikingNeuron.Idc;
-                
+                 */
                 indy3++;
             }
             
         }
 
-        
+
             ind++;
             if (ind == IterNumChosen-1){
                 ind = 0;
@@ -2389,9 +2406,9 @@ void xmain()
             free(xArrayModCom);
             free(xArrayH);
                 
-            freeParamsArray();
+           // freeParamsArray();
             }
-            
+         
             fprintf(f10, "\n");
             fprintf(f11, "\n");
             fprintf(f12, "\n");
@@ -4051,7 +4068,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      ParamArray[5] = cellH[side].spikingNeuron.betaI;
      ParamArray[6] = cellH[side].spikingNeuron.Idc;
     }
-    else if (id == 13){
+    else if (id == 16){
         //pcn
      ParamArray[0] = cellPcn[side][seg].spikingNeuron.alpha;
      ParamArray[1] = cellPcn[side][seg].spikingNeuron.sigma;
@@ -4076,252 +4093,252 @@ double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
         ParamArray[1] = pExcSegContEleCoord[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegContEleCoord[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 2){
         ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
         ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
         ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 3){
         ParamArray[0] = pExcIntCaudEleCoord[side][seg].synapse.xRp;
         ParamArray[1] = pExcIntCaudEleCoord[side][seg].synapse.gamma;
         ParamArray[2] = pExcIntCaudEleCoord[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 4){
         ParamArray[0] = pInhIntFSwing[side].synapse.xRp;
         ParamArray[1] = pInhIntFSwing[side].synapse.gamma;
         ParamArray[2] = pInhIntFSwing[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 5){
         ParamArray[0] = pInhIntFStance[side].synapse.xRp;
         ParamArray[1] = pInhIntFStance[side].synapse.gamma;
         ParamArray[2] = pInhIntFStance[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 6){
         ParamArray[0] = pInhIntBSwing[side].synapse.xRp;
         ParamArray[1] = pInhIntBSwing[side].synapse.gamma;
         ParamArray[2] = pInhIntBSwing[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 7){
         ParamArray[0] = pInhIntBStance[side].synapse.xRp;
         ParamArray[1] = pInhIntBStance[side].synapse.gamma;
         ParamArray[2] = pInhIntBStance[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 8){
         ParamArray[0] = pInhIntLLSwing[side].synapse.xRp;
         ParamArray[1] = pInhIntLLSwing[side].synapse.gamma;
         ParamArray[2] = pInhIntLLSwing[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 9){
         ParamArray[0] = pInhIntLLStance[side].synapse.xRp;
         ParamArray[1] = pInhIntLLStance[side].synapse.gamma;
         ParamArray[2] = pInhIntLLStance[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 10){
         ParamArray[0] = pInhIntLTSwing[side].synapse.xRp;
         ParamArray[1] = pInhIntLTSwing[side].synapse.gamma;
         ParamArray[2] = pInhIntLTSwing[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 11){
         ParamArray[0] = pInhIntLTStance[side].synapse.xRp;
         ParamArray[1] = pInhIntLTStance[side].synapse.gamma;
         ParamArray[2] = pInhIntLTStance[side].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 12){
         ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
         ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
         ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 13){
         ParamArray[0] = pExcIntRCaudEleCoord[side][seg].synapse.xRp;
         ParamArray[1] = pExcIntRCaudEleCoord[side][seg].synapse.gamma;
         ParamArray[2] = pExcIntRCaudEleCoord[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 14){
         ParamArray[0] = pExcSegEleContraLat[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegEleContraLat[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegEleContraLat[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 15){
         ParamArray[0] = pInhSegEleDep[side][seg].synapse.xRp;
         ParamArray[1] = pInhSegEleDep[side][seg].synapse.gamma;
         ParamArray[2] = pInhSegEleDep[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 16){
         ParamArray[0] = pInhSegEleStance[side][seg].synapse.xRp;
         ParamArray[1] = pInhSegEleStance[side][seg].synapse.gamma;
         ParamArray[2] = pInhSegEleStance[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 17){
         ParamArray[0] = pInhSegStanceSwing[side][seg].synapse.xRp;
         ParamArray[1] = pInhSegStanceSwing[side][seg].synapse.gamma;
         ParamArray[2] = pInhSegStanceSwing[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 18){
         ParamArray[0] = pExcSegStanceProt[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegStanceProt[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegStanceProt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 19){
         ParamArray[0] = pExcSegStanceRet[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegStanceRet[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegStanceRet[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 20){
         ParamArray[0] = pExcSegStanceExt[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegStanceExt[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegStanceExt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 21){
         ParamArray[0] = pExcSegStanceFlx[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegStanceFlx[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegStanceFlx[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 22){
         ParamArray[0] = pExcSegSwingProt[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegSwingProt[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegSwingProt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 23){
         ParamArray[0] = pExcSegSwingRet[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegSwingRet[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegSwingRet[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 24){
         ParamArray[0] = pExcSegSwingExt[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegSwingExt[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegSwingExt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 25){
         ParamArray[0] = pExcSegSwingFlx[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegSwingFlx[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegSwingFlx[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 26){
         ParamArray[0] = pExcHLYL[side][seg].synapse.xRp;
         ParamArray[1] = pExcHLYL[side][seg].synapse.gamma;
         ParamArray[2] = pExcHLYL[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 27){
         ParamArray[0] = pExcHLRL[side][seg].synapse.xRp;
         ParamArray[1] = pExcHLRL[side][seg].synapse.gamma;
         ParamArray[2] = pExcHLRL[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 28){
         ParamArray[0] = pExcYLFR[side][seg].synapse.xRp;
         ParamArray[1] = pExcYLFR[side][seg].synapse.gamma;
         ParamArray[2] = pExcYLFR[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 29){
         ParamArray[0] = pExcRLFR[side][seg].synapse.xRp;
         ParamArray[1] = pExcRLFR[side][seg].synapse.gamma;
         ParamArray[2] = pExcRLFR[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 30){
         ParamArray[0] = pExcHRYR[side][seg].synapse.xRp;
         ParamArray[1] = pExcHRYR[side][seg].synapse.gamma;
         ParamArray[2] = pExcHRYR[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 31){
         ParamArray[0] = pExcHRRR[side][seg].synapse.xRp;
         ParamArray[1] = pExcHRRR[side][seg].synapse.gamma;
         ParamArray[2] = pExcHRRR[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 32){
         ParamArray[0] = pExcYRFL[side][seg].synapse.xRp;
         ParamArray[1] = pExcYRFL[side][seg].synapse.gamma;
         ParamArray[2] = pExcYRFL[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 33){
         ParamArray[0] = pExcRRFL[side][seg].synapse.xRp;
         ParamArray[1] = pExcRRFL[side][seg].synapse.gamma;
         ParamArray[2] = pExcRRFL[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 34){
         ParamArray[0] = pExcRSLeft[side][seg].synapse.xRp;
         ParamArray[1] = pExcRSLeft[side][seg].synapse.gamma;
         ParamArray[2] = pExcRSLeft[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 35){
         ParamArray[0] = pExcRSRight[side][seg].synapse.xRp;
         ParamArray[1] = pExcRSRight[side][seg].synapse.gamma;
         ParamArray[2] = pExcRSRight[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 36){
         ParamArray[0] = pExcSegPcnDep[side][seg].synapse.xRp;
         ParamArray[1] = pExcSegPcnDep[side][seg].synapse.gamma;
         ParamArray[2] = pExcSegPcnDep[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 37){
         ParamArray[0] = pExcC[side][seg].synapse.xRp;
         ParamArray[1] = pExcC[side][seg].synapse.gamma;
         ParamArray[2] = pExcC[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 38){
         ParamArray[0] = pInhF[side][seg].synapse.xRp;
         ParamArray[1] = pInhF[side][seg].synapse.gamma;
         ParamArray[2] = pInhF[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 39){
         ParamArray[0] = pExcB[side][seg].synapse.xRp;
         ParamArray[1] = pExcB[side][seg].synapse.gamma;
         ParamArray[2] = pExcB[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 40){
         ParamArray[0] = pExcModComEle[side][seg].modSynapse.xRp;
         ParamArray[1] = pExcModComEle[side][seg].modSynapse.gamma;
         ParamArray[2] = pExcModComEle[side][seg].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 41){
         ParamArray[0] = pExcModComDep[side][seg].modSynapse.xRp;
         ParamArray[1] = pExcModComDep[side][seg].modSynapse.gamma;
         ParamArray[2] = pExcModComDep[side][seg].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 42){
         ParamArray[0] = pExcModComSwing[side][seg].modSynapse.xRp;
         ParamArray[1] = pExcModComSwing[side][seg].modSynapse.gamma;
         ParamArray[2] = pExcModComSwing[side][seg].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 43){
         ParamArray[0] = pExcModComStance[side][seg].modSynapse.xRp;
         ParamArray[1] = pExcModComStance[side][seg].modSynapse.gamma;
         ParamArray[2] = pExcModComStance[side][seg].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 44){
         ParamArray[0] = pExcForRet[side][seg].synapse.xRp;
         ParamArray[1] = pExcForRet[side][seg].synapse.gamma;
         ParamArray[2] = pExcForRet[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 45){
         ParamArray[0] = pExcBackProt[side][seg].synapse.xRp;
         ParamArray[1] = pExcBackProt[side][seg].synapse.gamma;
         ParamArray[2] = pExcBackProt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 46){
         ParamArray[0] = pExcLLFlx[side][seg].synapse.xRp;
         ParamArray[1] = pExcLLFlx[side][seg].synapse.gamma;
         ParamArray[2] = pExcLLFlx[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 47){
         ParamArray[0] = pExcLTExt[side][seg].synapse.xRp;
         ParamArray[1] = pExcLTExt[side][seg].synapse.gamma;
         ParamArray[2] = pExcLTExt[side][seg].synapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 48){
         ParamArray[0] = pExcForModCom[side].modSynapse.xRp;
         ParamArray[1] = pExcForModCom[side].modSynapse.gamma;
         ParamArray[2] = pExcForModCom[side].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 49){
         ParamArray[0] = pExcBackModCom[side].modSynapse.xRp;
         ParamArray[1] = pExcBackModCom[side].modSynapse.gamma;
         ParamArray[2] = pExcBackModCom[side].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 50){
         ParamArray[0] = pExcLLModCom[side].modSynapse.xRp;
         ParamArray[1] = pExcLLModCom[side].modSynapse.gamma;
         ParamArray[2] = pExcLLModCom[side].modSynapse.gStrength;
     }
-    else if (id == 1){
+    else if (id == 51){
         ParamArray[0] = pExcLTModCom[side].modSynapse.xRp;
         ParamArray[1] = pExcLTModCom[side].modSynapse.gamma;
         ParamArray[2] = pExcLTModCom[side].modSynapse.gStrength;
@@ -4742,7 +4759,7 @@ void computeMAPs(double mainLoopIndex)
     elapsed = t2 - t1;
 } //End of fun
 
-
+/*
 void allocParamArray(void){
     int i;
     alphaArrayElev = (double **)malloc(sizeof(double *) * mmSide);
@@ -5155,7 +5172,7 @@ void freeParamsArray(void){
     
     
 }
-
+*/
 
 //------------------------------------------------------------------------------
 /*void computeLateralBias(double h, double c)
