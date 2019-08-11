@@ -158,7 +158,7 @@ extern double** xArrayLT;
 extern double** xArrayModCom;
 extern double** xArrayPcn;
 extern double** xArrayH;
-
+/*
 //alpha array
 extern double** alphaArrayElev;
 extern double** alphaArrayDep;
@@ -294,7 +294,7 @@ extern double** IdcArrayLT;
 extern double** IdcArrayPcn;
 extern double** IdcArrayModCom;
 extern double** IdcArrayH;
-
+*/
 typedef void (^CaseBlock)(void);
 
 //-(void) runCalculation;

@@ -3928,422 +3928,422 @@ void CreateReadableParams () {
 
 
 double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
-    double ParamArray[7];
+    double NeuronParamArray[7];
     
     if(id == 0){
-        ParamArray[0] = cellElevator[side][seg].burstingNeuron.alpha;
-        ParamArray[1] = cellElevator[side][seg].burstingNeuron.sigma;
-        ParamArray[2] = cellElevator[side][seg].burstingNeuron.sigmaE;
-        ParamArray[3] = cellElevator[side][seg].burstingNeuron.sigmaI;
-        ParamArray[4] = cellElevator[side][seg].burstingNeuron.betaE;
-        ParamArray[5] = cellElevator[side][seg].burstingNeuron.betaI;
-        ParamArray[6] = cellElevator[side][seg].burstingNeuron.Idc;
+        NeuronParamArray[0] = cellElevator[side][seg].burstingNeuron.alpha;
+        NeuronParamArray[1] = cellElevator[side][seg].burstingNeuron.sigma;
+        NeuronParamArray[2] = cellElevator[side][seg].burstingNeuron.sigmaE;
+        NeuronParamArray[3] = cellElevator[side][seg].burstingNeuron.sigmaI;
+        NeuronParamArray[4] = cellElevator[side][seg].burstingNeuron.betaE;
+        NeuronParamArray[5] = cellElevator[side][seg].burstingNeuron.betaI;
+        NeuronParamArray[6] = cellElevator[side][seg].burstingNeuron.Idc;
     }
 
     else if(id == 1){
-     ParamArray[0] = cellSwing[side][seg].burstingNeuron.alpha;
-     ParamArray[1] = cellSwing[side][seg].burstingNeuron.sigma;
-     ParamArray[2] = cellSwing[side][seg].burstingNeuron.sigmaE;
-     ParamArray[3] = cellSwing[side][seg].burstingNeuron.sigmaI;
-     ParamArray[4] = cellSwing[side][seg].burstingNeuron.betaE;
-     ParamArray[5] = cellSwing[side][seg].burstingNeuron.betaI;
-     ParamArray[6] = cellSwing[side][seg].burstingNeuron.Idc;
+     NeuronParamArray[0] = cellSwing[side][seg].burstingNeuron.alpha;
+     NeuronParamArray[1] = cellSwing[side][seg].burstingNeuron.sigma;
+     NeuronParamArray[2] = cellSwing[side][seg].burstingNeuron.sigmaE;
+     NeuronParamArray[3] = cellSwing[side][seg].burstingNeuron.sigmaI;
+     NeuronParamArray[4] = cellSwing[side][seg].burstingNeuron.betaE;
+     NeuronParamArray[5] = cellSwing[side][seg].burstingNeuron.betaI;
+     NeuronParamArray[6] = cellSwing[side][seg].burstingNeuron.Idc;
      
     }
     else if(id == 2){
-     ParamArray[0] = cellDepressor[side][seg].pacemakerNeuron.alpha;
-     ParamArray[1] = cellDepressor[side][seg].pacemakerNeuron.sigma;
-     ParamArray[2] = cellDepressor[side][seg].pacemakerNeuron.sigmaE;
-     ParamArray[3] = cellDepressor[side][seg].pacemakerNeuron.sigmaI;
-     ParamArray[4] = cellDepressor[side][seg].pacemakerNeuron.betaE;
-     ParamArray[5] = cellDepressor[side][seg].pacemakerNeuron.betaI;
-     ParamArray[6] = cellDepressor[side][seg].pacemakerNeuron.Idc;
+     NeuronParamArray[0] = cellDepressor[side][seg].pacemakerNeuron.alpha;
+     NeuronParamArray[1] = cellDepressor[side][seg].pacemakerNeuron.sigma;
+     NeuronParamArray[2] = cellDepressor[side][seg].pacemakerNeuron.sigmaE;
+     NeuronParamArray[3] = cellDepressor[side][seg].pacemakerNeuron.sigmaI;
+     NeuronParamArray[4] = cellDepressor[side][seg].pacemakerNeuron.betaE;
+     NeuronParamArray[5] = cellDepressor[side][seg].pacemakerNeuron.betaI;
+     NeuronParamArray[6] = cellDepressor[side][seg].pacemakerNeuron.Idc;
     }
     else if(id == 3){
-     ParamArray[0] = cellStance[side][seg].pacemakerNeuron.alpha;
-     ParamArray[1] = cellStance[side][seg].pacemakerNeuron.sigma;
-     ParamArray[2] = cellStance[side][seg].pacemakerNeuron.sigmaE;
-     ParamArray[3] = cellStance[side][seg].pacemakerNeuron.sigmaI;
-     ParamArray[4] = cellStance[side][seg].pacemakerNeuron.betaE;
-     ParamArray[5] = cellStance[side][seg].pacemakerNeuron.betaI;
-     ParamArray[6] = cellStance[side][seg].pacemakerNeuron.Idc;
+     NeuronParamArray[0] = cellStance[side][seg].pacemakerNeuron.alpha;
+     NeuronParamArray[1] = cellStance[side][seg].pacemakerNeuron.sigma;
+     NeuronParamArray[2] = cellStance[side][seg].pacemakerNeuron.sigmaE;
+     NeuronParamArray[3] = cellStance[side][seg].pacemakerNeuron.sigmaI;
+     NeuronParamArray[4] = cellStance[side][seg].pacemakerNeuron.betaE;
+     NeuronParamArray[5] = cellStance[side][seg].pacemakerNeuron.betaI;
+     NeuronParamArray[6] = cellStance[side][seg].pacemakerNeuron.Idc;
     }
     else if(id == 4){
-     ParamArray[0] = cellCoord[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellCoord[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellCoord[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellCoord[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellCoord[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellCoord[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellCoord[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellCoord[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellCoord[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellCoord[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellCoord[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellCoord[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellCoord[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellCoord[side][seg].spikingNeuron.Idc;
     }
     else if(id == 5){
-     ParamArray[0] = cellProtractor[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellProtractor[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellProtractor[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellProtractor[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellProtractor[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellProtractor[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellProtractor[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellProtractor[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellProtractor[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellProtractor[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellProtractor[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellProtractor[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellProtractor[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellProtractor[side][seg].spikingNeuron.Idc;
 
     }
     else if(id == 6){
-     ParamArray[0] = cellRetractor[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellRetractor[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellRetractor[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellRetractor[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellRetractor[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellRetractor[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellRetractor[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellRetractor[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellRetractor[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellRetractor[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellRetractor[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellRetractor[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellRetractor[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellRetractor[side][seg].spikingNeuron.Idc;
     }
     else if(id == 7){
-     ParamArray[0] = cellExtensor[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellExtensor[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellExtensor[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellExtensor[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellExtensor[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellExtensor[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellExtensor[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellExtensor[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellExtensor[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellExtensor[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellExtensor[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellExtensor[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellExtensor[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellExtensor[side][seg].spikingNeuron.Idc;
     }
     else if(id ==8){
-     ParamArray[0] = cellFlexor[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellFlexor[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellFlexor[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellFlexor[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellFlexor[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellFlexor[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellFlexor[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellFlexor[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellFlexor[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellFlexor[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellFlexor[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellFlexor[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellFlexor[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellFlexor[side][seg].spikingNeuron.Idc;
     }
     else if (id == 9){
-     ParamArray[0] = cellF[side].spikingNeuron.alpha;
-     ParamArray[1] = cellF[side].spikingNeuron.sigma;
-     ParamArray[2] = cellF[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellF[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellF[side].spikingNeuron.betaE;
-     ParamArray[5] = cellF[side].spikingNeuron.betaI;
-     ParamArray[6] = cellF[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellF[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellF[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellF[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellF[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellF[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellF[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellF[side].spikingNeuron.Idc;
     }
     else if(id == 10){
-     ParamArray[0] = cellB[side].spikingNeuron.alpha;
-     ParamArray[1] = cellB[side].spikingNeuron.sigma;
-     ParamArray[2] = cellB[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellB[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellB[side].spikingNeuron.betaE;
-     ParamArray[5] = cellB[side].spikingNeuron.betaI;
-     ParamArray[6] = cellB[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellB[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellB[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellB[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellB[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellB[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellB[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellB[side].spikingNeuron.Idc;
     }
     else if(id == 11){
-     ParamArray[0] = cellLL[side].spikingNeuron.alpha;
-     ParamArray[1] = cellLL[side].spikingNeuron.sigma;
-     ParamArray[2] = cellLL[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellLL[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellLL[side].spikingNeuron.betaE;
-     ParamArray[5] = cellLL[side].spikingNeuron.betaI;
-     ParamArray[6] = cellLL[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellLL[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellLL[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellLL[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellLL[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellLL[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellLL[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellLL[side].spikingNeuron.Idc;
     }
     else if (id == 12) {
-     ParamArray[0] = cellLT[side].spikingNeuron.alpha;
-     ParamArray[1] = cellLT[side].spikingNeuron.sigma;
-     ParamArray[2] = cellLT[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellLT[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellLT[side].spikingNeuron.betaE;
-     ParamArray[5] = cellLT[side].spikingNeuron.betaI;
-     ParamArray[6] = cellLT[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellLT[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellLT[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellLT[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellLT[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellLT[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellLT[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellLT[side].spikingNeuron.Idc;
     }
     else if (id == 14){
-     ParamArray[0] = cellModCom[side].spikingNeuron.alpha;
-     ParamArray[1] = cellModCom[side].spikingNeuron.sigma;
-     ParamArray[2] = cellModCom[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellModCom[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellModCom[side].spikingNeuron.betaE;
-     ParamArray[5] = cellModCom[side].spikingNeuron.betaI;
-     ParamArray[6] = cellModCom[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellModCom[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellModCom[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellModCom[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellModCom[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellModCom[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellModCom[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellModCom[side].spikingNeuron.Idc;
     }
     else if (id == 15){
-     ParamArray[0] = cellH[side].spikingNeuron.alpha;
-     ParamArray[1] = cellH[side].spikingNeuron.sigma;
-     ParamArray[2] = cellH[side].spikingNeuron.sigmaE;
-     ParamArray[3] = cellH[side].spikingNeuron.sigmaI;
-     ParamArray[4] = cellH[side].spikingNeuron.betaE;
-     ParamArray[5] = cellH[side].spikingNeuron.betaI;
-     ParamArray[6] = cellH[side].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellH[side].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellH[side].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellH[side].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellH[side].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellH[side].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellH[side].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellH[side].spikingNeuron.Idc;
     }
     else if (id == 16){
         //pcn
-     ParamArray[0] = cellPcn[side][seg].spikingNeuron.alpha;
-     ParamArray[1] = cellPcn[side][seg].spikingNeuron.sigma;
-     ParamArray[2] = cellPcn[side][seg].spikingNeuron.sigmaE;
-     ParamArray[3] = cellPcn[side][seg].spikingNeuron.sigmaI;
-     ParamArray[4] = cellPcn[side][seg].spikingNeuron.betaE;
-     ParamArray[5] = cellPcn[side][seg].spikingNeuron.betaI;
-     ParamArray[6] = cellPcn[side][seg].spikingNeuron.Idc;
+     NeuronParamArray[0] = cellPcn[side][seg].spikingNeuron.alpha;
+     NeuronParamArray[1] = cellPcn[side][seg].spikingNeuron.sigma;
+     NeuronParamArray[2] = cellPcn[side][seg].spikingNeuron.sigmaE;
+     NeuronParamArray[3] = cellPcn[side][seg].spikingNeuron.sigmaI;
+     NeuronParamArray[4] = cellPcn[side][seg].spikingNeuron.betaE;
+     NeuronParamArray[5] = cellPcn[side][seg].spikingNeuron.betaI;
+     NeuronParamArray[6] = cellPcn[side][seg].spikingNeuron.Idc;
     }
-    return ParamArray[data];
+    return NeuronParamArray[data];
 }
 
 double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
-    double ParamArray[3];
+    double SynapseParamArray[3];
     if (id == 0){
-        ParamArray[0] = pInhSegCoordEle[side][seg].synapse.xRp;
-        ParamArray[1] = pInhSegCoordEle[side][seg].synapse.gamma;
-        ParamArray[2] = pInhSegCoordEle[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pInhSegCoordEle[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pInhSegCoordEle[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pInhSegCoordEle[side][seg].synapse.gStrength;
     }
     else if (id == 1){
-        ParamArray[0] = pExcSegContEleCoord[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegContEleCoord[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegContEleCoord[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegContEleCoord[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegContEleCoord[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegContEleCoord[side][seg].synapse.gStrength;
     }
     else if (id == 2){
-        ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
-        ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
-        ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
     }
     else if (id == 3){
-        ParamArray[0] = pExcIntCaudEleCoord[side][seg].synapse.xRp;
-        ParamArray[1] = pExcIntCaudEleCoord[side][seg].synapse.gamma;
-        ParamArray[2] = pExcIntCaudEleCoord[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcIntCaudEleCoord[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcIntCaudEleCoord[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcIntCaudEleCoord[side][seg].synapse.gStrength;
     }
     else if (id == 4){
-        ParamArray[0] = pInhIntFSwing[side].synapse.xRp;
-        ParamArray[1] = pInhIntFSwing[side].synapse.gamma;
-        ParamArray[2] = pInhIntFSwing[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntFSwing[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntFSwing[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntFSwing[side].synapse.gStrength;
     }
     else if (id == 5){
-        ParamArray[0] = pInhIntFStance[side].synapse.xRp;
-        ParamArray[1] = pInhIntFStance[side].synapse.gamma;
-        ParamArray[2] = pInhIntFStance[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntFStance[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntFStance[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntFStance[side].synapse.gStrength;
     }
     else if (id == 6){
-        ParamArray[0] = pInhIntBSwing[side].synapse.xRp;
-        ParamArray[1] = pInhIntBSwing[side].synapse.gamma;
-        ParamArray[2] = pInhIntBSwing[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntBSwing[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntBSwing[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntBSwing[side].synapse.gStrength;
     }
     else if (id == 7){
-        ParamArray[0] = pInhIntBStance[side].synapse.xRp;
-        ParamArray[1] = pInhIntBStance[side].synapse.gamma;
-        ParamArray[2] = pInhIntBStance[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntBStance[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntBStance[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntBStance[side].synapse.gStrength;
     }
     else if (id == 8){
-        ParamArray[0] = pInhIntLLSwing[side].synapse.xRp;
-        ParamArray[1] = pInhIntLLSwing[side].synapse.gamma;
-        ParamArray[2] = pInhIntLLSwing[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntLLSwing[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntLLSwing[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntLLSwing[side].synapse.gStrength;
     }
     else if (id == 9){
-        ParamArray[0] = pInhIntLLStance[side].synapse.xRp;
-        ParamArray[1] = pInhIntLLStance[side].synapse.gamma;
-        ParamArray[2] = pInhIntLLStance[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntLLStance[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntLLStance[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntLLStance[side].synapse.gStrength;
     }
     else if (id == 10){
-        ParamArray[0] = pInhIntLTSwing[side].synapse.xRp;
-        ParamArray[1] = pInhIntLTSwing[side].synapse.gamma;
-        ParamArray[2] = pInhIntLTSwing[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntLTSwing[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntLTSwing[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntLTSwing[side].synapse.gStrength;
     }
     else if (id == 11){
-        ParamArray[0] = pInhIntLTStance[side].synapse.xRp;
-        ParamArray[1] = pInhIntLTStance[side].synapse.gamma;
-        ParamArray[2] = pInhIntLTStance[side].synapse.gStrength;
+        SynapseParamArray[0] = pInhIntLTStance[side].synapse.xRp;
+        SynapseParamArray[1] = pInhIntLTStance[side].synapse.gamma;
+        SynapseParamArray[2] = pInhIntLTStance[side].synapse.gStrength;
     }
     else if (id == 12){
-        ParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
-        ParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
-        ParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcIntRosEleCoord[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcIntRosEleCoord[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcIntRosEleCoord[side][seg].synapse.gStrength;
     }
     else if (id == 13){
-        ParamArray[0] = pExcIntRCaudEleCoord[side][seg].synapse.xRp;
-        ParamArray[1] = pExcIntRCaudEleCoord[side][seg].synapse.gamma;
-        ParamArray[2] = pExcIntRCaudEleCoord[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcIntRCaudEleCoord[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcIntRCaudEleCoord[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcIntRCaudEleCoord[side][seg].synapse.gStrength;
     }
     else if (id == 14){
-        ParamArray[0] = pExcSegEleContraLat[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegEleContraLat[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegEleContraLat[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegEleContraLat[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegEleContraLat[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegEleContraLat[side][seg].synapse.gStrength;
     }
     else if (id == 15){
-        ParamArray[0] = pInhSegEleDep[side][seg].synapse.xRp;
-        ParamArray[1] = pInhSegEleDep[side][seg].synapse.gamma;
-        ParamArray[2] = pInhSegEleDep[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pInhSegEleDep[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pInhSegEleDep[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pInhSegEleDep[side][seg].synapse.gStrength;
     }
     else if (id == 16){
-        ParamArray[0] = pInhSegEleStance[side][seg].synapse.xRp;
-        ParamArray[1] = pInhSegEleStance[side][seg].synapse.gamma;
-        ParamArray[2] = pInhSegEleStance[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pInhSegEleStance[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pInhSegEleStance[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pInhSegEleStance[side][seg].synapse.gStrength;
     }
     else if (id == 17){
-        ParamArray[0] = pInhSegStanceSwing[side][seg].synapse.xRp;
-        ParamArray[1] = pInhSegStanceSwing[side][seg].synapse.gamma;
-        ParamArray[2] = pInhSegStanceSwing[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pInhSegStanceSwing[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pInhSegStanceSwing[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pInhSegStanceSwing[side][seg].synapse.gStrength;
     }
     else if (id == 18){
-        ParamArray[0] = pExcSegStanceProt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegStanceProt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegStanceProt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegStanceProt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegStanceProt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegStanceProt[side][seg].synapse.gStrength;
     }
     else if (id == 19){
-        ParamArray[0] = pExcSegStanceRet[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegStanceRet[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegStanceRet[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegStanceRet[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegStanceRet[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegStanceRet[side][seg].synapse.gStrength;
     }
     else if (id == 20){
-        ParamArray[0] = pExcSegStanceExt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegStanceExt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegStanceExt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegStanceExt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegStanceExt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegStanceExt[side][seg].synapse.gStrength;
     }
     else if (id == 21){
-        ParamArray[0] = pExcSegStanceFlx[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegStanceFlx[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegStanceFlx[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegStanceFlx[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegStanceFlx[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegStanceFlx[side][seg].synapse.gStrength;
     }
     else if (id == 22){
-        ParamArray[0] = pExcSegSwingProt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegSwingProt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegSwingProt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegSwingProt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegSwingProt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegSwingProt[side][seg].synapse.gStrength;
     }
     else if (id == 23){
-        ParamArray[0] = pExcSegSwingRet[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegSwingRet[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegSwingRet[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegSwingRet[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegSwingRet[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegSwingRet[side][seg].synapse.gStrength;
     }
     else if (id == 24){
-        ParamArray[0] = pExcSegSwingExt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegSwingExt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegSwingExt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegSwingExt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegSwingExt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegSwingExt[side][seg].synapse.gStrength;
     }
     else if (id == 25){
-        ParamArray[0] = pExcSegSwingFlx[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegSwingFlx[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegSwingFlx[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegSwingFlx[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegSwingFlx[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegSwingFlx[side][seg].synapse.gStrength;
     }
     else if (id == 26){
-        ParamArray[0] = pExcHLYL[side][seg].synapse.xRp;
-        ParamArray[1] = pExcHLYL[side][seg].synapse.gamma;
-        ParamArray[2] = pExcHLYL[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcHLYL[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcHLYL[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcHLYL[side][seg].synapse.gStrength;
     }
     else if (id == 27){
-        ParamArray[0] = pExcHLRL[side][seg].synapse.xRp;
-        ParamArray[1] = pExcHLRL[side][seg].synapse.gamma;
-        ParamArray[2] = pExcHLRL[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcHLRL[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcHLRL[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcHLRL[side][seg].synapse.gStrength;
     }
     else if (id == 28){
-        ParamArray[0] = pExcYLFR[side][seg].synapse.xRp;
-        ParamArray[1] = pExcYLFR[side][seg].synapse.gamma;
-        ParamArray[2] = pExcYLFR[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcYLFR[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcYLFR[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcYLFR[side][seg].synapse.gStrength;
     }
     else if (id == 29){
-        ParamArray[0] = pExcRLFR[side][seg].synapse.xRp;
-        ParamArray[1] = pExcRLFR[side][seg].synapse.gamma;
-        ParamArray[2] = pExcRLFR[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcRLFR[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcRLFR[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcRLFR[side][seg].synapse.gStrength;
     }
     else if (id == 30){
-        ParamArray[0] = pExcHRYR[side][seg].synapse.xRp;
-        ParamArray[1] = pExcHRYR[side][seg].synapse.gamma;
-        ParamArray[2] = pExcHRYR[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcHRYR[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcHRYR[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcHRYR[side][seg].synapse.gStrength;
     }
     else if (id == 31){
-        ParamArray[0] = pExcHRRR[side][seg].synapse.xRp;
-        ParamArray[1] = pExcHRRR[side][seg].synapse.gamma;
-        ParamArray[2] = pExcHRRR[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcHRRR[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcHRRR[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcHRRR[side][seg].synapse.gStrength;
     }
     else if (id == 32){
-        ParamArray[0] = pExcYRFL[side][seg].synapse.xRp;
-        ParamArray[1] = pExcYRFL[side][seg].synapse.gamma;
-        ParamArray[2] = pExcYRFL[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcYRFL[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcYRFL[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcYRFL[side][seg].synapse.gStrength;
     }
     else if (id == 33){
-        ParamArray[0] = pExcRRFL[side][seg].synapse.xRp;
-        ParamArray[1] = pExcRRFL[side][seg].synapse.gamma;
-        ParamArray[2] = pExcRRFL[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcRRFL[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcRRFL[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcRRFL[side][seg].synapse.gStrength;
     }
     else if (id == 34){
-        ParamArray[0] = pExcRSLeft[side][seg].synapse.xRp;
-        ParamArray[1] = pExcRSLeft[side][seg].synapse.gamma;
-        ParamArray[2] = pExcRSLeft[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcRSLeft[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcRSLeft[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcRSLeft[side][seg].synapse.gStrength;
     }
     else if (id == 35){
-        ParamArray[0] = pExcRSRight[side][seg].synapse.xRp;
-        ParamArray[1] = pExcRSRight[side][seg].synapse.gamma;
-        ParamArray[2] = pExcRSRight[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcRSRight[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcRSRight[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcRSRight[side][seg].synapse.gStrength;
     }
     else if (id == 36){
-        ParamArray[0] = pExcSegPcnDep[side][seg].synapse.xRp;
-        ParamArray[1] = pExcSegPcnDep[side][seg].synapse.gamma;
-        ParamArray[2] = pExcSegPcnDep[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcSegPcnDep[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcSegPcnDep[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcSegPcnDep[side][seg].synapse.gStrength;
     }
     else if (id == 37){
-        ParamArray[0] = pExcC[side][seg].synapse.xRp;
-        ParamArray[1] = pExcC[side][seg].synapse.gamma;
-        ParamArray[2] = pExcC[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcC[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcC[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcC[side][seg].synapse.gStrength;
     }
     else if (id == 38){
-        ParamArray[0] = pInhF[side][seg].synapse.xRp;
-        ParamArray[1] = pInhF[side][seg].synapse.gamma;
-        ParamArray[2] = pInhF[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pInhF[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pInhF[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pInhF[side][seg].synapse.gStrength;
     }
     else if (id == 39){
-        ParamArray[0] = pExcB[side][seg].synapse.xRp;
-        ParamArray[1] = pExcB[side][seg].synapse.gamma;
-        ParamArray[2] = pExcB[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcB[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcB[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcB[side][seg].synapse.gStrength;
     }
     else if (id == 40){
-        ParamArray[0] = pExcModComEle[side][seg].modSynapse.xRp;
-        ParamArray[1] = pExcModComEle[side][seg].modSynapse.gamma;
-        ParamArray[2] = pExcModComEle[side][seg].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcModComEle[side][seg].modSynapse.xRp;
+        SynapseParamArray[1] = pExcModComEle[side][seg].modSynapse.gamma;
+        SynapseParamArray[2] = pExcModComEle[side][seg].modSynapse.gStrength;
     }
     else if (id == 41){
-        ParamArray[0] = pExcModComDep[side][seg].modSynapse.xRp;
-        ParamArray[1] = pExcModComDep[side][seg].modSynapse.gamma;
-        ParamArray[2] = pExcModComDep[side][seg].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcModComDep[side][seg].modSynapse.xRp;
+        SynapseParamArray[1] = pExcModComDep[side][seg].modSynapse.gamma;
+        SynapseParamArray[2] = pExcModComDep[side][seg].modSynapse.gStrength;
     }
     else if (id == 42){
-        ParamArray[0] = pExcModComSwing[side][seg].modSynapse.xRp;
-        ParamArray[1] = pExcModComSwing[side][seg].modSynapse.gamma;
-        ParamArray[2] = pExcModComSwing[side][seg].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcModComSwing[side][seg].modSynapse.xRp;
+        SynapseParamArray[1] = pExcModComSwing[side][seg].modSynapse.gamma;
+        SynapseParamArray[2] = pExcModComSwing[side][seg].modSynapse.gStrength;
     }
     else if (id == 43){
-        ParamArray[0] = pExcModComStance[side][seg].modSynapse.xRp;
-        ParamArray[1] = pExcModComStance[side][seg].modSynapse.gamma;
-        ParamArray[2] = pExcModComStance[side][seg].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcModComStance[side][seg].modSynapse.xRp;
+        SynapseParamArray[1] = pExcModComStance[side][seg].modSynapse.gamma;
+        SynapseParamArray[2] = pExcModComStance[side][seg].modSynapse.gStrength;
     }
     else if (id == 44){
-        ParamArray[0] = pExcForRet[side][seg].synapse.xRp;
-        ParamArray[1] = pExcForRet[side][seg].synapse.gamma;
-        ParamArray[2] = pExcForRet[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcForRet[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcForRet[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcForRet[side][seg].synapse.gStrength;
     }
     else if (id == 45){
-        ParamArray[0] = pExcBackProt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcBackProt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcBackProt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcBackProt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcBackProt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcBackProt[side][seg].synapse.gStrength;
     }
     else if (id == 46){
-        ParamArray[0] = pExcLLFlx[side][seg].synapse.xRp;
-        ParamArray[1] = pExcLLFlx[side][seg].synapse.gamma;
-        ParamArray[2] = pExcLLFlx[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcLLFlx[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcLLFlx[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcLLFlx[side][seg].synapse.gStrength;
     }
     else if (id == 47){
-        ParamArray[0] = pExcLTExt[side][seg].synapse.xRp;
-        ParamArray[1] = pExcLTExt[side][seg].synapse.gamma;
-        ParamArray[2] = pExcLTExt[side][seg].synapse.gStrength;
+        SynapseParamArray[0] = pExcLTExt[side][seg].synapse.xRp;
+        SynapseParamArray[1] = pExcLTExt[side][seg].synapse.gamma;
+        SynapseParamArray[2] = pExcLTExt[side][seg].synapse.gStrength;
     }
     else if (id == 48){
-        ParamArray[0] = pExcForModCom[side].modSynapse.xRp;
-        ParamArray[1] = pExcForModCom[side].modSynapse.gamma;
-        ParamArray[2] = pExcForModCom[side].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcForModCom[side].modSynapse.xRp;
+        SynapseParamArray[1] = pExcForModCom[side].modSynapse.gamma;
+        SynapseParamArray[2] = pExcForModCom[side].modSynapse.gStrength;
     }
     else if (id == 49){
-        ParamArray[0] = pExcBackModCom[side].modSynapse.xRp;
-        ParamArray[1] = pExcBackModCom[side].modSynapse.gamma;
-        ParamArray[2] = pExcBackModCom[side].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcBackModCom[side].modSynapse.xRp;
+        SynapseParamArray[1] = pExcBackModCom[side].modSynapse.gamma;
+        SynapseParamArray[2] = pExcBackModCom[side].modSynapse.gStrength;
     }
     else if (id == 50){
-        ParamArray[0] = pExcLLModCom[side].modSynapse.xRp;
-        ParamArray[1] = pExcLLModCom[side].modSynapse.gamma;
-        ParamArray[2] = pExcLLModCom[side].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcLLModCom[side].modSynapse.xRp;
+        SynapseParamArray[1] = pExcLLModCom[side].modSynapse.gamma;
+        SynapseParamArray[2] = pExcLLModCom[side].modSynapse.gStrength;
     }
     else if (id == 51){
-        ParamArray[0] = pExcLTModCom[side].modSynapse.xRp;
-        ParamArray[1] = pExcLTModCom[side].modSynapse.gamma;
-        ParamArray[2] = pExcLTModCom[side].modSynapse.gStrength;
+        SynapseParamArray[0] = pExcLTModCom[side].modSynapse.xRp;
+        SynapseParamArray[1] = pExcLTModCom[side].modSynapse.gamma;
+        SynapseParamArray[2] = pExcLTModCom[side].modSynapse.gStrength;
     }
-    return ParamArray[data];
+    return SynapseParamArray[data];
 }
 
 

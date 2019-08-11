@@ -60,6 +60,7 @@
     NSMutableArray*Params = [[NSMutableArray alloc] init];//array to store a,s
     
     NSMutableArray*indies = [self selectCell:cellName];
+    
     int cellType = (int) [[indies objectAtIndex:0] integerValue];
     int cell = (int) [[indies objectAtIndex:1] integerValue];
     //CFTimeInterval startTime = CACurrentMediaTime();
@@ -434,6 +435,7 @@
     [_parambuf addObject:Params];
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
+    
 }
 
 -(NSMutableArray*) selectCell:(cellPointer)cellName{

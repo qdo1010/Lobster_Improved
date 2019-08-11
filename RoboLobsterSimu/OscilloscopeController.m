@@ -324,6 +324,65 @@
     //   sweepDurationTextBox.text =
 }
 
+
+- (IBAction)setlFor:(id)sender{
+    bool sta = [sender state];
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:sta];
+    NSLog(@"this is %@", onOrOff);
+    [self.currentParameters setValue: onOrOff forKey:@"lFor"];
+    //NSLog(@"%@", [self.currentParameters valueForKey:@"lFor"]);
+    // NSLog(@"but is it %@", [self.currentParameters objectForKey:@"lFor"]);
+    [self updateTable];
+}
+
+- (IBAction)setrFor:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rFor"];
+    [self updateTable];
+}
+
+- (IBAction)setlBack:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lBak"];
+    [self updateTable];
+}
+- (IBAction)setrBack:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rBak"];
+    [self updateTable];
+}
+- (IBAction)setlLead:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lLed"];
+    [self updateTable];
+}
+
+- (IBAction)setrLead:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rLed"];
+    [self updateTable];
+}
+
+- (IBAction)setlTrail:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"lTra"];
+    [self updateTable];
+}
+- (IBAction)setrTrail:(id)sender{
+    
+    NSNumber * onOrOff =[NSNumber numberWithBool:(bool)[sender state]] ;
+    [self.currentParameters setValue: onOrOff forKey:@"rTra"];
+    [self updateTable];
+}
+
+
 - (IBAction)changeSweepOffset:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     [sweepOffsetSlider setMinValue:0];
