@@ -124,6 +124,7 @@ extern long elapsed;
 - (void) updateSweepValue;
 
 - (void) initScopeSweep;
+- (void) updateTable;
 
 - (void) scaleScopeSweep;
 //- (void) drawScopeSweep;//: (NSRect)rect;

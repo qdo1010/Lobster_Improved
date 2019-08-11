@@ -1019,6 +1019,9 @@
     
 }
 
+ - (void) updateTable(
+ //This is a dummy arguement
+ );
 
 
 //load params load in a txt file and set the params
