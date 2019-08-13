@@ -3928,6 +3928,7 @@ void CreateReadableParams () {
 
 
 double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
+    /*
     double NeuronParamArray[7];
     
     if(id == 0){
@@ -3940,7 +3941,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
         NeuronParamArray[6] = cellElevator[side][seg].burstingNeuron.Idc;
     }
 
-    else if(id == 1){
+    else if(id == 2){
      NeuronParamArray[0] = cellSwing[side][seg].burstingNeuron.alpha;
      NeuronParamArray[1] = cellSwing[side][seg].burstingNeuron.sigma;
      NeuronParamArray[2] = cellSwing[side][seg].burstingNeuron.sigmaE;
@@ -3950,7 +3951,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[6] = cellSwing[side][seg].burstingNeuron.Idc;
      
     }
-    else if(id == 2){
+    else if(id == 1){
      NeuronParamArray[0] = cellDepressor[side][seg].pacemakerNeuron.alpha;
      NeuronParamArray[1] = cellDepressor[side][seg].pacemakerNeuron.sigma;
      NeuronParamArray[2] = cellDepressor[side][seg].pacemakerNeuron.sigmaE;
@@ -3968,7 +3969,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellStance[side][seg].pacemakerNeuron.betaI;
      NeuronParamArray[6] = cellStance[side][seg].pacemakerNeuron.Idc;
     }
-    else if(id == 4){
+    else if(id == 8){
      NeuronParamArray[0] = cellCoord[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellCoord[side][seg].spikingNeuron.sigma;
      NeuronParamArray[2] = cellCoord[side][seg].spikingNeuron.sigmaE;
@@ -3977,7 +3978,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellCoord[side][seg].spikingNeuron.betaI;
      NeuronParamArray[6] = cellCoord[side][seg].spikingNeuron.Idc;
     }
-    else if(id == 5){
+    else if(id == 4){
      NeuronParamArray[0] = cellProtractor[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellProtractor[side][seg].spikingNeuron.sigma;
      NeuronParamArray[2] = cellProtractor[side][seg].spikingNeuron.sigmaE;
@@ -3987,7 +3988,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[6] = cellProtractor[side][seg].spikingNeuron.Idc;
 
     }
-    else if(id == 6){
+    else if(id == 5){
      NeuronParamArray[0] = cellRetractor[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellRetractor[side][seg].spikingNeuron.sigma;
      NeuronParamArray[2] = cellRetractor[side][seg].spikingNeuron.sigmaE;
@@ -3996,7 +3997,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellRetractor[side][seg].spikingNeuron.betaI;
      NeuronParamArray[6] = cellRetractor[side][seg].spikingNeuron.Idc;
     }
-    else if(id == 7){
+    else if(id == 6){
      NeuronParamArray[0] = cellExtensor[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellExtensor[side][seg].spikingNeuron.sigma;
      NeuronParamArray[2] = cellExtensor[side][seg].spikingNeuron.sigmaE;
@@ -4005,7 +4006,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellExtensor[side][seg].spikingNeuron.betaI;
      NeuronParamArray[6] = cellExtensor[side][seg].spikingNeuron.Idc;
     }
-    else if(id ==8){
+    else if(id == 7){
      NeuronParamArray[0] = cellFlexor[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellFlexor[side][seg].spikingNeuron.sigma;
      NeuronParamArray[2] = cellFlexor[side][seg].spikingNeuron.sigmaE;
@@ -4068,7 +4069,7 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellH[side].spikingNeuron.betaI;
      NeuronParamArray[6] = cellH[side].spikingNeuron.Idc;
     }
-    else if (id == 16){
+    else if (id == 13){
         //pcn
      NeuronParamArray[0] = cellPcn[side][seg].spikingNeuron.alpha;
      NeuronParamArray[1] = cellPcn[side][seg].spikingNeuron.sigma;
@@ -4078,10 +4079,13 @@ double ReturnCurrentNeuronParams(long id, long side, long seg, int data){
      NeuronParamArray[5] = cellPcn[side][seg].spikingNeuron.betaI;
      NeuronParamArray[6] = cellPcn[side][seg].spikingNeuron.Idc;
     }
-    return NeuronParamArray[data];
+     */
+    return 5;
+     
 }
 
 double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
+    /*
     double SynapseParamArray[3];
     if (id == 0){
         SynapseParamArray[0] = pInhSegCoordEle[side][seg].synapse.xRp;
@@ -4343,7 +4347,8 @@ double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
         SynapseParamArray[1] = pExcLTModCom[side].modSynapse.gamma;
         SynapseParamArray[2] = pExcLTModCom[side].modSynapse.gStrength;
     }
-    return SynapseParamArray[data];
+     */
+    return 4;
 }
 
 

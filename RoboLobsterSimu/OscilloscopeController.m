@@ -95,6 +95,7 @@
     
     //init the array that will contains input param values
     //cell ID tell C code what type of cell it is
+    
     cellID = malloc(numCell*sizeof(int));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
@@ -181,7 +182,7 @@
     
     [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     //   [self begin]
-    [NSTimer scheduledTimerWithTimeInterval: 0.1                                                  target: self
+    [NSTimer scheduledTimerWithTimeInterval: 2                                                  target: self
                                    selector:@selector(beginSendingStuffToBeDrawn)
                                    userInfo: nil repeats:YES];
     

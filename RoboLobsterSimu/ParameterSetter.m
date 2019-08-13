@@ -231,8 +231,7 @@ pFastExc, pFastInh, pSlowExc, pSlowInh,                                         
 //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
  
 cellID = malloc(numCell*sizeof(int));
-side =malloc(numCell*sizeof(int));
-seg = malloc(numCell*sizeof(int));
+
     //those are the array of params for each cell
 alpha = malloc(numCell*sizeof(double));
 sigma = malloc(numCell*sizeof(double));
@@ -243,6 +242,7 @@ betaI = malloc(numCell*sizeof(double));
 Idc = malloc(numCell*sizeof(double));
     side =malloc(numCell*sizeof(int));
     seg = malloc(numCell*sizeof(int));
+    
     //settingUpParams = 1; //first time setting up, will be off forever
     
     for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
@@ -311,7 +311,7 @@ Idc = malloc(numCell*sizeof(double));
     
         // else{
     //Filling synapse text boxes:
-    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( 0, 0, 0, 0)]];
+/*    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 0)]];
     [GammaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
     [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
     
@@ -323,7 +323,7 @@ Idc = malloc(numCell*sizeof(double));
     [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 4)]];
     [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 5)]];
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
-    
+    */
     
     NSLog(@"Parameter Setter AwakeFromNIB completed");
     
@@ -813,6 +813,7 @@ Idc = malloc(numCell*sizeof(double));
 }
 
 - (IBAction)setSynapseParams:(id)sender {
+    /*
     NSLog(@"executing SetSynapseParams");
     int size = 1; //default
     int numCell = 1; //default
@@ -835,6 +836,7 @@ Idc = malloc(numCell*sizeof(double));
     //call the func to edit synapse
     editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
     SaveAllParams();
+     */
 }
 
 - (IBAction)resetParamsToDefault:(id)sender {

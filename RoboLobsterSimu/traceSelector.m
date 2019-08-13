@@ -322,7 +322,7 @@ Initialization
      [appDelegate drawOscilloscope:appDelegate];
     
    //This is to test if you can open the synapse controller
-    [appDelegate openParameterSetterWindow:appDelegate];
+   // [appDelegate openParameterSetterWindow:appDelegate];
 
 }
 @end

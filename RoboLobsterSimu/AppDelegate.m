@@ -178,14 +178,14 @@
 
 - (IBAction) showAnalysisWindow: (id) sender
 {
-    [[self analysisWindowController].window orderFront:self];
+    [[self analysisWindowController].window setOrderedIndex:1];
     
 } // showAnalysisWindow
 
 
 - (IBAction) showTraceSelectorWindow: (id) sender
 {
-    [[self traceSelector].window orderFront:self];
+    [[self traceSelector].window setOrderedIndex:0];
     
 } // showAnalysisWindow
 
@@ -206,7 +206,7 @@
         ParameterSetter *newParameterSetter = [[ParameterSetter alloc] initWithDefaultWindowNib];
         [self setParameterSetter:newParameterSetter];
     }
-    NSLog(@"\n\n\nlist is %p \n\n\n", [self parameterSetter].window);
+   // NSLog(@"\n\n\nlist is %p \n\n\n", [self parameterSetter].window);
     [[self parameterSetter].window orderFront:self];
     
 } // showSynapseWindow
