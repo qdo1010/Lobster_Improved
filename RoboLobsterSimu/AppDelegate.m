@@ -51,7 +51,7 @@
 @synthesize IDofCellChosen;
 
 //@synthesize commandController;
-@synthesize synapseController;
+@synthesize ParameterSetter;
 //@synthesize parameterSetter;
 #pragma mark - App Lifetime
 
@@ -212,9 +212,9 @@
 } // showSynapseWindow
  */
 
-- (IBAction) showSynapseControllerWindow:(id)sender
+- (IBAction) showParameterSetterWindow:(id)sender
 {
-    [[self synapseController].window orderFront:self];
+    [[self ParameterSetter].window orderFront:self];
     
 } // showSynapseWindow
 
@@ -241,13 +241,13 @@
 
 }
 */
-- (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
+- (IBAction) openParameterSetterWindow: (id) sender //this is to open the synapseController window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
     NSLog(@"Executing synapse controller Window");
-    SynapseController* newSynapseWindow = [[SynapseController alloc] init];
-    [self setSynapseController:newSynapseWindow];
-    [appDelegate showSynapseControllerWindow:self];
+    ParameterSetter* newSynapseWindow = [[ParameterSetter alloc] init];
+    [self setParameterSetter:newSynapseWindow];
+    [appDelegate showParameterSetterWindow:self];
 }
 /*
 - (IBAction) openParameterSetterWindow: (id) sender //this is to open the parameterSetter window

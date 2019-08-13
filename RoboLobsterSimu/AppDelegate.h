@@ -9,7 +9,7 @@
 #import "Waveforms.h"
 #import "traceSelector.h"
 //#import "CommandStateViewController.h"
-#import "SynapseController.h"
+#import "ParameterSetter.h"
 //#import "ParameterSetter.h"
 
 @class OscilloscopeController;
@@ -37,7 +37,7 @@ extern long elapsed;
 @property (nonatomic, strong) IBOutlet TraceSelector             *traceSelector;
 @property (nonatomic, strong) PreferenceController               *preferenceController;
 //@property (nonatomic, strong) CommandStateViewController         *commandController;
-@property (nonatomic, strong) SynapseController                  *synapseController; //create an instance of synapse controller here
+@property (nonatomic, strong) ParameterSetter                  *ParameterSetter; //create an instance of synapse controller here
 //@property (nonatomic, strong) ParameterSetter                    *parameterSetter; //create an instance of ParameterSetter here
 
 
@@ -86,7 +86,7 @@ extern long elapsed;
 - (IBAction) showAnalysisWindow:                (id) sender;
 //- (IBAction) showParameterSetterWindow:         (id) sender;
 //- (IBAction) openParameterSetterWindow:         (id) sender; //this is to open the Parameter Setter window
-- (IBAction) openSynapseControllerWindow:         (id) sender;
+- (IBAction) openParameterSetterWindow:         (id) sender;
 #pragma mark --- Signal Processing Menu Selections
 - (IBAction) drawOscilloscope:         (id) sender; //This is a yellow on black graph of the analog traceWaveforms
 -(void) displaySampledWaveforms : (NSMutableArray*)cellName : (double)offset : (double)duration;

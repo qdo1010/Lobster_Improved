@@ -324,7 +324,7 @@ Initialization
     
    //This is to test if you can open the synapse controller
    // [appDelegate openParameterSetterWindow:appDelegate];
-    [appDelegate openSynapseControllerWindow:appDelegate];
+    [appDelegate openParameterSetterWindow:appDelegate];
 }
 @end
 

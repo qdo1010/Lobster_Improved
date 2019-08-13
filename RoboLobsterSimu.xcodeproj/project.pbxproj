@@ -43,8 +43,8 @@
 		97ECE09C204FAAB300BA2E00 /* Walking in Resources */ = {isa = PBXBuildFile; fileRef = 97ECE09B204FAAB300BA2E00 /* Walking */; };
 		D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B346C51EF2E63B007ACFD1 /* traceSelector.m */; };
 		D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EF67A51EF1B7D00083426F /* TraceSelector.xib */; };
-		E90B102523035E400076CB1E /* SynapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B102223035E3F0076CB1E /* SynapseController.m */; };
-		E90B102623035E400076CB1E /* SynapseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90B102323035E3F0076CB1E /* SynapseController.xib */; };
+		E90B10282303645C0076CB1E /* ParameterSetter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90B10272303645C0076CB1E /* ParameterSetter.xib */; };
+		E90B102B230364850076CB1E /* ParameterSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B102A230364850076CB1E /* ParameterSetter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,9 +114,9 @@
 		D2B346C51EF2E63B007ACFD1 /* traceSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = traceSelector.m; sourceTree = "<group>"; };
 		D2B346C71EF2E661007ACFD1 /* traceSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = traceSelector.h; sourceTree = "<group>"; };
 		D2EF67A51EF1B7D00083426F /* TraceSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TraceSelector.xib; sourceTree = "<group>"; };
-		E90B102223035E3F0076CB1E /* SynapseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynapseController.m; path = "../../Lobster_Improved copy/RoboLobsterSimu/SynapseController.m"; sourceTree = "<group>"; };
-		E90B102323035E3F0076CB1E /* SynapseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SynapseController.xib; path = "../../Lobster_Improved copy/RoboLobsterSimu/SynapseController.xib"; sourceTree = "<group>"; };
-		E90B102423035E3F0076CB1E /* SynapseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynapseController.h; path = "../../Lobster_Improved copy/RoboLobsterSimu/SynapseController.h"; sourceTree = "<group>"; };
+		E90B10272303645C0076CB1E /* ParameterSetter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterSetter.xib; sourceTree = "<group>"; };
+		E90B1029230364730076CB1E /* ParameterSetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterSetter.h; sourceTree = "<group>"; };
+		E90B102A230364850076CB1E /* ParameterSetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterSetter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,9 +183,9 @@
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
 				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
-				E90B102423035E3F0076CB1E /* SynapseController.h */,
-				E90B102223035E3F0076CB1E /* SynapseController.m */,
-				E90B102323035E3F0076CB1E /* SynapseController.xib */,
+				E90B10272303645C0076CB1E /* ParameterSetter.xib */,
+				E90B1029230364730076CB1E /* ParameterSetter.h */,
+				E90B102A230364850076CB1E /* ParameterSetter.m */,
 				970E76AB1EF1A140002EE43D /* OscilloscopeView.h */,
 				970E76AD1EF1A140002EE43D /* OscilloscopeView.m */,
 				970E76731EF17CED002EE43D /* Assets.xcassets */,
@@ -352,9 +352,9 @@
 				970E76741EF17CED002EE43D /* Assets.xcassets in Resources */,
 				4831107220AF1DE60095D277 /* TrailingLeft in Resources */,
 				970E769E1EF19FBF002EE43D /* LobsterSynapseList.txt in Resources */,
+				E90B10282303645C0076CB1E /* ParameterSetter.xib in Resources */,
 				4831107120AF1DE60095D277 /* TrailingRight in Resources */,
 				4831107E20AF1E020095D277 /* LateralRight in Resources */,
-				E90B102623035E400076CB1E /* SynapseController.xib in Resources */,
 				4895E8DA20DD52FA0037AB7C /* Elevator in Resources */,
 				97D6A7AE200AC28700BF3C15 /* TODO in Resources */,
 				97D4662B203527B90042B141 /* Slow in Resources */,
@@ -398,10 +398,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E90B102523035E400076CB1E /* SynapseController.m in Sources */,
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
+				E90B102B230364850076CB1E /* ParameterSetter.m in Sources */,
 				970E766C1EF17CED002EE43D /* main.m in Sources */,
 				970E76A11EF19FDB002EE43D /* Waveforms.m in Sources */,
 				970E76691EF17CED002EE43D /* AppDelegate.m in Sources */,
