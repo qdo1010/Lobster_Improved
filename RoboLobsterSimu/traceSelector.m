@@ -8,7 +8,8 @@
 
 #include "traceSelector.h"
 #include "AppDelegate.h"
-#include "ParameterSetter.h"
+//#include "ParameterSetter.h"
+
 #import <Foundation/Foundation.h>
 
 @implementation TraceSelector
@@ -323,7 +324,7 @@ Initialization
     
    //This is to test if you can open the synapse controller
    // [appDelegate openParameterSetterWindow:appDelegate];
-
+    [appDelegate openSynapseControllerWindow:appDelegate];
 }
 @end
 

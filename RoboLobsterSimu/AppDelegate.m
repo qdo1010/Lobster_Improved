@@ -10,7 +10,7 @@
 #import "OscilloscopeController.h"
 #import "analysisWindowController.h"
 #import "Waveforms.h"
-#import "ParameterSetter.h"
+//#import "ParameterSetter.h"
 
 
 @interface AppDelegate ()
@@ -51,8 +51,8 @@
 @synthesize IDofCellChosen;
 
 //@synthesize commandController;
-//@synthesize synapseController;
-@synthesize parameterSetter;
+@synthesize synapseController;
+//@synthesize parameterSetter;
 #pragma mark - App Lifetime
 
 
@@ -164,7 +164,7 @@
     return _analysisWindowController;
 }
 
-
+/*
 - (ParameterSetter *)parameterSetter
 {
     if (parameterSetter == nil)
@@ -175,7 +175,7 @@
     return parameterSetter;
 }
 
-
+*/
 - (IBAction) showAnalysisWindow: (id) sender
 {
     [[self analysisWindowController].window setOrderedIndex:1];
@@ -197,7 +197,7 @@
 } // showCommandWindow
 */
 
-
+/*
 - (IBAction) showParameterSetterWindow:(id)sender
 {
     
@@ -208,6 +208,13 @@
     }
    // NSLog(@"\n\n\nlist is %p \n\n\n", [self parameterSetter].window);
     [[self parameterSetter].window orderFront:self];
+    
+} // showSynapseWindow
+ */
+
+- (IBAction) showSynapseControllerWindow:(id)sender
+{
+    [[self synapseController].window orderFront:self];
     
 } // showSynapseWindow
 
@@ -233,7 +240,7 @@
     [appDelegate showCommandWindow:self];
 
 }
-
+*/
 - (IBAction) openSynapseControllerWindow: (id) sender //this is to open the synapseController window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -242,7 +249,7 @@
     [self setSynapseController:newSynapseWindow];
     [appDelegate showSynapseControllerWindow:self];
 }
-*/
+/*
 - (IBAction) openParameterSetterWindow: (id) sender //this is to open the parameterSetter window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
@@ -256,7 +263,7 @@
         NSLog(@"Parameter Setter Window was open");
     }
 }
-
+*/
 
 
 - (IBAction) drawOscilloscope:(id) sender //This is a virtual oscilloscope{

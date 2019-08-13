@@ -1,5 +1,4 @@
-#ifndef TRACESELECTOR_H
-#define TRACESELECTOR_H
+
 //  traceSelector.h
 //  RoboLobsterSimu
 //
@@ -51,4 +50,3 @@
 - (id)init;
 
 @end
-#endif
