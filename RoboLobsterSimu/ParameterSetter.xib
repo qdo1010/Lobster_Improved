@@ -425,6 +425,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="ResetParameters:" target="-2" id="bhl-UU-Kn2"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8M-yw-8fA">
                         <rect key="frame" x="71" y="19" width="174" height="32"/>
@@ -433,6 +436,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="SetNeuronParameters:" target="-2" id="EDf-nU-ae0"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKr-1X-U3Z">
                         <rect key="frame" x="408" y="19" width="182" height="32"/>
@@ -441,6 +447,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="SetSynapseParameters:" target="-2" id="Z4z-gh-ErE"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lWS-qi-EVF">
                         <rect key="frame" x="12" y="69" width="104" height="17"/>

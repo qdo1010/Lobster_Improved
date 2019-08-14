@@ -33,13 +33,13 @@
 @synthesize gStrengthTextBox;
 @synthesize neuronSelector;
 @synthesize CellName;
-@synthesize Alpha;
-@synthesize Sigma;
-@synthesize SigmaE;
-@synthesize SigmaI;
-@synthesize BetaE;
-@synthesize BetaI;
-@synthesize Idc;
+@synthesize alphaTextBox;
+@synthesize sigmaTextBox;
+@synthesize sigmaETextBox;
+@synthesize sigmaITextBox;
+@synthesize betaETextBox;
+@synthesize betaITextBox;
+@synthesize IdcTextBox;
 
 @synthesize synapseID;
 @synthesize gStrength;
@@ -200,6 +200,48 @@
     [neuronSelector addItemWithTitle:@"cellPcn"];
 }
 
+//Re-Written Code for Parameter Setter
+- (IBAction)ResetParameters:(id)sender {
+    CreateParamFile();
+    
+}
+
+- (IBAction)SetNeuronParameters:(id)sender {
+    double a = [alphaTextBox doubleValue];
+    double s = [sigmaTextBox doubleValue];
+    double sE = [sigmaETextBox doubleValue];
+    double sI = [sigmaITextBox doubleValue];
+    double bE = [betaETextBox doubleValue];
+    double bI = [betaITextBox doubleValue];
+    double Idc = [IdcTextBox doubleValue];
+    long side = [neuronSideSelector indexOfSelectedItem];
+    long seg = [neuronSegSelector indexOfSelectedItem];
+    long neuronNumber = [neuronSelector indexOfSelectedItem];
+    
+    
+    setNeuronParams(neuronNumber, side, seg, a, s, sE, sI, bE, bI, Idc);
+    SaveAllParams();
+}
+
+- (IBAction)SetSynapseParameters:(id)sender {
+    double xRp = [xRPTextBox doubleValue];
+    double Gamma = [GammaTextBox doubleValue];
+    double gStrength = [gStrengthTextBox doubleValue];
+    long side = [synapseSideSelector indexOfSelectedItem];
+    long seg = [synapseSegSelector indexOfSelectedItem];
+    long synapseNumber = [synapseSelector indexOfSelectedItem];
+    setSynapseParams(synapseNumber, side, seg, xRp, Gamma, gStrength);
+    SaveAllParams();
+    
+}
+
+
+
+
+
+
+
+
 /*
 //Holdover or Reference code from SynapseController
 //this will set the parameter
@@ -227,8 +269,7 @@
             break;
         default:
             xRPTextBox.doubleValue = 0.;
-            GammaTextBox.doubleValue = 0.;
-            gStrengthTextBox.doubleValue = 0.;
+            GammaTextBox.doubleValue = 0.;            gStrengthTextBox.doubleValue = 0.;
             break;
     }
     
@@ -236,8 +277,7 @@
 
 //make a library to map where each synapse should be
 -(int)synapseMapping: (int)synapseID{
-    //input synapseID
-    //get the mapping
+    //input synapseID    //get the mapping
     return 0;
 }
 
@@ -397,8 +437,7 @@
         case 49://pExcBackModCom
             [synapseTypeSelector selectItemAtIndex:2];
             break;
-        case 50://pExcLLModCom
-            [synapseTypeSelector selectItemAtIndex:2];
+        case 50://pExcLLModCom            [synapseTypeSelector selectItemAtIndex:2];
             break;
         case 51://pExcLTModCom
             [synapseTypeSelector selectItemAtIndex:2];

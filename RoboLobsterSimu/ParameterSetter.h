@@ -33,13 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet NSTextField *GammaTextBox;
 @property (strong) IBOutlet NSTextField *gStrengthTextBox;
 @property (strong) IBOutlet NSTextField *CellName;
-@property (strong) IBOutlet NSTextField *Alpha;
-@property (strong) IBOutlet NSTextField *Sigma;
-@property (strong) IBOutlet NSTextField *SigmaE;
-@property (strong) IBOutlet NSTextField *SigmaI;
-@property (strong) IBOutlet NSTextField *BetaE;
-@property (strong) IBOutlet NSTextField *BetaI;
-@property (strong) IBOutlet NSTextField *Idc;
+@property (strong) IBOutlet NSTextField *alphaTextBox;
+@property (strong) IBOutlet NSTextField *sigmaTextBox;
+@property (strong) IBOutlet NSTextField *sigmaETextBox;
+@property (strong) IBOutlet NSTextField *sigmaITextBox;
+@property (strong) IBOutlet NSTextField *betaETextBox;
+@property (strong) IBOutlet NSTextField *betaITextBox;
+@property (strong) IBOutlet NSTextField *IdcTextBox;
 
 @property (strong) IBOutlet NSPopUpButton *synapseTypeSelector;
 
@@ -65,6 +65,10 @@ NS_ASSUME_NONNULL_BEGIN
 void editSynapseParam(unsigned long int *synapseName, int* side, int* seg,double*xrp, double* gamma, double* gStrength, int size);
 //void saveParamsToFile(int flagWriteToFile);
 
+void CreateParamFile (void);
+void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc);
+void SaveAllParams(void);
+void setSynapseParams(unsigned long int id, unsigned long side, unsigned long seg, double xrp, double gamma, double gStrength);
 
 @end
 
