@@ -244,7 +244,7 @@
 - (IBAction) openParameterSetterWindow: (id) sender //this is to open the synapseController window
 {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-    NSLog(@"Executing synapse controller Window");
+    NSLog(@"Executing parameter setter Window");
     ParameterSetter* newSynapseWindow = [[ParameterSetter alloc] init];
     [self setParameterSetter:newSynapseWindow];
     [appDelegate showParameterSetterWindow:self];

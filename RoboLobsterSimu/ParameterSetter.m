@@ -24,11 +24,22 @@
 //synthesize buttons on window
 @synthesize synapseSelector;
 @synthesize synapseTypeSelector;
-@synthesize SideSelector;
-@synthesize SegSelector;
+@synthesize neuronSideSelector;
+@synthesize neuronSegSelector;
+@synthesize synapseSideSelector;
+@synthesize synapseSegSelector;
 @synthesize xRPTextBox;
 @synthesize GammaTextBox;
 @synthesize gStrengthTextBox;
+@synthesize neuronSelector;
+@synthesize CellName;
+@synthesize Alpha;
+@synthesize Sigma;
+@synthesize SigmaE;
+@synthesize SigmaI;
+@synthesize BetaE;
+@synthesize BetaI;
+@synthesize Idc;
 
 @synthesize synapseID;
 @synthesize gStrength;
@@ -44,7 +55,7 @@
 - (id)init
 {
     self = [super initWithWindowNibName:@"ParameterSetter"];
-    NSLog(@"Hello this is synapse controller");
+    NSLog(@"Hello this is parameter setter");
     return self;
 }
 
@@ -52,8 +63,11 @@
     [super windowDidLoad];
     [synapseSelector removeAllItems];
     [synapseTypeSelector removeAllItems];
-    [SideSelector removeAllItems];
-    [SegSelector removeAllItems];
+    [neuronSideSelector removeAllItems];
+    [neuronSegSelector removeAllItems];
+    [neuronSelector removeAllItems];
+    [synapseSideSelector removeAllItems];
+    [synapseSegSelector removeAllItems];
     
     //  pInhSegCoordEle[mmSide][mmSeg],                                                                      // Segmental Inhibition from an Coordinating Neuron to an Elevator
     //  pExcSegContEleCoord[mmSide][mmSeg],                                                                  // Intersegmental Exitation from and elevator to a contralatersl coordinating neuron
@@ -136,14 +150,29 @@
     [synapseSelector addItemWithTitle:@"pExcLLModCom"];
     [synapseSelector addItemWithTitle:@"pExcLTModCom"];
     
-    [SideSelector addItemWithTitle:@"0"];
-    [SideSelector addItemWithTitle:@"1"];
+    [neuronSideSelector addItemWithTitle:@"0"];
+    [neuronSideSelector addItemWithTitle:@"1"];
     
-    [SegSelector addItemWithTitle:@"0"];
-    [SegSelector addItemWithTitle:@"1"];
-    [SegSelector addItemWithTitle:@"2"];
-    [SegSelector addItemWithTitle:@"3"];
+    [neuronSegSelector addItemWithTitle:@"0"];
+    [neuronSegSelector addItemWithTitle:@"1"];
+    [neuronSegSelector addItemWithTitle:@"2"];
+    [neuronSegSelector addItemWithTitle:@"3"];
     
+    [neuronSideSelector addItemWithTitle:@"0"];
+    [neuronSideSelector addItemWithTitle:@"1"];
+    
+    [neuronSegSelector addItemWithTitle:@"0"];
+    [neuronSegSelector addItemWithTitle:@"1"];
+    [neuronSegSelector addItemWithTitle:@"2"];
+    [neuronSegSelector addItemWithTitle:@"3"];
+    
+    [synapseSideSelector addItemWithTitle:@"0"];
+    [synapseSideSelector addItemWithTitle:@"1"];
+    
+    [synapseSegSelector addItemWithTitle:@"0"];
+    [synapseSegSelector addItemWithTitle:@"1"];
+    [synapseSegSelector addItemWithTitle:@"2"];
+    [synapseSegSelector addItemWithTitle:@"3"];
     
     //pFastExc, pFastInh, pSlowExc, pSlowInh,
     [synapseTypeSelector addItemWithTitle:@"pFastExc"];
@@ -153,6 +182,22 @@
     [synapseTypeSelector addItemWithTitle:@"Not Defined"];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [neuronSelector addItemWithTitle:@"cellElevator"];
+    [neuronSelector addItemWithTitle:@"cellSwing"];
+    [neuronSelector addItemWithTitle:@"cellDepressor"];
+    [neuronSelector addItemWithTitle:@"cellStance"];
+    [neuronSelector addItemWithTitle:@"cellCoord"];
+    [neuronSelector addItemWithTitle:@"cellProtractor"];
+    [neuronSelector addItemWithTitle:@"cellRetractor"];
+    [neuronSelector addItemWithTitle:@"cellExtensor"];
+    [neuronSelector addItemWithTitle:@"cellFlexor"];
+    [neuronSelector addItemWithTitle:@"cellF"];
+    [neuronSelector addItemWithTitle:@"cellB"];
+    [neuronSelector addItemWithTitle:@"cellLL"];
+    [neuronSelector addItemWithTitle:@"cellLT"];
+    [neuronSelector addItemWithTitle:@"cellModCom"];
+    [neuronSelector addItemWithTitle:@"cellH"];
+    [neuronSelector addItemWithTitle:@"cellPcn"];
 }
 
 //this will set the parameter
@@ -377,8 +422,8 @@
     gStrength = malloc(numCell*sizeof(double));
     
     synapseID[0] = [synapseSelector indexOfSelectedItem];
-    side[0] = [SideSelector indexOfSelectedItem];
-    seg[0] = [SegSelector indexOfSelectedItem];
+    side[0] = [neuronSideSelector indexOfSelectedItem];
+    seg[0] = [neuronSegSelector indexOfSelectedItem];
     
     gamma[0] = [GammaTextBox doubleValue];
     xrp[0] = [xRPTextBox doubleValue];
