@@ -182,7 +182,7 @@
     
     [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
     //   [self begin]
-    [NSTimer scheduledTimerWithTimeInterval: 2                                                  target: self
+    [NSTimer scheduledTimerWithTimeInterval: .00001                                                  target: self
                                    selector:@selector(beginSendingStuffToBeDrawn)
                                    userInfo: nil repeats:YES];
     

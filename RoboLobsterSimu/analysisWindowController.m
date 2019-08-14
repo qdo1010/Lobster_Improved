@@ -85,7 +85,7 @@ NSString *const kDSPTitle          = @"DSPViewController";
     NSLog(@"analysis view loaded");
     [super windowDidLoad];
     [self showWindow:nil];
-  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.1
+  NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 0.00001
                                                  target: self
                                                 selector:@selector(updateRect)
                                 userInfo: nil repeats:YES];
