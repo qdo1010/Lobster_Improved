@@ -57,9 +57,6 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
-                        <connections>
-                            <action selector="updateSynapseParams:" target="-2" id="bEz-Ta-1uG"/>
-                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
                         <rect key="frame" x="75" y="300" width="77" height="25"/>

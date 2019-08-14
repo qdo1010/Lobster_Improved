@@ -200,6 +200,8 @@
     [neuronSelector addItemWithTitle:@"cellPcn"];
 }
 
+/*
+//Holdover or Reference code from SynapseController
 //this will set the parameter
 - (IBAction)ConfigureDefaultSynapseParams:(id)sender {
     switch ([synapseTypeSelector indexOfSelectedItem]) {
@@ -432,6 +434,7 @@
     //call the func to edit synapse
     editSynapseParam(synapseID, side, seg, xrp, gamma, gStrength, size);
 }
+*/
 /*
 - (IBAction)saveSynapseParams:(id)sender {
     saveParamsToFile(1);
