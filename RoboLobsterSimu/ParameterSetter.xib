@@ -14,14 +14,21 @@
                 <outlet property="CellName" destination="aXS-ck-Txk" id="EJo-vG-BDJ"/>
                 <outlet property="GammaTextBox" destination="ilu-3v-TZy" id="uXc-xy-JDm"/>
                 <outlet property="Idc" destination="ewB-SM-T31" id="9c1-1S-j29"/>
+                <outlet property="IdcTextBox" destination="ewB-SM-T31" id="kKu-L6-ssI"/>
                 <outlet property="Sigma" destination="3cM-Ew-uNj" id="Xe1-9u-4Wr"/>
                 <outlet property="SigmaE" destination="dFp-yN-5h6" id="qz6-60-gJI"/>
                 <outlet property="SigmaI" destination="DDI-Il-SYZ" id="lPd-yO-Uce"/>
                 <outlet property="UpdateSynapseParams" destination="Dv0-4r-sf6" id="gGT-r7-GNP"/>
+                <outlet property="alphaTextBox" destination="c2w-jM-7Gm" id="34v-jO-1go"/>
+                <outlet property="betaETextBox" destination="I6C-Zj-Fme" id="ITc-yN-Xsh"/>
+                <outlet property="betaITextBox" destination="e8Z-dQ-X7h" id="XXw-KM-wnp"/>
                 <outlet property="gStrengthTextBox" destination="iCa-rS-CQM" id="qWA-Xk-LGP"/>
                 <outlet property="neuronSegSelector" destination="8g7-xC-ZTo" id="RtP-1I-4vo"/>
                 <outlet property="neuronSelector" destination="TQi-PZ-bIL" id="Jnr-dk-jex"/>
                 <outlet property="neuronSideSelector" destination="K2G-vR-FF2" id="Eij-LJ-ZLU"/>
+                <outlet property="sigmaETextBox" destination="dFp-yN-5h6" id="QM6-mR-3Vk"/>
+                <outlet property="sigmaITextBox" destination="DDI-Il-SYZ" id="U1E-eM-bHt"/>
+                <outlet property="sigmaTextBox" destination="3cM-Ew-uNj" id="asv-St-OVU"/>
                 <outlet property="synapseSegSelector" destination="9oK-YW-eIa" id="1ES-Qw-XTU"/>
                 <outlet property="synapseSelector" destination="Dv0-4r-sf6" id="Hgi-gL-DBC"/>
                 <outlet property="synapseSideSelector" destination="hWr-bT-MiN" id="cz2-uc-MTV"/>

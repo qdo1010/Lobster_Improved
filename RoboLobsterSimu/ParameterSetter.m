@@ -5,7 +5,7 @@
 //  Created by Quan Do on 1/31/19.
 //  Copyright © 2019 Quan Do. All rights reserved.
 //
-
+#import "AppDelegate.h"
 /*
  pFastExc, pFastInh, pSlowExc, pSlowInh,                                                              // SynapseTypes
  */
@@ -198,6 +198,130 @@
     [neuronSelector addItemWithTitle:@"cellModCom"];
     [neuronSelector addItemWithTitle:@"cellH"];
     [neuronSelector addItemWithTitle:@"cellPcn"];
+    
+}
+
+- (id)initWithDefaultWindowNib
+{
+    if (!self){
+        self = [super initWithWindowNibName:@"ParameterSetter"];
+        if (self)
+        {
+            NSLog(@"Executing InitWithDefaultWIndowNib in Parameter Setter");
+        }
+        else
+        {
+            NSLog(@"Warning! Could not load ParameterSetter nib.\n");
+        }
+    }
+    return self;
+}
+
+- (void) awakeFromNib {
+    //[super awakeFromNib];
+    
+    AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+    unsigned long numCell = [[[appDelegate traceSelector] traceArraytobeSent] count];
+    //   [[appDelegate analysisWindowController] setOscilloscopeController:self];
+    /*
+    cellID = malloc(numCell*sizeof(int));
+    side =malloc(numCell*sizeof(int));
+    seg = malloc(numCell*sizeof(int));
+    //those are the array of params for each cell
+    alpha = malloc(numCell*sizeof(double));
+    sigma = malloc(numCell*sizeof(double));
+    sigmaE = malloc(numCell*sizeof(double));
+    sigmaI = malloc(numCell*sizeof(double));
+    betaE = malloc(numCell*sizeof(double));
+    betaI = malloc(numCell*sizeof(double));
+    Idc = malloc(numCell*sizeof(double));
+    side =malloc(numCell*sizeof(int));
+    seg = malloc(numCell*sizeof(int));
+    //settingUpParams = 1; //first time setting up, will be off forever
+    */
+    for (int i = 0; i < [[[appDelegate traceSelector] traceArraytobeSent] count]; i ++){
+        
+        //get all Cell Name and convert those names to ID
+        NSString*cellName = [[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:i];
+        // NSMutableArray* chosenCellArray;
+        //   chosenCellArray = [self convertNameToId:cellName];
+       // cellID[i] = [self convertNameToId:cellName IDValue:0];
+       // side[i] = [self convertNameToId:cellName IDValue:1];
+       // seg[i] = [self convertNameToId:cellName IDValue:2];
+        
+        //        NSLog(@"%@", cellName);
+        //set trace name first//
+      //  [cellNameTextBox setStringValue:[[[appDelegate traceSelector] traceArraytobeSent] objectAtIndex:0]];
+        
+        [alphaTextBox setDelegate:self];
+        [sigmaTextBox setDelegate:self];
+        [sigmaETextBox setDelegate:self];
+        [sigmaITextBox setDelegate:self];
+        [betaETextBox setDelegate:self];
+        [betaITextBox setDelegate:self];
+        [IdcTextBox setDelegate:self];
+        [xRPTextBox setDelegate:self];
+        [GammaTextBox setDelegate:self];
+        [gStrengthTextBox setDelegate:self];
+        
+        // [self setFirstTimeChangeParams:1]; //never change params ever again, just do it once
+    }
+    long side = [neuronSideSelector indexOfSelectedItem];
+    long seg = [neuronSegSelector indexOfSelectedItem];
+    long neuronToChange = [neuronSelector indexOfSelectedItem];
+    long synapseSelected = [synapseTypeSelector indexOfSelectedItem];
+    /*
+     //init params input values
+     id propertyValue = [(AppDelegate *)[[NSApplication sharedApplication] delegate] traceWaveforms];
+     
+     if (settingUpParams){
+     for (int i = 0; i < numCell; i++){
+     //NSLog(@"howw many %d",i);
+     NSMutableArray*params= [[propertyValue parambuf] objectAtIndex:i];
+     alpha[i] = [[params objectAtIndex:0] doubleValue];
+     sigma[i] = [[params objectAtIndex:1] doubleValue];
+     sigmaE[i] = [[params objectAtIndex:2] doubleValue];
+     sigmaI[i] = [[params objectAtIndex:3] doubleValue];
+     betaE[i] = [[params objectAtIndex:4] doubleValue];
+     betaI[i] = [[params objectAtIndex:5] doubleValue];
+     Idc[i] = [[params objectAtIndex:6] doubleValue];
+     
+     }
+     settingUpParams = 0;
+     }
+     */
+    //init text box too
+    /* [alphaTextBox setStringValue:[[params objectAtIndex:0] stringValue]];
+     [sigmaTextBox setStringValue:[[params objectAtIndex:1] stringValue]];
+     [sigmaETextBox setStringValue:[[params objectAtIndex:2] stringValue]];
+     [sigmaITextBox setStringValue:[[params objectAtIndex:3] stringValue]];
+     [betaETextBox setStringValue:[[params objectAtIndex:4] stringValue]];
+     [betaITextBox setStringValue:[[params objectAtIndex:5] stringValue]];
+     [IdcTextBox setStringValue:[[params objectAtIndex:6] stringValue]];
+     */
+    
+    //   settingUpParams = 0; //done setting up
+    // }
+    
+    
+    // else{
+    //Filling synapse text boxes:
+    [xRPTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( 0, 0, 0, 0)]];
+    [GammaTextBox setStringValue:[NSString stringWithFormat:@"hello%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 1)]];
+    [gStrengthTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentSynapseParams( synapseSelected, side, seg, 2)]];
+    
+    //Filling neuron text boxes
+    [alphaTextBox setStringValue: [NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( 1, side, seg, 0)]];
+    [sigmaTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 1)]];
+    [sigmaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 2)]];
+    [sigmaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 3)]];
+    [betaETextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 4)]];
+    [betaITextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 5)]];
+    [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
+    
+    
+    NSLog(@"Parameter Setter AwakeFromNIB completed");
+    
 }
 
 //Re-Written Code for Parameter Setter
