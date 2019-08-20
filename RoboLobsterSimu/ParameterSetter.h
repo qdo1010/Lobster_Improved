@@ -70,6 +70,8 @@ void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, do
 void SaveAllParams(void);
 void setSynapseParams(unsigned long int id, unsigned long side, unsigned long seg, double xrp, double gamma, double gStrength);
 void setNeuronParams(int id, unsigned long side, unsigned long seg, double a, double s, double sE, double sI, double bE, double bI, double Idc);
+double ReturnCurrentSynapseParams(long id, long side, long seg, int data);
+double ReturnCurrentNeuronParams(long id, long side, long seg, int data);
 @end
 
 NS_ASSUME_NONNULL_END

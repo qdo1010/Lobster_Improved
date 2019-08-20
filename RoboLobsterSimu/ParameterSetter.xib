@@ -64,6 +64,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="3q5-bv-2VG"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2G-vR-FF2">
                         <rect key="frame" x="75" y="300" width="77" height="25"/>
@@ -79,6 +82,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="Xao-k5-eDo"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8g7-xC-ZTo">
                         <rect key="frame" x="228" y="300" width="77" height="25"/>
@@ -94,6 +100,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="uA0-cw-BTE"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDY-sG-JsN">
                         <rect key="frame" x="335" y="334" width="89" height="17"/>
@@ -208,6 +217,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="1XY-z5-FCL"/>
+                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RtC-D5-GCF">
                         <rect key="frame" x="40" y="332" width="82" height="17"/>
@@ -409,6 +421,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="Vsw-2m-yp1"/>
+                        </connections>
                     </popUpButton>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9oK-YW-eIa">
                         <rect key="frame" x="532" y="304" width="77" height="25"/>
@@ -424,6 +439,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="UpdateTextBoxes:" target="-2" id="YAQ-Wk-cfC"/>
+                        </connections>
                     </popUpButton>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8S4-TN-EJq">
                         <rect key="frame" x="251" y="19" width="147" height="32"/>
