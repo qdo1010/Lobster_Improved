@@ -471,7 +471,7 @@ pExcForModCom[mmSide], pExcBackModCom[mmSide], pExcLLModCom[mmSide], pExcLTModCo
 
 void xmain(void); //this is the main C function that will always run when program starts
 
-int IterNumChosen = 100000;
+int IterNumChosen = 1000000;
 
 void indicateNumberOfIteration(int i); //function to change IterNumChosen
 
