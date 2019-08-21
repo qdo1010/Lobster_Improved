@@ -39,7 +39,7 @@ int comSegmentMask= 0xFFFFFFFF;     // enable / disable segments
 #define pitchStates 5			// pLow, rosDn, pLevel, rosUp, pHigh
 
 #define TotalNeuronNumber 94
-#define TotalsynapseNumber 336
+#define TotalSynapseNumber 336
 
 //------------- Define the length of intersegmental connections --------------------------
 
@@ -152,6 +152,13 @@ enum {
 } cellPointer;
 
 enum {
+    /*  //These have to stay commented until the old
+    pCustom,
+    pFastExc,
+    pFastInh,
+    pSlowExc,
+    pSlowInh,
+    */
     pInhSegCoordEleL1,
     pInhSegCoordEleL2,
     pInhSegCoordEleL3,
@@ -501,6 +508,11 @@ enum {
 } synapsePointer;
 
 char * synapseLabels[] = {
+    "pCustom",
+    "pFastExc",
+    "pFastInh",
+    "pSlowExc",
+    "pSlowInh",
     "pInhSegCoordEleL1",
     "pInhSegCoordEleL2",
     "pInhSegCoordEleL3",
@@ -971,26 +983,21 @@ typedef struct neuronStruc{
     int spike;
     double yr, xr, x2, y2;
     double alphaInit;
-} neuron;
+} Neuron;
 
-neuron Neurons[TotalNeuronNumber];
+Neuron Neurons[TotalNeuronNumber];
 
 typedef struct synaspeStruc{
     char *name;
     int type;
     int side;
     int seg;
-    double xp, xpp, mu, sigmaIn, betaIn;
-    double sigmaDc, betaDc;
-    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
-    double alpha;
-    double sigma;
-    int spike;
-    double yr, xr, x2, y2;
-    double alphaInit;
-} synapse;
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constant
+    double gStrength;
+} Synapse;
 
-synapse Synapses[TotalSynapseNumber];
+Synapse Synapses[TotalSynapseNumber];
 
 
 int numCells = 92;
