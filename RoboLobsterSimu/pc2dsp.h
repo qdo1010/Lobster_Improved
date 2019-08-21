@@ -208,6 +208,7 @@ enum {
     pInhIntLTStanceL,
     pInhIntLTStanceR,
     /*
+     //This one was listed twice in the original structure, is that an error?
     pExcIntRosEleCoordL1,
     pExcIntRosEleCoordL2,
     pExcIntRosEleCoordL3,
@@ -562,6 +563,7 @@ char * synapseLabels[] = {
     "pInhIntLTStanceL",
     "pInhIntLTStanceR",
     /*
+     //This one was listed twice in the original structure, is that an error?
     "pExcIntRosEleCoordL1",
     "pExcIntRosEleCoordL2",
     "pExcIntRosEleCoordL3",
