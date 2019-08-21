@@ -261,24 +261,11 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 */
 //The default parameter setter function for the EVEN NEWER version of the structure
 
-
-
-
 void SetDefaultParamsForNeurons(){
-    int IDnum = 0;
-    //Traverses the neurons and fills their type, side and seg values
-    for(int ii = 0; ii < NumNeuronsWithSideSeg; ii++){
-        for(int jj = 0; jj < mmSide; jj++){
-            for(int hh = 0; hh < mmSeg; hh++){
-                Neurons[IDnum].side = jj;
-                Neurons[IDnum].seg = hh;
-                
-                IDnum++;
-            }
-        }
-    }
     int side = 0;
     int seg = 0;
+    //Traverses the neurons and fills their type, side and seg values, Then sets their parameters to
+    //default values
     for(int i = 0; i < TotalNeuronNumber; i++){
         Neurons[i].name = traceLabels[i];
         if(i < 72){
@@ -358,6 +345,7 @@ void SetDefaultParamsForNeurons(){
 }
 
 //Array of structures version of the calculate functions
+
 
 
 //New functions and required support functions.
@@ -1110,7 +1098,7 @@ void xmain()
     
     
      
-    if( access( "params.dat", F_OK ) != -1 ) {
+    if( access( "oldparams.dat", F_OK ) != -1 ) {
         LoadAllParams ();
         printf("Parameter file found, loading now...\n");
     } else {
@@ -3283,10 +3271,30 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 //By the program and the file that we can read to see what the parameters for each neuron and synapse are.
 //Work in progress
 void SaveAllParams() {
+    //Array of structures version
+    FILE *outfile;
+    
+    outfile = fopen ("params.dat", "w");
+    if (outfile == NULL)
+    {
+        fprintf(stderr, "\nError opend file\n");
+        exit (1);
+    }
+    
+    
+    // write struct to file
+    fwrite (&Neurons, sizeof(Neuron), TotalNeuronNumber, outfile);
+    fwrite (&Synapses, sizeof(Synapse), TotalSynapseNumber, outfile);
+    
+    // close file
+    fclose (outfile);
+    
+    
+    //Old (new) structure version
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.dat", "w");
+    paramFile = fopen ("oldparams.dat", "w");
     if (paramFile == NULL)
     {
         fprintf(stderr, "\nError opening file\n");
@@ -3530,10 +3538,29 @@ void CreateParamFile () {
 //One function to load all parameters from a file if the file already exists and
 
 void LoadAllParams () {
+    //Array of structures version
+    FILE *infile;
+    
+    // Open person.dat for reading
+    infile = fopen ("paramsTotalSynapseNumber.dat", "r");
+    if (infile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    
+    
+    // read file contents till end of file
+    fread(&Neurons, sizeof(Neuron), TotalNeuronNumber, infile);
+    fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
+    
+    
+    
+    //Old (new) structure version
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.dat", "r");
+    paramFile = fopen ("oldparams.dat", "r");
     for(iSide = 0;iSide < mmSide; ++iSide) {
         fread (&pInhIntFSwing[iSide], sizeof(paramStruct), 1, paramFile);
         fread (&pInhIntFStance[iSide], sizeof(paramStruct), 1, paramFile);
