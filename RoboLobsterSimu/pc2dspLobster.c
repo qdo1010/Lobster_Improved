@@ -277,9 +277,24 @@ void SetDefaultParamsForNeurons(){
             }
         }
     }
+    int side = 0;
+    int seg = 0;
     for(int i = 0; i < TotalNeuronNumber; i++){
         Neurons[i].name = traceLabels[i];
-        if(i < )
+        if(i < 72){
+            Neurons[i].side = side;
+            Neurons[i].seg = seg;
+            side++;
+            seg++;
+            if(i < 32)
+                Neurons[i].type = 0;
+            else
+                Neurons[i].type = 1;
+            if(side == 2)
+                side = 0;
+            if(seg == 4)
+                seg = 0;
+        }
         switch(Neurons[i].type){
             case 0:
                 Neurons[i].alpha = 5.45;
