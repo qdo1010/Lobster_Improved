@@ -317,10 +317,10 @@ void SetDefaultParamsForNeurons(){
                 Neurons[i].xpp = -1 + Neurons[i].sigma + .01;
                 if (Neurons[i].sigma < 0)
                 {
-                    Neurons[i].x2 = (-1 + Neurons[i].sigma) - ptr->alpha / (1-(-1+ptr->sigma));
+                    Neurons[i].x2 = (-1 + Neurons[i].sigma) - Neurons[i].alpha / (1 - ( -1 + Neurons[i].sigma));
                 }
                 else
-                    ptr->x2 = 1-2*ptr->alphaInit;
+                    Neurons[i].x2 = 1 - 2 * Neurons[i].alphaInit;
                 Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
                 break;
         }
