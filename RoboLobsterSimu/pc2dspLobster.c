@@ -261,10 +261,25 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 */
 //The default parameter setter function for the EVEN NEWER version of the structure
 
+
+
+
 void SetDefaultParamsForNeurons(){
+    int IDnum = 0;
+    //Traverses the neurons and fills their type, side and seg values
+    for(int ii = 0; ii < NumNeuronsWithSideSeg; ii++){
+        for(int jj = 0; jj < mmSide; jj++){
+            for(int hh = 0; hh < mmSeg; hh++){
+                Neurons[IDnum].side = jj;
+                Neurons[IDnum].seg = hh;
+                
+                IDnum++;
+            }
+        }
+    }
     for(int i = 0; i < TotalNeuronNumber; i++){
-        
         Neurons[i].name = traceLabels[i];
+        if(i < )
         switch(Neurons[i].type){
             case 0:
                 Neurons[i].alpha = 5.45;
@@ -326,6 +341,9 @@ void SetDefaultParamsForNeurons(){
         }
     }
 }
+
+//Array of structures version of the calculate functions
+
 
 //New functions and required support functions.
 

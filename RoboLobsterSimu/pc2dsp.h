@@ -40,6 +40,7 @@ int comSegmentMask= 0xFFFFFFFF;     // enable / disable segments
 
 #define TotalNeuronNumber 94
 #define TotalSynapseNumber 336
+#define NumNeuronsWithSideSeg 9
 
 //------------- Define the length of intersegmental connections --------------------------
 
