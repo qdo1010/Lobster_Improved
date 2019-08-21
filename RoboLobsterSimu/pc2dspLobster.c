@@ -259,6 +259,73 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
     ptr->x2= ptr->y2;
 }
 */
+//The default parameter setter function for the EVEN NEWER version of the structure
+
+void SetDefaultParamsForNeurons(){
+    for(int i = 0; i < TotalNeuronNumber; i++){
+        
+        Neurons[i].name = traceLabels[i];
+        switch(Neurons[i].type){
+            case 0:
+                Neurons[i].alpha = 5.45;
+                Neurons[i].sigma = -.26;
+                Neurons[i].mu = 0.0005;
+                Neurons[i].spike = 0;
+                Neurons[i].sigmaE = 1.0;
+                Neurons[i].sigmaI = 1.0;
+                Neurons[i].sigmaDc = 1.0;
+                Neurons[i].betaE = 0.133;
+                Neurons[i].betaI = 0.533;
+                Neurons[i].betaDc = 0.266;
+                Neurons[i].Idc = 0;
+                Neurons[i].xpp = -1 + Neurons[i].sigma;
+                Neurons[i].xp = -1 + Neurons[i].sigma;
+                Neurons[i].x = -1 + Neurons[i].sigma;
+                Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
+                break;
+            case 1:
+                Neurons[i].alpha = 4;
+                Neurons[i].sigma = 0;
+                Neurons[i].mu = 0.0005;
+                Neurons[i].spike = 0;
+                Neurons[i].sigmaE = 1.0;
+                Neurons[i].sigmaI = 1.0;
+                Neurons[i].sigmaDc = 1.0;
+                Neurons[i].betaE = 0.133;
+                Neurons[i].betaI = 0.533;
+                Neurons[i].betaDc = 0.266;
+                Neurons[i].Idc = 0;
+                Neurons[i].xpp = -1 + Neurons[i].sigma;
+                Neurons[i].xp = -1 + Neurons[i].sigma;
+                Neurons[i].x = -1 + Neurons[i].sigma;
+                Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
+                break;
+            case 2:
+                Neurons[i].alpha = 4.85;
+                Neurons[i].sigma = 2.3 - sqrt(Neurons[i].alpha) + 0.0171159;
+                Neurons[i].sigmaE = 1.0;
+                Neurons[i].sigmaI = 1.0;
+                Neurons[i].sigmaDc = 1.0;
+                Neurons[i].betaE = 0.133;
+                Neurons[i].betaI = 0.533;
+                Neurons[i].betaDc = 0.266;
+                Neurons[i].Idc = 0;
+                Neurons[i].yr = -1 * (2 + Neurons[i].alpha)/2;
+                Neurons[i].xr = 1-sqrt(Neurons[i].alpha);
+                Neurons[i].alphaInit = sqrt(Neurons[i].alpha);
+                Neurons[i].xp = -1 + Neurons[i].sigma + .01;
+                Neurons[i].xpp = -1 + Neurons[i].sigma + .01;
+                if (Neurons[i].sigma < 0)
+                {
+                    Neurons[i].x2 = (-1 + Neurons[i].sigma) - ptr->alpha / (1-(-1+ptr->sigma));
+                }
+                else
+                    ptr->x2 = 1-2*ptr->alphaInit;
+                Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
+                break;
+        }
+    }
+}
 
 //New functions and required support functions.
 
