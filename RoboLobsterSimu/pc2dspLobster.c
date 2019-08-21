@@ -3542,7 +3542,7 @@ void LoadAllParams () {
     FILE *infile;
     
     // Open person.dat for reading
-    infile = fopen ("paramsTotalSynapseNumber.dat", "r");
+    infile = fopen ("params.dat", "r");
     if (infile == NULL)
     {
         fprintf(stderr, "\nError opening file\n");
