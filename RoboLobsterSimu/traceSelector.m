@@ -8,7 +8,8 @@
 
 #include "traceSelector.h"
 #include "AppDelegate.h"
-#include "ParameterSetter.h"
+//#include "ParameterSetter.h"
+
 #import <Foundation/Foundation.h>
 
 @implementation TraceSelector
@@ -33,102 +34,6 @@
 
 @synthesize traceArraytobeSent;
 
-const char * traceLabels[] = {
-    "cellElevatorL1",
-    "cellElevatorL2",
-    "cellElevatorL3",
-    "cellElevatorL4",
-    "cellElevatorR1",
-    "cellElevatorR2",
-    "cellElevatorR3",
-    "cellElevatorR4",
-    "cellSwingL1",
-    "cellSwingL2",
-    "cellSwingL3",
-    "cellSwingL4",
-    "cellSwingR1",
-    "cellSwingR2",
-    "cellSwingR3",
-    "cellSwingR4",
-    "cellDepressorL1",
-    "cellDepressorL2",
-    "cellDepressorL3",
-    "cellDepressorL4",
-    "cellDepressorR1",
-    "cellDepressorR2",
-    "cellDepressorR3",
-    "cellDepressorR4",
-    "cellStanceL1",
-    "cellStanceL2",
-    "cellStanceL3",
-    "cellStanceL4",
-    "cellStanceR1",
-    "cellStanceR2",
-    "cellStanceR3",
-    "cellStanceR4",
-    "cellCoordL1",
-    "cellCoordL2",
-    "cellCoordL3",
-    "cellCoordL4",
-    "cellCoordR1",
-    "cellCoordR2",
-    "cellCoordR3",
-    "cellCoordR4",
-    "cellProtractorL1",
-    "cellProtractorL2",
-    "cellProtractorL3",
-    "cellProtractorL4",
-    "cellProtractorR1",
-    "cellProtractorR2",
-    "cellProtractorR3",
-    "cellProtractorR4",
-    "cellRetractorL1",
-    "cellRetractorL2",
-    "cellRetractorL3",
-    "cellRetractorL4",
-    "cellRetractorR1",
-    "cellRetractorR2",
-    "cellRetractorR3",
-    "cellRetractorR4",
-    "cellExtensorL1",
-    "cellExtensorL2",
-    "cellExtensorL3",
-    "cellExtensorL4",
-    "cellExtensorR1",
-    "cellExtensorR2",
-    "cellExtensorR3",
-    "cellExtensorR4",
-    "cellFlexorL1",
-    "cellFlexorL2",
-    "cellFlexorL3",
-    "cellFlexorL4",
-    "cellFlexorR1",
-    "cellFlexorR2",
-    "cellFlexorR3",
-    "cellFlexorR4",
-    "cellFL",
-    "cellFR",
-    "cellBL",
-    "cellBR",
-    "cellLLL",
-    "cellLLR",
-    "cellLTL",
-    "cellLTR",
-    "cellPcnLlow",
-    "cellPcnLrosDown",
-    "cellPcnLlevel",
-    "cellPcnLrosUp",
-    "cellPcnLpHigh",
-    "cellPcnRlow",
-    "cellPcnRrosDown",
-    "cellPcnRlevel",
-    "cellPcnRrosUp",
-    "cellPcnRpHigh",
-    "cellModComL",
-    "cellModComR",
-    "cellHL",
-    "cellHR"
-};
 
 /**
 Initialization
@@ -322,8 +227,8 @@ Initialization
      [appDelegate drawOscilloscope:appDelegate];
     
    //This is to test if you can open the synapse controller
+   // [appDelegate openParameterSetterWindow:appDelegate];
     [appDelegate openParameterSetterWindow:appDelegate];
-
 }
 @end
 
