@@ -219,7 +219,7 @@
 
 - (void) awakeFromNib {
     
-    NSLog(@"\n\nThis should say cellElevatorL1: %s  ", Neurons[0].name);
+    NSLog(@"\n\nThis should say cellElevatorL1: %f  ", Neurons[0].alpha);
     
     NSLog(@"\n\n");
     [alphaTextBox setDelegate:self];
