@@ -91,6 +91,24 @@
     
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
   
+    
+    FILE *infile;
+    
+    // Open person.dat for reading
+    infile = fopen ("params.dat", "r");
+    if (infile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    
+    
+    // read file contents till end of file
+    fread(&Neurons, sizeof(Neuron), TotalNeuronNumber, infile);
+    //fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
+    
+    fclose (infile);
+    
 }
 
 

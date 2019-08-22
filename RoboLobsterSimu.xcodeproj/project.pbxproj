@@ -45,6 +45,7 @@
 		D2EF67A61EF1B7D00083426F /* TraceSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EF67A51EF1B7D00083426F /* TraceSelector.xib */; };
 		E90B10282303645C0076CB1E /* ParameterSetter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90B10272303645C0076CB1E /* ParameterSetter.xib */; };
 		E90B102B230364850076CB1E /* ParameterSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B102A230364850076CB1E /* ParameterSetter.m */; };
+		E96650A5230EEF20008C49B6 /* ParameterTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96650A4230EEF20008C49B6 /* ParameterTable.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		E90B10272303645C0076CB1E /* ParameterSetter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterSetter.xib; sourceTree = "<group>"; };
 		E90B1029230364730076CB1E /* ParameterSetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterSetter.h; sourceTree = "<group>"; };
 		E90B102A230364850076CB1E /* ParameterSetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterSetter.m; sourceTree = "<group>"; };
+		E96650A4230EEF20008C49B6 /* ParameterTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterTable.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
 				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
+				E96650A4230EEF20008C49B6 /* ParameterTable.xib */,
 				970E769A1EF17D15002EE43D /* pc2dsp.h */,
 				970E769B1EF17D15002EE43D /* pc2dspLobster.c */,
 				970E769F1EF19FDB002EE43D /* Waveforms.h */,
@@ -348,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96650A5230EEF20008C49B6 /* ParameterTable.xib in Resources */,
 				4831107520AF1DEE0095D277 /* BackwardLeft in Resources */,
 				970E76741EF17CED002EE43D /* Assets.xcassets in Resources */,
 				4831107220AF1DE60095D277 /* TrailingLeft in Resources */,

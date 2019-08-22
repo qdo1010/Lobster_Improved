@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 //what would this dictionary look like?
 //idk?
 
+
 @interface ParameterSetter : NSWindowController
 @property (strong) IBOutlet NSPopUpButton *synapseSelector;
 @property (strong) IBOutlet NSPopUpButton *neuronSelector;

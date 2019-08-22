@@ -3545,7 +3545,7 @@ void CreateParamFile () {
         pInhIntLTStance[iSide] = pSlowInh;
         
     }
-    
+    /*
     printf("%s is a bursting neuron and it's parameters are: ", Neurons[0].name);
     printf(" %2.3f,", Neurons[0].alpha);
     printf(" %2.3f,", Neurons[0].sigma);
@@ -3555,7 +3555,7 @@ void CreateParamFile () {
     printf(" %2.3f,", Neurons[0].betaI);
     printf(" %2.3f.\n", Neurons[0].Idc);
     printf("And its name is %s\n\n", Neurons[0].name);
-    
+    */
     
     
     SaveAllParams();
@@ -3582,7 +3582,7 @@ void LoadAllParams () {
     fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
     
     fclose (infile);
-    
+    /*
     for(int i = 0; i < TotalNeuronNumber; i++){
         switch(Neurons[i].type) {
             case 0:
@@ -3628,7 +3628,7 @@ void LoadAllParams () {
                 break;
         }
     }
-    
+    */
     //Old (new) structure version
     int iSide;
     int iSeg;

@@ -978,6 +978,7 @@ typedef struct neuronStruc{
     int type;
     int side;
     int seg;
+    _Bool modified;
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
     double x, y, sigmaE, sigmaI, betaE, betaI, Idc;

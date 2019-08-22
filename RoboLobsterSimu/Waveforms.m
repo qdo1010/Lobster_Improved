@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 
 
+
+
 @implementation Waveforms
 @synthesize ipbuf = _ipbuf;
 @synthesize parambuf = _parambuf;
@@ -433,6 +435,7 @@
     }
     [_ipbuf addObject: temp];
     [_parambuf addObject:Params];
+
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
     

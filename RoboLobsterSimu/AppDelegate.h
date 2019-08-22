@@ -12,6 +12,27 @@
 #import "ParameterSetter.h"
 //#import "ParameterSetter.h"
 
+#define TotalNeuronNumber 94
+
+typedef struct neuronStruc{
+    char *name;
+    int type;
+    int side;
+    int seg;
+    _Bool modified;
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+    double yr, xr, x2, y2;
+    double alphaInit;
+} Neuron;
+
+extern Neuron Neurons[TotalNeuronNumber];
+
+
 @class OscilloscopeController;
 @class AnalysisWindowController;
 @class GraphViewController;
