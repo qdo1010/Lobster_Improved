@@ -276,13 +276,12 @@
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
 }
 
-
-
 //Re-Written Code for Parameter Setter
 - (IBAction)ResetParameters:(id)sender {
     CreateParamFile();
     
 }
+
 
 - (IBAction)SetNeuronParameters:(id)sender {
     double a = [alphaTextBox doubleValue];
@@ -295,7 +294,6 @@
     long side = [neuronSideSelector indexOfSelectedItem];
     long seg = [neuronSegSelector indexOfSelectedItem];
     long neuronNumber = [neuronSelector indexOfSelectedItem];
-    
     
     setNeuronParams(neuronNumber, side, seg, a, s, sE, sI, bE, bI, Idc);
     SaveAllParams();

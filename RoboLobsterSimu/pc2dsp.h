@@ -976,6 +976,7 @@ enum{
 typedef struct neuronStruc{
     char *name;
     int type;
+    int cell;
     int side;
     int seg;
     _Bool modified;
@@ -994,6 +995,7 @@ Neuron Neurons[TotalNeuronNumber];
 typedef struct synaspeStruc{
     char *name;
     int type;
+    int cell;
     int side;
     int seg;
     double xRp;            //Reversal Potential
