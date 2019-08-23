@@ -589,7 +589,7 @@ char * synapseLabels[] = {
     "pExcSegEleContraLatR1",
     "pExcSegEleContraLatR2",
     "pExcSegEleContraLatR3",
-    "pExcSegEleContraLatR4"
+    "pExcSegEleContraLatR4",
     "pInhSegEleDepL1",
     "pInhSegEleDepL2",
     "pInhSegEleDepL3",

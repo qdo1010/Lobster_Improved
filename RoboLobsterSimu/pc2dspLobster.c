@@ -266,16 +266,18 @@ void SetDefaultParamsForSyanpses(){
     int side = 0;
     int seg = 0;
     for(int i = 0; i < TotalSynapseNumber; i++){
+        Synapses[i].name = synapseLabels[i];
         if(i < 5){
             Synapses[i].cell = cell;
             cell++;
             Synapses[i].side = 0;
             Synapses[i].seg = 0;
         }
-        else if(i < 38){
+        else if(i < 36 || (i > 51 && i < 344)){
             Synapses[i].cell = cell;
             Synapses[i].side = side;
             Synapses[i].seg = seg;
+            seg++;
             if(seg == 4){
                 seg = 0;
                 side++;
@@ -285,7 +287,40 @@ void SetDefaultParamsForSyanpses(){
                 cell++;
             }
         }
-        
+        else if(i < 51){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            side++;
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        /*
+        else if(i < 344){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            Synapses[i].seg = seg;
+            seg++;
+            if(seg == 4){
+                seg = 0;
+                side++;
+            }
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        */
+        else {
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            side++;
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
     }
 }
 
@@ -3423,6 +3458,7 @@ void SaveAllParams() {
 //Function to create the parameter file the very first time the program runs
 void CreateParamFile () {
     SetDefaultParamsForNeurons();
+    SetDefaultParamsForSyanpses();
     int iSide, iSeg;
     double R;
     pFastExc.synapse.xRp = -0.0; pFastExc.synapse.gamma = 0.9;      pFastExc.synapse.gStrength = 0.1;
@@ -3620,7 +3656,13 @@ void LoadAllParams () {
     fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
     
     fclose (infile);
-    
+    for(int i = 0; i < TotalSynapseNumber; i++){
+        printf("\n%s:", Synapses[i].name);
+        printf(" %d,", Synapses[i].cell);
+        printf(" %d,", Synapses[i].side);
+        printf(" %d", Synapses[i].seg);
+    }
+    /*
     for(int i = 0; i < TotalNeuronNumber; i++){
         switch(Neurons[i].type) {
             case 0:
@@ -3669,7 +3711,7 @@ void LoadAllParams () {
                 break;
         }
     }
-    
+    */
     //Old (new) structure version
     int iSide;
     int iSeg;
