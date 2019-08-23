@@ -261,6 +261,34 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 */
 //The default parameter setter function for the EVEN NEWER version of the structure
 
+void SetDefaultParamsForSyanpses(){
+    int cell = 0;
+    int side = 0;
+    int seg = 0;
+    for(int i = 0; i < TotalSynapseNumber; i++){
+        if(i < 5){
+            Synapses[i].cell = cell;
+            cell++;
+            Synapses[i].side = 0;
+            Synapses[i].seg = 0;
+        }
+        else if(i < 38){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            Synapses[i].seg = seg;
+            if(seg == 4){
+                seg = 0;
+                side++;
+            }
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        
+    }
+}
+
 void SetDefaultParamsForNeurons(){
     int cell = 0;
     int side = 0;
