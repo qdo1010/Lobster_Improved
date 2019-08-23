@@ -209,6 +209,7 @@ enum {
     pInhIntLTStanceR,
     /*
      //This one was listed twice in the original structure, is that an error?
+     // THese are connections between the coordinating neurons and segmental Elevators
     pExcIntRosEleCoordL1,
     pExcIntRosEleCoordL2,
     pExcIntRosEleCoordL3,
