@@ -283,6 +283,13 @@
 }
 
 
+//WIP
+int ConvertTypeSideSegToID (int cell, int side, int seg){
+    int ID;
+    //if(cell < )
+    return ID;
+}
+
 - (IBAction)SetNeuronParameters:(id)sender {
     double a = [alphaTextBox doubleValue];
     double s = [sigmaTextBox doubleValue];
@@ -294,6 +301,8 @@
     long side = [neuronSideSelector indexOfSelectedItem];
     long seg = [neuronSegSelector indexOfSelectedItem];
     long neuronNumber = [neuronSelector indexOfSelectedItem];
+    
+    
     
     setNeuronParams(neuronNumber, side, seg, a, s, sE, sI, bE, bI, Idc);
     SaveAllParams();

@@ -13,10 +13,13 @@
 //#import "ParameterSetter.h"
 
 #define TotalNeuronNumber 94
+#define TotalSynapseNumber 336
+#define NumNeuronsWithSideSeg 9
 
 typedef struct neuronStruc{
     char *name;
     int type;
+    int cell;
     int side;
     int seg;
     _Bool modified;
@@ -32,6 +35,18 @@ typedef struct neuronStruc{
 
 extern Neuron Neurons[TotalNeuronNumber];
 
+typedef struct synaspeStruc{
+    char *name;
+    int type;
+    int cell;
+    int side;
+    int seg;
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constant
+    double gStrength;
+} Synapse;
+
+extern Synapse Synapses[TotalSynapseNumber];
 
 @class OscilloscopeController;
 @class AnalysisWindowController;

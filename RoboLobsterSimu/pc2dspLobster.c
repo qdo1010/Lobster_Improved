@@ -262,6 +262,7 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 //The default parameter setter function for the EVEN NEWER version of the structure
 
 void SetDefaultParamsForNeurons(){
+    int cell = 0;
     int side = 0;
     int seg = 0;
     //Traverses the neurons and fills their type, side and seg values, Then sets their parameters to
@@ -269,6 +270,8 @@ void SetDefaultParamsForNeurons(){
     for(int i = 0; i < TotalNeuronNumber; i++){
         Neurons[i].name = traceLabels[i];
         if(i < 72){
+            Neurons[i].cell = cell;
+            
             if(i < 16)
                 Neurons[i].type = 2;
             else if(i < 32)
@@ -283,17 +286,24 @@ void SetDefaultParamsForNeurons(){
                 seg = 0;
                 side++;
             }
-            if(side == 2)
+            if(side == 2){
                 side = 0;
+                cell++;
+            }
         }
-        else if(i < 80 || i > 90){
+        else if(i < 80 || i > 89){
+            Neurons[i].cell = cell;
             Neurons[i].side = side;
             side++;
-            if(side == 2)
+            if(side == 2){
                 side = 0;
+                cell++;
+            }
             Neurons[i].type = 1;
         }
         else {
+            Neurons[i].cell = cell;
+            cell++;
             Neurons[i].side = 0;
             Neurons[i].type = 1;
         }
@@ -3582,12 +3592,13 @@ void LoadAllParams () {
     fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
     
     fclose (infile);
-    /*
+    
     for(int i = 0; i < TotalNeuronNumber; i++){
         switch(Neurons[i].type) {
             case 0:
                 printf("%s is a bursting neuron and it's parameters are: ", Neurons[i].name);
                 printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
                 printf(" %d,", Neurons[i].side);
                 printf(" %d,", Neurons[i].seg);
                 printf(" %2.3f,", Neurons[i].alpha);
@@ -3602,6 +3613,7 @@ void LoadAllParams () {
             case 1:
                 printf("%s is a spiking neuron and it's parameters are: ", Neurons[i].name);
                 printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
                 printf(" %d,", Neurons[i].side);
                 printf(" %d,", Neurons[i].seg);
                 printf(" %2.3f,", Neurons[i].alpha);
@@ -3615,6 +3627,7 @@ void LoadAllParams () {
             case 2:
                 printf("%s is a pacemaker neuron and it's parameters are: ", Neurons[i].name);
                 printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
                 printf(" %d,", Neurons[i].side);
                 printf(" %d,", Neurons[i].seg);
                 printf(" %2.3f,", Neurons[i].alpha);
@@ -3628,7 +3641,7 @@ void LoadAllParams () {
                 break;
         }
     }
-    */
+    
     //Old (new) structure version
     int iSide;
     int iSeg;

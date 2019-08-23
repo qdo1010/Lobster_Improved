@@ -88,7 +88,6 @@
     traceOffsetArray = [[NSMutableArray alloc] init];
     invertSign = 0;
     switchColor = 1;
-    
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
   
     
@@ -125,6 +124,7 @@
     
     // read file contents till end of file
     fread(&Neurons, sizeof(Neuron), TotalNeuronNumber, infile);
+    fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
     //fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
     
     fclose (infile);

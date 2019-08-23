@@ -757,12 +757,6 @@
     }
 }
 
-//WIP
-int ConvertTypeSideSegToID (int cell, int side, int seg){
-    int ID;
-    //if(cell < )
-    return ID;
-}
 
 
 //This will change the cell name to ID

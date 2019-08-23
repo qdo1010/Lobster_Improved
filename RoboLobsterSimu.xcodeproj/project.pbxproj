@@ -46,6 +46,8 @@
 		E90B10282303645C0076CB1E /* ParameterSetter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90B10272303645C0076CB1E /* ParameterSetter.xib */; };
 		E90B102B230364850076CB1E /* ParameterSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B102A230364850076CB1E /* ParameterSetter.m */; };
 		E96650A5230EEF20008C49B6 /* ParameterTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96650A4230EEF20008C49B6 /* ParameterTable.xib */; };
+		E96650A7231061BD008C49B6 /* ParameterTable.m in Sources */ = {isa = PBXBuildFile; fileRef = E96650A6231061BD008C49B6 /* ParameterTable.m */; };
+		E96650AB231062B3008C49B6 /* ParameterClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E96650AA231062B3008C49B6 /* ParameterClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,10 @@
 		E90B1029230364730076CB1E /* ParameterSetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterSetter.h; sourceTree = "<group>"; };
 		E90B102A230364850076CB1E /* ParameterSetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterSetter.m; sourceTree = "<group>"; };
 		E96650A4230EEF20008C49B6 /* ParameterTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParameterTable.xib; sourceTree = "<group>"; };
+		E96650A6231061BD008C49B6 /* ParameterTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterTable.m; sourceTree = "<group>"; };
+		E96650A823106237008C49B6 /* ParameterTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterTable.h; sourceTree = "<group>"; };
+		E96650A9231062B3008C49B6 /* ParameterClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterClass.h; sourceTree = "<group>"; };
+		E96650AA231062B3008C49B6 /* ParameterClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +179,6 @@
 				D2EF67A51EF1B7D00083426F /* TraceSelector.xib */,
 				D2B346C71EF2E661007ACFD1 /* traceSelector.h */,
 				D2B346C51EF2E63B007ACFD1 /* traceSelector.m */,
-				E96650A4230EEF20008C49B6 /* ParameterTable.xib */,
 				970E769A1EF17D15002EE43D /* pc2dsp.h */,
 				970E769B1EF17D15002EE43D /* pc2dspLobster.c */,
 				970E769F1EF19FDB002EE43D /* Waveforms.h */,
@@ -186,6 +191,11 @@
 				970E76A81EF1A125002EE43D /* OscilloscopeController.h */,
 				970E76A91EF1A125002EE43D /* OscilloscopeController.m */,
 				970E76A41EF1A0A6002EE43D /* OscolloscopeController.xib */,
+				E96650A4230EEF20008C49B6 /* ParameterTable.xib */,
+				E96650A823106237008C49B6 /* ParameterTable.h */,
+				E96650A6231061BD008C49B6 /* ParameterTable.m */,
+				E96650A9231062B3008C49B6 /* ParameterClass.h */,
+				E96650AA231062B3008C49B6 /* ParameterClass.m */,
 				E90B10272303645C0076CB1E /* ParameterSetter.xib */,
 				E90B1029230364730076CB1E /* ParameterSetter.h */,
 				E90B102A230364850076CB1E /* ParameterSetter.m */,
@@ -403,10 +413,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B346C61EF2E63B007ACFD1 /* traceSelector.m in Sources */,
+				E96650A7231061BD008C49B6 /* ParameterTable.m in Sources */,
 				970E76AA1EF1A125002EE43D /* OscilloscopeController.m in Sources */,
 				970E76B01EF1A158002EE43D /* analysisWindowController.m in Sources */,
 				E90B102B230364850076CB1E /* ParameterSetter.m in Sources */,
 				970E766C1EF17CED002EE43D /* main.m in Sources */,
+				E96650AB231062B3008C49B6 /* ParameterClass.m in Sources */,
 				970E76A11EF19FDB002EE43D /* Waveforms.m in Sources */,
 				970E76691EF17CED002EE43D /* AppDelegate.m in Sources */,
 				970E769C1EF17D15002EE43D /* pc2dspLobster.c in Sources */,
