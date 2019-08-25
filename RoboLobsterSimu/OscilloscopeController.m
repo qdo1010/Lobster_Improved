@@ -382,7 +382,24 @@
     [self.currentParameters setValue: onOrOff forKey:@"rTra"];
     [self updateTable];
 }
+/*  Here's a sample code snippet to congtrol the speed radio buttons
+var buttonList : [NSButton] {
+    return [button1, button2, button3, button4]
+}
 
+@IBAction func buttonPressed(sender: NSButton) {
+    buttonList.forEach {
+        $0.state = $0 == sender ? .on : .off
+    }
+}
+//As you can see, it iterates over all of the buttons, testing if it is the button that was pressed. It turns that button on while turning the other //buttons off. You will need to manage any state you want from there, or by checking the state of all of the buttons:
+
+func whichButton() -> ActivityState {
+    if button1.state == .on { return .one }
+    if button2.state == .on { return .two }
+    ...
+}
+*/
 
 - (IBAction)changeSweepOffset:(id)sender {
     AppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
