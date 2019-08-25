@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 
 
+
+
 @implementation Waveforms
 @synthesize ipbuf = _ipbuf;
 @synthesize parambuf = _parambuf;
@@ -130,7 +132,7 @@
                 if (invert)
                     [temp addObject: [NSNumber numberWithDouble: xArrayDep[starttime][cell]]];
                 else
-   NSLog( @"ReadArray in Waveform %i %i %i %f\n", i, samplesize, cellType,  xArrayDep[cell]);
+   //NSLog( @"ReadArray in Waveform %i %i %i %f\n", i, samplesize, cellType,  xArrayDep[cell]);
                     [temp addObject: [NSNumber numberWithDouble: -xArrayDep[starttime][cell]]];
                 starttime++;
             }
@@ -433,6 +435,7 @@
     }
     [_ipbuf addObject: temp];
     [_parambuf addObject:Params];
+
   //  CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
    // NSLog(@"indiv elapse time = %f s", elapsedTime);
     

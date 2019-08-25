@@ -40,6 +40,7 @@ int comSegmentMask= 0xFFFFFFFF;     // enable / disable segments
 
 #define TotalNeuronNumber 94
 #define TotalSynapseNumber 336
+#define NumNeuronsWithSideSeg 9
 
 //------------- Define the length of intersegmental connections --------------------------
 
@@ -589,7 +590,7 @@ char * synapseLabels[] = {
     "pExcSegEleContraLatR1",
     "pExcSegEleContraLatR2",
     "pExcSegEleContraLatR3",
-    "pExcSegEleContraLatR4"
+    "pExcSegEleContraLatR4",
     "pInhSegEleDepL1",
     "pInhSegEleDepL2",
     "pInhSegEleDepL3",
@@ -976,8 +977,10 @@ enum{
 typedef struct neuronStruc{
     char *name;
     int type;
+    int cell;
     int side;
     int seg;
+    _Bool modified;
     double xp, xpp, mu, sigmaIn, betaIn;
     double sigmaDc, betaDc;
     double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
@@ -993,6 +996,7 @@ Neuron Neurons[TotalNeuronNumber];
 typedef struct synaspeStruc{
     char *name;
     int type;
+    int cell;
     int side;
     int seg;
     double xRp;            //Reversal Potential

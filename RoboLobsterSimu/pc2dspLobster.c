@@ -261,12 +261,118 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 */
 //The default parameter setter function for the EVEN NEWER version of the structure
 
+void SetDefaultParamsForSyanpses(){
+    int cell = 0;
+    int side = 0;
+    int seg = 0;
+    for(int i = 0; i < TotalSynapseNumber; i++){
+        Synapses[i].name = synapseLabels[i];
+        if(i < 5){
+            Synapses[i].cell = cell;
+            cell++;
+            Synapses[i].side = 0;
+            Synapses[i].seg = 0;
+        }
+        else if(i < 36 || (i > 51 && i < 344)){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            Synapses[i].seg = seg;
+            seg++;
+            if(seg == 4){
+                seg = 0;
+                side++;
+            }
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        else if(i < 51){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            side++;
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        /*
+        else if(i < 344){
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            Synapses[i].seg = seg;
+            seg++;
+            if(seg == 4){
+                seg = 0;
+                side++;
+            }
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        */
+        else {
+            Synapses[i].cell = cell;
+            Synapses[i].side = side;
+            side++;
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+    }
+}
+
 void SetDefaultParamsForNeurons(){
+    int cell = 0;
+    int side = 0;
+    int seg = 0;
+    //Traverses the neurons and fills their type, side and seg values, Then sets their parameters to
+    //default values
     for(int i = 0; i < TotalNeuronNumber; i++){
-        
         Neurons[i].name = traceLabels[i];
+        if(i < 72){
+            Neurons[i].cell = cell;
+            
+            if(i < 16)
+                Neurons[i].type = 2;
+            else if(i < 32)
+                Neurons[i].type = 0;
+            else
+                Neurons[i].type = 1;
+            
+            Neurons[i].side = side;
+            Neurons[i].seg = seg;
+            seg++;
+            if(seg == 4){
+                seg = 0;
+                side++;
+            }
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+        }
+        else if(i < 80 || i > 89){
+            Neurons[i].cell = cell;
+            Neurons[i].side = side;
+            side++;
+            if(side == 2){
+                side = 0;
+                cell++;
+            }
+            Neurons[i].type = 1;
+        }
+        else {
+            Neurons[i].cell = cell;
+            cell++;
+            Neurons[i].side = 0;
+            Neurons[i].type = 1;
+        }
+        
         switch(Neurons[i].type){
-            case 0:
+            case BurstingNeuron:
                 Neurons[i].alpha = 5.45;
                 Neurons[i].sigma = -.26;
                 Neurons[i].mu = 0.0005;
@@ -283,7 +389,7 @@ void SetDefaultParamsForNeurons(){
                 Neurons[i].x = -1 + Neurons[i].sigma;
                 Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
                 break;
-            case 1:
+            case SpikingNeuron:
                 Neurons[i].alpha = 4;
                 Neurons[i].sigma = 0;
                 Neurons[i].mu = 0.0005;
@@ -300,7 +406,7 @@ void SetDefaultParamsForNeurons(){
                 Neurons[i].x = -1 + Neurons[i].sigma;
                 Neurons[i].y = Neurons[i].x - Neurons[i].alpha/(1 - Neurons[i].x);
                 break;
-            case 2:
+            case PacemakerNeuron:
                 Neurons[i].alpha = 4.85;
                 Neurons[i].sigma = 2.3 - sqrt(Neurons[i].alpha) + 0.0171159;
                 Neurons[i].sigmaE = 1.0;
@@ -326,6 +432,10 @@ void SetDefaultParamsForNeurons(){
         }
     }
 }
+
+//Array of structures version of the calculate functions
+
+
 
 //New functions and required support functions.
 
@@ -1077,7 +1187,7 @@ void xmain()
     
     
      
-    if( access( "params.dat", F_OK ) != -1 ) {
+    if( access( "oldparams.dat", F_OK ) != -1 ) {
         LoadAllParams ();
         printf("Parameter file found, loading now...\n");
     } else {
@@ -1085,7 +1195,6 @@ void xmain()
         printf("No parameter file found, creating one now...\n");
     }
 
-    
     
     /*
         for(iSide = 0;iSide < mmSide; ++iSide)
@@ -3250,10 +3359,29 @@ void editParam(int *neuronName, unsigned long *side, unsigned long *seg, double 
 //By the program and the file that we can read to see what the parameters for each neuron and synapse are.
 //Work in progress
 void SaveAllParams() {
+    //Array of structures version
+    FILE *outfile;
+    
+    outfile = fopen ("params.dat", "w");
+    if (outfile == NULL)
+    {
+        fprintf(stderr, "\nError opend file\n");
+        exit (1);
+    }
+    
+    // write struct to file
+    fwrite (&Neurons, sizeof(Neuron), TotalNeuronNumber, outfile);
+    fwrite (&Synapses, sizeof(Synapse), TotalSynapseNumber, outfile);
+    
+    // close file
+    fclose (outfile);
+    
+    
+    //Old (new) structure version
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.dat", "w");
+    paramFile = fopen ("oldparams.dat", "w");
     if (paramFile == NULL)
     {
         fprintf(stderr, "\nError opening file\n");
@@ -3329,6 +3457,8 @@ void SaveAllParams() {
 
 //Function to create the parameter file the very first time the program runs
 void CreateParamFile () {
+    SetDefaultParamsForNeurons();
+    SetDefaultParamsForSyanpses();
     int iSide, iSeg;
     double R;
     pFastExc.synapse.xRp = -0.0; pFastExc.synapse.gamma = 0.9;      pFastExc.synapse.gStrength = 0.1;
@@ -3489,6 +3619,18 @@ void CreateParamFile () {
         pInhIntLTStance[iSide] = pSlowInh;
         
     }
+    /*
+    printf("%s is a bursting neuron and it's parameters are: ", Neurons[0].name);
+    printf(" %2.3f,", Neurons[0].alpha);
+    printf(" %2.3f,", Neurons[0].sigma);
+    printf(" %2.3f,", Neurons[0].sigmaE);
+    printf(" %2.3f,", Neurons[0].sigmaI);
+    printf(" %2.3f,", Neurons[0].betaE);
+    printf(" %2.3f,", Neurons[0].betaI);
+    printf(" %2.3f.\n", Neurons[0].Idc);
+    printf("And its name is %s\n\n", Neurons[0].name);
+    */
+    
     
     SaveAllParams();
 }
@@ -3497,10 +3639,84 @@ void CreateParamFile () {
 //One function to load all parameters from a file if the file already exists and
 
 void LoadAllParams () {
+    //Array of structures version
+    FILE *infile;
+    
+    // Open person.dat for reading
+    infile = fopen ("params.dat", "r");
+    if (infile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    
+    
+    // read file contents till end of file
+    fread(&Neurons, sizeof(Neuron), TotalNeuronNumber, infile);
+    fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
+    
+    fclose (infile);
+    for(int i = 0; i < TotalSynapseNumber; i++){
+        printf("\n%s:", Synapses[i].name);
+        printf(" %d,", Synapses[i].cell);
+        printf(" %d,", Synapses[i].side);
+        printf(" %d", Synapses[i].seg);
+    }
+    /*
+    for(int i = 0; i < TotalNeuronNumber; i++){
+        switch(Neurons[i].type) {
+            case 0:
+                printf("%s is a bursting neuron and it's parameters are: ", Neurons[i].name);
+                printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
+                printf(" %d,", Neurons[i].side);
+                printf(" %d,", Neurons[i].seg);
+                printf(" %2.3f,", Neurons[i].alpha);
+                printf(" %2.3f,", Neurons[i].sigma);
+                printf(" %2.3f,", Neurons[i].sigmaE);
+                printf(" %2.3f,", Neurons[i].sigmaI);
+                printf(" %2.3f,", Neurons[i].betaE);
+                printf(" %2.3f,", Neurons[i].betaI);
+                printf(" %2.3f.\n\n", Neurons[i].Idc);
+                
+                break;
+            case 1:
+                printf("%s is a spiking neuron and it's parameters are: ", Neurons[i].name);
+                printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
+                printf(" %d,", Neurons[i].side);
+                printf(" %d,", Neurons[i].seg);
+                printf(" %2.3f,", Neurons[i].alpha);
+                printf(" %2.3f,", Neurons[i].sigma);
+                printf(" %2.3f,", Neurons[i].sigmaE);
+                printf(" %2.3f,", Neurons[i].sigmaI);
+                printf(" %2.3f,", Neurons[i].betaE);
+                printf(" %2.3f,", Neurons[i].betaI);
+                printf(" %2.3f.\n\n", Neurons[i].Idc);
+                break;
+            case 2:
+                printf("%s is a pacemaker neuron and it's parameters are: ", Neurons[i].name);
+                printf(" %d,", Neurons[i].type);
+                printf(" %d,", Neurons[i].cell);
+                printf(" %d,", Neurons[i].side);
+                printf(" %d,", Neurons[i].seg);
+                printf(" %2.3f,", Neurons[i].alpha);
+                printf(" %2.3f,", Neurons[i].sigma);
+                printf(" %2.3f,", Neurons[i].sigmaE);
+                printf(" %2.3f,", Neurons[i].sigmaI);
+                printf(" %2.3f,", Neurons[i].betaE);
+                printf(" %2.3f,", Neurons[i].betaI);
+                printf(" %2.3f.\n\n", Neurons[i].Idc);
+                
+                break;
+        }
+    }
+    */
+    //Old (new) structure version
     int iSide;
     int iSeg;
     FILE *paramFile;
-    paramFile = fopen ("params.dat", "r");
+    paramFile = fopen ("oldparams.dat", "r");
     for(iSide = 0;iSide < mmSide; ++iSide) {
         fread (&pInhIntFSwing[iSide], sizeof(paramStruct), 1, paramFile);
         fread (&pInhIntFStance[iSide], sizeof(paramStruct), 1, paramFile);
@@ -3569,6 +3785,19 @@ void LoadAllParams () {
 }
 
 void CreateReadableParams () {
+    /*
+    FILE *newparamTextFile;
+    newparamTextFile = fopen ("newparams.txt", "w");
+    if (newparamTextFile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    int column = 0;
+    for(int i = 0; i < TotalNeuronNumber; i++){
+        
+    }
+    */
     int iSide, iSeg;
     FILE *paramTextFile;
     paramTextFile = fopen ("params.txt", "w");

@@ -12,6 +12,42 @@
 #import "ParameterSetter.h"
 //#import "ParameterSetter.h"
 
+#define TotalNeuronNumber 94
+#define TotalSynapseNumber 336
+#define NumNeuronsWithSideSeg 9
+
+typedef struct neuronStruc{
+    char *name;
+    int type;
+    int cell;
+    int side;
+    int seg;
+    _Bool modified;
+    double xp, xpp, mu, sigmaIn, betaIn;
+    double sigmaDc, betaDc;
+    double x, y, sigmaE, sigmaI, betaE, betaI, Idc;
+    double alpha;
+    double sigma;
+    int spike;
+    double yr, xr, x2, y2;
+    double alphaInit;
+} Neuron;
+
+extern Neuron Neurons[TotalNeuronNumber];
+
+typedef struct synaspeStruc{
+    char *name;
+    int type;
+    int cell;
+    int side;
+    int seg;
+    double xRp;            //Reversal Potential
+    double gamma;          //Time Constant
+    double gStrength;
+} Synapse;
+
+extern Synapse Synapses[TotalSynapseNumber];
+
 @class OscilloscopeController;
 @class AnalysisWindowController;
 @class GraphViewController;

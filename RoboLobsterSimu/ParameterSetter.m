@@ -218,6 +218,10 @@
 }
 
 - (void) awakeFromNib {
+    
+    NSLog(@"\n\nThis should say cellElevatorL1: %f  ", Neurons[0].alpha);
+    
+    NSLog(@"\n\n");
     [alphaTextBox setDelegate:self];
     [sigmaTextBox setDelegate:self];
     [sigmaETextBox setDelegate:self];
@@ -252,6 +256,7 @@
 }
 
 - (IBAction)UpdateTextBoxes:(id)sender {
+    
     long side = [neuronSideSelector indexOfSelectedItem];
     long seg = [neuronSegSelector indexOfSelectedItem];
     long neuronToChange = [neuronSelector indexOfSelectedItem];
@@ -271,11 +276,18 @@
     [IdcTextBox setStringValue:[NSString stringWithFormat:@"%f",ReturnCurrentNeuronParams( neuronToChange, side, seg, 6)]];
 }
 
-
 //Re-Written Code for Parameter Setter
 - (IBAction)ResetParameters:(id)sender {
     CreateParamFile();
     
+}
+
+
+//WIP
+int ConvertTypeSideSegToID (int cell, int side, int seg){
+    int ID;
+    //if(cell < )
+    return ID;
 }
 
 - (IBAction)SetNeuronParameters:(id)sender {
@@ -289,6 +301,7 @@
     long side = [neuronSideSelector indexOfSelectedItem];
     long seg = [neuronSegSelector indexOfSelectedItem];
     long neuronNumber = [neuronSelector indexOfSelectedItem];
+    
     
     
     setNeuronParams(neuronNumber, side, seg, a, s, sE, sI, bE, bI, Idc);

@@ -158,6 +158,7 @@ extern double** xArrayLT;
 extern double** xArrayModCom;
 extern double** xArrayPcn;
 extern double** xArrayH;
+
 /*
 //alpha array
 extern double** alphaArrayElev;

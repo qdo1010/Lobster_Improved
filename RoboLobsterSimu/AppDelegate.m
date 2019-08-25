@@ -88,9 +88,9 @@
     traceOffsetArray = [[NSMutableArray alloc] init];
     invertSign = 0;
     switchColor = 1;
-    
     [self performSelectorInBackground:@selector(createWaveForm) withObject:nil];
   
+    
 }
 
 
@@ -109,6 +109,26 @@
 -(void) createWaveForm{
     xmain(); //run pc2dsp and write to temp files, automatically run in background async
    // NSLog(@"total elapse time for 1 iter = %f s", elapsedTime);
+    
+    //Copies the array of parameters from the C code into the one in the Obj-C code
+    FILE *infile;
+    
+    // Open person.dat for reading
+    infile = fopen ("params.dat", "r");
+    if (infile == NULL)
+    {
+        fprintf(stderr, "\nError opening file\n");
+        exit (1);
+    }
+    
+    
+    // read file contents till end of file
+    fread(&Neurons, sizeof(Neuron), TotalNeuronNumber, infile);
+    fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
+    //fread(&Synapses, sizeof(Synapse), TotalSynapseNumber, infile);
+    
+    fclose (infile);
+    
 }
 
 //-(void) readWaveForm{
