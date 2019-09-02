@@ -261,7 +261,7 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 */
 //The default parameter setter function for the EVEN NEWER version of the structure
 
-void SetDefaultParamsForSyanpses(){
+void SetDefaultParamsForSyanpses(){      // A few commments and more use of symbolic constants (Enums) wouldn't hurt here
     int cell = 0;
     int side = 0;
     int seg = 0;
