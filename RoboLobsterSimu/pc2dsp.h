@@ -1004,6 +1004,8 @@ typedef struct synaspeStruc{
     double xRp;            //Reversal Potential
     double gamma;          //Time Constant
     double gStrength;
+    double synapCurrent;
+    double totalSpikes;
 } Synapse;
 
 Synapse Synapses[TotalSynapseNumber];

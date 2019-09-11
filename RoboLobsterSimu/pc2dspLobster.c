@@ -274,7 +274,7 @@ void SetDefaultParamsForSyanpses(){
             Synapses[i].side = left;
             Synapses[i].seg = 0;
         }
-        else if(i < 37 || (i > 52 && i < 340)){  //If the array is looking at the 6th through the 35th synapse it will
+        else if(i < 37 || (i > 52 && i < 333)){  //If the array is looking at the 6th through the 35th or the 52nd through the 332nd synapse it will
             Synapses[i].cell = cell;             //fill them as though there are four segments and two sides, so 8 versions in total
             Synapses[i].side = side;
             Synapses[i].seg = seg;
@@ -288,12 +288,13 @@ void SetDefaultParamsForSyanpses(){
                 cell++;
             }
         }
-        else if(i < 53 ){
+        else {                                  //For all other synapses it will assume they have only one for esach side, and label for L and R
             Synapses[i].cell = cell;
             Synapses[i].side = side;
+            Synapses[i].seg = 0;
             side++;
             if(side == 2){
-                side = 0;
+                side = left;
                 cell++;
             }
         }
@@ -564,6 +565,69 @@ void SetPacemakerNeuroParam2(pacemakerNeuron *ptr, int speed) {
     else
         ptr->x2 = 1-2*ptr->alphaInit;
 }
+
+//Array of structures version of function to calculate neurons
+
+void calcNeurons (int NeuronID, double cIe, double cIi, double c, double e) {    //If the Neuron being calculated is a Bursting or Spiking Neuron, use this equation:
+    if (Neurons[NeuronID].type == 0 || Neurons[NeuronID].type == 1){
+        Neurons[NeuronID].betaIn = Neurons[NeuronID].betaE * cIe + Neurons[NeuronID].betaI * cIi + Neurons[NeuronID].betaDc *  Neurons[NeuronID].Idc;
+        Neurons[NeuronID].sigmaIn = Neurons[NeuronID].sigmaE * cIe + Neurons[NeuronID].sigmaI * cIi + Neurons[NeuronID].sigmaDc * Neurons[NeuronID].Idc;
+        if(Neurons[NeuronID].xp <= 0.0) {
+            Neurons[NeuronID].x = Neurons[NeuronID].alpha / (1.0 - Neurons[NeuronID].xp) + Neurons[NeuronID].y + Neurons[NeuronID].betaIn;
+            Neurons[NeuronID].spike = 0;
+        }
+        else {
+            if(Neurons[NeuronID].xp <= Neurons[NeuronID].alpha + Neurons[NeuronID].y + Neurons[NeuronID].betaIn && Neurons[NeuronID].xpp <= 0.0) {
+                Neurons[NeuronID].x = Neurons[NeuronID].alpha + Neurons[NeuronID].y + Neurons[NeuronID].betaIn;
+                Neurons[NeuronID].spike = 1;
+            }
+            else {
+                Neurons[NeuronID].x = -1;
+                Neurons[NeuronID].spike = 0;
+            }
+        }
+        Neurons[NeuronID].y = Neurons[NeuronID].y - Neurons[NeuronID].mu * (Neurons[NeuronID].xp + 1.0) + Neurons[NeuronID].mu * Neurons[NeuronID].\
+        sigma + Neurons[NeuronID].mu * Neurons[NeuronID].sigmaIn;
+        Neurons[NeuronID].xpp = Neurons[NeuronID].xp;
+        Neurons[NeuronID].xp = Neurons[NeuronID].x;
+    }
+    else if (Neurons[NeuronID].type == 2) {   //If the Neuron is a Pacemaker, use this equation:
+        Neurons[NeuronID].x2= Neurons[NeuronID].x2;
+        Neurons[NeuronID].betaIn = Neurons[NeuronID].betaE * c + Neurons[NeuronID].betaI*e + Neurons[NeuronID].betaDc * Neurons[NeuronID].Idc; //add BetaE
+        Neurons[NeuronID].sigmaIn = Neurons[NeuronID].sigmaE * c + Neurons[NeuronID].sigmaI * e + Neurons[NeuronID].sigmaDc * Neurons[NeuronID].Idc;
+        if(Neurons[NeuronID].xp <= 0.0) {
+            Neurons[NeuronID].x= Neurons[NeuronID].alpha / (1.0 - Neurons[NeuronID].xp) + Neurons[NeuronID].x2 + Neurons[NeuronID].betaIn;
+            Neurons[NeuronID].spike= 0;
+        }
+        else {
+            if(Neurons[NeuronID].xp < Neurons[NeuronID].alpha + Neurons[NeuronID].x2 && Neurons[NeuronID].xpp <= 0.0) {
+                Neurons[NeuronID].x= Neurons[NeuronID].alpha + Neurons[NeuronID].x2 + Neurons[NeuronID].betaIn;
+                Neurons[NeuronID].spike= 1;
+            }
+            else {
+                Neurons[NeuronID].x= -1;
+                Neurons[NeuronID].spike= 0;
+            }
+        }
+        if (Neurons[NeuronID].xp < -1)
+        {
+            Neurons[NeuronID].y2 = Neurons[NeuronID].x2 - Neurons[NeuronID].mu * ( 1 + Neurons[NeuronID].xp) + Neurons[NeuronID].mu * Neurons[NeuronID].sigma + Neurons[NeuronID].mu * Neurons[NeuronID].sigmaIn;
+        }
+        else{
+            if (Neurons[NeuronID].x2 >= Neurons[NeuronID].yr - 0.001 && Neurons[NeuronID].sigma < 0.02)
+            {
+                Neurons[NeuronID].y2 = Neurons[NeuronID].x2 - Neurons[NeuronID].mu * (0.4) + Neurons[NeuronID].mu * Neurons[NeuronID].sigmaIn;
+            }
+            else
+                Neurons[NeuronID].y2 = Neurons[NeuronID].x2 - Neurons[NeuronID].mu * (1 + Neurons[NeuronID].xp) + Neurons[NeuronID].mu * Neurons[NeuronID].sigma + Neurons[NeuronID].mu * Neurons[NeuronID].sigmaIn;
+        }
+        Neurons[NeuronID].xpp= Neurons[NeuronID].xp;
+        Neurons[NeuronID].xp= Neurons[NeuronID].x;
+        Neurons[NeuronID].x2= Neurons[NeuronID].y2;
+    }
+}
+
+//Old structure version of calculate function with multiple versions
 
 void calcSpikingNeuronFunc(spikingNeuron *ptr,double cIe,double cIi) {
     ptr->betaIn = ptr->betaE * cIe + ptr->betaI * cIi + ptr->betaDc * ptr->Idc;
@@ -4647,6 +4711,13 @@ double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
      
     return SynapseParamArray[data];
 }
+
+//Array of structures version of computeMAPs
+
+void computeMAPsArray(double mainLoopIndex) {
+    
+}
+
 
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++
