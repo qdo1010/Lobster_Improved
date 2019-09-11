@@ -39,7 +39,7 @@ int comSegmentMask= 0xFFFFFFFF;     // enable / disable segments
 #define pitchStates 5			// pLow, rosDn, pLevel, rosUp, pHigh
 
 #define TotalNeuronNumber 94
-#define TotalSynapseNumber 336
+#define TotalSynapseNumber 341
 #define NumNeuronsWithSideSeg 9
 
 //------------- Define the length of intersegmental connections --------------------------
@@ -49,9 +49,7 @@ int comSegmentMask= 0xFFFFFFFF;     // enable / disable segments
 #define cCalSeg    0.8 // Calibrate synapses within each segment
 //********************* Cells classes *********************************************
 
-enum  {left,right} side;
-enum {pLow, rosDn, pLevel, rosUp, pHigh} pitch;
-enum  {leftDown, rLevel, rightDown} roll;
+
 
 // enum  {low, normal, high} height;
 enum {
@@ -967,6 +965,10 @@ enum {
     
 } synapsePointer;
 */
+
+enum  {left,right} side;
+enum {pLow, rosDn, pLevel, rosUp, pHigh} pitch;
+enum  {leftDown, rLevel, rightDown} roll;
 
 enum{
     BurstingNeuron,

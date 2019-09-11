@@ -262,19 +262,20 @@ void calcPacemakerNeuron(struct structEndogenousPacemaker *ptr,double c, double 
 //The default parameter setter function for the EVEN NEWER version of the structure
 
 void SetDefaultParamsForSyanpses(){
+    //This function will fill the synapses with their correct cell type, side and segment
     int cell = 0;
-    int side = 0;
+    int side = left;
     int seg = 0;
     for(int i = 0; i < TotalSynapseNumber; i++){
-        Synapses[i].name = synapseLabels[i];
+        Synapses[i].name = synapseLabels[i];     //For each of the synapses in the array, fill its "name" value with the string of its name
         if(i < 5){
-            Synapses[i].cell = cell;
-            cell++;
-            Synapses[i].side = 0;
+            Synapses[i].cell = cell;             //If the array is looking at the first five synapses it will fill them as if they are one
+            cell++;                              //of a kind, and have no side or segments
+            Synapses[i].side = left;
             Synapses[i].seg = 0;
         }
-        else if(i < 36 || (i > 51 && i < 344)){
-            Synapses[i].cell = cell;
+        else if(i < 37 || (i > 52 && i < 340)){  //If the array is looking at the 6th through the 35th synapse it will
+            Synapses[i].cell = cell;             //fill them as though there are four segments and two sides, so 8 versions in total
             Synapses[i].side = side;
             Synapses[i].seg = seg;
             seg++;
@@ -283,11 +284,11 @@ void SetDefaultParamsForSyanpses(){
                 side++;
             }
             if(side == 2){
-                side = 0;
+                side = left;
                 cell++;
             }
         }
-        else if(i < 51){
+        else if(i < 53 ){
             Synapses[i].cell = cell;
             Synapses[i].side = side;
             side++;
@@ -311,7 +312,7 @@ void SetDefaultParamsForSyanpses(){
                 cell++;
             }
         }
-        */
+        
         else {
             Synapses[i].cell = cell;
             Synapses[i].side = side;
@@ -321,6 +322,7 @@ void SetDefaultParamsForSyanpses(){
                 cell++;
             }
         }
+         */
     }
 }
 
@@ -1188,6 +1190,7 @@ void xmain()
     
      
     if( access( "oldparams.dat", F_OK ) != -1 ) {
+        CreateParamFile ();
         LoadAllParams ();
         printf("Parameter file found, loading now...\n");
     } else {
