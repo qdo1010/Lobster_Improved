@@ -838,6 +838,10 @@ int xyz;
  */
 
 //									----- Calculate the map-model for synaptic currents --------
+
+// Array of Structures version:
+//void calcSynapticCurrentsArray (
+//Old Structures version:
 void calcSynapticCurrentsFunc(double *I,
                           synapse *params,
                           double xPost,double spikes) {
@@ -4715,9 +4719,35 @@ double ReturnCurrentSynapseParams(long id, long side, long seg, int data){
 //Array of structures version of computeMAPs
 
 void computeMAPsArray(double mainLoopIndex) {
+    //Zero all synaptic currents
+    for (int i = 0; i < TotalSynapseNumber; i++){
+        Synapses[i].synapCurrentI = 0;
+    }
+    
+    //Zero all neuron spikes
+    for (int i = 0; i < TotalNeuronNumber; i++){
+        Neurons[i].totalSpikes = 0;
+    }
+    
+    //Calculating number of presynaptic spikes in each group of cells for Elevator, Swing, Depressor and Stance
+    for (int i = 0; i < 32; i++){
+        //If it is the first segment, use this equation to find the total spikes
+        if (Neurons[i].seg == 0){
+            Neurons[i].totalSpikes = Neurons[i].totalSpikes + Neurons[i].spike + cNextSeg * Neurons[i + 1].spike;
+        }
+        //If it is the last segment, use this equation to find the total spikes
+        else if(Neurons[i].seg == 3){
+            Neurons[i].totalSpikes = Neurons[i].totalSpikes + Neurons[i].spike + cNextSeg * Neurons[i - 1].spike;
+        }
+        //If it is any other segment use this equation to find the total spikes
+        else {
+            Neurons[i].totalSpikes = Neurons[i].totalSpikes + Neurons[i].spike + cNextSeg * (Neurons[i - 1].spike + Neurons[i].spike);
+        }
+    }
+    
+    
     
 }
-
 
 
 // +++++++++++  Function to calculate the right hand sides for ALL maps +++++++++++++++

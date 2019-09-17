@@ -991,6 +991,7 @@ typedef struct neuronStruc{
     int spike;
     double yr, xr, x2, y2;
     double alphaInit;
+    double totalSpikes;
 } Neuron;
 
 Neuron Neurons[TotalNeuronNumber];
@@ -1004,8 +1005,7 @@ typedef struct synaspeStruc{
     double xRp;            //Reversal Potential
     double gamma;          //Time Constant
     double gStrength;
-    double synapCurrent;
-    double totalSpikes;
+    double synapCurrentI;
 } Synapse;
 
 Synapse Synapses[TotalSynapseNumber];
