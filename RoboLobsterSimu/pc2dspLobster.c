@@ -3733,6 +3733,14 @@ void LoadAllParams () {
         printf(" %d,", Synapses[i].side);
         printf(" %d", Synapses[i].seg);
     }
+    for(int i = 0; i < TotalNeuronNumber; i++){
+        printf("\n%s:", Neurons[i].name);
+        printf(" %d", Neurons[i].type);
+        printf(" %d,", Neurons[i].cell);
+        printf(" %d,", Neurons[i].side);
+        printf(" %d", Neurons[i].seg);
+        
+    }
     /*
     for(int i = 0; i < TotalNeuronNumber; i++){
         switch(Neurons[i].type) {
