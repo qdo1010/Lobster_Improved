@@ -4754,9 +4754,15 @@ void computeMAPsArray(double mainLoopIndex) {
     }
     
     //This loop calculates the internal CPG synapses
-    
-    for (int i = 0; i < TotalNeuronNumber; i++) {
-        
+    size_t n = sizeof(IPairs) / sizeof(IPairs[0]); //Find out how mant pairs there are
+    size_t synSize = sizeof(Synapses[0]);
+    size_t neroSize = sizeof(Neurons[0]);
+    for (int i = 0; i < n; i++) { //Traverse the array of pairs till the end
+        for (int j = 0; j < mmSide; j++) {
+            for (int k = 0; k < mmSeg; k++) {
+                calcSynapticCurrents( &(IPairs[i].syn + (3*j + k)* synSize)->synapCurrentI, &IPairs[i].syn + (3*j + k)* synSize, (IPairs[i].n1 + (3*j + k)* neroSize)->x, (IPairs[i].n2 + (3*j + k)* neroSize)->totalSpikes);
+            }
+        }
     }
     
     

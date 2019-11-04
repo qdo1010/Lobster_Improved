@@ -1020,7 +1020,7 @@ typedef struct neuronConnections {
     Neuron* n2;
 } NeuronPair;
 
-NeuronPair Pairs[] = {
+NeuronPair IPairs[] = {
     {&Synapses[pInhSegEleDepL1], &Neurons[cellDepressorL1], &Neurons[cellElevatorL1]},
     {&Synapses[pInhSegEleStanceL1], &Neurons[cellStanceL1], &Neurons[cellElevatorL1]},
     {&Synapses[pInhSegStanceSwingL1], &Neurons[cellSwingL1], &Neurons[cellStanceL1]},
@@ -1037,6 +1037,11 @@ NeuronPair Pairs[] = {
     {&Synapses[pExcBackModComL], &Neurons[cellModComL], &Neurons[cellBL]},
     {&Synapses[pExcLLModComL], &Neurons[cellModComL], &Neurons[cellLLL]},
     {&Synapses[pExcLTModComL], &Neurons[cellModComL], &Neurons[cellLTL]},
+    {&Synapses[pInhSegCoordEleL1], &Neurons[cellElevatorL1], &Neurons[cellElevatorL1]},
+    {&Synapses[pExcSegContEleCoordL1], &Neurons[cellCoordL1], &Neurons[cellCoordL1]},
+    {&Synapses[pInhSegCoordEleL1], &Neurons[cellElevatorL1], &Neurons[cellElevatorL1]},
+    {&Synapses[pExcIntCaudEleCoordL1], &Neurons[cellCoordL1], &Neurons[cellCoordL1]},
+    {&Synapses[pExcIntRosEleCoordL1], &Neurons[cellCoordL1], &Neurons[cellCoordL1]}
 };
 
 
@@ -1048,7 +1053,7 @@ typedef struct modNeuronConnections {
     Neuron* n3;
 } ModComPair;
 
-ModComPair ModPairs[] = {
+ModComPair ModIPairs[] = {
     {&Synapses[pExcSegSwingProtL1], &Synapses[pInhIntBSwingL], &Neurons[cellProtractorL1], &Neurons[cellSwingL1], &Neurons[cellBL]},
     {&Synapses[pExcSegSwingRetL1], &Synapses[pInhIntFSwingL], &Neurons[cellRetractorL1], &Neurons[cellSwingL1], &Neurons[cellFL]},
     {&Synapses[pExcSegSwingExtL1], &Synapses[pInhIntLTSwingL], &Neurons[cellExtensorL1], &Neurons[cellSwingL1], &Neurons[cellLTL]},
@@ -1058,6 +1063,7 @@ ModComPair ModPairs[] = {
     {&Synapses[pExcSegStanceExtL1], &Synapses[pInhIntLTStanceL], &Neurons[cellExtensorL1], &Neurons[cellStanceL1], &Neurons[cellLTL]},
     {&Synapses[pExcSegStanceFlxL1], &Synapses[pInhIntLLStanceL], &Neurons[cellFlexorL1], &Neurons[cellStanceL1], &Neurons[cellLLL]}
 };
+
 
 
 int numCells = 92;
