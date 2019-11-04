@@ -4753,6 +4753,11 @@ void computeMAPsArray(double mainLoopIndex) {
         }
     }
     
+    //This loop calculates the internal CPG synapses
+    
+    for (int i = 0; i < TotalNeuronNumber; i++) {
+        
+    }
     
     
 }

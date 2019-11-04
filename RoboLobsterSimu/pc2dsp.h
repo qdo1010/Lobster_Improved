@@ -1010,6 +1010,55 @@ typedef struct synaspeStruc{
 
 Synapse Synapses[TotalSynapseNumber];
 
+//These structures are filled with pointers to neurons and sysnapes which interact with each other.
+//The pointers are to the first element of the se for each of the 8 versions of the neuron (2 sides 4 segments)
+//so you can use pointer algebra to traverse the entire array of these pairs to calculate the modcom current
+
+typedef struct neuronConnections {
+    Synapse* syn;
+    Neuron* n1;
+    Neuron* n2;
+} NeuronPair;
+
+NeuronPair Pairs[] = {
+    {&Synapses[pInhSegEleDepL1], &Neurons[cellDepressorL1], &Neurons[cellElevatorL1]},
+    {&Synapses[pInhSegEleStanceL1], &Neurons[cellStanceL1], &Neurons[cellElevatorL1]},
+    {&Synapses[pInhSegStanceSwingL1], &Neurons[cellSwingL1], &Neurons[cellStanceL1]},
+    {&Synapses[pExcModComEleL1], &Neurons[cellElevatorL1], &Neurons[cellModComL]},
+    {&Synapses[pExcModComDepL1], &Neurons[cellDepressorL1], &Neurons[cellModComL]},
+    {&Synapses[pExcModComSwingL1], &Neurons[cellSwingL1], &Neurons[cellModComL]},
+    {&Synapses[pExcModComStanceL1], &Neurons[cellStanceL1], &Neurons[cellModComL]},
+    {&Synapses[pExcSegPcnDepL1], &Neurons[cellDepressorL1], &Neurons[cellPcnLlow]},
+    {&Synapses[pExcForRetL1], &Neurons[cellFL], &Neurons[cellFL]},
+    {&Synapses[pExcBackProtL1], &Neurons[cellBL], &Neurons[cellBL]},
+    {&Synapses[pExcLLFlxL1], &Neurons[cellLLL], &Neurons[cellLLL]},
+    {&Synapses[pExcLTExtL1], &Neurons[cellLTL], &Neurons[cellLTL]},
+    {&Synapses[pExcForModComL], &Neurons[cellModComL], &Neurons[cellFL]},
+    {&Synapses[pExcBackModComL], &Neurons[cellModComL], &Neurons[cellBL]},
+    {&Synapses[pExcLLModComL], &Neurons[cellModComL], &Neurons[cellLLL]},
+    {&Synapses[pExcLTModComL], &Neurons[cellModComL], &Neurons[cellLTL]},
+};
+
+
+typedef struct modNeuronConnections {
+    Synapse* syn1;
+    Synapse* syn2;
+    Neuron* n1;
+    Neuron* n2;
+    Neuron* n3;
+} ModComPair;
+
+ModComPair ModPairs[] = {
+    {&Synapses[pExcSegSwingProtL1], &Synapses[pInhIntBSwingL], &Neurons[cellProtractorL1], &Neurons[cellSwingL1], &Neurons[cellBL]},
+    {&Synapses[pExcSegSwingRetL1], &Synapses[pInhIntFSwingL], &Neurons[cellRetractorL1], &Neurons[cellSwingL1], &Neurons[cellFL]},
+    {&Synapses[pExcSegSwingExtL1], &Synapses[pInhIntLTSwingL], &Neurons[cellExtensorL1], &Neurons[cellSwingL1], &Neurons[cellLTL]},
+    {&Synapses[pExcSegSwingFlxL1], &Synapses[pInhIntLLSwingL], &Neurons[cellFlexorL1], &Neurons[cellSwingL1], &Neurons[cellLLL]},
+    {&Synapses[pExcSegStanceProtL1], &Synapses[pInhIntFStanceL], &Neurons[cellProtractorL1], &Neurons[cellStanceL1], &Neurons[cellFL]},
+    {&Synapses[pExcSegStanceRetL1], &Synapses[pInhIntBStanceL], &Neurons[cellRetractorL1], &Neurons[cellStanceL1], &Neurons[cellBL]},
+    {&Synapses[pExcSegStanceExtL1], &Synapses[pInhIntLTStanceL], &Neurons[cellExtensorL1], &Neurons[cellStanceL1], &Neurons[cellLTL]},
+    {&Synapses[pExcSegStanceFlxL1], &Synapses[pInhIntLLStanceL], &Neurons[cellFlexorL1], &Neurons[cellStanceL1], &Neurons[cellLLL]}
+};
+
 
 int numCells = 92;
 //x array
