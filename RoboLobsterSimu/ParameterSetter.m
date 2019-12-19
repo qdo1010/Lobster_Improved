@@ -150,16 +150,16 @@
     [synapseSelector addItemWithTitle:@"pExcLLModCom"];
     [synapseSelector addItemWithTitle:@"pExcLTModCom"];
     
-    [neuronSideSelector addItemWithTitle:@"0"];
-    [neuronSideSelector addItemWithTitle:@"1"];
+    [neuronSideSelector addItemWithTitle:@"Left"];
+    [neuronSideSelector addItemWithTitle:@"Right"];
     
     [neuronSegSelector addItemWithTitle:@"0"];
     [neuronSegSelector addItemWithTitle:@"1"];
     [neuronSegSelector addItemWithTitle:@"2"];
     [neuronSegSelector addItemWithTitle:@"3"];
     
-    [neuronSideSelector addItemWithTitle:@"0"];
-    [neuronSideSelector addItemWithTitle:@"1"];
+    //[neuronSideSelector addItemWithTitle:@"0"];
+    //[neuronSideSelector addItemWithTitle:@"1"];
     
     [neuronSegSelector addItemWithTitle:@"0"];
     [neuronSegSelector addItemWithTitle:@"1"];
